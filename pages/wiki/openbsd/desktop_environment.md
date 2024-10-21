@@ -1,6 +1,6 @@
 # Setting Up a Desktop Environment for OpenBSD
 
-This page covers the initial setup for installing and configuring `dwm` as a desktop environment on OpenBSD. Everything posted here relies on my personal "Open Suck" project: [Open Suck](https://sr.ht/~bt/open-suck/)
+This page covers the initial setup for installing and configuring `dwm` as a desktop environment on OpenBSD. Everything posted here relies on my personal "Open Suck" project: [Open Suck](https://git.btxx.org/open-suck/about)
 
 ## Show Don't Tell
 
@@ -14,7 +14,7 @@ This page covers the initial setup for installing and configuring `dwm` as a des
 The Open Suck installer gives you the absolute barebones desktop experience:
 
 - `dwm` for window management
-- `qutebrowser` as your core web browser
+- `firefox` as your core web browser
 - `aerc` for your terminal-based mail client
 - `slock` for screen locking
 - `scrot`/`slop` for simple screenshot utilities
