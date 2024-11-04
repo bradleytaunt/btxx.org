@@ -26,6 +26,7 @@ This is the homepage for my personal wiki. All sub-directories are listed below.
 ## Version Control Systems
 
 * [cgit](/wiki/cgit)
+* [got](/wiki/got)
 
 ---
 
