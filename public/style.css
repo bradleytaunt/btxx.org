@@ -79,21 +79,10 @@ footer {
 .footnotes {
     font-size: 90%;
 }
-@font-face {
-    font-family: 'Monaspace';
-    src: url('/public/fonts/MonaspaceKrypton-SyntaxHighlighter-Regular.woff2') format('woff2');
-}
 code {
-    font-family: "Monaspace",monospace;
-    background-color: #000;
-    color: #f1f1f1;
-    border-radius: 0.2rem;
     padding: 0.1rem;
 }
 pre:has(code) {
-    border: 2px solid #f9f9f9;
-    background-color: #000;
-    color: #f1f1f1;
+    border: 1px solid;
     padding: 0.5rem;
-    border-radius: 0.5rem;
 }
