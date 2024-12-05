@@ -9,8 +9,8 @@ For those interested I try to keep the details of the blog up-to-date with the i
 | Parameter | Source |
 |---|---|
 |Built with:|[wruby](https://wruby.btxx.org)|
-|Hosted on:|[NearlyFreeSpeech](https://nearlyfreespeech.net)|
-|Source code available:|[git.btxx.org/btxx.org](https://git.btxx.org/btxx.org)|
+|Hosted on:|[DartNode](https://dartnode.com?aff=btxx)|
+|Source code available:|[sourcehut](https://git.sr.ht/~bt/btxx.org)|
 |Licensed under:|[MIT](https://choosealicense.com/licenses/mit/)|
-|Developed on:|ThinkPad X220|
+|Developed on:|ThinkPad X220 & M73 Tiny|
 |Operating system:|OpenBSD & Alpine Linux|
