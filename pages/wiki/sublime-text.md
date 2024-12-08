@@ -1,6 +1,6 @@
 # Sublime Text
 
-Personal configuration for the text editor Sublime Text ([https://www.sublimetext.com/](sublimetext.com/))
+Personal configuration for the text editor [Sublime Text](https://www.sublimetext.com)
 
 ## Themes / Color Schemes
 

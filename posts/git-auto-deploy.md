@@ -32,7 +32,7 @@ Before we get into the nitty-gritty, there are a few items we need to take care 
 
 **Once you do both of those tasks**, continue with the rest of the article!
 
-## The `post-receive` Script
+## The post-receive Script
 
 I will be using my own personal website as the main project for this example. My site is built with [wruby](https://git.btxx.org/wruby), so the build instructions are specific to that generator. If you use Jekyll or something similar, you will need to tweak those commands for your own purposes.
 

@@ -1,4 +1,4 @@
-# Working with `git` Patches in Apple Mail
+# Working with git Patches in Apple Mail
 
 2023-05-11
 

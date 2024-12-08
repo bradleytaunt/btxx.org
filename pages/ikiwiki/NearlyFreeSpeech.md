@@ -1,6 +1,8 @@
 # Setting Up ikiwiki on NearlyFreeSpeech
 
-This page documents step-by-step how to properly setup and customize *ikiwiki* on [NearlyFreeSpeech](https://nearlyfreespeech.net). A good deal of the documentation here has been lifted from [ikiwiki.info/tips/nearlyfreespeech/](https://ikiwiki.info/tips/nearlyfreespeech/) but altered and updated.
+This page documents step-by-step how to properly setup and customize *ikiwiki* on [NearlyFreeSpeech](https://nearlyfreespeech.net). 
+
+A good deal of the documentation here has been lifted from [ikiwiki.info/tips/nearlyfreespeech/](https://ikiwiki.info/tips/nearlyfreespeech/) but altered and updated.
 
 ## Register for an account and set up a site
 

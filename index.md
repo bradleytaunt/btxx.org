@@ -1,6 +1,6 @@
-# ~bt
+# btxx
 
-**Designer, developer, hardware tinkerer, open source advocate, consumer of dark roast coffee, and writer of very long sentences.**
+**Fullstack Developer / UX Designer**
 
 As a designer/developer hybrid, I help software companies improve their user experience and ship more performant products. I also actively maintain several [open source projects](/projects).
 
@@ -8,7 +8,7 @@ I'm passionate about open source software, usability, performance, privacy, and 
 
 ## Skills & Languages
 
-Core tools are HTML, CSS, Ruby, JavaScript & WordPress. Currently improving my skills with Rails, MongoDB & PHP. I also enjoy tinkering with basic shell scripts and [Unix systems](/public/images/unix.gif).
+Core tools are HTML, CSS, Ruby, JavaScript & PHP. Currently improving my skills with Rails & MongoDB. I also enjoy tinkering with basic shell scripts and [Unix systems](/public/images/unix.gif).
 
 ## Design Thought Experiments
 

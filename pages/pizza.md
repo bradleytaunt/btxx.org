@@ -1,10 +1,12 @@
 # Pizza
 
-This page showcases the *official* Pizza Fund (Donations). Here I list and celebrate those kind enough to donate pizza(s) into my stomach. Pizza fuels my creativity and helps me publish helpful articles and develop new open source projects.
+This page showcases the *official* Pizza Fund (Donations). 
+
+Here I list and celebrate those kind enough to donate pizza(s) into my stomach. Pizza fuels my creativity and helps me publish helpful articles and develop new open source projects.
 
 If you feel the burning desire to donate to the *pizza fund* in order to support this small blog of mine or any number of my [[projects]], please take a look at the options below. You can still enjoy everything on this blog for free, so please don't feel obligated to donate.
 
-# Pizza Hall of Fame
+## Pizza Hall of Fame
 
 Listed below are the kind folks who have donated me pizzas. Note: most of these entries also have their websites included in the [1MB Club Hall of Fame](https://1mb.club).
 

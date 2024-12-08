@@ -2,8 +2,6 @@
 
 2023-01-09
 
-<img style="background:white;" src="/public/images/coffee-couple.svg" alt="Couple drinking cups of coffee">
-
 I had to replace my dual Keurig coffee maker *twice* over a period of five months. This occurred a year ago and these are my findings.
 
 ## Built to Fail?
@@ -31,6 +29,7 @@ The design field drops new designers into a *world of bloat*. They don't stand a
 So of course designers will carry this mentality into their own work. It's all they have known. "X and Y companies designed their `insert-feature-here` with all these *extras*, so we'll do the same". Everything is [a copy of a copy of a copy](https://invidious.snopyta.org/watch?v=dC1yHLp9bWA).
 
 The only advice I can give to designers is this: try not to add to the problem. I'm not asking you to move mountains. But consider working somewhere else if your career only adds more bloat to the world. (Easier said than done, I know). Or keep doing what you're doing. What do I know - I'm only some guy who rambles on the web.
+
 ## Back to the Coffee Maker
 
 So the Keurig is gone. Trashed. The company doesn't want the product back, they tell you to scrap it. "We'll send you a new one for free". Such a waste.

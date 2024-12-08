@@ -1,6 +1,8 @@
 # cgit
 
-This page contains a comprehensive guide to setting up cgit on NearlyFreeSpeech. It is assumed that you already have an account with NFS and also have access to a "site" online.
+This page contains a comprehensive guide to setting up cgit on NearlyFreeSpeech. 
+
+**Important**: It is assumed that you already have an account with NFS and also have access to a "site" online.
 
 Most of the following has been lifted from [NearlyFreeSpeech cgit application walkthrough](https://members.nearlyfreespeech.net/wiki/Applications/Cgit) but has been tweaked and updated.
 

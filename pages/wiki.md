@@ -1,6 +1,8 @@
 # Wiki
 
-This is the homepage for my personal wiki. All sub-directories are listed below. This wiki is a growing set of documents, so things may change often.
+This is the homepage for my personal wiki docs. 
+
+All sub-directories are listed below. This wiki is a growing set of documents, so things may change often.
 
 ## Software
 
@@ -8,10 +10,10 @@ This is the homepage for my personal wiki. All sub-directories are listed below.
 * [dotfiles](/wiki/dotfiles)
 * [openbsd](/wiki/openbsd)
 * [qutebrowser](/wiki/qutebrowser)
-* [safari](wiki/safari)
-* [scripts](wiki/scripts)
+* [safari](/wiki/safari)
+* [scripts](/wiki/scripts)
 * [sublime text](/wiki/sublime-text)
-* [ubuntu](wiki/ubuntu)
+* [ubuntu](/wiki/ubuntu)
 
 ---
 

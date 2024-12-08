@@ -1,6 +1,8 @@
 # Setting Up a Desktop Environment for OpenBSD
 
-This page covers the initial setup for installing and configuring `dwm` as a desktop environment on OpenBSD. Everything posted here relies on my personal "Open Suck" project: [Open Suck](https://git.btxx.org/open-suck/about)
+Initial setup for installing and configuring dwm as a desktop environment on OpenBSD. 
+
+Everything posted here relies on my personal "Open Suck" project: [Open Suck](https://git.sr.ht/~bt/open-suck-installer)
 
 ## Show Don't Tell
 
