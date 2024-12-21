@@ -6,14 +6,43 @@ This website is a collection of living, breathing documents. As I mention on the
 
 For those interested I try to keep the details of the blog up-to-date with the information below:
 
-## Website Fast Facts
+<div class="table-container">
+<table>
+  <caption>Website Fast Facts</caption>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Built with:</td>
+      <td><a href="https://wruby.btxx.org">wruby</a></td>
+    </tr>
+    <tr>
+      <td>Hosted on:</td>
+      <td><a href="https://dartnode.com?aff=btxx">DartNode</a></td>
+    </tr>
+    <tr>
+      <td>Source code available:</td>
+      <td><a href="https://git.sr.ht/~bt/btxx.org">sourcehut</a></td>
+    </tr>
+    <tr>
+      <td>Licensed under:</td>
+      <td><a href="https://choosealicense.com/licenses/mit/">MIT</a></td>
+    </tr>
+    <tr>
+      <td>Developed on:</td>
+      <td>ThinkPad X220 &amp; M73 Tiny</td>
+    </tr>
+    <tr>
+      <td>Operating system:</td>
+      <td>OpenBSD &amp; Alpine Linux</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-| Parameter | Source |
-|---|---|
-|Typeface used:|IBM Plex Sans|
-|Built with:|[wruby](https://wruby.btxx.org)|
-|Hosted on:|[DartNode](https://dartnode.com?aff=btxx)|
-|Source code available:|[sourcehut](https://git.sr.ht/~bt/btxx.org)|
-|Licensed under:|[MIT](https://choosealicense.com/licenses/mit/)|
-|Developed on:|ThinkPad X220 & M73 Tiny|
-|Operating system:|OpenBSD & Alpine Linux|
+Keep note: items are subject to change.
+

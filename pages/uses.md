@@ -1,49 +1,104 @@
 # Things I Use
 
-This page contains a somewhat up-to-date listing of all hardware and software that I currently use. 
+This page contains a somewhat up-to-date listing of all hardware and software that I currently use. Seeing similar pages on other people's personal websites have proved quite valuable to me, so I figured I would do the same!
 
-Seeing similar pages on other people's personal websites have proved quite valuable to me, so I figured I would do the same!
+I'm proud to support open source products and privacy-respecting communities. The list is limited right now, but the plan is to expand this over time.
 
-## Services
+<div class="table-container">
+<table>
+  <caption>Services</caption>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Cost per year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NearlyFreeSpeech (domains)</td>
+      <td>~$75</td>
+    </tr>
+    <tr>
+      <td>DartNode</td>
+      <td>$20</td>
+    </tr>
+    <tr>
+      <td>Migadu</td>
+      <td>$19</td>
+    </tr>
+    <tr>
+      <td>Mullvad</td>
+      <td>$60</td>
+    </tr>
+    <tr>
+      <td>Sourcehut</td>
+      <td>$20</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-I'm proud to support open source products and privacy-respecting communities. The list is limited right now, but the plan is to expand this over time. All prices are in US dollars.
+<div class="table-container">
+<table>
+  <caption>Work Devices</caption>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>CPU</th>
+      <th>RAM</th>
+      <th>Storage</th>
+      <th>OS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M2 MacBook Air</td>
+      <td>Apple M2</td>
+      <td>16GB</td>
+      <td>256GB SSD</td>
+      <td>MacOS Sequoia</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-|Service|Cost/year|
-|-------|--------------|
-|[NearlyFreeSpeech](https://nearlyfreespeech.net)<br>Domains (6 total)|~$75|
-|[DartNode](https://dartnode.com?aff=btxx)<br>VPS|$10|
-|[Migadu](https://migadu.com)<br>Email service|$19|
-|[Mullvad](https://mullvad.net)<br>Privacy focused VPN|$60|
-|[sourcehut](https://sourcehut.org)<br>Git mirrors & mailing lists|$20|
-
-## Work Device
-
-
-- **M2 MacBook Air** (Daily Driver)
-  - CPU: Apple M2
-  - RAM: 16GB
-  - Storage: 256GB
-  - OS: MacOS Sequoia
-
-## Personal Device(s)
-
-- **M73 Tiny ThinkCentre**
-  - CPU: Intel i5-4590T (4) @ 3.0GHz
-  - RAM: 16GB
-  - Storage: 128GB SSD
-  - OS: Alpine Linux (KDE Plasma)
-
-- **ThinkPad X220**
-  - CPU: Intel Core i5 2540M @ 2.6 GHz
-  - RAM: 16GB
-  - Storage: 128GB SSD
-  - OS: OpenBSD ([see build](https://sr.ht/~bt/open-suck))
-
-- **ThinkPad X201**
-  - CPU: Intel Core i5-520M @ 2.9 GHz
-  - RAM: 8GB
-  - Storage: 128GB SSD
-  - OS: Alpine Suck ([see build](https://sr.ht/~bt/alpine-suck/))
+<div class="table-container">
+<table>
+  <caption>Personal Devices</caption>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>CPU</th>
+      <th>RAM</th>
+      <th>Storage</th>
+      <th>OS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M73 Tiny ThinkCentre</td>
+      <td>Intel i5-4590T (4) @ 3.0GHz</td>
+      <td>16GB</td>
+      <td>128GB SSD</td>
+      <td>Alpine Linux (KDE Plasma)</td>
+    </tr>
+    <tr>
+      <td>ThinkPad X220</td>
+      <td>Intel Core i5 2540M @ 2.6 GHz</td>
+      <td>16GB</td>
+      <td>128GB SSD</td>
+      <td>OpenBSD (<a href="https://sr.ht/~bt/open-suck">see build</a>)</td>
+    </tr>
+    <tr>
+      <td>ThinkPad X201</td>
+      <td>Intel Core i5-520M @ 2.9 GHz</td>
+      <td>8GB</td>
+      <td>128GB SSD</td>
+      <td>Alpine Suck (<a href="https://sr.ht/~bt/alpine-suck">see build</a>)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 As you can tell: I *really* like ThinkPads...
 

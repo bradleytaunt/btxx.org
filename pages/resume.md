@@ -9,21 +9,65 @@ As a designer/developer hybrid, I help software companies improve their user exp
 
 Core programming languages are HTML, CSS, JavaScript, and Ruby. For design work, my preferred tools are Sketch, GIMP, and Figma. I also enjoy tinkering with basic shell scripts and Unix systems.
 
-## Experience
+<div class="table-container">
+<table>
+  <caption>Experience</caption>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Company</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Full Stack Engineer</td>
+      <td>SerpApi</td>
+      <td>2023-Now</td>
+    </tr>
+    <tr>
+      <td>Senior UX Designer</td>
+      <td>Donorbox</td>
+      <td>2021-2023</td>
+    </tr>
+    <tr>
+      <td>Senior Designer</td>
+      <td>Purism</td>
+      <td>2019-2021</td>
+    </tr>
+    <tr>
+      <td>Lead Product Designer</td>
+      <td>Benbria</td>
+      <td>2012-2019</td>
+    </tr>
+    <tr>
+      <td>Web Designer</td>
+      <td>Netvatise</td>
+      <td>2009-2012</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-|Title|Company|Duration|
-|-----|-------|--------|
-|Full Stack Engineer|SerpApi|2023-Now|
-|Senior UX Designer|Donorbox|2021-2023|
-|Senior Designer|Purism|2019-2021|
-|Lead Product Designer|Benbria|2012-2019|
-|Web Designer|Netvatise|2009-2012|
-
-## Education
-
-|Institution|Program|Completion|
-|-----------|-------|------|
-|Durham College|Multimedia Design|2009|
+<div class="table-container">
+<table>
+  <caption>Education</caption>
+  <thead>
+    <tr>
+      <th>Institution</th>
+      <th>Program</th>
+      <th>Completion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Durham College</td>
+      <td>Multimedia Design</td>
+      <td>2009</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 ## Interests
 

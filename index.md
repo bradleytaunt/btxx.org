@@ -1,10 +1,10 @@
 # btxx
 
-**Fullstack Developer / UX Designer**
+## Fullstack Developer / UX Designer
 
-As a designer/developer hybrid, I help software companies improve their user experience and ship more performant products. I also actively maintain several [open source projects](/projects).
+As a designer/developer hybrid, I help software companies improve their user experience and ship more performant products. I'm passionate about open source software, usability, performance, privacy, and minimal design. This small piece of the internet stores a growing collection of my personal [brain dumps](/posts/dump).
 
-I'm passionate about open source software, usability, performance, privacy, and minimal design. This small piece of the internet stores a growing collection of my personal [brain dumps](/posts/dump).
+I also actively maintain several [open source projects](/projects).
 
 ## Skills & Languages
 
