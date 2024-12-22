@@ -14,7 +14,7 @@ But in most situations you should only deliver the *bare minimum*.
 
 ## Hypothetical Examples
 
-Everyone loves hypothetical, right? So here's one:
+Everyone loves hypothetical thought experiments, right? So here's one:
 
 Jim is an engineer and works for "THE COMPANY". A client has requested a JSON file that contains all recent, Canadian buyers of their "PRODUCT ABC". Jim can handle this task no problem, but thinks it is a little short-sighted. Jim thinks to himself, "What if they want to check buyers from the US? What if they want a shorter or longer time frame?". So, Jim starts to build a *richer* experience for the user. He creates a private front-end UI, that gives the client the ability to select country, time-frame, along with buying / selling options, which can then be exported as JSON directly from the browser. It looks great and works flawlessly. Well done, Jim!
 
