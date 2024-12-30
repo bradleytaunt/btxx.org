@@ -22,7 +22,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hosted on:</td>
-      <td><a href="https://dartnode.com?aff=btxx">DartNode</a></td>
+      <td><a href="https://billing.linveo.com/order/forms/a/MTM4Ng==">Linveo</a></td>
     </tr>
     <tr>
       <td>Source code available:</td>

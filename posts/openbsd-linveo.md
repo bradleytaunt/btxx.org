@@ -2,7 +2,7 @@
 
 2024-10-21
 
-I recently came across an amazing deal for a VPS on [Linveo](https://linveo.com). For just $15 a year they provide:
+I recently came across an amazing deal for a VPS on [Linveo](https://billing.linveo.com/order/forms/a/MTM4Ng==). For just $15 a year they provide:
 
 - AMD KVM 1GB
 - 1024 MB RAM
@@ -17,8 +17,10 @@ It's a pretty [great deal](https://lowendtalk.com/discussion/193886/linveo-com-a
 Once you have your initial VPS up and running, login to the main dashboard and navigate to the **Media** tab. Under CD/DVD-ROM you'll want to click "Custom CD/DVD" and enter the direct link to the `install76.iso`:
 
 ~~~sh
-https://cdn.openbsd.org/pub/OpenBSD/7.6/amd64/install76.iso
+https://cdn.openbsd.org/pub/OpenBSD/7.6/i386/install76.iso
 ~~~
+
+> Note: you will need to use the `i386` build in order for this to work
 
 <figure>
 <img src="/public/images/linveo-1.png" alt="The Linveo Media Dashboard">
