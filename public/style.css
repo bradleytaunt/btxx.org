@@ -19,7 +19,6 @@ body {
 	font-size: 100%;
 	max-width: 85%;
   	margin: 1rem auto;
-	max-width: 85%;
 	padding: 0;
 }
 
@@ -223,6 +222,10 @@ ul.posts li span {
 } 
 
 @media(max-width:600px) {
+	body {
+		max-width: 100%;
+		margin: 12px;
+	}
     nav ul {
         display: block;
         margin: 0 0 -1px 0;

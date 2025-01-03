@@ -23,7 +23,7 @@ Just like the first Resident Evil that came before it, RE2 has no in-game HUD (h
 The game *does* provide you with an inventory system, which holds your core items, weapons and notes you find along your journey. Opening up this sub-menu allows you to heal, reload weapons, combine objects or puzzle items, or read through previously collected documents. Not only is this more immersive (HUDs don't exist for us in the real world, we need to look through our packs as well...) it also gets *out of the way*.
 
 <figure>
-  <img src="/public/images/re2-inventory.png" alt="The main inventory screen in RE2">
+  <img src="/public/images/re2-inventory.webp" alt="The main inventory screen in RE2">
   <figcaption>The main inventory screen. Shows everything you need to know, only when you need it. (I can <i>hear</i> this screenshot...)</figcaption>
 </figure>
 
@@ -71,7 +71,7 @@ Hey! This section is in reference to the title of the article. We made it!
 Don't overlook how powerful of a interaction this little text prompt is. Ask any veteran of the series and they will tell you this prompt is almost euphoric.
 
 <figure>
-  <img src="/public/images/re2-discard.png" alt="Text prompt asking to discard the useless key in RE2">
+  <img src="/public/images/re2-discard.webp" alt="Text prompt asking to discard the useless key in RE2">
   <figcaption>The game's prompt asking if you'd like to discard a useless key. Perfection.</figcaption>
 </figure>
 
@@ -80,7 +80,7 @@ Don't overlook how powerful of a interaction this little text prompt is. Ask any
 RE2 is certainly not the first or last game to implement these "minimal" game systems. A more "modern" example is Dead Space (DS), along with its very faithful remake. In DS the character's health is displayed directly on the character model itself, and a similar inventory screen is used to manage items. An ammo-counter is visible but only when the player aims their weapon. Pretty great stuff and another masterpiece of survival horror.
 
 <figure>
-  <img src="/public/images/dead-space.jpg" alt="Screenshot of Dead Space, showing the lack of UI">
+  <img src="/public/images/dead-space.webp" alt="Screenshot of Dead Space, showing the lack of UI">
   <figcaption>In Dead Space, the character's health bar is set as part of their spacesuit.</figcaption>
 </figure>
 
