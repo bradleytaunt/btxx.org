@@ -58,6 +58,8 @@ def process_markdown_files(input_directory, output_directory, header_content, fo
     date = Date.parse(lines[2]&.strip || '') rescue Date.today
     html_content = Kramdown::Document.new(md_content).to_html
 
+    formatted_date = date.strftime("%b %d, %Y")
+
     relative_path = path.sub(input_directory + '/', '').sub('.md', '')
     item_dir = File.join(output_directory, relative_path)
     output_file = "#{item_dir}/index.html"
@@ -66,7 +68,7 @@ def process_markdown_files(input_directory, output_directory, header_content, fo
     header = replace_title_placeholder(header_content, title)
     File.write(output_file, header + html_content + footer_content)
 
-    items << { title: title, date: date, link: relative_path + '/', content: html_content }
+    items << { title: title, date: date, formatted_date: formatted_date, link: relative_path + '/', content: html_content }
   end
 
   items
@@ -81,7 +83,7 @@ def generate_index(posts, header_content, footer_content, root_index_file, post_
   header = replace_title_placeholder(header_content, root_title)
 
   index_content = header + root_html + "<ul class=\"posts\">\n"
-  posts.first(post_count).each { |post| index_content << "<li><span>#{post[:date]}</span><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a></li>\n" }
+  posts.first(post_count).each { |post| index_content << "<li><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a><span>#{post[:formatted_date]}</span></li>\n" }
   index_content << "</ul>\n<p><a href='/#{posts_dir}'>View all posts &rarr;</a></p>\n" + footer_content
 
   File.write("#{output_dir}/index.html", index_content)
@@ -96,7 +98,7 @@ def generate_full_posts_list(posts, header_content, footer_content, posts_index_
   header = replace_title_placeholder(header_content, posts_title)
 
   list_content = header + posts_html + "<ul class=\"posts\">\n"
-  posts.each { |post| list_content << "<li><span>#{post[:date]}</span><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a></li>\n" }
+  posts.each { |post| list_content << "<li><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a><span>#{post[:formatted_date]}</span></li>\n" }
   list_content << "</ul>\n" + footer_content
 
   File.write("#{output_dir}/posts/index.html", list_content)
