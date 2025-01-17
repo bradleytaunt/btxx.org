@@ -1,1 +1,0 @@
-find . -type f \( -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.png" -o -name "*.webp" -o -name "*.woff2" \) -exec gzip -k -f {} \;
