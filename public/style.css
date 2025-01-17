@@ -76,6 +76,15 @@ blockquote {
 	padding-left: 10px;
 }
 
+table {
+	margin: 1.5rem 0;
+	text-align: left;
+	width: 100%;
+}
+table caption {
+	text-align: left;
+}
+
 h1 {
 	font-size: 28px;
 	line-height: 1.2;
