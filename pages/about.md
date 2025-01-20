@@ -17,7 +17,7 @@ Core tools are HTML, CSS, Ruby, JavaScript & PHP. Currently improving my skills 
 
 Elsewhere on the web: 
 
-- [Mastodon]()
-- [Lobsters]()
-- [HackerNews]()
-- [LowEndTalk]()
+- [Mastodon](https://mastodon.bsd.cafe/@bt)
+- [Lobsters](https://lobste.rs/~bt)
+- [HackerNews](https://news.ycombinator.com/user?id=bradley_taunt)
+- [LowEndTalk](https://lowendtalk.com/profile/btxx)
