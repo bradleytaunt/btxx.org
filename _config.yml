@@ -18,4 +18,4 @@ files:
   rss: 'build/index.rss'
 
 misc:
-  post_count: 10
+  post_count: 50

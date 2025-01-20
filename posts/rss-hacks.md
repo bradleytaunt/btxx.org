@@ -15,8 +15,10 @@ Since the shinobi script generates valid RSS code by default, I didn't want to m
 My first attempt was to use the available `sort` parameter (in XSL version 1.1+) targeting the `dc:date` type linked to the `pubDate` element:
 
 
-    <xsl:sort select="pubDate" data-type="dc:date" order="descending"/>
-    <!-- each individual post's content here -->
+~~~html
+<xsl:sort select="pubDate" data-type="dc:date" order="descending"/>
+<!-- each individual post's content here -->
+~~~
 
 
 This did not work as intended. RSS 2.0 requires that the `pubDate` content is set to comply with the RFC-822 date-time[^4], which shinobi handles perfectly fine. The issue came from the XSL `sort` parameter not honoring this setting across all dates. My best guess is that it struggles to properly organize posts from their "month" parameter, so it sets the posts in order of date in what I refer to as "monthly sections".
@@ -32,13 +34,17 @@ Then I remembered the `category` tag which shinobi does not utilize by default.
 First I needed to convert the RFC-822 formatted date (found on the first line of all blog post text files) and render it inside a `category` tag. This was simple enough:
 
 
-    $(date -j -f "%a, %d %b %Y" "$(head -n 1 $file)" +"%Y/%m/%d/%u")
+~~~sh
+$(date -j -f "%a, %d %b %Y" "$(head -n 1 $file)" +"%Y/%m/%d/%u")
+~~~
 
 
 In a nutshell, this converts the RFC-822 date into the format "2022/05/24/2". Simple numbers that can be sorted much easier by XSL. Now all that was needed was setting to `sort` parameter properly:
 
 
-    <xsl:sort select="category" order="descending"/>
+~~~sh
+<xsl:sort select="category" order="descending"/>
+~~~
 
 
 Everything worked perfectly and the RSS was still valid!

@@ -17,9 +17,11 @@ Included below are two separate demos showing how to optimize `table` HTML for m
 Okay I will admit, this implementation isn't the *greatest* but I find it does work well with huge datasets. Simply set a `min-width` on your parent `table` element and the browser will just require the user to scroll the contents horizontally.
 
 
-    table {
-        min-width: 800px; /* Set your desired min-width here */
-    }
+~~~css
+table {
+    min-width: 800px; /* Set your desired min-width here */
+}
+~~~
 
 
 Check out the CodePen below to see it in action:
@@ -32,28 +34,29 @@ I actually prefer this method because of its simplicity and function. Users on m
 
 Using something like `flexbox` tends to work better when you are working with smaller table datasets. All you need to do is add some minor `flexbox` layout at your targeted mobile screen size.
 
-
-    /* Using 800px as mobile screen in this example */
-    @media(max-width: 800px) {
-        /* Hide the table headings */
-        table thead {
-            left: -9999px;
-            position: absolute;
-            visibility: hidden;
-        }
-        table tr {
-            border-bottom: 0;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-        table td {
-            border: 1px solid;
-            margin: 0 -1px -1px 0; /* Removes double-borders */
-            width: 50%;
-        }
+~~~css
+/* Using 800px as mobile screen in this example */
+@media(max-width: 800px) {
+    /* Hide the table headings */
+    table thead {
+        left: -9999px;
+        position: absolute;
+        visibility: hidden;
     }
+    table tr {
+        border-bottom: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    table td {
+        border: 1px solid;
+        margin: 0 -1px -1px 0; /* Removes double-borders */
+        width: 50%;
+    }
+}
+~~~
 
 
 [Check out the CodePen demo](https://codepen.io/bradleytaunt/pen/mZbvOb/)
@@ -65,47 +68,48 @@ There are some caveats with this approach:
 
 You could keep the table headings and style them the same as the `tbody` contents, but I find hiding them a little cleaner. That choice is entirely up to your personal preference. You can also decide to add heading `span` elements inside the main `tbody` elements like so:
 
+~~~css
+/* Default span styling - hidden on desktop */
+table td span {
+    background: #eee;
+    color: dimgrey;
+    display: none;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 5px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+}
 
-    /* Default span styling - hidden on desktop */
-    table td span {
-        background: #eee;
-        color: dimgrey;
-        display: none;
-        font-size: 10px;
-        font-weight: bold;
-        padding: 5px;
+/* Simple CSS for flexbox table on mobile */
+@media(max-width: 800px) {
+    table thead {
+        left: -9999px;
         position: absolute;
-        text-transform: uppercase;
-        top: 0;
-        left: 0;
+        visibility: hidden;
     }
-    
-    /* Simple CSS for flexbox table on mobile */
-    @media(max-width: 800px) {
-        table thead {
-            left: -9999px;
-            position: absolute;
-            visibility: hidden;
-        }
-        table tr {
-            border-bottom: 0;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-        table td {
-            border: 1px solid;
-            margin: 0 -1px -1px 0;
-            padding-top: 35px; /* additional padding to avoid heading overlap */
-            position: relative;
-            width: 50%;
-        }
-        /* Show the heading span */
-        table td span {
-            display: block;
-        }
+    table tr {
+        border-bottom: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
     }
+    table td {
+        border: 1px solid;
+        margin: 0 -1px -1px 0;
+        padding-top: 35px; /* additional padding to avoid heading overlap */
+        position: relative;
+        width: 50%;
+    }
+    /* Show the heading span */
+    table td span {
+        display: block;
+    }
+}
+~~~
 
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/mZdzmZ/)

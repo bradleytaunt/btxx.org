@@ -57,7 +57,7 @@ That is probably the most streamlined dark mode on the web...
 
 ## The "Reading Length" Debate
 
-Proper reading length tends to be quite the point of contention on the web. Hell, even I've [written about it quite a bit](/character-unit/) in the past (and many of my side projects follow that standard). The main problem I have with this is lack of *user control*. I don't think the browser (or designers for that matter) should determine the best reading length for my own personal reading preferences. UX testing and group feedback has (somewhat) agreed upon 66-75 characters per line to be the most optimal reading experience. That is good to know. I *still* believe it should come down to user preference.
+Proper reading length tends to be quite the point of contention on the web. Hell, even I've [written about it quite a bit](/posts/character-unit/) in the past (and many of my side projects follow that standard). The main problem I have with this is lack of *user control*. I don't think the browser (or designers for that matter) should determine the best reading length for my own personal reading preferences. UX testing and group feedback has (somewhat) agreed upon 66-75 characters per line to be the most optimal reading experience. That is good to know. I *still* believe it should come down to user preference.
 
 Do you want to know an incredible feature built into browsers? *Window resizing*. Abandon the idea that you "know better" than your users and give them the power to adjust as they see fit. The web was meant to be personal and flexible.
 

@@ -2,144 +2,46 @@
     box-sizing: border-box;
 }
 
-:root {
-	--main-color: #228427;
-}
-
-html {
-	font-family: "Lucida Grande", Lucida, Geneva, Helvetica, Arial, sans-serif;
-	padding: 0;
-	margin: 0;
-    scroll-behavior: smooth;
-}
-
 body {
-	background-color: #f9f9f9;
-	color: #333;
-	font-size: 100%;
-	max-width: 920px;
-  	margin: 1rem auto;
-	padding: 0;
+	font-family: sans-serif;
+    line-height: 1.4;
+    padding: 12px;
 }
-
-nav > ul {
-	display: flex;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-    flex-wrap: wrap;
-	font-weight: bold;
-	flex-direction: row;
-	position: relative;
-}
-
-nav > ul > li {
-	align-items: center;
-	display: inline-flex;
-}
-
-nav > ul > li > a {
-    border: 1px solid var(--main-color);
-	color: var(--main-color);
-    display: inline-block;
-    margin: 0 -1px -1px 0;
-    padding: 7px;
-	text-decoration: none;
-	white-space: nowrap;
-}
-
-nav > ul > li > a:hover, nav > ul > li > a:active {
-	text-decoration: none;
-	background-color: var(--main-color);
-	color: #fff;
-}
-
-/*--- End Top Nav ---*/
-
-main {
-	display: block;
-	width: 100%;
-	margin: 0;
-	padding: 1px 0 20px 0;
-	border: 1px solid var(--main-color);
-	background-color: #fff;
-}
-
-main > p > em {
-	font-weight: normal;
-	font-style: italic;
-}
-
-main ul, main ol {
-	padding-right: 10px;
-}
-
-/*--- Begin Footer ---*/
-
-footer nav ul {
-	margin: -1px 0 0 0;
-}
-footer small {
-    display: block;
-    margin: 20px 0 0 0;
-    padding: 0 0 0 10px;
-}
-
-/*--- Links ---*/
-
-a {
-	color: var(--main-color);
-}
-
-a:hover {
-	text-decoration: none;
-	color: #fff;
-	background-color: var(--main-color);
-}
-
-a:active {
-	text-decoration: none;
-	color: #fff;
-	background-color: var(--main-color);
-}
-
-a, img {
-	border: none;
-}
-
-a:focus, img:focus {
-	outline: none;
-}
-
-/*--- Header Styles ---*/
 
 h1 {
-	font-size: 190%;
-	margin: 18px 18px 0 18px;
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+h1 + p {
+    margin-top: 0;
 }
 
-h2 {
-	font-size: 125%;
-	margin: 18px 18px 0 18px;
+.posts {
+    padding: 0 0 0 12px;
+}
+.posts li {
+    margin: 0 0 10px;
+}
+.posts li span {
+    display: none;
 }
 
-h3 {
-	font-size: 113%;
-	margin: 18px 18px 0 18px;
+p code, ul code, ol code, blockquote code {
+    background: #f1f1f1;
+    padding: 2px;
 }
 
-h4 {
-	margin: 18px 18px 0 18px;
+pre {
+    background: #f1f1f1;
+    overflow: auto;
+    padding: 8px;
 }
 
-p {
-	margin: 12px 18px 18px 18px;
-	padding: 0;
-	line-height: 1.25em;
-}
-
-hr {
-    margin: 2rem 0;
+blockquote {
+    color: brown;
+    font-family: serif;
+    font-style: italic;
+    font-size: 110%;
 }
 
 img {
@@ -147,130 +49,27 @@ img {
     max-width: 100%;
 }
 
-pre {
-    background: #eee;
-    padding: 20px;
-    overflow: auto;
-}
-
-code {
-	font-size: 110%;
-}
-
-.table-container {
-	margin: 2rem 0;
-	overflow-y: scroll;
-}
 table {
     border-collapse: collapse;
-    min-width: 500px;
+    margin: 2em 0;
     text-align: left;
     width: 100%;
 }
-table caption {
-	background: #eee;
-	font-weight: bold;
-	font-size: 120%;
-	padding: 10px;
-	text-align: left;
-}
-table tr {
-    border-bottom: 1px solid;
-}
 table th, table td {
-    padding: 10px;
+    padding: 4px;
+}
+table tr:nth-of-type(even) {
+    background: #f1f1f1;
 }
 
-blockquote {
-	background: #f2f2f2;
-	border-left: 2px solid grey;
-	padding: 6px;
+footer {
+    margin: 2rem 0 0;
 }
-blockquote p {
-	margin: 0;
+footer nav ul {
+    list-style: none;
+    padding: 0;
 }
-
-.footnotes {
-	font-size: 90%;
-}
-
-/*--- List Styles ---*/
-
-ol {
-	line-height: 1.25em;
-}
-
-ul, ol {
-	margin: 12px 0 0 36px;
-	padding: 0 0 0 24px;
-	line-height: 1.5em;
-}
-
-ul {
-	list-style-type: square;
-}
-
-li ul, li ol {
-	margin-top: 0;
-}
-
-ul.posts li {
-	margin-bottom: 10px;
-}
-ul.posts li span {
-	display: block;
-} 
-
-@media(max-width:600px) {
-	body {
-		max-width: 100%;
-		margin: 12px;
-	}
-    nav ul {
-        display: block;
-        margin: 0 0 -1px 0;
-    }
-    nav > ul > li {
-        width: 50%;
-    }
-    nav > ul > li > a {
-        border-right: 0;
-        display: block;
-        margin: 0;
-        width: 100%;
-    }
-    nav ul li:nth-of-type(even) a {
-        border-right: 1px solid var(--main-color);
-    }
-
-    footer nav ul li {
-        margin: 0 0 -1px 0;
-    }
-}
-
-@media(prefers-color-scheme: dark) {
-	:root {
-		--main-color: #eee8a7;
-	}
-	html, body {
-		background: black;
-	}
-	body {
-		color: white;
-	}
-	main {
-		background: #2d2d2d;
-	}
-	table caption {
-		background: black;
-	}
-	nav > ul > li > a:hover, nav > ul > li > a:active,a:hover,a:active {
-		color: black;
-	}
-	pre {
-		background: black;
-	}
-	blockquote {
-		background: black;
-	}
+footer nav ul li {
+    display: inline-block;
+    margin: 0 10px 10px 0;
 }
