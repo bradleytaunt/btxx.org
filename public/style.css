@@ -62,6 +62,13 @@ table tr:nth-of-type(even) {
     background: #f1f1f1;
 }
 
+.footnotes {
+  border-top: 1px solid;
+  font-size: 90%;
+  margin: 20px 0 10px;
+  padding: 10px 0;
+}
+
 footer {
     margin: 2rem 0 0;
 }
@@ -72,4 +79,16 @@ footer nav ul {
 footer nav ul li {
     display: inline-block;
     margin: 0 10px 10px 0;
+}
+
+@media(prefers-color-scheme: dark) {
+  body {
+    background: #2d2d2d;
+  }
+  code, pre {
+    background: #000 !important;
+  }
+  blockquote {
+    color: lightyellow;
+  }
 }
