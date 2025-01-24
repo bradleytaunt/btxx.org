@@ -20,7 +20,9 @@ Once you have your initial VPS up and running, login to the main dashboard and n
 https://cdn.openbsd.org/pub/OpenBSD/7.6/i386/install76.iso
 ~~~
 
-> Note: you will need to use the `i386` build in order for this to work
+<div class="alert warning">
+  <span><b>Warning!</b> You will need to use the <code>i386</code> build in order for this to work.</span>
+</div>
 
 <figure>
 <img src="/public/images/linveo-1.png" alt="The Linveo Media Dashboard">

@@ -8,7 +8,9 @@ Lucky for us, it is actually fairly simple to replicate a similar workflow to th
 
 ## The Basics
 
-> **Note:** The following assumes you already have `git` installed and setup on your existing system.
+<div class="alert note">
+  <span><b>Note</b> The following assumes you already have <code>git</code> installed and setup on your existing system.</span>
+</div>
 
 I find it best to first create a top-level folder on your system named `patches`. We will use this folder as a temporary location for reviewing any `git` patches submitted via email. I normally place this under `/home/<username>/patches`.
 

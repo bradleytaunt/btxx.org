@@ -5,19 +5,33 @@
 body {
 	font-family: sans-serif;
     line-height: 1.4;
+    margin: 0 auto;
+    max-width: 1140px;
     padding: 12px;
 }
 
 h1 {
     line-height: 1.2;
+    font-weight: normal;
     margin-bottom: 0;
 }
 h1 + p {
     margin-top: 0;
 }
 
+h2 {
+    border-bottom: 1px solid #ddd;
+    font-weight: normal;
+}
+h3 {
+    border-bottom: 1px solid #ddd;
+}
+h2,h3,h4,h5,h6 {
+  margin: 2.5rem 0 0;
+}
+
 .posts {
-    padding: 0 0 0 12px;
+    padding: 0 0 0 18px;
 }
 .posts li {
     margin: 0 0 10px;
@@ -26,9 +40,43 @@ h1 + p {
     display: none;
 }
 
+.alert {
+    border: 1px solid;
+    margin: 10px 0;
+    padding: 8px;
+}
+.alert span > b {
+    display: block;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+}
+.alert.note {
+    background: aliceblue;
+    border-color: darkslateblue;
+    color: darkslateblue;
+}
+.alert.warning {
+    background: lightgoldenrodyellow;
+    border-color: darkgoldenrod;
+    color: darkgoldenrod;
+}
+
 p code, ul code, ol code, blockquote code {
     background: #f1f1f1;
     padding: 2px;
+}
+
+#markdown-toc {
+    background: #f8f9fa;
+    padding: 10px 10px 20px 40px;
+    position: relative;
+}
+#markdown-toc::before {
+    border-bottom: 1px solid #ddd;
+    content: "Table of Contents";
+    display: block;
+    font-size: 24px;
+    margin: 0 0 10px -30px;
 }
 
 pre {
@@ -62,6 +110,21 @@ table tr:nth-of-type(even) {
     background: #f1f1f1;
 }
 
+figure {
+    margin: 3rem;
+}
+figure img {
+    border: 1px solid;
+    display: block;
+    margin: 0 auto;
+    padding: 4px;
+}
+figure figcaption {
+    font-size: 90%;
+    padding: 8px;
+    text-align: center;
+}
+
 .footnotes {
   border-top: 1px solid;
   font-size: 90%;
@@ -81,14 +144,32 @@ footer nav ul li {
     margin: 0 10px 10px 0;
 }
 
+@media(max-width:600px) {
+    figure {
+      margin: 3rem 1rem;
+    }
+}
+
 @media(prefers-color-scheme: dark) {
   body {
     background: #2d2d2d;
+  }
+  h2, #markdown-toc::before {
+    border-color: #aaa;
   }
   code, pre {
     background: #000 !important;
   }
   blockquote {
     color: lightyellow;
+  }
+  table tr:nth-of-type(even) {
+    background: #000;
+  }
+  .alert code {
+    background: none !important;
+  }
+  #markdown-toc {
+    background: #000;
   }
 }

@@ -1,8 +1,10 @@
-# Burning & Playing PS2 Games without a Modded Console
+# Burning and Playing PS2 Games without a Modded Console
 
 2024-09-02
 
-> **Important**: I do not support pirating or obtaining illegal copies of video games. This process should only be used to copy your existing PS2 games for backup, in case of accidental damage to the original disc.
+<div class="alert note">
+  <span><b>Important</b> I do not support pirating or obtaining illegal copies of video games. This process should only be used to copy your existing PS2 games for backup, in case of accidental damage to the original disc.</span>
+</div>
 
 ## Requirements
 

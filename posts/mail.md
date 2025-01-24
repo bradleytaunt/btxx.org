@@ -2,9 +2,11 @@
 
 2023-05-11
 
-> **Before we begin**: You could likely automate this process in a more streamlined way, but for most use cases this workflow should be fine.
+<div class="alert note">
+  <span><b>Before we begin</b> You could likely automate this process in a more streamlined way, but for most use cases this workflow should be fine.</span>
+</div>
 
-I recently covered how to [work with git email patches in Evolution on Linux](/git-patches), so I thought it would make sense to walk through a similar workflow for those using Apple Mail on MacOS. The idea is essentially the same, with just a little extra work involved.
+I recently covered how to [work with git email patches in Evolution on Linux](/posts/git-patches), so I thought it would make sense to walk through a similar workflow for those using Apple Mail on MacOS. The idea is essentially the same, with just a little extra work involved.
 
 ## Create a "Patches" Mailbox
 
