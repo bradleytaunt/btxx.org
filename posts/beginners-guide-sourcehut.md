@@ -236,7 +236,7 @@ That's what happened to *me*.
 
 ## Contribute
 
-This article might not be 100% perfect. Nothing in life is. If you see a mistake or notice I've overlooked something, [please submit a patch on SourceHut](https://git.sr.ht/~bt/btxx.org).
+This article might not be 100% perfect. Nothing in life is. If you see a mistake or notice I've overlooked something, [please submit a patch on SourceHut](https://git.sr.ht/~bt/btxx.org/tree/master/item/posts/beginners-guide-sourcehut.md).
 
 <small>Oh, a SourceHut link... how meta!</small>
 
