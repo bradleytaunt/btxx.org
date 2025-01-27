@@ -15,23 +15,19 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>NearlyFreeSpeech (domains)</td>
-      <td>~$75</td>
+      <td>NearlyFreeSpeech<br><i>Domains + Hosting</i></td>
+      <td>~$100</td>
     </tr>
     <tr>
-      <td>DartNode</td>
-      <td>$20</td>
-    </tr>
-    <tr>
-      <td>Migadu</td>
+      <td>Migadu<br><i>Email</i></td>
       <td>$19</td>
     </tr>
     <tr>
-      <td>Mullvad</td>
+      <td>Mullvad<br><i>VPN</i></td>
       <td>$60</td>
     </tr>
     <tr>
-      <td>Sourcehut</td>
+      <td>Sourcehut<br><i>Git Forge</i></td>
       <td>$20</td>
     </tr>
   </tbody>
@@ -46,7 +42,6 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <th>Device</th>
       <th>CPU</th>
       <th>RAM</th>
-      <th>Storage</th>
       <th>OS</th>
     </tr>
   </thead>
@@ -55,7 +50,6 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <td>M2 MacBook Air</td>
       <td>Apple M2</td>
       <td>16GB</td>
-      <td>256GB SSD</td>
       <td>MacOS Sequoia</td>
     </tr>
   </tbody>
@@ -70,7 +64,6 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <th>Device</th>
       <th>CPU</th>
       <th>RAM</th>
-      <th>Storage</th>
       <th>OS</th>
     </tr>
   </thead>
@@ -79,21 +72,18 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <td>M73 Tiny ThinkCentre</td>
       <td>Intel i5-4590T (4) @ 3.0GHz</td>
       <td>16GB</td>
-      <td>128GB SSD</td>
       <td>Alpine Linux (KDE Plasma)</td>
     </tr>
     <tr>
       <td>ThinkPad X220</td>
       <td>Intel Core i5 2540M @ 2.6 GHz</td>
       <td>16GB</td>
-      <td>128GB SSD</td>
       <td>OpenBSD (<a href="https://sr.ht/~bt/open-suck">see build</a>)</td>
     </tr>
     <tr>
       <td>ThinkPad X201</td>
       <td>Intel Core i5-520M @ 2.9 GHz</td>
       <td>8GB</td>
-      <td>128GB SSD</td>
       <td>Alpine Suck (<a href="https://sr.ht/~bt/alpine-suck">see build</a>)</td>
     </tr>
   </tbody>
