@@ -1,5 +1,4 @@
 # Git Your Freedom Back: A Beginner's Guide to SourceHut
-{:.no_toc}
 
 2025-01-24
 
