@@ -1,10 +1,14 @@
 # Pizza
 
-This page showcases the *official* Pizza Fund (Donations). 
+This page showcases the *official* Pizza Fund (Donations).
+
+<div class="alert note">
+  <span><b>Deprecation Notice:</b> I no longer accept direct donations through PayPal or other means. Instead, please refer to the main <a href="/contirbute">Contribute</a> page for more information.</span>
+</div>
 
 Here I list and celebrate those kind enough to donate pizza(s) into my stomach. Pizza fuels my creativity and helps me publish helpful articles and develop new open source projects.
 
-If you feel the burning desire to donate to the *pizza fund* in order to support this small blog of mine or any number of my [[projects]], please take a look at the options below. You can still enjoy everything on this blog for free, so please don't feel obligated to donate.
+If you feel the burning desire to donate to the *pizza fund* in order to support this small blog of mine or any number of my [projects](/projects), please take a look at the options below. You can still enjoy everything on this blog for free, so please don't feel obligated to donate.
 
 ## Pizza Hall of Fame
 
@@ -55,12 +59,6 @@ All prices in US dollars (USD)
 * ≥$8 = large pizza
 * ≥$15 = large pizza + toppings
 * ≥$20+ = pizza meal
-
-<form action="https://www.paypal.com/donate" method="post" target="_top">
-<input type="hidden" name="hosted_button_id" value="5A32GB38TPRBG" />
-<input type="image" src="/public/images/paypal.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
-</form>
 
 ### Say Hello
 
