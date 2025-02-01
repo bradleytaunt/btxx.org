@@ -76,6 +76,12 @@ Contributors are also required to have GitHub account, creating friction and spa
 
 GitHub's decision-making processes, especially regarding policy changes and feature implementations, lack sufficient community involvement and transparency. It's difficult to trust or depend on policies that can change at any time without notice given to the community.
 
+### 8. Gamification
+
+GitHub is built with the sole purpose to drive engagement. This even takes priority over distributing and promoting quality software. It's more of a social media network with a git forge slapped on top.
+
+SourceHut has no "star" system or incentive to chase "likes". No recommended projects or *trending* feeds. If you're looking to promote or gain contributors to your project, working through a "gamed" system is not the best approach long term.
+
 ## GitHub's Core Features
 
 The full feature set for GitHub is larger than what I've selected below, but we will focus on the most popular:
