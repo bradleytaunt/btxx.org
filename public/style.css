@@ -6,7 +6,7 @@ body {
 	font-family: sans-serif;
     line-height: 1.4;
     margin: 0 auto;
-    max-width: 1140px;
+    max-width: 960px;
     padding: 12px;
 }
 
@@ -37,7 +37,8 @@ h2,h3,h4,h5,h6 {
     margin: 0 0 10px;
 }
 .posts li span {
-    display: none;
+    display: block;
+    font-size: 85%;
 }
 
 .alert {
@@ -86,10 +87,12 @@ pre {
 }
 
 blockquote {
+    border-left: 2px solid;
     color: brown;
     font-family: serif;
     font-style: italic;
     font-size: 110%;
+    padding: 0 0 0 8px;
 }
 
 img {
