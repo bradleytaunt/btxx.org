@@ -1,4 +1,4 @@
-# RedHat Plans to Add AI to Fedora and GNOME
+# Red Hat Plans to Add AI to Fedora and GNOME
 
 2025-02-04
 
