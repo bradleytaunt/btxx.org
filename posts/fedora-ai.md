@@ -10,6 +10,6 @@ In Christian F.K. Schaller's post [Looking ahead at 2025 and Fedora Workstation 
 > 
 >  ... that we offer a good Code Assistant based on Granite and that we come up with other cool integration points.
 
-I'm still not sure how I feel about this approach. While [IBM Granite](https://www.ibm.com/granite) is an open source model, I still don't enjoy so much artifical "intelligence" creeping into core OS development. This also isn't something optional on the end-users side, like a desktop feature or package. This sounds like it's going to be built directly into the core system.
+I'm still not sure how I feel about this approach. While [IBM Granite](https://www.ibm.com/granite) is an open source model, I still don't enjoy so much artifical "intelligence" creeping into core OS development. It also isn't mentioned whether this will be optional on the end-users side, like a desktop feature or package. This *sounds* like it's going to be used directly in the core system (whether reviewing code/patches, improving existing programs). But who knows. Nothing is 100% clear at this current time.
 
-Red Hat has been [pushing hard towards AI](https://www.redhat.com/en/blog/future-ai-open-source) and my main concern is having this influence other operating system dev teams. Luckily things seems AI-free in BSD land. For now, at least.
+Red Hat has been [pushing hard towards AI](https://www.redhat.com/en/blog/future-ai-open-source) and my main concern is having this influence other operating system dev teams. Luckily things seem AI-free in BSD land. For now, at least.
