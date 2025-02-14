@@ -69,7 +69,7 @@ That's it for handling redirects.
 
 ### Beefing Up Security Headers
 
-I also recommend setting up better Security Headers directly inside the `.htaccess` files associated with the core domain directories. Below are more own personal preferences in order to achieve an [A+ security rating](https://securityheaders.com/?q=btxx.org&followRedirects=on), but feel free to change these settings.
+I also recommend setting up better Security Headers directly inside the `.htaccess` files associated with the core domain directories. Below are my own personal preferences in order to achieve an [A+ security rating](https://securityheaders.com/?q=btxx.org&followRedirects=on), but feel free to change these settings.
 
 ~~~sh
 <IfModule mod_headers.c>
@@ -95,4 +95,4 @@ I also recommend setting up better Security Headers directly inside the `.htacce
 
 ## Go Live
 
-Now include your website files in the proper domain sub folders on the server and you're done. Now you have a single point of entry for all your personal/project websites under one NearlyFreeSpeech "site". You also get to keep some extra coin in your wallet, since this will only cost you a fixed rate of $0.05 a day!
+Include your website files in the proper domain sub folders on the server and you're done. Now you have a single point of entry for all your personal/project websites under one NearlyFreeSpeech "site". You also get to keep some extra coin in your wallet, since this will only cost you a fixed rate of $0.05 a day!
