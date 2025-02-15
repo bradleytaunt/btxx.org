@@ -77,7 +77,7 @@ I also recommend setting up better Security Headers directly inside the `.htacce
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
     # Content Security Policy
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self'; frame->
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
 
     # Prevent Clickjacking (X-Frame-Options)
     Header always set X-Frame-Options "SAMEORIGIN"
@@ -92,6 +92,8 @@ I also recommend setting up better Security Headers directly inside the `.htacce
     Header always set Permissions-Policy "geolocation=(self), microphone=()"
 </IfModule>
 ~~~
+
+If you plan to have multiple websites that will contain similar security headers, you can have them share a single `.htaccess` file. Simply place your `.htaccess` file in the main root directory (`/home/public`) and you're good to go!
 
 ## Go Live
 
