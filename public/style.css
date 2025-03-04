@@ -6,7 +6,7 @@ body {
 	font-family: sans-serif;
     line-height: 1.4;
     margin: 0 auto;
-    max-width: 960px;
+    max-width: 75ch;
     padding: 12px;
 }
 
@@ -80,6 +80,15 @@ p code, ul code, ol code, blockquote code {
     margin: 0 0 10px -30px;
 }
 
+.flr {
+    float: right;
+    padding: 0 0 8px 8px;
+}
+
+.w-100 {
+    max-width: 100px;
+}
+
 pre {
     background: #f1f1f1;
     overflow: auto;
@@ -138,6 +147,7 @@ figure figcaption {
 footer {
     border-top: 1px solid #ddd;
     margin: 2rem 0 0;
+    position: relative;
 }
 footer nav ul {
     list-style: none;
@@ -175,5 +185,8 @@ footer nav ul li {
   }
   #markdown-toc {
     background: #000;
+  }
+  main:before, main:after {
+    display: none;
   }
 }
