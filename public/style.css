@@ -2,18 +2,43 @@
     box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('/public/fonts/FiraSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('/public/fonts/FiraSans-Medium.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('/public/fonts/FiraSans-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
 body {
-	font-family: sans-serif;
+    background-attachment: fixed;
+    background-color: #f6fff8;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%236d6d6d' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+	font-family: "Fira Sans", sans-serif;
     line-height: 1.4;
     margin: 0 auto;
-    max-width: 75ch;
+    max-width: 800px;
     padding: 12px;
 }
 
 h1 {
     line-height: 1.2;
     font-weight: normal;
-    margin-bottom: 0;
+    margin-bottom: 10px;
+    margin-top: 0;
 }
 h1 + p {
     margin-top: 0;
@@ -28,6 +53,33 @@ h3 {
 }
 h2,h3,h4,h5,h6 {
   margin: 2.5rem 0 0;
+}
+
+a {
+    color: forestgreen;
+}
+a:visited {
+    color: #174521;
+}
+a:hover, a:active {
+    color: black;
+}
+
+header, main, footer {
+    background: #f9f9f9;
+    border: 1px solid #2d2d2d;
+    box-shadow: 5px 5px 0px 0px #2d2d2d;
+    margin-bottom: 1.2rem;
+    padding: 16px;
+}
+
+header nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+header nav a:first-of-type {
+    font-size: 120%;
 }
 
 .posts {
@@ -69,7 +121,7 @@ p code, ul code, ol code, blockquote code {
 
 #markdown-toc {
     background: #f8f9fa;
-    padding: 10px 10px 20px 40px;
+    padding: 10px 10px 10px 40px;
     position: relative;
 }
 #markdown-toc::before {
@@ -96,11 +148,9 @@ pre {
 }
 
 blockquote {
-    border-left: 2px solid;
+    border-left: 4px solid;
     color: brown;
-    font-family: serif;
-    font-style: italic;
-    font-size: 110%;
+    margin: 1rem 0;
     padding: 0 0 0 8px;
 }
 
@@ -145,9 +195,10 @@ figure figcaption {
 }
 
 footer {
-    border-top: 1px solid #ddd;
-    margin: 2rem 0 0;
     position: relative;
+}
+footer > p {
+    margin-top: 0;
 }
 footer nav ul {
     list-style: none;
@@ -166,10 +217,25 @@ footer nav ul li {
 
 @media(prefers-color-scheme: dark) {
   body {
-    background: #2d2d2d;
+    background-color: #787878;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23fff' fill-opacity='0.3' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   }
+  a {
+    color: goldenrod;
+    }
+    a:visited {
+        color: darkgoldenrod;
+    }
+    a:hover, a:active {
+        color: yellow;
+    }
   h2, #markdown-toc::before {
     border-color: #aaa;
+  }
+  header, main, footer {
+    background: #424242;
+    border-color: black;
+    box-shadow: 5px 5px 0px 0px black;
   }
   code, pre {
     background: #000 !important;

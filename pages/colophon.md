@@ -33,12 +33,16 @@ For those interested I try to keep the details of the blog up-to-date with the i
       <td><a href="https://choosealicense.com/licenses/mit/">MIT</a></td>
     </tr>
     <tr>
-      <td>Developed on:</td>
-      <td>ThinkPad X220 &amp; M73 Tiny</td>
+      <td>Hardware used:</td>
+      <td>X220, M2 MacBook Air, &amp; M73 Tiny</td>
     </tr>
     <tr>
-      <td>Operating system:</td>
-      <td>OpenBSD &amp; Alpine Linux</td>
+      <td>Fonts used:</td>
+      <td>Fira Sans, system monospace</td>
+    </tr>
+    <tr>
+      <td>Developed on:</td>
+      <td>OpenBSD, MacOS &amp; Alpine Linux</td>
     </tr>
   </tbody>
 </table>
