@@ -5,10 +5,6 @@ bt@btxx.org
 
 As a designer/developer hybrid, I help software companies improve their user experience and ship more performant products.
 
-## Skills & Languages
-
-Core programming languages are HTML, CSS, JavaScript, and Ruby. For design work, my preferred tools are Sketch, GIMP, and Figma. I also enjoy tinkering with basic shell scripts and Unix systems.
-
 <div class="table-container">
 <table>
   <caption>Experience</caption>
@@ -49,6 +45,10 @@ Core programming languages are HTML, CSS, JavaScript, and Ruby. For design work,
 </table>
 </div>
 
+## Skills & Languages
+
+Core programming languages are HTML, CSS, JavaScript, and Ruby. For design work, my preferred tools are Sketch, GIMP, and Figma. I also enjoy tinkering with basic shell scripts and Unix systems.
+
 <div class="table-container">
 <table>
   <caption>Education</caption>
@@ -61,7 +61,7 @@ Core programming languages are HTML, CSS, JavaScript, and Ruby. For design work,
   </thead>
   <tbody>
     <tr>
-      <td>Durham College</td>
+      <td>Ontario Tech</td>
       <td>Multimedia Design</td>
       <td>2009</td>
     </tr>

@@ -20,7 +20,7 @@ Follow the instructions and you'll be good to go. Don't forget to create the `/d
 
 ~~~sh
 mkdir -p /data/db/
-chmod -R 777 /date/db
+chmod -R 777 /data/db
 ~~~
 
 ## What About My "Tools"?

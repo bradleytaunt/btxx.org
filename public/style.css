@@ -2,41 +2,17 @@
     box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'Fira Sans';
-  src: url('/public/fonts/FiraSans-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Fira Sans';
-  src: url('/public/fonts/FiraSans-Medium.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Fira Sans';
-  src: url('/public/fonts/FiraSans-Italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-}
-
 body {
-    background-attachment: fixed;
-    background-color: #f6fff8;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%236d6d6d' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-	font-family: "Fira Sans", sans-serif;
-    line-height: 1.4;
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 12px;
+  font-family: georgia, serif;
+  font-size: large;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 40em;
+  padding: 0 1em;
 }
 
 h1 {
     line-height: 1.2;
-    font-weight: normal;
     margin-bottom: 10px;
     margin-top: 0;
 }
@@ -56,30 +32,26 @@ h2,h3,h4,h5,h6 {
 }
 
 a {
-    color: forestgreen;
+    color:#00e;
 }
 a:visited {
-    color: #174521;
+    color: #518;
 }
-a:hover, a:active {
-    color: black;
-}
-
-header, main, footer {
-    background: #f9f9f9;
-    border: 1px solid #2d2d2d;
-    box-shadow: 5px 5px 0px 0px #2d2d2d;
-    margin-bottom: 1.2rem;
-    padding: 16px;
+a:hover, a:focus {
+    color: #03f;
 }
 
-header nav {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+.flr {
+    float: right;
+    padding: 0 0 8px 8px;
 }
-header nav a:first-of-type {
-    font-size: 120%;
+
+.w-100 {
+    max-width: 100px;
+}
+
+header {
+    margin: 1.5rem 0;
 }
 
 .posts {
@@ -95,6 +67,8 @@ header nav a:first-of-type {
 
 .alert {
     border: 1px solid;
+    font-family: sans-serif;
+    font-size: medium;
     margin: 10px 0;
     padding: 8px;
 }
@@ -132,15 +106,6 @@ p code, ul code, ol code, blockquote code {
     margin: 0 0 10px -30px;
 }
 
-.flr {
-    float: right;
-    padding: 0 0 8px 8px;
-}
-
-.w-100 {
-    max-width: 100px;
-}
-
 pre {
     background: #f1f1f1;
     overflow: auto;
@@ -150,6 +115,7 @@ pre {
 blockquote {
     border-left: 4px solid;
     color: brown;
+    font-style: italic;
     margin: 1rem 0;
     padding: 0 0 0 8px;
 }
@@ -165,6 +131,11 @@ table {
     text-align: left;
     width: 100%;
 }
+table caption {
+    border-bottom: 1px solid;
+    font-size: 120%;
+    text-align: left;
+}
 table th, table td {
     padding: 4px;
 }
@@ -173,7 +144,7 @@ table tr:nth-of-type(even) {
 }
 
 figure {
-    margin: 3rem;
+    margin: 3rem 0;
 }
 figure img {
     display: block;
@@ -181,7 +152,8 @@ figure img {
     padding: 4px;
 }
 figure figcaption {
-    font-size: 90%;
+    font-size: medium;
+    font-style: italic;
     padding: 8px;
     text-align: center;
 }
@@ -194,6 +166,9 @@ figure figcaption {
 }
 
 footer {
+    border-top: 1px dotted;
+    margin: 4rem 0 2rem;
+    padding: 2rem 0;
     position: relative;
 }
 footer > p {
@@ -205,53 +180,35 @@ footer nav ul {
 }
 footer nav ul li {
     display: inline-block;
-    margin: 0 10px 10px 0;
+    margin: 0 15px 10px 0;
 }
 
-@media(max-width:600px) {
-    figure {
-      margin: 3rem 1rem;
-    }
-}
-
-@media(prefers-color-scheme: dark) {
-  body {
-    background-color: #787878;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23fff' fill-opacity='0.3' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-  }
-  a {
-    color: goldenrod;
+@media (prefers-color-scheme: dark) {
+    a {
+        color: #9bf;
     }
     a:visited {
-        color: darkgoldenrod;
+        color: #a9f;
     }
-    a:hover, a:active {
-        color: yellow;
+    a:hover, a:focus {
+        color: #9cf;
     }
-  h2, #markdown-toc::before {
-    border-color: #aaa;
-  }
-  header, main, footer {
-    background: #424242;
-    border-color: black;
-    box-shadow: 5px 5px 0px 0px black;
-  }
-  code, pre {
-    background: #000 !important;
-  }
-  blockquote {
-    color: lightyellow;
-  }
-  table tr:nth-of-type(even) {
-    background: #000;
-  }
-  .alert code {
-    background: none !important;
-  }
-  #markdown-toc {
-    background: #000;
-  }
-  main:before, main:after {
-    display: none;
-  }
+    pre {
+        background: black;
+    }
+    p code, ul code, ol code, blockquote code {
+        background: black;
+    }
+    table tr:nth-of-type(even) {
+        background: black;
+    }
+    #markdown-toc {
+        background: black;
+    }
+    #markdown-toc::before {
+        border-bottom: 1px solid #ddd;
+    }
+    blockquote {
+        color: lightgoldenrodyellow;
+    }
 }
