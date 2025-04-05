@@ -6,8 +6,9 @@ All git repos are hosted on: [sourcehut](https://git.sr.ht/~bt/)
 
 ## Active Projects
 
-* [caddy.ninja](https://caddy.ninja): Setup an HTTPS-enabled web server with `caddy` on Alpine Linux
 * [httpd.rocks](https://httpd.rocks): Setup an HTTPS-enabled web server with `httpd` on OpenBSD
+* [caddy.ninja](https://caddy.ninja): Setup an HTTPS-enabled web server with `caddy` on Alpine Linux
+* [OpenBASED](https://openbased.btxx.org): Setup OpenBSD as a daily driver using only the base programs
 * [jsfree](https://jsfree.org): Collection of web services that work without JavaScript
 * [Vanilla CSS](https://vanillacss.com): A minimal baseline stylesheet for any web project
 

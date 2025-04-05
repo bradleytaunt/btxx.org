@@ -38,7 +38,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Fonts used:</td>
-      <td>Fira Sans, system monospace</td>
+      <td>Georgia, default serif</td>
     </tr>
     <tr>
       <td>Developed on:</td>
