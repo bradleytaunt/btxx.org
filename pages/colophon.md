@@ -26,7 +26,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Source code available:</td>
-      <td><a href="https://git.sr.ht/~bt/btxx.org">sourcehut</a></td>
+      <td><a href="https://codeberg.org/btxx/btxx.org">Codeberg</a></td>
     </tr>
     <tr>
       <td>Licensed under:</td>
@@ -35,10 +35,6 @@ For those interested I try to keep the details of the blog up-to-date with the i
     <tr>
       <td>Hardware used:</td>
       <td>X220, M2 MacBook Air, &amp; M73 Tiny</td>
-    </tr>
-    <tr>
-      <td>Fonts used:</td>
-      <td>Georgia, default serif</td>
     </tr>
     <tr>
       <td>Developed on:</td>
