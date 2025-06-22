@@ -26,10 +26,6 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <td>Mullvad<br><i>VPN</i></td>
       <td>$60</td>
     </tr>
-    <tr>
-      <td>Sourcehut<br><i>Git Forge</i></td>
-      <td>$20</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -110,7 +106,7 @@ As you can tell: I *really* like ThinkPads...
 ## Gaming / Entertainment
 
 - Xbox Series S
-- Nintendo Switch Lite
+- Nintendo Switch
 - Playstation 2
 
 ## Software

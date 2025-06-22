@@ -2,7 +2,7 @@
 
 This page is based off the [now page concept](https://nownownow.com/about) by Derek Sivers.
 
-Last updated March 2025.
+Last updated June 2025.
 
 ## Work
 
@@ -10,7 +10,7 @@ Last updated March 2025.
 
 ## Life
 
-- Raising my three children (aged 6, 5 and 3 respectively) with my wonderful wife
+- Raising my three children (aged 7, 5 and 3 respectively) with my wonderful wife
 - Trying to contribute more to open source projects that I actively use
 - Advancing my knowledge of Ruby
-- Currently playing through Monster Hunter Generations Ultimate (Switch)
+- Currently playing (casually) The Long Dark

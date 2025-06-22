@@ -6,9 +6,11 @@ If you feel the burning desire to support this small blog of mine or any number 
 
 [Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org) 
 
-By funding the hosting provider directly, you help cover the costs of running and maintaining this website, including but not limited to: 
+By funding the hosting provider directly, you help cover the costs of running and maintaining this website, along with all my other projects (including [1MB Club](https://1mb.club), [httpd.rocks](https://httpd.rocks), [caddy.ninja](https://caddy.ninja), etc.).
 
-- bandwidth
+These contributions help with funding:
+
+- bandwidth spikes
 - domain renewals
 - ongoing maintenance
 

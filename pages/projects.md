@@ -2,7 +2,7 @@
 
 This page a growing collection of active (and not-so-active) projects I am working on.
 
-All git repos are hosted on: [sourcehut](https://git.sr.ht/~bt/)
+All git repos are hosted on: [Codeberg](https://codeberg.org/btxx/)
 
 ## Active Projects
 
@@ -18,8 +18,8 @@ I have a serious problem creating custom site generators...
 
 * [wruby](https://wruby.btxx.org): Minimal site generator written in Ruby
 * [barf](https://barf.btxx.org): Minimal blog engine in a tiny shell script
-* [Shinobi](https://git.sr.ht/~bt/shinobi): Text-based, RSS focused blogging "system"
-* [pblog](https://git.sr.ht/~bt//pblog): Pandoc static blog generator
+* [Shinobi](https://codeberg.org/btxx/shinobi): Text-based, RSS focused blogging "system"
+* [pblog](https://codeberg.org/btxx/pblog): Pandoc static blog generator
 
 ## Clubs
 
@@ -29,8 +29,8 @@ I have a serious problem creating custom site generators...
 
 ## Suckless Installers / Setups
 
-* [Open Suck](https://sr.ht/~bt/open-suck/): OpenBSD desktop based on the suckless philosophy
-* [Alpine Suck](https://sr.ht/~bt/alpine-suck): Alpine Linux desktop based on the suckless philosophy
+* [Open Suck](https://codeberg.org/btxx/open-suck-installer): OpenBSD desktop based on the suckless philosophy
+* [Alpine Suck](https://codeberg.org/btxx/alpine-suck-installer): Alpine Linux desktop based on the suckless philosophy
 
 ## Experiments
 
