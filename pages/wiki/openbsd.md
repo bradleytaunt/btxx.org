@@ -6,3 +6,4 @@ The content here ranges from setting up laptops and desktops, to running persona
 
 * [Installation](/wiki/openbsd/installation)
 * [Desktop Environment](/wiki/openbsd/desktop_environment)
+* [Desktop Improvements](/wiki/openbsd/desktop_improvements)
