@@ -4,7 +4,7 @@
 
 body {
   font-family: Arial, Verdana, sans-serif;
-  line-height: 1.6;
+  line-height: 1.4;
   margin: 0 auto;
   max-width: 780px;
   padding: 0 1em;
@@ -55,11 +55,11 @@ header {
     font-size: 95%;
     margin: 1rem 0;
 }
-header nav ul {
+nav ul {
     list-style: none;
     padding: 0;
 }
-header nav ul li {
+nav ul li {
     display: inline-block;
     margin: 0 15px 0 0;
 }
