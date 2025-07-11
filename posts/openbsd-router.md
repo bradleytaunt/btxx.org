@@ -170,6 +170,18 @@ That's it. *Technically* you can stop right here and have working internet funne
 
 ## DNS Routing and Blocking Ads
 
+Before editing anything else, we need to configure our `/etc/hostname.axen0` file:
+
+~~~
+inet 192.168.1.1 255.255.255.0
+~~~
+
+Then reload the network:
+
+~~~
+doas sh /etc/netstart
+~~~
+
 ### adblock.conf
 
 If you wish to include network-wide ad-block, I suggest using the StevenBlack host list. Before we get into that though, we need to create our blacklist zone file:
@@ -203,6 +215,12 @@ server:
     access-control: 192.168.1.0/24 allow
     do-ip6: no
     verbosity: 1
+    hide-identity: yes
+    hide-version: yes
+    harden-glue: yes
+    harden-dnssec-stripped: yes
+    use-caps-for-id: yes
+    prefetch: yes
     include: "/var/unbound/etc/adblock/adblock.conf"
 
 forward-zone:
@@ -262,6 +280,20 @@ A diagram of the updated hardware setup:
  (LAN Ethernet)  (LAN Ethernet)
         /             \
     [Eero]          [Xbox]
+~~~
+
+## hostname.axen1
+
+Just like with our initial `axen0` hostname, we need to configure our `/etc/hostname.axen1` file now that the Xbox is wired:
+
+~~~
+inet 192.168.2.1 255.255.255.0
+~~~
+
+Then reload the network:
+
+~~~
+doas sh /etc/netstart
 ~~~
 
 ### Tweaking pf.conf
@@ -370,6 +402,12 @@ server:
     access-control: 192.168.2.0/24 allow
     do-ip6: no
     verbosity: 1
+    hide-identity: yes
+    hide-version: yes
+    harden-glue: yes
+    harden-dnssec-stripped: yes
+    use-caps-for-id: yes
+    prefetch: yes
     include: "/var/unbound/etc/adblock/adblock.conf"
 
 forward-zone:
