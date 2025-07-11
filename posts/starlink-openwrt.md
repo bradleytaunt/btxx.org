@@ -1,5 +1,4 @@
 # Starlink, OpenWrt, and Eeros... Oh My!
-{:.no_toc}
 
 2025-06-29
 

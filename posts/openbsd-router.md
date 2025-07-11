@@ -1,5 +1,4 @@
 # Building a Simple Router with OpenBSD
-{:.no_toc}
 
 2025-07-11
 
