@@ -1,13 +1,15 @@
 # Building a Simple Router with OpenBSD
 {:.no_toc}
 
-2025-07-10
+2025-07-11
 
 I'm hardly a "networking" or system admin expert. Even still, I've always been interested in the concept of building out my own home router with OpenBSD. It seemed so "hacky" and cool! The problem is that most of the tutorials I stumble across on the internet seem so *daunting*. I normally read through the guides (maybe even poke around the core `man` docs for a bit as well) but always end up returning to my default ISP setup.
 
 But that all changes today! Best of all, you can come along for the ride!
 
-## My Networking Goals
+> If you notice something incorrect, please [open a patch or ticket](https://codeberg.org/btxx/btxx.org) and let me know!
+
+## Before We Begin
 {:.no_toc}
 
 This article will be broken down into multiple parts to keep things simple. You can technically stop right after setting up the router in the first section, but I will also include some extra, personal quality of life improvements.
@@ -18,19 +20,33 @@ These sections will be as follows:
 2. Configuring DNS and running a built in ad-blocker network-wide
 3. Enabling port forwarding on my Xbox to avoid Strict NAT when gaming online
 
+The WiFi will also be handled entirely by the Eero AP (nothing direct on the router itself).
+
+Good? Now let's get started.
+
 * toc
 {:toc}
 
 ## The Hardware
+
+Your devices may vary, but my own setup is as follows:
 
 - Mac Mini 2012, running OpenBSD 7.7
 - TP-Link USB 3.0 to RJ45 Gigabit adapters
 - Ethernet cables (Cat6)
 - Gateway Eero (set to Bridge Mode)
 
-Now, before you try to figure out why the heck I would turn a 2012 Mac Mini into a router (when there are so many better options available) understand this: it was sitting in a drawer in my office collecting dust. Waste not want not, right?
+Now, before you try to figure out why the heck I would turn a 2012 Mac Mini into a router (when there are so many better options available) understand this: it was sitting in a drawer in my office collecting dust. Waste not, want not - right?
 
 Since the Mac Mini is only equipped with a single ethernet port (which we need for the external WAN), I'm using some TP-Link USB adapters to mimic multiple ethernet LAN ports for any wired devices, like my Eero gateway and Xbox. These adapters are fully compatible with OpenBSD but other after-market dongles exist that should work just as well.
+
+With all of the hardware on-hand, do the following:
+
+- Plug an ethernet cable from your ISP's modem into the ethernet port on the Mac Mini
+- Plug in the USB to ethernet adapter into one of the USB 3.0 ports on the Mac Mini
+- Connect and ethernet cable from the adapter to the main Eero gateway
+
+Diagram for reference:
 
 ~~~diagram
           [ISP Modem]
@@ -54,21 +70,29 @@ Since the Mac Mini is only equipped with a single ethernet port (which we need f
 
 ## The Software
 
-We don't need to install anything extra. All the software we need comes packaged with OpenBSD by default. Yet another reason this operating system is so incredible.
+This guide is based on the assumption that you have already [installed OpenBSD](/wiki/openbsd/installation/) and configured your main `user` and preferences to your liking. We don't need to install anything extra on top of base. All the software we need comes packaged with OpenBSD by default. Yet another reason this operating system is so incredible.
 
 ## Basic OpenBSD Router
 
+All of these edits take place on your router device (ie. Mac Mini). You can do this directly on the device itself with an external monitor and keyboard setup, or connect a secondary device through ethernet and simply `ssh` into the machine. The choice is yours!
+
 ### sysctl.conf
 
-Before doing anything else, we need to ensure forwarding is enabled in our `/etc/sysctl.conf` file:
+Before doing anything else, we need to ensure forwarding is enabled. Create (or edit if it already exists) your `/etc/sysctl.conf` file:
 
 ~~~
 net.inet.ip.forwarding=1
 ~~~
 
+You can reboot for the changes to be applied, or run it immediately:
+
+~~~
+doas sysctl net.inet.ip.forwarding=1
+~~~
+
 ### pf.conf
 
-The meat-and-potatoes of this setup comes from within `/etc/pf.conf`. Make sure you have the following content:
+The meat and potatoes of this setup comes from within `/etc/pf.conf`. Make sure you have the following content inside:
 
 ~~~
 ext_if = "bge0"
@@ -177,7 +201,7 @@ For this example, we will piggyback off the DNS of both Cloudflare and Quad9 (fe
 ~~~
 server:
     interface: 192.168.1.1
-    access-control: 192.168.1.0/24 alloww
+    access-control: 192.168.1.0/24 allow
     do-ip6: no
     verbosity: 1
     include: "/var/unbound/etc/adblock/adblock.conf"
@@ -223,6 +247,8 @@ But oh no! When I try to play some online games my Xbox complains about having a
 ### Updating Our Hardware Setup
 
 Connect another TP-Link USB-to-ethernet adapter directly to the Xbox. This will be discoverable under `ifconfig` (just like before) and will be named something like `axen1`. We need to update this specific LAN (and it's associated console) with the proper port forwarding to enable an Open NAT when gaming.
+
+A diagram of the updated hardware setup:
 
 ~~~diagram
           [ISP Modem]
@@ -277,6 +303,41 @@ pass in quick on egress proto udp from any to (egress) port $xbox_live_udp_ports
 pass out on $ext_if keep state
 ~~~
 
+This might look daunting but fear not! It is actually quite straight foward.
+
+~~~
+int2_if= "axen1"
+xbox_live_tcp_ports = "{ 53, 80, 3074 }"
+xbox_live_udp_ports = "{ 53, 88, 500, 3074, 3544, 4500, 8083, 1780, 49164 }"
+xbox = "192.168.2.100"
+~~~
+
+- The `int2_if` is the USB-to-ethernet adapter connected to the Xbox
+- `xbox_live_tcp_ports` and `xbox_live_udp_ports` are the tcp/udp ports we need to forward for Xbox online functionality to work properly (as per Microsoft's documentation)
+- `xbox = "192.168.2.100"` hardcodes our Xbox's IP (we will set this statically in our `dhcpd.conf` in the next steps)
+
+~~~
+match out log on egress from !$xbox to any nat-to ($ext_if:0) port 1024:65535
+match out log on egress from  $xbox to any nat-to ($ext_if:0) static-port
+~~~
+
+- Here we are telling our router to use specific ports for Xbox inside of default randomization
+
+~~~
+antispoof quick for { lo $int_if $int2_if }
+
+pass in on $int2_if
+~~~
+
+- Need both of these to include our new USB adapter (`$int2_if`)
+
+~~~
+pass in quick on egress proto tcp from any to (egress) port $xbox_live_tcp_ports rdr-to $xbox
+pass in quick on egress proto udp from any to (egress) port $xbox_live_udp_ports rdr-to $xbox
+~~~
+
+- We finish things up by actually setting the port forwarding
+
 ### Tweaking dhcpd.conf
 
 ~~~
@@ -293,10 +354,12 @@ subnet 192.168.2.0 netmask 255.255.255.0 {
 }
 
 host xbox {
-  hardware ethernet 1C:1A:DF:74:A1:2F;
+  hardware ethernet 11:22:33:44:55:66;
   fixed-address 192.168.2.100;
 }
 ~~~
+
+- Here we include subnet `192.168.2.0` which covers our adapter connected to our Xbox. We then hardset the console's IP with `fixed-address` (this will match what we previously set in `pf.conf`). Make sure you edit the `hardware ethernet` MAC address to match your own. This can be found in the Xbox UI under **Settings** > **Network** > **Advanced**.
 
 ### Tweaking unbound.conf
 
@@ -316,6 +379,20 @@ forward-zone:
     forward-addr: 9.9.9.9
 ~~~
 
-## Backups
+- Same concept as `dhcpd.conf`, we need to include the new interface `192.168.2.1` for both the `interface` and `access-control`.
 
-## Taking Things Further
+Now just reload all the services and everything should be solid!
+
+~~~
+doas rcctl restart dhcpd
+doas rcctl restart unbound
+doas pfctl -f /etc/pf.conf
+~~~
+
+Enjoy your router, working internet, and Open NAT on your Xbox!
+
+## Advanced Settings
+
+I like to keep things fairly minimal, so I have intentionally kept the setup fairly bare-bones. Therefore, this setup does not have working IPv6 or any other fancy services running in the background (ie. local servers, media storage etc.).  But don't let that stop you - feel free to add on and expand as you see fit!
+
+(This article was published to the internet through an OpenBSD router!) :D
