@@ -43,7 +43,7 @@ With all of the hardware on-hand, do the following:
 
 - Plug an ethernet cable from your ISP's modem into the ethernet port on the Mac Mini
 - Plug in the USB to ethernet adapter into one of the USB 3.0 ports on the Mac Mini
-- Connect and ethernet cable from the adapter to the main Eero gateway
+- Connect an ethernet cable from the adapter to the main Eero gateway
 
 Diagram for reference:
 
@@ -99,6 +99,9 @@ int_if = "axen0"
 
 set skip on lo
 
+# Block everything by default
+block all
+
 # Normalize incoming packets
 match in all scrub (no-df random-id max-mss 1440)
 
@@ -129,6 +132,12 @@ set skip on lo
 ~~~
 
 - Skips packet filtering on loopback.
+
+~~~
+block all
+~~~
+
+- Block all sources by default (before telling it what to explicitly allow)
 
 ~~~
 match in all scrub (no-df random-id max-mss 1440)
@@ -309,6 +318,9 @@ xbox_live_udp_ports = "{ 53, 88, 500, 3074, 3544, 4500, 8083, 1780, 49164 }"
 xbox = "192.168.2.100"
 
 set skip on lo
+
+# Block everything by default
+block all
 
 # Perform source-port randomization for all hosts which are not the xbox
 match out log on egress from !$xbox to any nat-to ($ext_if:0) port 1024:65535
