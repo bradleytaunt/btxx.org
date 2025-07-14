@@ -15,8 +15,12 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>NearlyFreeSpeech<br><i>Domains + Hosting</i></td>
-      <td>~$100</td>
+      <td>NearlyFreeSpeech<br><i>Domains / DNS</i></td>
+      <td>~$50</td>
+    </tr>
+    <tr>
+      <td>Tiny KVM<br><i>OpenBSD Hosting</i></td>
+      <td>~$40</td>
     </tr>
     <tr>
       <td>Migadu<br><i>Email</i></td>
