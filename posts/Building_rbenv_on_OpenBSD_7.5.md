@@ -24,10 +24,23 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local"
 eval "$(rbenv init -)"
 ~~~
 
-Then reload your shell (zsh in this example): 
+Or if you're using `fish` like I am most of the time:
 
 ~~~sh
+set -x PATH $HOME/.rbenv/bin $PATH
+set -x PATH $HOME/.rbenv/shims $PATH
+set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=/usr/local"
+status --is-interactive; and source (rbenv init -|psub)
+~~~
+
+Then reload your shell: 
+
+~~~sh
+# zsh
 source ~/.zshrc
+
+# fish
+. ~/.config/fish/config.fish
 ~~~
 
 Next we will need to install `ruby-build` as a `rbenv` plugin. Clone the ruby-build repository into the rbenv plugins directory:
