@@ -19,8 +19,8 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <td>~$50</td>
     </tr>
     <tr>
-      <td>Tiny KVM<br><i>OpenBSD Hosting</i></td>
-      <td>~$40</td>
+      <td>Local Raspberry Pi 400<br><i>Web Server (OpenBSD)</i></td>
+      <td>~$20 (electricity)</td>
     </tr>
     <tr>
       <td>Migadu<br><i>Email</i></td>
@@ -47,9 +47,9 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>M2 MacBook Air</td>
-      <td>Apple M2</td>
-      <td>16GB</td>
+      <td>M4 MacBook Pro</td>
+      <td>Apple M4</td>
+      <td>36GB</td>
       <td>MacOS Sequoia</td>
     </tr>
   </tbody>
@@ -72,19 +72,25 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <td>M73 Tiny ThinkCentre</td>
       <td>Intel i5-4590T (4) @ 3.0GHz</td>
       <td>16GB</td>
-      <td>Alpine Linux (KDE Plasma)</td>
+      <td>OpenBSD running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
     </tr>
     <tr>
       <td>ThinkPad X220</td>
       <td>Intel Core i5 2540M @ 2.6 GHz</td>
       <td>16GB</td>
-      <td>OpenBSD (<a href="https://sr.ht/~bt/open-suck">see build</a>)</td>
+      <td>OpenBSD running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
     </tr>
     <tr>
       <td>ThinkPad X201</td>
       <td>Intel Core i5-520M @ 2.9 GHz</td>
       <td>8GB</td>
-      <td>Alpine Suck (<a href="https://sr.ht/~bt/alpine-suck">see build</a>)</td>
+      <td>OpenBSD running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
+    </tr>
+    <tr>
+      <td>M2 MacBook Air</td>
+      <td>Apple M2</td>
+      <td>16GB</td>
+      <td>MacOS Sequoia</td>
     </tr>
   </tbody>
 </table>
