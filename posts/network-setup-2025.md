@@ -34,7 +34,7 @@ Let me further example the picture above:
 1. The black device on the far left is my ISP's modem
 2. The smaller black device in the back is a fanless mini PC (Intel Celeron J1900 4xi225V NIC) I picked up off Aliexpress. Currently running OpenBSD, acting as my main router/gateway
 3. The Raspberry Pi 400 on the right side of the screen is my self-hosted web
-   server (you're visiting a site on that server right now!)
+   server (This website will be hosted there soon!)
 4. **Bonus**: There is an older 32" TV off the to far right side. This is
    connected to the Raspberry Pi in case I need to perform any "onsite"
 debugging or tweaking that can't be done remotely
