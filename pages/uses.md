@@ -15,12 +15,12 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>NearlyFreeSpeech<br><i>Domains / DNS</i></td>
-      <td>~$50</td>
+      <td>NearlyFreeSpeech<br><i>Domains / DNS / Hosting</i></td>
+      <td>~$90</td>
     </tr>
     <tr>
-      <td>Local Raspberry Pi 400<br><i>Web Server (OpenBSD)</i></td>
-      <td>~$20 (electricity)</td>
+      <td>RamHost<br><i>VPS (OpenBSD)</i></td>
+      <td>$15</td>
     </tr>
     <tr>
       <td>Migadu<br><i>Email</i></td>

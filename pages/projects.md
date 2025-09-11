@@ -7,8 +7,10 @@ All git repos are hosted on: [Codeberg](https://codeberg.org/btxx/)
 ## Active Projects
 
 * [httpd.rocks](https://httpd.rocks): Setup an HTTPS-enabled web server with `httpd` on OpenBSD
+* [openbased.xyz](https://openbased.xyz): Setup OpenBSD as a daily driver using only the base programs
 * [caddy.ninja](https://caddy.ninja): Setup an HTTPS-enabled web server with `caddy` on Alpine Linux
-* [OpenBASED](https://openbased.btxx.org): Setup OpenBSD as a daily driver using only the base programs
+* [minwm](https://codeberg.org/btxx/minwm): An extremely minimal window manager
+* [stato](https://codeberg.org/btxx/stato): Display OpenBSD server information
 * [jsfree](https://jsfree.org): Collection of web services that work without JavaScript
 * [Vanilla CSS](https://vanillacss.com): A minimal baseline stylesheet for any web project
 
@@ -16,6 +18,7 @@ All git repos are hosted on: [Codeberg](https://codeberg.org/btxx/)
 
 I have a serious problem creating custom site generators...
 
+* [mdhtml](https://codeberg.org/btxx/mdhtml): Tiny script for building static websites from markdown files
 * [wruby](https://wruby.btxx.org): Minimal site generator written in Ruby
 * [barf](https://barf.btxx.org): Minimal blog engine in a tiny shell script
 * [Shinobi](https://codeberg.org/btxx/shinobi): Text-based, RSS focused blogging "system"

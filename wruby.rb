@@ -82,7 +82,7 @@ def generate_index(posts, header_content, footer_content, root_index_file, post_
 
   index_content = header + root_html + "<ul class=\"posts\">\n"
   posts.first(post_count).each { |post| index_content << "<li><span>#{post[:date]}</span><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a></li>\n" }
-  index_content << "</ul>\n<p><a href='/#{posts_dir}'>View all posts &rarr;</a></p>\n" + footer_content
+  index_content << footer_content
 
   File.write("#{output_dir}/index.html", index_content)
 end
