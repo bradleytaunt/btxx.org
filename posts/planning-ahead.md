@@ -1,6 +1,6 @@
 # What Happens After I'm Gone? The Future of the Online Me
 
-2025-09-11
+2025-09-12
 
 Well, that's a morbid headline...
 
@@ -13,7 +13,7 @@ So, I decided to write-up my *current* online fail-safes, along with my plans fo
 
 ## The Internet is Not Important
 
-Let's get this out of the way first. The internet doesn't matter compared to *real-life*. Obviously if all my projects / sites disappeared from the web tomorrow it wouldn't be a big deal *at all*. Family, friends, and those directly impacting your life should always take precedent over online communities (even if those communities are awesome!). Before you consider wasting any effort future-proofing your online "stuff", take the time to **write up a will**. It's worth the cost (heck, even online services exist for this now) and once complete it will allow you to focus on more stupid things, like your online stuff!
+Let's get this out of the way first. The internet doesn't matter compared to *real-life*. Obviously if all my projects / sites disappeared from the web tomorrow it wouldn't be a big deal *at all*. Family, friends, and those directly impacting your life should always take precedence over online communities (even if those communities are awesome!). Before you consider wasting any effort future-proofing your online "stuff", take the time to **write up a will**. It's worth the cost (heck, even online services exist for this now) and once complete it will allow you to focus on more stupid things, like your online stuff!
 
 If you takeaway one thing from the post, it should be to get yourself a will.
 
@@ -39,6 +39,7 @@ As for hosting, the web moves fast and you can't assume anything will last forev
 Reasons why I like **NFSN**:
 
 * Allows for [direct, outside contributions](https://faq.nearlyfreespeech.net/section/ourservice/donations) to your account
+	* This is extremely helpful to keep the balance "topped up" while waiting for an account transfer / takeover
 * Aligns well with free speech core values (vital for an open web)
 * Online since 2002
 * Great community, helpful members in the forums

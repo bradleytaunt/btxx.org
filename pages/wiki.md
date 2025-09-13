@@ -15,22 +15,16 @@ All sub-directories are listed below. This wiki is a growing set of documents, s
 * [sublime text](/wiki/sublime-text)
 * [ubuntu](/wiki/ubuntu)
 
----
-
 ## Hardware
 
 * [xbox](/wiki/xbox)
 * [ps2](/wiki/ps2)
 * [dolphin](/wiki/dolphin)
 
----
-
 ## Version Control Systems
 
 * [cgit](/wiki/cgit)
 * [got](/wiki/got)
-
----
 
 ## ikiwiki
 
