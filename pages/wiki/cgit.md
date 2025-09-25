@@ -6,7 +6,48 @@ This page contains a comprehensive guide to setting up cgit on NearlyFreeSpeech.
 
 Most of the following has been lifted from [NearlyFreeSpeech cgit application walkthrough](https://members.nearlyfreespeech.net/wiki/Applications/Cgit) but has been tweaked and updated.
 
-You can see a **live version** [here](https://git.btxx.org).
+## Setup `git` Repostories
+
+The first thing we need to do is setting up our `git` repos, with the ability for the public to clone our projects. Each one of your project repos will need to follow this same procedure. 
+
+Make sure to change your "domain" folder accordingly.
+
+~~~sh
+cd /home/public/git.btxx.org
+
+mkdir myproject.git
+cd myproject.git
+
+git init --bare
+
+# Configure for HTTP access
+git config http.getanyfile true
+git config http.uploadpack true
+
+# Update server info (crucial for HTTP cloning)
+git update-server-info
+
+# Set up the post-update hook
+cat > hooks/post-update << 'EOF'
+#!/bin/sh
+exec git update-server-info
+EOF
+
+chmod +x hooks/post-update
+~~~
+
+Then make sure to include the following `.htaccess` file at the root of your domain folder (ie. `git.btxx.org/`):
+
+~~~sh
+SetEnv GIT_PROJECT_ROOT /home/public/git.btxx.org
+SetEnv GIT_HTTP_EXPORT_ALL
+~~~
+
+Now you can test this locally by running:
+
+~~~
+git clone https://git.btxx.org/myproject.git
+~~~
 
 ## Building cgit
 

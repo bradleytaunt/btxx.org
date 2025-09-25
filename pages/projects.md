@@ -2,7 +2,7 @@
 
 This page a growing collection of active (and not-so-active) projects I am working on.
 
-All git repos are hosted on: [Codeberg](https://codeberg.org/btxx/)
+All git repos can be found: [here](/git)
 
 ## Active Projects
 

@@ -130,7 +130,7 @@ footer {
   max-width: 100px;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 620px) {
     body {
         padding: 10px;
     }
@@ -141,7 +141,8 @@ footer {
     header nav ul li:nth-of-type(5),
     header nav ul li:nth-of-type(6),
     header nav ul li:nth-of-type(7),
-    header nav ul li:nth-of-type(8) {
+    header nav ul li:nth-of-type(8),
+    header nav ul li:nth-of-type(9) {
         display: none;
     }
     li.more {
