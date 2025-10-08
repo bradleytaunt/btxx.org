@@ -20,13 +20,13 @@ Since there is no "native" Mullvad application for OpenBSD (which I consider a g
 
 First we need to install WireGuard:
 
-~~~
+~~~sh
 doas pkg_add wireguard-tools
 ~~~
 
 Next we need to make our directory which will contain our soon-to-be generated configuration file:
 
-~~~
+~~~sh
 doas mkdir /etc/wireguard
 ~~~
 
@@ -46,7 +46,7 @@ Once you're done just download the file (or scan the code).
 
 Now we make a new file called `wg0.conf` inside the `/etc/wireguard` directory we created previously. Copy the content from the Mullvad WireGuard file you downloaded and place it inside this file. It should look something like this:
 
-~~~
+~~~sh
 [Interface]
 # Device: Funny Device Name
 PrivateKey = YOUR-PRIVATE-KEY
@@ -61,13 +61,13 @@ Endpoint = 178.XXX.XXX.X:51820
 
 With that file created and saved, we can now start `wireguard`. There is no direct system call for WireGuard, instead we need to run the userspace tool `wg`:
 
-~~~
+~~~sh
 doas wg-quick up wg0
 ~~~
 
 That's it! A quick test to see if it's working properly is to navigate to [mullvad.net](https://mullvad.net) and see what it reports at the top of the page. When you want/need to disable Mullvad, just run the same tool through `down`:
 
-~~~
+~~~sh
 doas wg-quick down wg0
 ~~~
 

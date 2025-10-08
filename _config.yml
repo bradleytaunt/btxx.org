@@ -1,21 +1,26 @@
-site_url: 'https://btxx.org'
-site_name: 'bt'
+# Core site settings
+site_url:    'https://btxx.org'
+site_name:   'btxx.org'
 author_name: 'Bradley Taunt'
 
+# Main directories
 directories:
-  posts: 'posts'
-  pages: 'pages'
-  public: 'public'
-  output: 'build'
+  posts:        'posts'
+  pages:        'pages'
+  public:       'public'
+  output:       'build'
   posts_output: 'build/posts'
   pages_output: 'build/'
-  
-files:
-  header: 'header.html'
-  footer: 'footer.html'
-  root_index: 'index.md'
-  posts_index: 'pages/posts.md'
-  rss: 'build/index.rss'
 
+# File, index, RSS naming
+files:
+  header:      '_includes/header.html'
+  footer:      '_includes/footer.html'
+  root_index:  'index.md'
+  posts_index: 'pages/posts.md'
+  rss:         'build/index.rss'
+
+# Extras
 misc:
-  post_count: 0
+  post_count:    5
+  compress_site: false

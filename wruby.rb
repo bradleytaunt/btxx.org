@@ -8,24 +8,25 @@ require 'yaml'
 # Load configuration
 config = YAML.load_file('_config.yml')
 
-site_url = config['site_url']
-site_name = config['site_name']
+site_url    = config['site_url']
+site_name   = config['site_name']
 author_name = config['author_name']
 
-posts_dir = config['directories']['posts']
-pages_dir = config['directories']['pages']
-public_dir = config['directories']['public']
-output_dir = config['directories']['output']
+posts_dir        = config['directories']['posts']
+pages_dir        = config['directories']['pages']
+public_dir       = config['directories']['public']
+output_dir       = config['directories']['output']
 posts_output_dir = config['directories']['posts_output']
 pages_output_dir = config['directories']['pages_output']
 
-header_file = config['files']['header']
-footer_file = config['files']['footer']
-root_index_file = config['files']['root_index']
+header_file      = config['files']['header']
+footer_file      = config['files']['footer']
+root_index_file  = config['files']['root_index']
 posts_index_file = config['files']['posts_index']
-rss_file = config['files']['rss']
+rss_file         = config['files']['rss']
 
-post_count = config['misc']['post_count']
+post_count    = config['misc']['post_count']
+compress_site = config['misc']['compress_site']
 
 # Make sure output directories exist
 [posts_output_dir, pages_output_dir].each { |dir| FileUtils.mkdir_p(dir) }
@@ -46,11 +47,7 @@ end
 
 # Convert markdown files
 def process_markdown_files(input_directory, output_directory, header_content, footer_content)
-  items = []
-
-  Find.find(input_directory) do |path|
-    next unless path =~ /\.md\z/
-
+  items = Dir.glob("#{input_directory}/**/*.md").map do |path|
     md_content = File.read(path)
     lines = md_content.lines
 
@@ -58,18 +55,16 @@ def process_markdown_files(input_directory, output_directory, header_content, fo
     date = Date.parse(lines[2]&.strip || '') rescue Date.today
     html_content = Kramdown::Document.new(md_content).to_html
 
-    relative_path = path.sub(input_directory + '/', '').sub('.md', '')
+    relative_path = path.sub("#{input_directory}/", '').sub('.md', '')
     item_dir = File.join(output_directory, relative_path)
-    output_file = "#{item_dir}/index.html"
+    output_file = File.join(item_dir, 'index.html')
     FileUtils.mkdir_p(item_dir)
 
     header = replace_title_placeholder(header_content, title)
     File.write(output_file, header + html_content + footer_content)
 
-    items << { title: title, date: date, link: relative_path + '/', content: html_content }
+    { title: title, date: date, link: "#{relative_path}/", content: html_content }
   end
-
-  items
 end
 
 # Create the root index file
@@ -105,23 +100,23 @@ end
 # Generate the RSS 2.0 feed
 def generate_rss(posts, rss_file, author_name, site_name, site_url, posts_dir)
   rss = RSS::Maker.make("2.0") do |maker|
-    maker.channel.author = author_name
-    maker.channel.updated = Time.now.to_s
-    maker.channel.title = "#{site_name} RSS Feed"
+    maker.channel.author      = author_name
+    maker.channel.updated     = Time.now.to_s
+    maker.channel.title       = "#{site_name} RSS Feed"
     maker.channel.description = "The official RSS Feed for #{site_url}"
-    maker.channel.link = site_url
+    maker.channel.link        = site_url
 
     posts.each do |post|
       date = Date.parse(post[:date].to_s).to_time + 12*60*60 # Force time to midday
-      item_link = "#{site_url}/#{posts_dir}/#{post[:link]}"
-      item_title = post[:title]
+      item_link    = "#{site_url}/#{posts_dir}/#{post[:link]}"
+      item_title   = post[:title]
       item_content = post[:content]
 
       maker.items.new_item do |item|
-        item.link = item_link
-        item.title = item_title
-        item.updated = date.to_s
-        item.pubDate = date.rfc822
+        item.link        = item_link
+        item.title       = item_title
+        item.updated     = date.to_s
+        item.pubDate     = date.rfc822
         item.description = item_content
       end
     end
@@ -140,5 +135,6 @@ generate_index(posts, header_content, footer_content, root_index_file, post_coun
 generate_full_posts_list(posts, header_content, footer_content, posts_index_file, output_dir, posts_dir)
 FileUtils.cp_r(public_dir, output_dir)
 generate_rss(posts, rss_file, author_name, site_name, site_url, posts_dir)
+system("find #{output_directory} -type f \\( -name '*.html' -o -name '*.css' \\) -exec gzip -k -f {} \\;") if compress_site == true
 
 puts "Blog built successfully in '#{output_dir}' folder. Have a great day!"

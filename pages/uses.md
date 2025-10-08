@@ -70,15 +70,9 @@ I'm proud to support open source products and privacy-respecting communities. Th
   <tbody>
     <tr>
       <td>M73 Tiny ThinkCentre</td>
-      <td>Intel i5-4590T (4) @ 3.0GHz</td>
+      <td>Intel i7-4765T (4) @ 2.0GHz</td>
       <td>16GB</td>
-      <td>OpenBSD running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
-    </tr>
-    <tr>
-      <td>ThinkPad X220</td>
-      <td>Intel Core i5 2540M @ 2.6 GHz</td>
-      <td>16GB</td>
-      <td>OpenBSD running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
+      <td><a href="https://artixlinux.org">Artix Linux</a></td>
     </tr>
     <tr>
       <td>ThinkPad X201</td>
@@ -95,8 +89,6 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </tbody>
 </table>
 </div>
-
-As you can tell: I *really* like ThinkPads...
 
 ## Accessories
 
