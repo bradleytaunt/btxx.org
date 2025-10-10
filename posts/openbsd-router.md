@@ -79,13 +79,13 @@ All of these edits take place on your router device (ie. Mac Mini). You can do t
 
 Before doing anything else, we need to ensure forwarding is enabled. Create (or edit if it already exists) your `/etc/sysctl.conf` file:
 
-~~~
+~~~sh
 net.inet.ip.forwarding=1
 ~~~
 
 You can reboot for the changes to be applied, or run it immediately:
 
-~~~
+~~~sh
 doas sysctl net.inet.ip.forwarding=1
 ~~~
 
@@ -93,7 +93,7 @@ doas sysctl net.inet.ip.forwarding=1
 
 The meat and potatoes of this setup comes from within `/etc/pf.conf`. Make sure you have the following content inside:
 
-~~~
+~~~sh
 ext_if = "bge0"
 int_if = "axen0"
 
@@ -120,50 +120,50 @@ pass in on $int_if
 
 I've included some basic comments inline, but let's go through each item line-by-line for extra clarity.
 
-~~~
+~~~sh
 ext_if = "bge0"
 int_if = "axen0"
 ~~~
 
 - These are set variables representing your interfaces on your router (Mac Mini). For my device `bge0` is the built in ethernet port, while the `axen0` is the USB to ethernet dongle connected to my Eero Gateway. You can check your own interfaces by running `ifconfig` (also be sure that the targeted device is up: `ifconfig <interface-name> up`).
 
-~~~
+~~~sh
 set skip on lo
 ~~~
 
 - Skips packet filtering on loopback.
 
-~~~
+~~~sh
 block all
 ~~~
 
 - Block all sources by default (before telling it what to explicitly allow)
 
-~~~
+~~~sh
 match in all scrub (no-df random-id max-mss 1440)
 ~~~
 
 - This helps avoid fragmentation attacks for incoming traffic.
 
-~~~
+~~~sh
 antispoof quick for { lo $int_if }
 ~~~
 
 - Defends against forged source IPs, especially on the LAN interface. This is very important.
 
-~~~
+~~~sh
 match out on $ext_if from 192.168.1.0/24 to any nat-to ($ext_if)
 ~~~
 
 - Applies NAT (source translation) to traffic from LAN going to the internet.
 
-~~~
+~~~sh
 pass out on $ext_if keep state
 ~~~
 
 - This keeps things secure by allowing stateful outbound traffic from LAN.
 
-~~~
+~~~sh
 pass in on $int_if
 ~~~
 
@@ -171,7 +171,7 @@ pass in on $int_if
 
 With that completed, simply reload your `pf.conf`:
 
-~~~
+~~~sh
 doas pfctl -f /etc/pf.conf
 ~~~
 
@@ -181,13 +181,13 @@ That's it. *Technically* you can stop right here and have working internet funne
 
 Before editing anything else, we need to configure our `/etc/hostname.axen0` file:
 
-~~~
+~~~sh
 inet 192.168.1.1 255.255.255.0
 ~~~
 
 Then reload the network:
 
-~~~
+~~~sh
 doas sh /etc/netstart
 ~~~
 
@@ -195,20 +195,20 @@ doas sh /etc/netstart
 
 If you wish to include network-wide ad-block, I suggest using the StevenBlack host list. Before we get into that though, we need to create our blacklist zone file:
 
-~~~
+~~~sh
 doas mkdir -p /var/unbound/etc/adblock
 cd /var/unbound/etc/adblock
 ~~~
 
 Then pull down the latest set of blocked hosts:
 
-~~~
+~~~sh
 doas ftp https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 ~~~
 
 We can't use this `hosts` file directly, since it needs to be converted for `unbound`. The following script will help us with this (you might wish to set this up as a cronjob to stay up-to-date):
 
-~~~
+~~~sh
 doas sh -c "grep '^0\.0\.0\.0' hosts | awk '{print \"local-zone: \\\"\"\$2\"\\\" static\"}' > adblock.conf"
 ~~~
 
@@ -218,7 +218,7 @@ Your ad-block configuration file will now be located at: `/var/unbound/etc/adblo
 
 For this example, we will piggyback off the DNS of both Cloudflare and Quad9 (feel free to change these!). Edit the `/var/unbound/etc/unbound.conf` file with the following:
 
-~~~
+~~~sh
 server:
     interface: 192.168.1.1
     access-control: 192.168.1.0/24 allow
@@ -240,7 +240,7 @@ forward-zone:
 
 Notice the `include` that pulls in our generated ad-block file? Make sure `unbound` is enabled and start it:
 
-~~~
+~~~sh
 doas rcctl enable unbound
 doas rcctl start unbound
 ~~~
@@ -249,7 +249,7 @@ doas rcctl start unbound
 
 Now we can configure our main DHCP. Update your `/etc/dhcpd.conf` with the following in order to play nicely with the newly setup `unbound` and ad-block services:
 
-~~~
+~~~sh
 subnet 192.168.1.0 netmask 255.255.255.0 {
   range 192.168.1.100 192.168.1.199;
   option routers 192.168.1.1;
@@ -259,7 +259,7 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 
 Then be sure to enable and start it:
 
-~~~
+~~~sh
 doas rcctl enable dhcpd
 doas rcctl start dhcpd
 ~~~
@@ -295,13 +295,13 @@ A diagram of the updated hardware setup:
 
 Just like with our initial `axen0` hostname, we need to configure our `/etc/hostname.axen1` file now that the Xbox is wired:
 
-~~~
+~~~sh
 inet 192.168.2.1 255.255.255.0
 ~~~
 
 Then reload the network:
 
-~~~
+~~~sh
 doas sh /etc/netstart
 ~~~
 
@@ -309,7 +309,7 @@ doas sh /etc/netstart
 
 Update the `/etc/pf.conf` file with the following:
 
-~~~
+~~~sh
 ext_if = "bge0"
 int_if = "axen0"
 int2_if= "axen1"
@@ -348,7 +348,7 @@ pass out on $ext_if keep state
 
 This might look daunting but fear not! It is actually quite straight foward.
 
-~~~
+~~~sh
 int2_if= "axen1"
 xbox_live_tcp_ports = "{ 53, 80, 3074 }"
 xbox_live_udp_ports = "{ 53, 88, 500, 3074, 3544, 4500, 8083, 1780, 49164 }"
@@ -359,14 +359,14 @@ xbox = "192.168.2.100"
 - `xbox_live_tcp_ports` and `xbox_live_udp_ports` are the tcp/udp ports we need to forward for Xbox online functionality to work properly (as per Microsoft's documentation)
 - `xbox = "192.168.2.100"` hardcodes our Xbox's IP (we will set this statically in our `dhcpd.conf` in the next steps)
 
-~~~
+~~~sh
 match out log on egress from !$xbox to any nat-to ($ext_if:0) port 1024:65535
 match out log on egress from  $xbox to any nat-to ($ext_if:0) static-port
 ~~~
 
 - Here we are telling our router to use specific ports for Xbox inside of default randomization
 
-~~~
+~~~sh
 antispoof quick for { lo $int_if $int2_if }
 
 pass in on $int2_if
@@ -383,7 +383,7 @@ pass in quick on egress proto udp from any to (egress) port $xbox_live_udp_ports
 
 ### Tweaking dhcpd.conf
 
-~~~
+~~~sh
 subnet 192.168.1.0 netmask 255.255.255.0 {
   range 192.168.1.100 192.168.1.199;
   option routers 192.168.1.1;
@@ -406,7 +406,7 @@ host xbox {
 
 ### Tweaking unbound.conf
 
-~~~
+~~~sh
 server:
     interface: 192.168.1.1
     interface: 192.168.2.1
@@ -432,7 +432,7 @@ forward-zone:
 
 Now just reload all the services and everything should be solid!
 
-~~~
+~~~sh
 doas rcctl restart dhcpd
 doas rcctl restart unbound
 doas pfctl -f /etc/pf.conf

@@ -6,7 +6,15 @@ I'm Brad, a designer/developer hybrid. I help software companies improve their u
 
 I also actively maintain several [open source projects](/projects).
 
-Core tools are HTML, CSS, Ruby, JavaScript & PHP. Currently improving my skills with Rails & MongoDB. I also enjoy tinkering with basic shell scripts and [Unix systems](/public/images/unix.gif).
+Core tools are: 
+
+Development
+: HTML, CSS, Ruby/Rails, JavaScript
+
+Design
+: Sketch, Figma, Photoshop, Balsamiq
+
+Currently improving my skills with Rails & MongoDB. I also enjoy tinkering with basic shell scripts and [Unix systems](/public/images/unix.gif).
 
 ## Popular OpenBSD Articles
 

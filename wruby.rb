@@ -135,6 +135,6 @@ generate_index(posts, header_content, footer_content, root_index_file, post_coun
 generate_full_posts_list(posts, header_content, footer_content, posts_index_file, output_dir, posts_dir)
 FileUtils.cp_r(public_dir, output_dir)
 generate_rss(posts, rss_file, author_name, site_name, site_url, posts_dir)
-system("find #{output_directory} -type f \\( -name '*.html' -o -name '*.css' \\) -exec gzip -k -f {} \\;") if compress_site == true
+system("find #{output_dir} -type f \\( -name '*.html' -o -name '*.css' \\) -exec gzip -k -f {} \\;") if compress_site == true
 
 puts "Blog built successfully in '#{output_dir}' folder. Have a great day!"

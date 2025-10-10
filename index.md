@@ -1,6 +1,6 @@
 # Bradley Taunt
 
-*Developer and designer who talks about software, design, life, and [OpenBSD](https://puffy.software).*
+Developer and designer who talks about software, design, life, and [OpenBSD](https://puffy.software).
 
 - [About](/about)
 - [Colophon](/colophon)
@@ -15,5 +15,3 @@
 E-mail: [bt@btxx.org](mailto:bt@btxx.org)
 
 ## Latest Posts
-
-

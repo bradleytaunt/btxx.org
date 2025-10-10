@@ -14,7 +14,6 @@ body {
 
 header nav ul {
     list-style: none;
-    font-family: sans-serif;
     margin: 10px 0 0 0;
     padding: 0;
 }
@@ -40,7 +39,7 @@ main p {
     text-align: justify;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,header nav ul {
     font-family: sans-serif;
 }
 h1 {
@@ -70,6 +69,9 @@ h3 {
 
 dd {
   margin-bottom: 10px;
+}
+dt:not(:has(a)) {
+    font-weight: 600;
 }
 
 img{height:auto;max-width:100%;}

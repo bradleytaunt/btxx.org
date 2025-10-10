@@ -2,7 +2,7 @@
 
 This page a growing collection of active (and not-so-active) projects I am working on.
 
-All git repos can be found: [Codeberg](https://codeberg.org/btxx)<br>(Mirrors also available on [Github](https://github.com/bradleytaunt))
+All git repos can be found: [Codeberg](https://codeberg.org/btxx)<br>(Mirrors also slowly becoming available on [Github](https://github.com/bradleytaunt))
 
 ## Active Projects
 
