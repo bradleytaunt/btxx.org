@@ -29,7 +29,7 @@ post_count    = config['misc']['post_count']
 compress_site = config['misc']['compress_site']
 
 # Make sure output directories exist
-[posts_output_dir, pages_output_dir].each { |dir| FileUtils.mkdir_p(dir) }
+[output_dir, posts_output_dir, pages_output_dir].each { |dir| FileUtils.mkdir_p(dir) }
 
 # Read the footer content
 footer_content = File.read(footer_file)
