@@ -1,10 +1,10 @@
-@import url("tulip.css");
+@import url("syntax.css");
 
 *{box-sizing:border-box;}
 
 body {
   background: #f2f2f2;
-  font-family: "Georgia", serif;
+  font-family: system-ui, sans-serif;
   line-height: 1.33;
   margin: 0 auto;
   max-width: 680px;
@@ -39,9 +39,6 @@ main p {
     text-align: justify;
 }
 
-h1,h2,h3,h4,h5,h6,header nav ul {
-    font-family: sans-serif;
-}
 h1 {
     border-bottom: 1px solid;
     line-height: 1.25;
@@ -83,7 +80,7 @@ blockquote {
 
 figure { margin: 2.5rem auto; }
 figure img { display: block; margin: 0 auto 10px; }
-figcaption { text-align: center; }
+figcaption { opacity: 0.7; text-align: center; }
 
 pre, p code, li code { font-size: 14px; }
 
