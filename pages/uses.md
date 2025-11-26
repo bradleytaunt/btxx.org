@@ -15,12 +15,16 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>NearlyFreeSpeech<br><i>Domains / DNS / Hosting</i></td>
-      <td>~$90</td>
+      <td>NearlyFreeSpeech<br><i>Domains</i></td>
+      <td>~$70</td>
     </tr>
     <tr>
       <td>RamHost<br><i>VPS (OpenBSD)</i></td>
-      <td>$15</td>
+      <td>$20</td>
+    </tr>
+    <tr>
+      <td>RamHost<br><i>VPS (Alpine Linux)</i></td>
+      <td>$20</td>
     </tr>
     <tr>
       <td>Migadu<br><i>Email</i></td>
@@ -69,22 +73,16 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>M73 Tiny ThinkCentre</td>
-      <td>Intel i7-4765T (4) @ 2.0GHz</td>
+      <td>M2 MacBook Air</td>
+      <td>Apple M2</td>
       <td>16GB</td>
-      <td><a href="https://artixlinux.org">Artix Linux</a></td>
+      <td>MacOS Sequoia</td>
     </tr>
     <tr>
       <td>ThinkPad X201</td>
       <td>Intel Core i5-520M @ 2.9 GHz</td>
       <td>8GB</td>
       <td>OpenBSD running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
-    </tr>
-    <tr>
-      <td>M2 MacBook Air</td>
-      <td>Apple M2</td>
-      <td>16GB</td>
-      <td>MacOS Sequoia</td>
     </tr>
   </tbody>
 </table>

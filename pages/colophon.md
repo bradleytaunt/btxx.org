@@ -18,11 +18,15 @@ For those interested I try to keep the details of the blog up-to-date with the i
   <tbody>
     <tr>
       <td>Built with:</td>
-      <td><a href="https://wruby.btxx.org">wruby</a></td>
+      <td><a href="https://wruby.site">wruby</a></td>
     </tr>
     <tr>
       <td>Hosted on:</td>
-      <td><a href="https://nearlyfreespeech.net">NearlyFreeSpeech.Net</a></td>
+      <td><a href="https://ramhost.us">RAM Host</a></td>
+    </tr>
+    <tr>
+      <td>Served with:</td>
+      <td><a href="https://caddy.ninja">Caddy</a></td>
     </tr>
     <tr>
       <td>Source code available:</td>
@@ -34,7 +38,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hardware used:</td>
-      <td>X220, M2 MacBook Air, &amp; M73 Tiny</td>
+      <td>M2 MacBook Air &amp; X201 ThinkPad</td>
     </tr>
     <tr>
       <td>Developed on:</td>
