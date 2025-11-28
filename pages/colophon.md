@@ -38,11 +38,11 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hardware used:</td>
-      <td>M2 MacBook Air &amp; X201 ThinkPad</td>
+      <td>GMKtec G2 Plus, ThinkPad X201</td>
     </tr>
     <tr>
       <td>Developed on:</td>
-      <td>OpenBSD, MacOS &amp; Alpine Linux</td>
+      <td>OpenBSD &amp; Linux</td>
     </tr>
   </tbody>
 </table>

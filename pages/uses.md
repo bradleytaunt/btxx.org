@@ -16,15 +16,7 @@ I'm proud to support open source products and privacy-respecting communities. Th
   <tbody>
     <tr>
       <td>NearlyFreeSpeech<br><i>Domains</i></td>
-      <td>~$70</td>
-    </tr>
-    <tr>
-      <td>RamHost<br><i>VPS (OpenBSD)</i></td>
-      <td>$20</td>
-    </tr>
-    <tr>
-      <td>RamHost<br><i>VPS (Alpine Linux)</i></td>
-      <td>$20</td>
+      <td>~$90</td>
     </tr>
     <tr>
       <td>Migadu<br><i>Email</i></td>
@@ -73,16 +65,16 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>M2 MacBook Air</td>
-      <td>Apple M2</td>
-      <td>16GB</td>
-      <td>MacOS Sequoia</td>
+      <td>GMKtec G2 Plus</td>
+      <td>Intel(R) N150 (4) @ 3.60 GHz</td>
+      <td>12GB</td>
+      <td><a href="https://ubuntu.com">Ubuntu</a></td>
     </tr>
     <tr>
       <td>ThinkPad X201</td>
       <td>Intel Core i5-520M @ 2.9 GHz</td>
       <td>8GB</td>
-      <td>OpenBSD running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
+      <td>OpenBSD 7.8 running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
     </tr>
   </tbody>
 </table>

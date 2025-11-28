@@ -9,7 +9,7 @@ This post is just a quick guide to get your OpenBSD desktop or laptop up-and-run
 
 After following all my install and configuration steps, your desktop can look something like this:
 
-![OpenBSD Gnome desktop](/public/images/openbsd-gnome-desktop.jpg)
+![OpenBSD Gnome desktop](/public/images/openbsd-gnome-desktop.webp)
 
 ## GNOME Packages
 

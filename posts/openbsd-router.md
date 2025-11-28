@@ -6,7 +6,7 @@ I'm hardly a "networking" or system admin expert. Even still, I've always been i
 
 But that all changes today! Best of all, you can come along for the ride!
 
-> If you notice something incorrect, please [open a patch or ticket](https://codeberg.org/btxx/btxx.org) and let me know!
+> If you notice something incorrect, please [open a patch or a ticket](https://codeberg.org/btxx/btxx.org) and let me know!
 
 ## Before We Begin
 {:.no_toc}
