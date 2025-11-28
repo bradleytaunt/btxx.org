@@ -22,11 +22,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hosted on:</td>
-      <td><a href="https://ramhost.us">RAM Host</a></td>
-    </tr>
-    <tr>
-      <td>Served with:</td>
-      <td><a href="https://caddy.ninja">Caddy</a></td>
+      <td><a href="/contribute">NearlyFreeSpeech.NET</a></td>
     </tr>
     <tr>
       <td>Source code available:</td>
