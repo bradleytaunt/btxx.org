@@ -15,16 +15,8 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>NearlyFreeSpeech<br><i>Domains</i></td>
+      <td>NearlyFreeSpeech.NET<br><i>Domains, Email, and Web Hosting</i></td>
       <td>~$90</td>
-    </tr>
-    <tr>
-      <td>Migadu<br><i>Email</i></td>
-      <td>$19</td>
-    </tr>
-    <tr>
-      <td>Mullvad<br><i>VPN</i></td>
-      <td>$60</td>
     </tr>
   </tbody>
 </table>

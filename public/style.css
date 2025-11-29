@@ -137,6 +137,22 @@ footer {
   max-width: 100px;
 }
 
+.contribute-footer {
+    background: plum;
+    color: black;
+    padding: 10px;
+}
+.contribute-footer a, 
+.contribute-footer a:visited {
+    color: black;
+    font-weight: bold;
+}
+.contribute-footer a:hover,
+.contribute-footer a:active {
+    background: black;
+    color: white;
+}
+
 @media(max-width: 620px) {
     body {
         padding: 10px;
