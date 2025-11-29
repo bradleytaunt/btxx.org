@@ -9,11 +9,11 @@ All git repos can be found: [Codeberg](https://codeberg.org/btxx)<br>(Mirrors al
 [httpd.rocks](https://httpd.rocks)
 : Setup an HTTPS-enabled web server with `httpd` on OpenBSD
 
-[openbased.xyz](https://openbased.xyz)
-: Setup OpenBSD as a daily driver using only the base programs
-
 [caddy.ninja](https://caddy.ninja)
 : Setup an HTTPS-enabled web server with `caddy` on Alpine Linux
+
+[openbased](https://openbased.btxx.org)
+: Setup OpenBSD as a daily driver using only the base programs
 
 [minwm](https://codeberg.org/btxx/minwm)
 : An extremely minimal window manager
@@ -21,10 +21,10 @@ All git repos can be found: [Codeberg](https://codeberg.org/btxx)<br>(Mirrors al
 [stato](https://codeberg.org/btxx/stato)
 : Display OpenBSD server information
 
-[jsfree](https://jsfree.org)
+[jsfree](https://jsfree.btxx.org)
 : Collection of web services that work without JavaScript
 
-[Vanilla CSS](https://vanillacss.com)
+[Vanilla CSS](https://vanillacss.btxx.org)
 : A minimal baseline stylesheet for any web project
 
 ## Site Generators

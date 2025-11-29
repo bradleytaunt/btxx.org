@@ -2,7 +2,7 @@
 
 Enjoy my ramblings on this site? Found a particular article helpful?  Maybe consider contributing towards hosting costs.
 
-If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects.html), you're more than welcome to help fund my **NearlyFreeSpeech.NET account**:
+If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you're more than welcome to help fund my **NearlyFreeSpeech.NET account**:
 
 [Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
 
@@ -13,7 +13,7 @@ By funding the hosting provider directly, you help cover the costs of running an
 - email service / forwarding
 - ongoing maintenance
 
-The average billing for all of the above is **~$315.34/year** (roughly **$26/month**).
+The average billing for all of the above is **~$223.72/year** (roughly **$18.60/month**).
 
 You can see the fully transparent breakdown below:
 
@@ -23,8 +23,8 @@ You can see the fully transparent breakdown below:
   <thead>
     <tr>
       <th>Domain</th>
-      <th>Renewal (+ Privacy)</th>
-      <th>Email Forwarding</th>
+      <th>Renewal</th>
+      <th>Email</th>
       <th>Total</th>
     </tr>
   </thead>
@@ -34,12 +34,6 @@ You can see the fully transparent breakdown below:
       <td>$16.38</td>
       <td>$10.98</td>
       <td>$27.36</td>
-    </tr>
-    <tr>
-      <td>jsfree.org</td>
-      <td>$16.38</td>
-      <td>--</td>
-      <td>$16.38</td>
     </tr>
     <tr>
       <td>1kb.club</td>
@@ -72,28 +66,10 @@ You can see the fully transparent breakdown below:
       <td>$38.28</td>
     </tr>
     <tr>
-      <td>vanillacss.com</td>
-      <td>$17.48</td>
-      <td>--</td>
-      <td>$17.48</td>
-    </tr>
-    <tr>
-      <td>bradleytaunt.com</td>
-      <td>$17.48</td>
-      <td>--</td>
-      <td>$17.48</td>
-    </tr>
-    <tr>
-      <td>wruby.site</td>
-      <td>$40.28</td>
-      <td>--</td>
-      <td>$40.28</td>
-    </tr>
-    <tr>
       <td></td>
       <td></td>
       <td></td>
-      <td><b>$268.78</b></td>
+      <td><b>$177.16</b></td>
     </tr>
   </tbody>
 </table>
