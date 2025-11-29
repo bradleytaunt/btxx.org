@@ -16,7 +16,7 @@ I'm proud to support open source products and privacy-respecting communities. Th
   <tbody>
     <tr>
       <td>NearlyFreeSpeech.NET<br><i>Domains, Email, and Web Hosting</i></td>
-      <td>~$90</td>
+      <td><a href="/contribute">See contribute page for details</a></td>
     </tr>
   </tbody>
 </table>
