@@ -13,8 +13,6 @@ By funding the hosting provider directly, you help cover the costs of running an
 - email service / forwarding
 - ongoing maintenance
 
-The average billing for all of the above is **~$223.72/year** (roughly **$18.60/month**).
-
 You can see the fully transparent breakdown below:
 
 <div class="table-container">
@@ -87,14 +85,16 @@ You can see the fully transparent breakdown below:
   </thead>
   <tbody>
     <tr>
-      <td>$0.10</td>
-      <td>$3.88</td>
-      <td><b>$46.56</b></td>
+      <td>$0.09</td>
+      <td>$2.86</td>
+      <td><b>$34.32</b></td>
     </tr>
   </tbody>
 </table>
 <small>* This covers all hosting for the above projects/domains.</small>
 </div>
+
+The average billing for all of the above is **~$211.48/year** (roughly **$17.60/month**).
 
 The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: no part of your contribution is sent directly to me. Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
 

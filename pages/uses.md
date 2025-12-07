@@ -57,10 +57,10 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>GMKtec G2 Plus</td>
-      <td>Intel(R) N150 (4) @ 3.60 GHz</td>
-      <td>12GB</td>
-      <td><a href="https://ubuntu.com">Ubuntu</a></td>
+      <td>M2 MacBook Air</td>
+      <td>Apple M2</td>
+      <td>16GB</td>
+      <td>MacOS Sequoia</td>
     </tr>
     <tr>
       <td>ThinkPad X201</td>
