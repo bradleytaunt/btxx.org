@@ -12,7 +12,7 @@ Make sure you have the basic packages first:
 
 ~~~sh
 apk update
-apk add curl gcc gnupg gpg dirmngr procps musl-dev linux-headers zlib zlib-dev openssl openssl-dev libssl1.1
+apk add curl gcc gnupg gpg dirmngr procps musl-dev linux-headers zlib zlib-dev openssl openssl-dev yaml-dev
 ~~~
 
 Next download the latest `stable` version of `rvm` from Github, unpack it, place it in the proper user directory (~/.rvm) and install any required libs:
