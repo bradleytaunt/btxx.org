@@ -8,7 +8,10 @@ This page contains my (mostly) up-to-date dotfiles for a wide range of use cases
 	" Don't try to be vi compatible
 	set nocompatible
 
-	" Helps force plugins to load correctly when it is turned back on below
+	" Mouse support
+    set mouse=a
+
+    " Helps force plugins to load correctly when it is turned back on below
 	filetype off
 
 	" TODO: Load plugins here (pathogen or vundle)

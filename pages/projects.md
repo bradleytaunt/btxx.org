@@ -2,7 +2,7 @@
 
 This page a growing collection of active (and not-so-active) projects I am working on.
 
-All git repos can be found: [Codeberg](https://codeberg.org/btxx)<br>(Mirrors also slowly becoming available on [Github](https://github.com/bradleytaunt))
+All git repos can be found: [sourcehut](https://git.sr.ht/~bt)
 
 ## Active Projects
 
@@ -15,10 +15,10 @@ All git repos can be found: [Codeberg](https://codeberg.org/btxx)<br>(Mirrors al
 [openbased](https://openbased.btxx.org)
 : Setup OpenBSD as a daily driver using only the base programs
 
-[minwm](https://codeberg.org/btxx/minwm)
+[minwm](https://git.sr.ht/~bt/minwm)
 : An extremely minimal window manager
 
-[stato](https://codeberg.org/btxx/stato)
+[stato](https://git.sr.ht/~bt/stato)
 : Display OpenBSD server information
 
 [jsfree](https://jsfree.btxx.org)
@@ -31,7 +31,7 @@ All git repos can be found: [Codeberg](https://codeberg.org/btxx)<br>(Mirrors al
 
 I have a serious problem creating custom site generators...
 
-[mdhtml](https://codeberg.org/btxx/mdhtml)  
+[mdhtml](https://git.sr.ht/~bt/mdhtml) 
 : Tiny script for building static websites from markdown files
 
 [wruby](https://wruby.btxx.org)  
@@ -40,10 +40,10 @@ I have a serious problem creating custom site generators...
 [barf](https://barf.btxx.org)  
 : Minimal blog engine in a tiny shell script
 
-[Shinobi](https://codeberg.org/btxx/shinobi)  
+[Shinobi](https://git.sr.ht/~bt/shinobi)  
 : Text-based, RSS focused blogging "system"
 
-[pblog](https://codeberg.org/btxx/pblog)  
+[pblog](https://git.sr.ht/~bt/pblog) 
 : Pandoc static blog generator
 
 ## Clubs
@@ -59,10 +59,10 @@ I have a serious problem creating custom site generators...
 
 ## Suckless Installers / Setups
 
-[Open Suck](https://codeberg.org/btxx/open-suck-installer)  
+[Open Suck](https://sr.ht/~bt/open-suck) 
 : OpenBSD desktop based on the suckless philosophy
 
-[Alpine Suck](https://codeberg.org/btxx/alpine-suck-installer)  
+[Alpine Suck](https://sr.ht/~bt/alpine-suck)  
 : Alpine Linux desktop based on the suckless philosophy
 
 ## Experiments
