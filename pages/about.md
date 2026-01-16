@@ -8,10 +8,10 @@ I also actively maintain several [open source projects](/projects).
 
 Core tools are: 
 
-Development
+**Development**
 : HTML, CSS, Ruby/Rails, JavaScript (*yuck*)
 
-Design
+**Design**
 : Sketch, Figma, Photoshop, Balsamiq
 
 Currently improving my skills with Rails & MongoDB. I also enjoy tinkering with basic shell scripts and [Unix systems](/public/images/unix.gif).

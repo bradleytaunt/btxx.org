@@ -22,12 +22,32 @@ Very often, the go-to approach is an over-bloated table like so:
 
 ---
 
-
-|Small|Medium|Large|
-|--------|------|---|
-|$5/m  |$10/m   |$15/m |
-|1 lb   |2 lbs    |3 lbs  |
-|[Subscribe](#)|[Subscribe](#)|[Subscribe](#)|
+<table border="1">
+  <thead>
+    <tr>
+      <th>Small</th>
+      <th>Medium</th>
+      <th>Large</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$5/m</td>
+      <td>$10/m</td>
+      <td>$15/m</td>
+    </tr>
+    <tr>
+      <td>1 lb</td>
+      <td>2 lbs</td>
+      <td>3 lbs</td>
+    </tr>
+    <tr>
+      <td><a href="#">Subscribe</a></td>
+      <td><a href="#">Subscribe</a></td>
+      <td><a href="#">Subscribe</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 

@@ -16,7 +16,7 @@ By funding the hosting provider directly, you help cover the costs of running an
 You can see the fully transparent breakdown below:
 
 <div class="table-container">
-<table>
+<table border="1">
   <caption>Domain & Email Costs</caption>
   <thead>
     <tr>
@@ -36,31 +36,31 @@ You can see the fully transparent breakdown below:
     <tr>
       <td>1kb.club</td>
       <td>$29.08</td>
-      <td>--</td>
+      <td></td>
       <td>$29.08</td>
     </tr>
     <tr>
       <td>1mb.club</td>
       <td>$29.08</td>
-      <td>--</td>
+      <td></td>
       <td>$29.08</td>
     </tr>
     <tr>
       <td>xhtml.club</td>
       <td>$29.08</td>
-      <td>--</td>
+      <td></td>
       <td>$29.08</td>
     </tr>
     <tr>
       <td>httpd.rocks</td>
       <td>$24.28</td>
-      <td>--</td>
+      <td></td>
       <td>$24.28</td>
     </tr>
     <tr>
       <td>caddy.ninja</td>
       <td>$38.28</td>
-      <td>--</td>
+      <td></td>
       <td>$38.28</td>
     </tr>
     <tr>
@@ -74,7 +74,7 @@ You can see the fully transparent breakdown below:
 </div>
 
 <div class="table-container">
-<table>
+<table border="1">
   <caption>Web Hosting Costs*</caption>
   <thead>
     <tr>
@@ -97,6 +97,12 @@ You can see the fully transparent breakdown below:
 The average billing for all of the above is **~$211.48/year** (roughly **$17.60/month**).
 
 The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: no part of your contribution is sent directly to me. Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
+
+## Other Ways to Support
+
+If directly contributing to the NFS services cost isn't your jam, feel free to [sign up for Fathom Analytics using my referral code](https://usefathom.com/ref/DKHJVX). You get a $10 credit towards your account and I get a minor, continuous kickback (for as long as you continue to use the service). 
+
+That way we each get something out of it!
 
 You can still enjoy everything on this blog (and the mentioned projects) for free, so please don't feel obligated to give. 
 

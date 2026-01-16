@@ -6,7 +6,7 @@ bt@btxx.org
 As a designer/developer hybrid with over 12 years of real-world experience, I'm able to help software companies improve their user experience and ship more performant products.
 
 <div class="table-container">
-<table>
+<table border="1">
   <caption>Experience</caption>
   <thead>
     <tr>
@@ -50,7 +50,7 @@ As a designer/developer hybrid with over 12 years of real-world experience, I'm 
 Core programming languages are HTML, CSS, JavaScript, and Ruby. For design work, my preferred tools are Sketch, GIMP, and Figma. I also enjoy tinkering with basic shell scripts and Unix systems.
 
 <div class="table-container">
-<table>
+<table border="1">
   <caption>Education</caption>
   <thead>
     <tr>

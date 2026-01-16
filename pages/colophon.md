@@ -7,7 +7,7 @@ This website is a collection of living, breathing documents. As I mention on the
 For those interested I try to keep the details of the blog up-to-date with the information below:
 
 <div class="table-container">
-<table>
+<table border="1">
   <caption>Website Fast Facts</caption>
   <thead>
     <tr>

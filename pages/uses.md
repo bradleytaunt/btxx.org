@@ -5,7 +5,7 @@ This page contains a somewhat up-to-date listing of all hardware and software th
 I'm proud to support open source products and privacy-respecting communities. The list is limited right now, but the plan is to expand this over time.
 
 <div class="table-container">
-<table>
+<table border="1">
   <caption>Services</caption>
   <thead>
     <tr>
@@ -23,7 +23,7 @@ I'm proud to support open source products and privacy-respecting communities. Th
 </div>
 
 <div class="table-container">
-<table>
+<table border="1">
   <caption>Work Devices</caption>
   <thead>
     <tr>
@@ -45,7 +45,7 @@ I'm proud to support open source products and privacy-respecting communities. Th
 </div>
 
 <div class="table-container">
-<table>
+<table border="1">
   <caption>Personal Devices</caption>
   <thead>
     <tr>
