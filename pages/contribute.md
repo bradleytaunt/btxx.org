@@ -85,16 +85,16 @@ You can see the fully transparent breakdown below:
   </thead>
   <tbody>
     <tr>
-      <td>$0.09</td>
-      <td>$2.86</td>
-      <td><b>$34.32</b></td>
+      <td>$0.06</td>
+      <td>$1.76</td>
+      <td><b>$21.12</b></td>
     </tr>
   </tbody>
 </table>
 <small>* This covers all hosting for the above projects/domains.</small>
 </div>
 
-The average billing for all of the above is **~$211.48/year** (roughly **$17.60/month**).
+The average billing for all of the above is **~$198.28/year** (roughly **$16.50/month**).
 
 The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: no part of your contribution is sent directly to me. Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
 
