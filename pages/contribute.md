@@ -100,7 +100,12 @@ The account contribution page linked above will provide even more details, shoul
 
 ## Other Ways to Support
 
-If directly contributing to the NFS services cost isn't your jam, feel free to [sign up for Fathom Analytics using my referral code](https://usefathom.com/ref/DKHJVX). You get a $10 credit towards your account and I get a minor, continuous kickback (for as long as you continue to use the service). 
+If directly contributing to the NFS services cost isn't your jam, feel free to use one of the referral links for the services below. (These are services I use myself and highly recommend) 
+
+- [Sign up for Fathom Analytics](https://usefathom.com/ref/DKHJVX)
+  - You get a $10 credit towards your account and I get a minor, continuous kickback (for as long as you continue to use the service).
+- [Sign up for a NextDNS account](https://nextdns.io/?from=74d3p3h8)
+  - I get a 30% kickback to my own NextDNS account based on your first 12 months.
 
 That way we each get something out of it!
 
