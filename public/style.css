@@ -177,5 +177,6 @@ table td, table th {
     }
     table caption {
         background: black;
+        color: white;
     }
 }
