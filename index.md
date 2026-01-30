@@ -1,6 +1,6 @@
 # Bradley Taunt
 
-Developer and designer who talks about software, design, and life.
+Developer &amp; designer who talks about software, design, and life.
 
 - [About](/about)
 - [Colophon](/colophon)

@@ -4,7 +4,7 @@ Information about this website
 
 This website is a collection of living, breathing documents. As I mention on the homepage, this place is better referred to as an online [brain dump](/posts/dump). It might change over time. Styles might come and go. I can't help that, since tinkering with my personal blog is something I am very fond of. It's almost therapeutic.
 
-For those interested I try to keep the details of the blog up-to-date with the information below:
+For those interested I try to keep the details of the blog up-to-date with the information below. Keep note: items are subject to change.
 
 <div class="table-container">
 <table border="1">
@@ -26,11 +26,15 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Source code available:</td>
-      <td><a href="https://codeberg.org/btxx/btxx.org">Codeberg</a></td>
+      <td><a href="https://git.sr.ht/~bt/btxx.org">sourcehut</a></td>
     </tr>
     <tr>
       <td>Licensed under:</td>
       <td><a href="https://choosealicense.com/licenses/mit/">MIT</a></td>
+    </tr>
+    <tr>
+      <td>Typeface used:</td>
+      <td><a href="https://velvetyne.fr/fonts/velvelyne/">Velvelyne*</a></td>
     </tr>
     <tr>
       <td>Hardware used:</td>
@@ -44,5 +48,5 @@ For those interested I try to keep the details of the blog up-to-date with the i
 </table>
 </div>
 
-Keep note: items are subject to change.
+<small>* Velvelyne by Mariel Nils, Manon Van der Borght, with the contribution of Raphaël Bastide, Benjamin Dumond. Distributed by velvetyne.fr.</small>
 
