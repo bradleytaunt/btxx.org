@@ -220,6 +220,9 @@ table td, table th {
     #header #nav ul {
         margin: 0;
     }
+    #main {
+        box-shadow: none !important;
+    }
     #main p {
         text-align: left;
     }
@@ -230,16 +233,13 @@ table td, table th {
 
 @media(prefers-color-scheme: dark) {
     body {
-        background: #1B1B1B;
-    }
-    .contribute-footer, #main {
-        box-shadow: 6px 6px 0 rgba(0,0,0,0.8);
+        background: #623E62;
     }
     #main {
-        border-color: plum;
+        background: #4a354a;
     }
-    .contribute-footer {
-        border-color: lightgreen;
+    .contribute-footer, #main, h1 {
+        box-shadow: 6px 6px 0 rgba(0,0,0,0.3);
     }
     pre {
         background: black;
@@ -250,9 +250,5 @@ table td, table th {
     table caption {
         background: black;
         color: white;
-    }
-    #main {
-        background: #2d2d2d;
-        border-color: plum;
     }
 }
