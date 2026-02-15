@@ -2,7 +2,7 @@
 
 This page a growing collection of active (and not-so-active) projects I am working on.
 
-All git repos can be found: [sourcehut](https://git.sr.ht/~bt)
+All git repos can be found: [SourceHut](https://git.sr.ht/~bt)
 
 ## Active Projects
 

@@ -22,19 +22,15 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hosted on:</td>
-      <td><a href="/contribute">NearlyFreeSpeech.NET</a></td>
+      <td><a href="https://srht.site/">SourceHut Pages</a></td>
     </tr>
     <tr>
       <td>Source code available:</td>
-      <td><a href="https://git.sr.ht/~bt/btxx.org">sourcehut</a></td>
+      <td><a href="https://git.sr.ht/~bt/btxx.org">SourceHut</a></td>
     </tr>
     <tr>
       <td>Licensed under:</td>
       <td><a href="https://choosealicense.com/licenses/mit/">MIT</a></td>
-    </tr>
-    <tr>
-      <td>Typeface used:</td>
-      <td><a href="https://velvetyne.fr/fonts/velvelyne/">Velvelyne*</a></td>
     </tr>
     <tr>
       <td>Hardware used:</td>
@@ -47,6 +43,4 @@ For those interested I try to keep the details of the blog up-to-date with the i
   </tbody>
 </table>
 </div>
-
-<small>* Velvelyne by Mariel Nils, Manon Van der Borght, with the contribution of Raphaël Bastide, Benjamin Dumond. Distributed by velvetyne.fr.</small>
 
