@@ -17,7 +17,7 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>Domains, Email, and Web Hosting</i></td>
+      <td>Domains, Email, and Web Hosting</td>
       <td><a href="/contribute">See contribute page for details</a></td>
     </tr>
   </tbody>
