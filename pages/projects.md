@@ -31,11 +31,11 @@ All git repos can be found: [SourceHut](https://git.sr.ht/~bt)
 
 I have a serious problem creating custom site generators...
 
+[wruby](https://wruby.site)  
+: Minimal site generator written in Ruby
+
 [mdhtml](https://git.sr.ht/~bt/mdhtml) 
 : Tiny script for building static websites from markdown files
-
-[wruby](https://wruby.btxx.org)  
-: Minimal site generator written in Ruby
 
 [barf](https://barf.btxx.org)  
 : Minimal blog engine in a tiny shell script
