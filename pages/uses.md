@@ -11,13 +11,13 @@ I'm proud to support open source products and privacy-respecting communities. Th
   <caption>Services</caption>
   <thead>
     <tr>
-      <th>Product</th>
+      <th>Services</th>
       <th>Cost per year</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>NearlyFreeSpeech.NET<br><i>Domains, Email, and Web Hosting</i></td>
+      <td>Domains, Email, and Web Hosting</i></td>
       <td><a href="/contribute">See contribute page for details</a></td>
     </tr>
   </tbody>
