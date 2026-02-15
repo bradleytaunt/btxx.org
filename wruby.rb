@@ -5,6 +5,11 @@ require 'rss'
 require 'find'
 require 'yaml'
 
+# Set proper encoding for reading file paths
+def read_utf8(path)
+  File.read(path, encoding: "UTF-8")
+end
+
 # Load configuration
 config = YAML.load_file('_config.yml')
 
@@ -32,7 +37,7 @@ compress_site = config['misc']['compress_site']
 [output_dir, posts_output_dir, pages_output_dir].each { |dir| FileUtils.mkdir_p(dir) }
 
 # Read the footer content
-footer_content = File.read(footer_file)
+footer_content = read_utf8(footer_file)
 
 # Replace the title meta tag in the header.html
 def replace_title_placeholder(header_content, title)
@@ -48,7 +53,7 @@ end
 # Convert markdown files
 def process_markdown_files(input_directory, output_directory, header_content, footer_content)
   items = Dir.glob("#{input_directory}/**/*.md").map do |path|
-    md_content = File.read(path)
+    md_content = read_utf8(path)
     lines = md_content.lines
 
     title = extract_title_from_md(lines)
@@ -69,7 +74,7 @@ end
 
 # Create the root index file
 def generate_index(posts, header_content, footer_content, root_index_file, post_count, output_dir, posts_dir)
-  root_index_content = File.read(root_index_file)
+  root_index_content = read_utf8(root_index_file)
   root_title = extract_title_from_md(root_index_content.lines)
   root_html = Kramdown::Document.new(root_index_content).to_html
 
@@ -77,14 +82,14 @@ def generate_index(posts, header_content, footer_content, root_index_file, post_
 
   index_content = header + root_html + "<ul class=\"posts\">\n"
   posts.first(post_count).each { |post| index_content << "<li><span>#{post[:date]}</span><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a></li>\n" }
-  index_content << "</ul>\n" + footer_content
+  index_content << footer_content
 
   File.write("#{output_dir}/index.html", index_content)
 end
 
 # Create the full posts list page
 def generate_full_posts_list(posts, header_content, footer_content, posts_index_file, output_dir, posts_dir)
-  posts_index_content = File.read(posts_index_file)
+  posts_index_content = read_utf8(posts_index_file)
   posts_title = extract_title_from_md(posts_index_content.lines)
   posts_html = Kramdown::Document.new(posts_index_content).to_html
 
@@ -126,7 +131,7 @@ def generate_rss(posts, rss_file, author_name, site_name, site_url, posts_dir)
 end
 
 # Process header, posts, pages, etc.
-header_content = File.read(header_file)
+header_content = read_utf8(header_file)
 
 posts = process_markdown_files(posts_dir, posts_output_dir, header_content, footer_content).sort_by { |post| -post[:date].to_time.to_i }
 pages = process_markdown_files(pages_dir, pages_output_dir, header_content, footer_content)
