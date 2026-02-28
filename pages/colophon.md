@@ -21,8 +21,12 @@ For those interested I try to keep the details of the blog up-to-date with the i
       <td><a href="https://wruby.site">wruby</a></td>
     </tr>
     <tr>
-      <td>Hosted on:</td>
-      <td><a href="https://srht.site/">SourceHut Pages</a></td>
+      <td>Running on:</td>
+      <td>Raspberry Pi 400</td>
+    </tr>
+    <tr>
+      <td>Powered by:</td>
+      <td>OpenBSD, httpd, and relayd</td>
     </tr>
     <tr>
       <td>Source code available:</td>

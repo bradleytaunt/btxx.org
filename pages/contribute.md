@@ -63,7 +63,7 @@ You can see the fully transparent breakdown below:
 
 <div class="table-container">
 <table border="1">
-  <caption>Git Forge, Hosting &amp; Email*</caption>
+  <caption>Services</caption>
   <thead>
     <tr>
       <th>Provider</th>
@@ -74,7 +74,7 @@ You can see the fully transparent breakdown below:
   <tbody>
     <tr>
       <td>SourceHut</td>
-      <td>Git Forge &amp; Hosting</td>
+      <td>Git Forge / Mailing Lists</td>
       <td>$20</td>
     </tr>
     <tr>
@@ -89,7 +89,6 @@ You can see the fully transparent breakdown below:
     </tr>
   </tbody>
 </table>
-<small>* This covers all hosting for the above projects/domains.</small>
 </div>
 
 The average billing for all of the above is **~$183.28/year** (roughly **$15/month**).

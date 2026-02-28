@@ -1,0 +1,312 @@
+# DIY Home Network with OpenBSD, OpenWrt, and Pi-hole
+{:.no_toc}
+2026-02-28
+
+This post includes a full breakdown of my entire home network stack. My goal is to make this as accessible as possible for newcomers to jump right in and build out their own home networks. 
+
+Please feel free to [reach out](mailto:bt@btxx.org) if you notice any glaring issues or security oversights!
+
+* toc
+{:toc}
+
+## TL;DR
+
+<table border="1">
+  <caption>Home Network Stack</caption>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Usage</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fanless Industrial Mini PC (AliExpress)</td>
+      <td>OpenBSD Router</td>
+      <td>$100</td>
+    </tr>
+    <tr>
+      <td>D-Link DIR-878 (eBay)</td>
+      <td>OpenWrt Access Point</td>
+      <td>$35</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi Zero v1.2 (desk drawer)</td>
+      <td>Pi-hole</td>
+      <td>$15</td>
+    </tr>
+  </tbody>
+</table>
+
+## OpenBSD Router
+
+### Device Specs
+
+- [AliExpress](https://www.aliexpress.com/item/1005007816222614.html?spm=a2g0o.order_detail.order_detail_item.3.70a0f19cu6DDIq)
+
+Some `neofetch` stats:
+
+~~~sh
+OS: OpenBSD 7.8 amd64
+Host: INTEL J1900
+Packages: 63 (pkg_info)
+CPU: Intel Celeron N2840 (2) @ 2.159GHz
+Memory: 46MiB / 3948MiB
+~~~
+
+### pf.conf
+
+The `/etc/pf.conf` config file:
+
+~~~sh
+ext_if  = "igc0" # Internet modem (incoming)
+int_if  = "igc1" # OpenWrt DLink
+int2_if = "igc2" # Pi-hole
+
+set skip on lo
+
+anchor "miniupnpd"
+
+# Block everything by default
+block all
+
+# NAT rules
+match out on $ext_if from 192.168.1.0/24 to any nat-to ($ext_if)
+match out on $ext_if from 192.168.2.0/24 to any nat-to ($ext_if)
+
+# Normalize incoming packets
+match in on $ext_if scrub (no-df random-id max-mss 1440)
+
+# Protect against spoofing
+antispoof quick for { lo $int_if $int2_if }
+
+# Allow LAN clients to initiate connections to router
+pass in on $int_if
+pass in on $int2_if
+
+pass out on $int_if from any to 192.168.1.0/24
+pass out on $int2_if from any to 192.168.2.0/24
+
+# Allow all outbound traffic (router + LAN)
+pass out on $ext_if keep state
+~~~
+
+Let's breakdown each block for better understanding of what's going on.
+
+~~~sh
+ext_if  = "igc0" # Internet modem (incoming)
+int_if  = "igc1" # OpenWrt DLink
+int2_if = "igc2" # Pi-hole
+~~~
+
+Interface Aliases
+: Here we give human-readable names to the three network interfaces (for my personal router I'm only using 3 out of the 4 available ethernet ports). `igc0` is the WAN-facing interface connected to the internet modem, `igc1` connects to an OpenWrt D-Link router (more on that later) managing the primary LAN, and `igc2` connects to a Pi-hole for network-wide ad blocking. Naming them makes these easier further down in the config file.
+
+~~~sh
+set skip on lo
+~~~
+
+Skipping the Loopback
+: This tells `pf` to ignore the loopback interface (`lo0`). There's no point filtering traffic that never leaves the router itself (avoids unnecessary overhead).
+
+~~~sh
+anchor "miniupnpd"
+~~~
+
+MiniUPnP Anchor
+: MiniUPnP is the daemon that handles automatic port forwarding certain applications (gaming consoles, torrents etc.). This is sometimes looked at as a minor security risk, so you don't *need* to include it. Just be aware that if you decide to remove MiniUPnP, you'll be required to manually configure NAT settings for connected devices (which I can't be bothered to do...)
+
+~~~sh
+block all
+~~~
+
+Default Deny
+: `block all` is the meat and potatoes of the whole firewall. We deny everything unless explicitly permitted. This "default deny" philosophy means a mis-configured or missing rule fails *safely* rather than accidentally allowing unwanted traffic through.
+
+~~~sh
+match out on $ext_if from 192.168.1.0/24 to any nat-to ($ext_if)
+match out on $ext_if from 192.168.2.0/24 to any nat-to ($ext_if)
+~~~
+
+NAT for Both LANs
+: The two `match out` NAT rules handle address translation for both of our subnets. When traffic from the primary LAN (`192.168.1.0/24`) or the Pi-hole LAN (`192.168.2.0/24`) heads out to the internet, `pf` rewrites the source address to our router's public IP, so returning traffic knows how to find its way back.
+
+~~~sh
+match in on $ext_if scrub (no-df random-id max-mss 1440)
+~~~
+
+Packet Normalization
+: `match in on $ext_if scrub` cleans incoming packets from the internet before they're processed further. It strips the "don't fragment" flag, randomizes IP IDs to make the firewall harder to fingerprint, and clamps the max segment size to 1440 bytes to stop fragmentation issues (common with PPPoE or VPN tunnels).
+
+~~~sh
+antispoof quick for { lo $int_if $int2_if }
+~~~
+
+Anti-Spoofing
+: `antispoof quick for { lo $int_if $int2_if }` blocks packets that arrive on an interface but claim to originate from an address that should only appear on a different interface. This prevents IP spoofing attacks where a "bad actor" tries to impersonate a trusted internal address.
+
+~~~sh
+pass in on $int_if
+pass in on $int2_if
+~~~
+
+Allowing Inbound LAN Traffic
+: `pass in on $int_if` and `pass in on $int2_if` allow both internal networks to send traffic to the router. This includes things like DNS queries, gateway pings, or management access. Without these, our default deny would silently drop everything from our own local devices.
+
+~~~sh
+pass out on $int_if from any to 192.168.1.0/24
+pass out on $int2_if from any to 192.168.2.0/24
+~~~
+
+Routing Replies Back to Each LAN
+: These two `pass out` rules on the internal interfaces ensure that traffic going to each subnet can actually leave the router towards the right network. These are the return paths that make the whole setup work as an actual router. Pretty important!
+
+~~~sh
+pass out on $ext_if keep state
+~~~
+
+Allowing Outbound Internet Traffic
+: Finally, `pass out on $ext_if keep state` opens up all outbound internet traffic. The `keep state` part is the key. This tells `pf` to remember each connection so that reply packets are automatically allowed back in, without needing a separate inbound rule for every possible response.
+
+That's everything on the `pf.conf` side of things! Next we move on to `dhcpd.conf`.
+
+### dhcpd.conf
+
+The `/etc/dhcpd.conf` config file:
+
+~~~sh
+# default
+subnet 192.168.1.0 netmask 255.255.255.0 {
+  range 192.168.1.100 192.168.1.199;
+  option routers 192.168.1.1;
+  option domain-name-servers 192.168.1.1;
+}
+
+# Pi-hole
+subnet 192.168.2.0 netmask 255.255.255.0 {
+  option routers 192.168.2.1;
+  option domain-name-servers 192.168.2.1;
+  range 192.168.2.100 192.168.2.150;
+}
+
+host pihole {
+  hardware ethernet 00:e0:4c:36:01:2b;
+  fixed-address 192.168.2.100;
+}
+~~~
+
+There isn't much to explain here. This config just sets our default subnet, along with a custom one for the Pi-hole. Below that we set a custom IP for our Pi-hole which will be used in our `unbound` configuration file for our network's custom DNS.
+
+### unbound.conf
+
+The `/var/unbound/etc/unbound.conf` config file:
+
+~~~sh
+server:
+    interface: 192.168.1.1
+    interface: 192.168.2.1
+    access-control: 192.168.1.0/24 allow
+    access-control: 192.168.2.0/24 allow
+    do-ip6: no
+    verbosity: 1
+    hide-identity: yes
+    hide-version: yes
+    harden-glue: yes
+    harden-dnssec-stripped: yes
+    use-caps-for-id: yes
+    prefetch: yes
+
+forward-zone:
+    name: "."
+    forward-addr: 192.168.2.100
+    forward-addr: 9.9.9.9
+~~~
+
+Again, let's breakdown each block for better understanding of what's going on.
+
+~~~sh
+interface: 192.168.1.1
+interface: 192.168.2.1
+~~~
+
+Listening Interfaces
+: Unbound binds to `192.168.1.1` and `192.168.2.1` for the router's addresses on each internal subnet. This means both the OpenWrt LAN and the Pi-hole LAN can reach the DNS resolver, but it's never exposed on the WAN.
+
+~~~sh
+access-control: 192.168.1.0/24 allow
+access-control: 192.168.2.0/24 allow
+~~~
+
+Access Control
+: The two access-control lines whitelist which networks are actually allowed to send queries. Both subnets get allow, and everything else is implicitly refused. Even if `unbound` is somehow reachable from the outside, it won't answer.
+
+~~~sh
+do-ip6: no
+~~~
+
+IPv6 Disabled
+: Turns off IPv6 DNS resolution entirely. If your setup doesn't use IPv6 (like mine!), this keeps things simple and avoids any potential leakage through AAAA records or IPv6 transport.
+
+~~~sh
+verbosity: 1
+~~~
+
+Verbosity
+: Enables basic logging. Feel free to remove if not needed on your setup.
+
+~~~sh
+hide-identity: yes
+hide-version: yes
+~~~
+
+Identity and Version Hiding
+: Stop `unbound` from revealing its hostname and software version in response to id.server and version.bind queries.
+
+~~~sh
+harden-glue: yes
+~~~
+
+Glue Hardening
+: Tells `unbound` to reject glue records that fall outside the delegated zone. I researched that this closes off a classic DNS attack where an someone tries to slip in fake referral data. I'm no expert, but this was highly suggested through most documentation.
+
+~~~sh
+harden-dnssec-stripped: yes
+~~~
+
+DNSSEC Strip Hardening
+: Makes `unbound` refuse to fall back silently if DNSSEC signatures are stripped in transit. Without this, a man-in-the-middle could remove DNSSEC records and `unbound` would quietly accept the unsigned response.
+
+~~~sh
+use-caps-for-id: yes
+~~~
+
+0x20 Bit Randomization
+: 0x20 encoding trick that makes `unbound` randomly capitalize letters in outgoing queries and expects the same casing mirrored back. Another highly recommended rule that I found through my initial research.
+
+~~~sh
+prefetch: yes
+~~~
+
+Prefetching
+: Tells `unbound` to refresh popular DNS records just before they expire, so frequently visited domains never go stale.
+
+~~~sh
+forward-zone:
+    name: "."
+    forward-addr: 192.168.2.100
+    forward-addr: 9.9.9.9
+~~~
+
+Forward Zone
+: The main function of `unbound` for our use case. The `forward-zone` block with name: "." means all queries get forwarded upstream. The first address `192.168.2.100` is the (soon to be setup) Pi-hole, so ad blocking happens before anything hits the public internet. `9.9.9.9` (Quad9) is setup as my personal fallback in case the Pi-hole is unreachable. Feel free to use any other DNS provider if you don't like Quad9.
+
+## OpenWrt Access Point
+
+### Device Specs
+
+### AP-Only Setup
+
+## Pi-hole
+
+### Device Specs
