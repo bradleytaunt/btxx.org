@@ -1,8 +1,12 @@
 # DIY Home Network with OpenBSD, OpenWrt, and Pi-hole
 {:.no_toc}
-2026-02-28
+2026-03-01
 
-This post includes a full breakdown of my entire home network stack. My goal is to make this as accessible as possible for newcomers to jump right in and build out their own home networks. 
+This post includes a full breakdown of my entire home network stack. My goal is to make this as accessible as possible for newcomers to jump right in and build out their own home networks.
+
+<div class="alert note">
+  <b>Important:</b> I highly recommend reading through the entire tutorial <i>before</i> starting to implement anything yourself. That way you'll have a better understanding of what to expect step-by-step during your own setup.
+</div>
 
 Please feel free to [reach out](mailto:bt@btxx.org) if you notice any glaring issues or security oversights!
 
@@ -22,30 +26,53 @@ Please feel free to [reach out](mailto:bt@btxx.org) if you notice any glaring is
   </thead>
   <tbody>
     <tr>
-      <td>Fanless Industrial Mini PC (AliExpress)</td>
+      <td>Fanless Industrial Mini PC</td>
       <td>OpenBSD Router</td>
       <td>$100</td>
     </tr>
     <tr>
-      <td>D-Link DIR-878 (eBay)</td>
+      <td>D-Link DIR-878</td>
       <td>OpenWrt Access Point</td>
       <td>$35</td>
     </tr>
     <tr>
-      <td>Raspberry Pi Zero v1.2 (desk drawer)</td>
+      <td>Raspberry Pi Zero v1.2</td>
       <td>Pi-hole</td>
       <td>$15</td>
     </tr>
   </tbody>
 </table>
 
+~~~diagram
+          [ISP Modem]
+               |
+               |
+      (WAN Ethernet cable)
+               |
+               |
+        [OpenBSD Router]
+             /   \
+            /     \
+ (LAN Ethernet)  (LAN Ethernet)
+        /             \
+  [OpenWrt AP]      [Pi-hole]
+~~~
+
 ## OpenBSD Router
 
 ### Device Specs
 
-- [AliExpress](https://www.aliexpress.com/item/1005007816222614.html?spm=a2g0o.order_detail.order_detail_item.3.70a0f19cu6DDIq)
+You can find the same machine I am currently using as my OpenBSD router here: [AliExpress](https://www.aliexpress.com/item/1005007816222614.html?spm=a2g0o.order_detail.order_detail_item.3.70a0f19cu6DDIq). I have the 4GB RAM variation, but I am unsure if that model is still available. Almost any device with multiple network ports should work fine though!
 
-Some `neofetch` stats:
+I'm not going to walk through the entire install process for setting up OpenBSD. The built-in installer is actually quite good and going with the defaults on most configuration options is a safe bet. Make sure your device's main/first ethernet port is connected to your ISP's modem. This will make autoconfiguring your network *much* easier in the next steps.
+
+All the programs we will be using are built into the base OpenBSD install *except* for `miniupnpd`. You will need to install that separately:
+
+~~~sh
+doas pkg_add miniupnpd
+~~~
+
+For reference, here are the `neofetch` stats of my own router to compare against your own hardware:
 
 ~~~sh
 OS: OpenBSD 7.8 amd64
@@ -55,9 +82,29 @@ CPU: Intel Celeron N2840 (2) @ 2.159GHz
 Memory: 46MiB / 3948MiB
 ~~~
 
+With the router setup and running, test that your internet connection is working by running the following in the terminal:
+
+~~~sh
+ping openbsd.org
+~~~
+
+You should see something similar to:
+
+~~~sh
+PING openbsd.org (199.185.178.80) 56(84) bytes of data.
+64 bytes from 199.185.178.80: icmp_seq=1 ttl=240 time=101 ms
+64 bytes from 199.185.178.80: icmp_seq=2 ttl=240 time=123 ms
+64 bytes from 199.185.178.80: icmp_seq=3 ttl=240 time=64.4 ms
+...
+~~~
+
+Nice work!
+
 ### pf.conf
 
-The `/etc/pf.conf` config file:
+Now our very first step is creating and building out our `pf.conf` file. Using your editor of choice (I recommend `vim`, which you can install via `doas pkg_add vim`) make a new file located at `/etc/pf.conf`.
+
+The contents of the `/etc/pf.conf` config file:
 
 ~~~sh
 ext_if  = "igc0" # Internet modem (incoming)
@@ -92,6 +139,13 @@ pass out on $int2_if from any to 192.168.2.0/24
 pass out on $ext_if keep state
 ~~~
 
+That's the entire router config. Beautifully simple, right?
+
+<div class="alert note">
+  <b>Note:</b>
+  The external / internal interface names (<code>igc0</code>, etc) might differ on your machine. Be sure to double check the naming of your network ports by running <code>ifconfig</code>.
+</div>
+
 Let's breakdown each block for better understanding of what's going on.
 
 ~~~sh
@@ -115,7 +169,7 @@ anchor "miniupnpd"
 ~~~
 
 MiniUPnP Anchor
-: MiniUPnP is the daemon that handles automatic port forwarding certain applications (gaming consoles, torrents etc.). This is sometimes looked at as a minor security risk, so you don't *need* to include it. Just be aware that if you decide to remove MiniUPnP, you'll be required to manually configure NAT settings for connected devices (which I can't be bothered to do...)
+: MiniUPnP is the daemon that handles automatic port forwarding for certain applications (gaming consoles, torrents etc.). This is sometimes looked at as a minor security risk, so you don't *need* to include it. Just be aware that if you decide to remove MiniUPnP, you'll be required to manually configure NAT settings for connected devices (which I can't be bothered to do...)
 
 ~~~sh
 block all
@@ -173,6 +227,8 @@ That's everything on the `pf.conf` side of things! Next we move on to `dhcpd.con
 
 ### dhcpd.conf
 
+Next, we need to setup a very simple `dhcp` configuration. Create or edit the file found at `/etc/dhcpd.conf`
+
 The `/etc/dhcpd.conf` config file:
 
 ~~~sh
@@ -219,7 +275,7 @@ server:
 
 forward-zone:
     name: "."
-    forward-addr: 192.168.2.100
+    #forward-addr: 192.168.2.100
     forward-addr: 9.9.9.9
 ~~~
 
@@ -268,7 +324,7 @@ harden-glue: yes
 ~~~
 
 Glue Hardening
-: Tells `unbound` to reject glue records that fall outside the delegated zone. I researched that this closes off a classic DNS attack where an someone tries to slip in fake referral data. I'm no expert, but this was highly suggested through most documentation.
+: Tells `unbound` to reject glue records that fall outside the delegated zone. I researched that this seals off a classic DNS attack where someone can try to slip in fake referral data. I'm no expert, but this was highly suggested through most documentation.
 
 ~~~sh
 harden-dnssec-stripped: yes
@@ -294,12 +350,27 @@ Prefetching
 ~~~sh
 forward-zone:
     name: "."
-    forward-addr: 192.168.2.100
+    #forward-addr: 192.168.2.100
     forward-addr: 9.9.9.9
 ~~~
 
 Forward Zone
-: The main function of `unbound` for our use case. The `forward-zone` block with name: "." means all queries get forwarded upstream. The first address `192.168.2.100` is the (soon to be setup) Pi-hole, so ad blocking happens before anything hits the public internet. `9.9.9.9` (Quad9) is setup as my personal fallback in case the Pi-hole is unreachable. Feel free to use any other DNS provider if you don't like Quad9.
+: The main function of `unbound` for our use case. The `forward-zone` block with name: "." means all queries get forwarded upstream. The first address `192.168.2.100` is the (commented out but soon to be setup) Pi-hole, so ad blocking happens before anything hits the public internet. `9.9.9.9` (Quad9) is setup as my personal fallback in case the Pi-hole is unreachable. Feel free to use any other DNS provider if you don't like Quad9.
+
+### Bringing Everything Together
+
+Now we just need to enable all these services to run on boot and start them in our current session:
+
+~~~sh
+doas pfctl -f /etc/pf.conf
+
+doas rcctl enable dhcpd unbound
+doas rcctl start dhcpd unbound
+~~~
+
+If everything was configured correctly, you should see no errors at all. Congrats!
+
+Now it's time to setup our WiFi access point.
 
 ## OpenWrt Access Point
 

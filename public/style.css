@@ -92,6 +92,7 @@ pre {
 }
 pre:has(code.language-diagram) {
     background: none;
+    border: 0;
 }
 
 table {
@@ -115,6 +116,18 @@ table td, table th {
 }
 table td:last-of-type, table th:last-of-type {
     text-align: right;
+}
+
+.alert {
+    border: 1px solid currentColor;
+    padding: 4px;
+}
+.alert b {
+    display: block;
+}
+.alert.note {
+    background: aliceblue;
+    color: darkblue;
 }
 
 #footer {
