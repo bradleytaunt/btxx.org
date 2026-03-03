@@ -1,6 +1,6 @@
 # DIY Home Network with OpenBSD, OpenWrt, and Pi-hole
 {:.no_toc}
-2026-03-02
+2026-03-03
 
 This post includes a full breakdown of my entire home network stack. My goal is to make this as accessible as possible for newcomers to jump right in and build out their own home networks.
 

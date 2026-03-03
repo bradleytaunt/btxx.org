@@ -21,12 +21,12 @@ For those interested I try to keep the details of the blog up-to-date with the i
       <td><a href="https://wruby.site">wruby</a></td>
     </tr>
     <tr>
-      <td>Running on:</td>
-      <td>Raspberry Pi 400</td>
+      <td>Hosted on:</td>
+      <td><a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech</a></td>
     </tr>
     <tr>
       <td>Powered by:</td>
-      <td>OpenBSD, httpd, and relayd</td>
+      <td>FreeBSD</td>
     </tr>
     <tr>
       <td>Source code available:</td>
