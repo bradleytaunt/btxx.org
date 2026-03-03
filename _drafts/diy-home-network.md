@@ -1,11 +1,11 @@
 # DIY Home Network with OpenBSD, OpenWrt, and Pi-hole
 {:.no_toc}
-2026-03-01
+2026-03-02
 
 This post includes a full breakdown of my entire home network stack. My goal is to make this as accessible as possible for newcomers to jump right in and build out their own home networks.
 
-<div class="alert note">
-  <b>Important:</b> I highly recommend reading through the entire tutorial <i>before</i> starting to implement anything yourself. That way you'll have a better understanding of what to expect step-by-step during your own setup.
+<div class="alert warning">
+  <b>Important!</b> I highly recommend reading through the entire tutorial <i>before</i> starting to implement anything yourself. That way you'll have a better understanding of what to expect step-by-step during your own setup.
 </div>
 
 Please feel free to [reach out](mailto:bt@btxx.org) if you notice any glaring issues or security oversights!
@@ -374,10 +374,121 @@ Now it's time to setup our WiFi access point.
 
 ## OpenWrt Access Point
 
+For my setup I'm using the D‑Link DIR‑878 AC1900 Wi‑Fi Router as my main access point. Any device that allows you to flash OpenWrt will work just fine, but I find the DIR-878 is pretty solid in terms of price and quality.
+
+You'll need to flash OpenWrt to your device, which is fairly straightforward for most devices. Therefore, we won't be covering that in this tutorial. For reference, the documentation for flashing the DIR-878 can be [found here](https://openwrt.org/toh/d-link/dir-878_a1?s[]=open&s[]=we&s[]=card).
+
 ### Device Specs
 
-### AP-Only Setup
+- Model: AC1900 MU-MIMO Dual-Band Wi-Fi Gigabit Router (DIR-878)
+- Processor: Dual-core MT7621A @ 880 MHz
+- Memory: 128 MB DDR3 RAM, 16 MB Flash
+- Antennas: 4 × external antennas (non-detachable)
+
+### Configuring AP-Only Mode
+
+Once you device is properly flashed with OpenWrt, connect to it directly from a laptop or PC which is NOT connected to your local network. Make sure you connect to one of the DIR-878's LAN ports, *not* the WLAN. 
+
+Navigate to `192.168.1.1` in your browser and login using the default creds (`root` with no password). Be sure to update your password on the first login.
+
+The first step is to change the default IP of our AP, since we don't want to cause conflicts with our existing OpenBSD router.
+
+Navigate to **Network** > **Interfaces** and click *Edit* on the `lan` interface. Under the **General Settings** tab edit the following (if not already set automatically): 
+
+- **IPv4 Address**: 192.168.1.2
+- **IPv4 Netmask**: 255.255.255.0
+- **IPV4 broadcast**: 192.168.1.255
+
+<figure>
+  <img src="/public/images/diy-network-1.png" alt="Screenshot of the LuCi OpenWrt UI. Updating the main IP of the device.">
+  <figcaption>Update the main device IP to <code>192.168.1.2</code>, then reboot.</figcaption>
+</figure>
+
+Then navigate to the **Advanced Settings** tab under the same section and update the custom DNS to `192.168.1.1`:
+
+<figure>
+  <img src="/public/images/diy-network-2.png" alt="Screenshot of the LuCi OpenWrt UI. Updating the custom DNS to point to our OpenBSD router.">
+  <figcaption>Point the custom DNS records to our OpenBSD router (<code>192.168.1.1</code>)</figcaption>
+</figure>
+
+Finally, navigate to the **DHCP Server** tab and check the *Ignore interface* option, since DHCP will be handled by our OpenBSD router:
+
+<figure>
+  <img src="/public/images/diy-network-3.png" alt="Screenshot of the LuCi OpenWrt UI. Disable DHCP on the access point itself.">
+  <figcaption>Disable DHCP on the AP itself. This is all handled by our OpenBSD router.</figcaption>
+</figure>
+
+Save all your changes and then reboot the device.
+
+Now to test things out! Connect the AP's WLAN port to the second LAN port on your OpenBSD router. Keep your laptop/PC connected to the previous LAN port on the DIR-878. After is finishes rebooting, you should be able to login at the new IP: `192.168.1.2`.
+
+Now to setup the actual WiFi!
+
+### Setting Up WiFi
+
+Head under **Network** > **Wireless** to configure both your 2.4GHz and 5GHz WiFi bands. Select **Edit** for each band and customize them as you see fit. (Always best to go with an obscure, strong password!)
+
+<figure>
+  <img src="/public/images/diy-network-4.png" alt="Screenshot of the LuCi OpenWrt UI. Configuring the wifi access point.">
+  <figcaption>Setup your WiFi access points for the 2.4GHz and 5GHz bands. Set the security level and passwords under the "Wireless Security" tab.</figcaption>
+</figure>
+
+Once done, save changes and make sure the bands are enabled. Now unplug your device from the DIR-878 and try connecting to your new WiFi access point. If everything went according to plain, you should be able to connect without issue and have working, wireless internet! 
+
+Awesome!
 
 ## Pi-hole
 
-### Device Specs
+You could stop following this guide now and have a perfectly functional home network. But one small issue remains: dealing with ads and trackers. If you plan to always use a browser that supports ad-blocking extensions, then maybe the next steps are overkill for you. For me, I prefer to block ads directly at the network level.
+
+So, that's what were going to do!
+
+### My Pi-hole Device
+
+- **Raspberry Pi Zero v1.2**
+- **Ethernet adapter HAT**
+
+### Installing Pi-hole
+
+Since the instructions to install Pi-hole are well documented, I won't cover that part in this guide. Instead, I will assume you:
+
+1. Have Raspberry Pi OS installed and setup on a microSD card
+2. Followed the instructions to [installing Pi-hole on your device](https://docs.pi-hole.net/main/basic-install/)
+
+When all of that is setup, connect your Pi-hole via ethernet to the OpenBSD router on the 3rd LAN port (`igc2`) and boot it up.
+
+Once the device is finished booting, navigate to `192.168.2.100` in your browser and login to the Pi-hole admin. From there you will want to navigate **Settings** > **DNS** and toggle the UI view from "Basic" to "Expert". Check both IPv4 boxes for Quad9 (or your own preferred fallback) and make sure you uncheck both *Never forward non-FQDN queries* and *Never forward reverse lookups for private IP ranges*. 
+
+<figure>
+  <img src="/public/images/diy-network-5.png" alt="Screenshot of the Pi-hole Admin UI. Configuring the custom DNS settings.">
+  <figcaption>Make sure you uncheck both the "Never forward non-FQDN queries" and "Never forward reverse lookups for private IP ranges" options.</figcaption>
+</figure>
+
+Save changes and reboot the device.
+
+### Updating Our Router's Unbound
+
+Remember that commented out line in our `unbound.conf` way at the beginning of this guide? Time to activate it!
+
+SSH back into your OpenBSD router and edit the `/var/unbound/etc/unbound.conf` to point to our now active Pi-hole device:
+
+~~~sh
+forward-zone:
+    name: "."
+    forward-addr: 192.168.2.100
+    forward-addr: 9.9.9.9
+~~~
+
+Then restart `unbound` for the changes to take:
+
+~~~sh
+doas rcctl restart unbound
+~~~
+
+Now check back in your Pi-hole admin to see live updates on blocked queries in the dashboard! Goodbye garbage ads and malicious trackers!
+
+## Wrapping Up
+
+That's pretty much it. With this setup you now have a fairly secure OpenBSD router paired with an OpenWrt access point and network-wide ad-blocking. I know glancing at a guide like this might seem daunting, but it becomes more manageable once you break things down into more digestible chunks!
+
+Happy home networking!

@@ -129,6 +129,10 @@ table td:last-of-type, table th:last-of-type {
     background: aliceblue;
     color: darkblue;
 }
+.alert.warning {
+    background: lightyellow;
+    color: darkgoldenrod;
+}
 
 #footer {
     padding: 0 10px;
