@@ -46,6 +46,12 @@ You can see the fully transparent breakdown below:
       <td>$29.08</td>
     </tr>
     <tr>
+      <td>512kb.club</td>
+      <td>$29.08</td>
+      <td></td>
+      <td>$29.08</td>
+    </tr>
+    <tr>
       <td>xhtml.club</td>
       <td>$29.08</td>
       <td></td>
@@ -67,7 +73,7 @@ You can see the fully transparent breakdown below:
       <td></td>
       <td></td>
       <td></td>
-      <td><b>$177.16</b></td>
+      <td><b>$206.24</b></td>
     </tr>
   </tbody>
 </table>
@@ -94,7 +100,7 @@ You can see the fully transparent breakdown below:
 <small>* This covers all hosting for the above projects/domains.</small>
 </div>
 
-The average billing for all of the above is **~$198.28/year** (roughly **$16.50/month**).
+The average billing for all of the above is **~$227.36/year** (roughly **$19/month**).
 
 The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: no part of your contribution is sent directly to me. Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
 
@@ -104,6 +110,6 @@ If directly contributing to the NFS services cost isn't your jam, feel free to [
 
 That way we each get something out of it!
 
-You can still enjoy everything on this blog (and the mentioned projects) for free, so please don't feel obligated to give. 
+You can still enjoy everything on this blog (and the mentioned projects) for free, so please don't feel obligated to give.
 
 Thank you.

@@ -51,6 +51,9 @@ I have a serious problem creating custom site generators...
 [1MB Club](https://1mb.club)  
 : A collection of web pages weighing less than 1 megabyte
 
+[512kB Club](https://512kb.club)  
+: A collection of web pages weighing less than 512 kilobytes
+
 [1kB Club](https://1kb.club)  
 : A collection of web pages weighing less than 1 kilobyte
 
