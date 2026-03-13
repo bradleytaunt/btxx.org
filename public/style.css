@@ -1,13 +1,20 @@
 @import url("syntax.css");
+@font-face {
+    font-family: 'Alegreya';
+    src: url('/public/fonts/Alegreya.woff2') format('woff2'),
+    font-weight: normal;
+    font-style: normal;
+}
 
 *{box-sizing:border-box;}
 
 body {
-  background: #f2f2f2;
-  font-family: system-ui, sans-serif;
-  line-height: 1.33;
+  background: #f9f8dd;
+  font-family: "Alegreya", "Times New Roman", Times, serif;
+  font-size: 24px;
+  line-height: 1.45;
   margin: 0 auto;
-  max-width: 680px;
+  max-width: 66ch;
   padding: 0 10px;
   width: 100%;
 }
@@ -19,27 +26,49 @@ body {
 }
 #header #nav ul li {
     display: inline-block;
-    margin: 0 10px 10px 0;
+    margin: 0 5px 10px 0;
 }
 #header #nav a {
-    background: white;
-    border: 1px solid black;
     cursor: pointer;
     display: block;
     padding: 6px;
 }
 
 #main {
-    background: white;
-    border: 1px solid;
     margin: 0;
-    padding: 0 15px;
+    padding: 0 5px;
+}
+#main ul li,
+#main ol li {
+    margin-bottom: 10px;
+}
+
+a,a:visited {
+    color: currentColor;
+    text-decoration-thickness: 2px;
+    text-decoration-style: dotted;
+    text-underline-offset: 4px;
+}
+a:hover,a:focus {
+    text-decoration-style: solid;
+}
+
+b,strong {
+    font-weight: 600;
+}
+
+h1,h2,h4,h5,h6 {
+    font-weight: 500;
 }
 
 h1 {
     border-bottom: 1px solid;
     line-height: 1.25;
     margin: 15px 0 0 0;
+}
+
+h3 {
+    font-weight: 600;
 }
 
 ul.posts {
@@ -53,22 +82,15 @@ ul.posts li a {
 
 h2 { 
     border-bottom: 1px solid lightgrey;
-    font-size: 24px; 
     margin: 2rem 0 0; 
-}
-
-#main h3 {
-    background: #f7f7f7;
-    border-left: 4px solid lightgrey;
-    font-size: 16px;
-    padding: 4px 4px 4px 8px;
 }
 
 dd {
   margin-bottom: 10px;
 }
 dt:not(:has(a)) {
-    font-weight: 600;
+    font-style: italic;
+    font-weight: 500;
 }
 
 img{height:auto;max-width:100%;}
@@ -77,12 +99,32 @@ blockquote {
     color: brown;
     font-style: italic;
 }
+blockquote p:last-of-type {
+    margin-bottom: 0;
+}
+blockquote cite {
+    font-style: normal;
+    font-variant: small-caps;
+}
 
 figure { margin: 2.5rem auto; }
 figure img { display: block; margin: 0 auto 10px; }
-figcaption { opacity: 0.7; text-align: center; }
+figcaption { font-style: italic; opacity: 0.7; text-align: center; }
 
-pre, p code, li code { font-size: 14px; }
+pre,
+p code, 
+li code,
+dl code,
+figcaption code,
+.alert code { font-size: 90%; }
+
+p code, 
+li code,
+dl code,
+figcaption code,
+.alert code {
+    color: crimson;
+}
 
 pre {
   background: #f2f2f2;
@@ -102,7 +144,6 @@ table {
   width: 100%;
 }
 table caption {
-  background: #f2f2f2;
   border-left: 1px solid;
   border-right: 1px solid;
   border-top: 1px solid;
@@ -113,6 +154,9 @@ table tr {
 }
 table td, table th {
   padding: 4px;
+}
+table th {
+    font-weight: 600;
 }
 table td:last-of-type, table th:last-of-type {
     text-align: right;
@@ -130,7 +174,7 @@ table td:last-of-type, table th:last-of-type {
     color: darkblue;
 }
 .alert.warning {
-    background: lightyellow;
+    background: white;
     color: darkgoldenrod;
 }
 
@@ -150,12 +194,18 @@ table td:last-of-type, table th:last-of-type {
 .footer-nav ul {
     list-style: none;
     margin-top: 0;
-    max-width: 400px;
+    max-width: 500px;
     padding: 0;
 }
 .footer-nav ul li {
     display: inline-block;
     margin-right: 8px;
+}
+
+.contribute-footer {
+    border: 2px dotted;
+    display: block;
+    padding: 8px;
 }
 
 .w-100 {
@@ -164,7 +214,11 @@ table td:last-of-type, table th:last-of-type {
 
 @media(max-width: 620px) {
     body {
-        padding: 10px;
+        font-size: 20px;
+        padding: 10px 5px;
+    }
+    #main {
+        padding: 0 5px;
     }
     #header nav ul {
         margin: 0;
@@ -176,17 +230,7 @@ table td:last-of-type, table th:last-of-type {
 
 @media(prefers-color-scheme: dark) {
     body {
-        background-color: black;
-    }
-    #header #nav a {
-        border-color: white;
-    }
-    #main, #header #nav a {
-        background: #2d2d2d;
-    }
-    #main h3 {
-        background: black;
-        border-left: 4px solid lightgrey;
+        background-color: #2d0646;
     }
     pre {
         background: black;
@@ -194,7 +238,10 @@ table td:last-of-type, table th:last-of-type {
     blockquote {
         color: lightgoldenrodyellow;
     }
-    table caption {
-        background: black;
+    p code, 
+    li code,
+    dl code,
+    figcaption code{
+        color: gold;
     }
 }

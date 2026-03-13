@@ -100,7 +100,7 @@ You can see the fully transparent breakdown below:
 <small>* This covers all hosting for the above projects/domains.</small>
 </div>
 
-The average billing for all of the above is **~$227.36/year** (roughly **$19/month**).
+The average billing for all of the above is **~$227.36/year** (**~$19/month**).
 
 The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: no part of your contribution is sent directly to me. Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
 
