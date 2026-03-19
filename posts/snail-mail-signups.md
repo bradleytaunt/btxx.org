@@ -2,7 +2,7 @@
 
 2026-03-13
 
-I recently came across Adian's post on HackerNews titled [The dead Internet is not a theory anymore](https://www.adriankrebs.ch/blog/dead-internet/). It was a good read with similarly good discussions in the associated HN comments (rare, I know!). An interesting comment that stuck out to me was:
+I recently came across Adrian's post on HackerNews titled [The dead Internet is not a theory anymore](https://www.adriankrebs.ch/blog/dead-internet/). It was a good read with similarly good discussions in the associated HN comments (rare, I know!). An interesting comment that stuck out to me was:
 
 <blockquote>
   <p>I think next step will be an isolated version of invite-only internet where you have to be physically present with your invitee to give them access.</p>
