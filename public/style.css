@@ -77,6 +77,9 @@ blockquote {
     color: brown;
     font-style: italic;
 }
+blockquote cite {
+  font-variant-caps: small-caps;
+}
 
 figure { margin: 2.5rem auto; }
 figure img { display: block; margin: 0 auto 10px; }
@@ -130,8 +133,8 @@ table td:last-of-type, table th:last-of-type {
     color: darkblue;
 }
 .alert.warning {
-    background: lightyellow;
-    color: darkgoldenrod;
+    background: #fff3cd;
+    color: #856404;
 }
 
 #footer {
