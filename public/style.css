@@ -137,6 +137,14 @@ table td:last-of-type, table th:last-of-type {
     color: #856404;
 }
 
+.contribute-footer {
+  background: honeydew;
+  border: 1px solid;
+  display: block;
+  margin: 10px 0 0;
+  padding: 10px;
+}
+
 #footer {
     padding: 0 10px;
     margin: 1rem 0 2rem;
@@ -199,5 +207,8 @@ table td:last-of-type, table th:last-of-type {
     }
     table caption {
         background: black;
+    }
+    .contribute-footer {
+      background: midnightblue;
     }
 }

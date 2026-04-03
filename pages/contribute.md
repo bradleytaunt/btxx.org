@@ -2,7 +2,7 @@
 
 Enjoy my ramblings on this site? Found a particular article helpful?  Maybe consider contributing towards hosting costs.
 
-If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you're more than welcome to help fund my **NearlyFreeSpeech.NET account**:
+If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you're more than welcome to help fund my **NearlyFreeSpeech account**:
 
 [Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
 
@@ -17,7 +17,7 @@ You can see the fully transparent breakdown below:
 
 <div class="table-container">
 <table border="1">
-  <caption>Domain & Email Costs</caption>
+  <caption>Domain & Email Costs (USD)</caption>
   <thead>
     <tr>
       <th>Domain</th>
@@ -81,7 +81,7 @@ You can see the fully transparent breakdown below:
 
 <div class="table-container">
 <table border="1">
-  <caption>Web Hosting Costs*</caption>
+  <caption>Web Hosting Costs* (USD)</caption>
   <thead>
     <tr>
       <th>Daily</th>
@@ -92,17 +92,19 @@ You can see the fully transparent breakdown below:
   <tbody>
     <tr>
       <td>$0.06</td>
-      <td>$1.76</td>
-      <td><b>$21.12</b></td>
+      <td>$1.83</td>
+      <td><b>$21.96</b></td>
     </tr>
   </tbody>
 </table>
 <small>* This covers all hosting for the above projects/domains.</small>
 </div>
 
-The average billing for all of the above is **~$227.36/year** (**~$19/month**).
+The average billing for all of the above is **~$228.20/year** (**~$19/month**).
 
-The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: no part of your contribution is sent directly to me. Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
+The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: **no part of your contribution is sent to me**. 
+
+Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
 
 ## Other Ways to Support
 
