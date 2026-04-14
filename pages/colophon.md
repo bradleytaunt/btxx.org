@@ -22,11 +22,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hosted on:</td>
-      <td><a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech</a></td>
-    </tr>
-    <tr>
-      <td>Powered by:</td>
-      <td>FreeBSD</td>
+      <td><a href="https://srht.site">Sourcehut Pages</a></td>
     </tr>
     <tr>
       <td>Source code available:</td>

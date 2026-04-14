@@ -16,4 +16,6 @@ tasks:
     cd build
     tar -czf /tmp/site.tar.gz .
 - deploy: |
-    hut pages publish -d $site /tmp/site.tar.gz
+    hut pages publish -d $site --site-config $repo/siteconfig.json /tmp/site.tar.gz
+- deploy-www: |
+    hut pages publish -d www.$site --site-config $repo/siteconfig.json /tmp/site.tar.gz
