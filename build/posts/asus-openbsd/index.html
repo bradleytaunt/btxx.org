@@ -1,0 +1,148 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Liberating the ASUS CX1100CN Chromebook with OpenBSD</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="liberating-the-asus-cx1100cn-chromebook-with-openbsd">Liberating the ASUS CX1100CN Chromebook with OpenBSD</h1>
+
+<p>2026-01-16</p>
+
+<p>I’ve always enjoyed the idea of having a portable, lightweight, 11 inch laptop for my personal use for around the house and small trips. A device that I wouldn’t have to be concerned about just throwing in a backpack and forgetting about. Something inexpensive, that would allow me to shrug off breakage or theft.</p>
+
+<p>So, I snagged an ASUS CX1100CN Chromebook off eBay for just $50 Canadian.</p>
+
+<h2 id="the-specs">The Specs</h2>
+
+<ul>
+  <li><strong>Processor</strong>: Intel Celeron N3350 (1.1 GHz, dual-core)</li>
+  <li><strong>Display</strong>: 11.6-inch HD (1366 x 768 pixels) anti-glare display</li>
+  <li><strong>RAM</strong>: 4GB LPDDR4-SDRAM</li>
+  <li><strong>Storage</strong>: 32GB eMMC</li>
+  <li><strong>Battery Life</strong>: Up to 12 hours on a single charge (claimed by ASUS)</li>
+  <li><strong>Connectivity</strong>: Two USB-C ports, USB 3.2 Type A, microSD slot, audio jack</li>
+</ul>
+
+<p><strong>Important note:</strong> This laptop is <em>very</em> underpowered.</p>
+
+<p>I would not recommend this computer as a core programming or work device. Video playback cranks CPU usage to the max and opening more than 2 or 3 tabs in Firefox eats through memory. The battery life is pretty decent though, so that’s nice…</p>
+
+<h2 id="enabling-developer-mode">Enabling Developer Mode</h2>
+
+<p>Before we can do anything else we need to get our Chromebook booting into Developer Mode. While this is a fairly easy process, it does involve a little more detail than I plan to focus on this article. You can find an awesome guide directly from MrChrombox (whose firmware utility we are about to use!):</p>
+
+<ul>
+  <li><a href="https://docs.mrchromebox.tech/docs/boot-modes/developer.html">Putting your ChromeOS device into Developer Mode</a></li>
+</ul>
+
+<p>Now that we have our device booting into Developer Mode, we can move onto the next step.</p>
+
+<h2 id="removing-write-protection">Removing Write Protection</h2>
+
+<p>If you want to purge the default ChromeOS off most Chromebooks, you need to use MrChrombox’s custom (and very awesome) <a href="https://docs.mrchromebox.tech">coreboot firmware</a> utility. But in order to flash this firmware to your device you will need to disable the write protection. In the case of the ASUS CX1100CN, this requires booting into the device with the main battery disconnected or flashing the hardware directly via the <a href="https://docs.mrchromebox.tech/docs/firmware/wp/disabling.html#using-closed-case-debugging-ccd-using-a-suzyqable">SuzyQable method</a>.</p>
+
+<p>I chose the easier battery-removal method because I don’t trust myself enough with anything more advanced than that…</p>
+
+<p>The next step involves removing the back cover and disconnecting the battery. This is fairly easy, as there is only one connector you need to unplug. Just be gentle with it.</p>
+
+<figure>
+  <img src="/public/images/openbsd-chromebook-1.jpg" alt="The back cover of the chromebook removed and the battery cable disconnected" />
+  <figcaption>The disconnected battery on the ASUS CX1100CN. The white connector is what you're looking for.</figcaption>
+</figure>
+
+<figure>
+  <img src="/public/images/openbsd-chromebook-2.jpg" alt="A close up of the battery connector" />
+  <figcaption>Extra, close-up (fuzzy) of the battery connector. Slide the connector off towards the battery - don't lift it straight up.</figcaption>
+</figure>
+
+<p>With the battery disconnected, plugin your laptop adapter and boot it up.</p>
+
+<h2 id="having-fun-with-infinite-restarts">Having Fun with Infinite Restarts</h2>
+
+<p>At this point my laptop randomly started rebooting over and over again until I unplugged it. I tried this a couple times but continued to run into this “infinite” reboot (and yes, my power adapter was the proper, original one). I decided to move on to the next steps anyway. This worked out, since you will see momentarily that write protection was properly removed!</p>
+
+<p>This is more of a warning to be aware of that potential reboot “bug”.</p>
+
+<h2 id="flashing-the-firmware">Flashing the Firmware</h2>
+
+<p>Previously, you could run commands directly inside ChromeOS using <code>[CTRL+ALT+T]</code>. This no longer works since the removal of <code>sudo</code> from the crosh shell. Instead we will have to use the VT2 terminal.</p>
+
+<p>Reconnect the battery and boot up the Chromebook. At the login screen, press <code>[CTRL+ALT+F2]</code> (<code>F2</code> is right-arrow on most ChromeOS keyboards) and then login with the following user (no password required):</p>
+
+<ul>
+  <li><strong>username</strong>: chronos</li>
+</ul>
+
+<p>Once logged in, run the following:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span><span class="p">;</span> curl <span class="nt">-LOf</span> https://mrchromebox.tech/firmware-util.sh <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>bash firmware-util.sh
+</code></pre></div></div>
+
+<p>From here you can follow the next steps and options in the <a href="https://docs.mrchromebox.tech/docs/fwscript.html#firmware-utility-script">Firmware Utility Script overview</a>. Be sure to select <code>Install/Update UEFI (Full ROM) Firmware</code> in order to properly install OpenBSD in the next steps! Backing up the original firmware is probably a good idea as well.</p>
+
+<h2 id="installing-openbsd">Installing OpenBSD</h2>
+
+<p>Once that firmware utility is flashed we can reboot and install OpenBSD! Boot up your Chromebook with a OpenBSD Live USB plugged in and select it at the main boot menu.</p>
+
+<figure>
+  <img src="/public/images/openbsd-chromebook-3.jpg" alt="The glorious coreboot boot menu" />
+  <figcaption>It's alive! It's allliiiivvveee!</figcaption>
+</figure>
+
+<p>Follow the standard (and very awesome) OpenBSD installer as you would for any other device. I have a <a href="/wiki/openbsd/installation/">simple installation guide here</a>, along with my streamlined <a href="https://git.sr.ht/~bt/open-suck-installer">“suckless software” desktop setup script</a>, if you’re interested. Either way, you shouldn’t run into any issues.</p>
+
+<h2 id="can-you-hear-me-now">“Can You Hear Me Now?”</h2>
+
+<p>That’s really it. Most things work out of the box EXCEPT for sound through the speakers. It’s a known issue with this specific Chromebook (even on Linux) but you can always use headphones, right? I warned you at the beginning that this device is far from ideal as a daily driver!</p>
+
+<p>Hopefully this guide proves useful for anyone else out there looking to liberate their own ASUS CX1100CN or any Chromebook for that matter!</p>
+
+<p>Good luck and have fun!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

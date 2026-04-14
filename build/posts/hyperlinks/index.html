@@ -1,0 +1,199 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Hyperlinks Should Have Context</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="hyperlinks-should-have-context">Hyperlinks Should Have Context</h1>
+
+<p>2025-12-18</p>
+
+<p>While poorly implemented links can cause minor annoyances for users, improper <strong>interactive</strong> links can often lead to a <em>loss</em> of users.</p>
+
+<p>That’s why, if you have interactive links on a website or application, it helps to include detailed context. This avoids incorrect actions being triggered or users second-guessing themselves and needing support. You can achieve this through what I call “invisible hand-holding”. It’s not as aggressive as having forced tutorials or treating your customers like idiots, but still provides them with a sense of guidance.</p>
+
+<p>Let’s explore a fictional example:</p>
+
+<p>Jim’s Potato Emporium is a subscription service that delivers bags of potatoes to subscribers on a monthly basis. Customers have the option to subscribe via three tiers:</p>
+
+<ul>
+  <li>Small: $5/month for 1 pound bag</li>
+  <li>Medium: $10/month for 2 pound bag</li>
+  <li>Large: $15/month for 3 pound bag</li>
+</ul>
+
+<p>Keeping things simplistic for our example, new customers need to be able to subscribe to a tier from a main “pricing” page. The default user experience (UX) would likely involve three <em>interactive</em> links (or “actions”). Each link would setup a new subscription based on the corresponding tier. We will ignore any type of account creation or payment setup that would follow, to keep things streamlined.</p>
+
+<p><strong>Task</strong>: The potential customers need to be aware of each tier’s name, monthly price, and amount (of potatoes).</p>
+
+<p>Very often, the go-to approach is an over-bloated table like so:</p>
+
+<hr />
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Small</th>
+      <th>Medium</th>
+      <th>Large</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$5/m</td>
+      <td>$10/m</td>
+      <td>$15/m</td>
+    </tr>
+    <tr>
+      <td>1 lb</td>
+      <td>2 lbs</td>
+      <td>3 lbs</td>
+    </tr>
+    <tr>
+      <td><a href="#">Subscribe</a></td>
+      <td><a href="#">Subscribe</a></td>
+      <td><a href="#">Subscribe</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Notice how much bouncing around your eyes need to do for the example above? Not the best experience. Humans are familiar with reading and speaking in clear sentences. Breaking things apart into categorized, one-word items doesn’t always help easily convey your context.</p>
+
+<p>Let’s try that again but in a more natural, sentence based structure:</p>
+
+<hr />
+
+<h3 id="jims-potato-subscriptions">Jim’s Potato Subscriptions</h3>
+
+<p><strong>Small</strong>:<br /> 
+<a href="#">Get 1 lb of potatoes delivered for $5/month</a></p>
+
+<p><strong>Medium</strong>:<br />
+<a href="#">Get 2 lb of potatoes delivered for $10/month</a></p>
+
+<p><strong>Large</strong>:<br />
+<a href="#">Get 3 lb of potatoes delivered for $15/month</a></p>
+
+<hr />
+
+<p>Doesn’t that flow so much better? Your brain can process these types of sentences faster than trying to scan a table (no matter how minimal). It reads similar to how a person would talk with you face-to-face. These types of hyperlinks are often referred to as <em>descriptive links</em>.</p>
+
+<blockquote>
+  <p><strong>Get</strong> (action) <strong>1 lb of potatoes</strong> (product) <strong>delivered</strong> (expectation) for <strong>$5/month</strong> (cost)</p>
+</blockquote>
+
+<p>We can also use this page to set further expectations and answer questions that the user may not have even thought of yet.</p>
+
+<p>Let’s add some more context:</p>
+
+<hr />
+
+<h3 id="jims-potato-subscriptions-1">Jim’s Potato Subscriptions</h3>
+
+<p>Choose a potato subscription by clicking an option below.</p>
+
+<p>You can always upgrade, downgrade or cancel your subscription at anytime.</p>
+
+<p><strong>Small</strong>:<br /> 
+<a href="#">Get 1 lb of potatoes delivered for $5/month</a></p>
+
+<p><strong>Medium</strong>:<br />
+<a href="#">Get 2 lb of potatoes delivered for $10/month</a></p>
+
+<p><strong>Large</strong>:<br />
+<a href="#">Get 3 lb of potatoes delivered for $15/month</a></p>
+
+<p>In the next steps, you will need to create an account and choose a payment method.</p>
+
+<hr />
+
+<p>With this minimal amount of additional text, we have successfully provided:</p>
+
+<ul>
+  <li>a clear description of what they need to do in order to choose a subscription</li>
+  <li>reassurance that they can update or cancel at anytime</li>
+  <li>a heads up on what to expect <em>after</em> clicking an option</li>
+</ul>
+
+<p>You also might be tempted to rewrite the upgrade/downgrade portion as:</p>
+
+<blockquote>
+  <p>You can always upgrade, downgrade or cancel at anytime</p>
+</blockquote>
+
+<p>But it isn’t absolutely, 100% clear. Cancel what? The subscription? My account? Including the extra instance of the word “subscription” doesn’t hurt anyone. What it <em>actually</em> does is avoid any possible miscommunication, which is far more important than worrying about tagline “character counts”. (Looking at you, marketing teams)</p>
+
+<p>You never want your users making “leaps of faith” when it comes to interactive links or buttons. “What does this link do? Guess I’ll click and find out”. No user should ever be put into this situation. This is 100% a UX failure.</p>
+
+<h2 id="thought-experiment">Thought Experiment</h2>
+
+<p>You should take some time to think through how to apply a similar concept to future interactions this “Jim’s Potato Subscription” user might need. Such as:</p>
+
+<ul>
+  <li>skipping their next delivery</li>
+  <li>upgrading / downgrading / canceling their subscription</li>
+  <li>changing account details</li>
+</ul>
+
+<p>It might sound silly since these types of interactions are found everywhere on the web, but often times they are poorly implemented and we simply “adapt” to the bad UX. The idea of phrasing actionable items into more human-readable <em>sentences</em> might not be the best solution every time, but I find it to be a great starting point.</p>
+
+<p>If you can’t explain a clickable action with a simple sentence, that action is probably trying to do too much. Simplify.</p>
+
+<p>🥔🥔🥔</p>
+
+<h2 id="further-suggested-reading">Further Suggested Reading</h2>
+
+<ul>
+  <li><a href="https://www.nngroup.com/articles/writing-links/">Writing Hyperlinks: Salient, Descriptive, Start with Keyword</a></li>
+  <li><a href="https://accessibility.ecampusontario.ca/accessibility/best-practices/link-descriptions/">Write Descriptions for Links</a></li>
+</ul>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

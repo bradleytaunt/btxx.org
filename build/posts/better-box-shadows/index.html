@@ -1,0 +1,207 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Better Box Shadows</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="better-box-shadows">Better Box Shadows</h1>
+
+<p>2019-01-08</p>
+
+<style>
+  .message {
+      position: relative;
+      z-index: 1;
+  }
+  .box-container,
+  .box-container-depth {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border: 1px solid #eee;
+    border-radius: 10px;
+    margin: 2rem auto;
+    padding: 10px;
+    position: relative;
+    height: 200px;
+    width: 250px;
+  }
+  .box-container-depth { box-shadow: none; }
+  .box-container-depth .box-container-depth-inner {
+    bottom: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    content:'';
+    position: absolute;
+    width: 94%;
+    height: 94%;
+    left: 3%;
+    z-index: -1;
+  }
+  .box-container-depth-inner.blur {
+      filter: blur(6px);
+  }
+</style>
+
+<p>Box shadow on <abbr title="hypertext markup language">HTML</abbr> elements has been widely supported across most browsers for a while now, but I find the default options don’t allow for much visual manipulation of the shadows in general.</p>
+
+<p>Let’s take a look at a default configuration of <code>box-shadow</code>:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box-container</span> <span class="p">{</span>
+  <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">4px</span> <span class="m">8px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the example above the first property number is the origin of the <em>x-axis</em>, the second number is the origin of the <em>y-axis</em> and the third is the amount of <em>blur</em>.</p>
+
+<p>We should also add some minimal styling to cleanup the <code>.box-container</code> a little bit for our example:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box-container</span> <span class="p">{</span>
+  <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">4px</span> <span class="m">8px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">);</span>
+  <span class="c">/* Styles to make it less ugly */</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nx">#eee</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">250px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Which would render as this:</p>
+
+<div class="box-container"></div>
+
+<p>Not bad - but we can do a lot better than this.</p>
+
+<h2 id="please-sir-i-want-some-more-depth">Please sir, I want some more (depth)</h2>
+
+<p>We just need to add a simple child <code>div</code> (or use a <code>pseudo</code> element if you prefer) inside our main element we want to apply the shadow to:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-container-inner"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Now we make our inner child element <code>absolute</code> and set it’s <code>height</code> and <code>width</code> dynamically to be slightly smaller than it’s parent (percentages work best for this).</p>
+
+<p>Remember to set this child element behind it’s parent by adding <code>z-index: -1</code>.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box-container</span> <span class="p">{</span>
+  <span class="c">/* No box-shadow needed on this element anymore */</span>
+  <span class="c">/* Styles to make it less ugly */</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nx">#eee</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">250px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="inner-containers">Inner Containers</h2>
+
+<p>We also need to target the <code>box-container-inner</code> element set inside the current parent to reflect our custom shadow styling:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.box-container-inner <span class="o">{</span>
+  bottom: 0<span class="p">;</span>
+  /<span class="k">*</span> The box-shadow is added here now <span class="k">*</span>/
+  box-shadow: 0 4px 12px rgba<span class="o">(</span>0,0,0,0.3<span class="o">)</span><span class="p">;</span>
+  height: 94%<span class="p">;</span>
+  left: 3%<span class="p">;</span>
+  position: absolute<span class="p">;</span>
+  width: 94%<span class="p">;</span>
+  z-index: <span class="nt">-1</span><span class="p">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Which will make the drop-shadow render with a little more realistic depth:</p>
+
+<div class="box-container-depth"><span class="box-container-depth-inner"></span></div>
+
+<h2 id="but-wait---theres-more">But wait - there’s more!</h2>
+
+<p>We could stop now and have a decent drop-shadow that is certainly easier on the eyes - but we can make this even better with one extra property - <code>filter:blur();</code>.</p>
+
+<p>So your final code would look like this:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box-container</span> <span class="p">{</span>
+  <span class="c">/* Styles to make it less ugly */</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nx">#eee</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">250px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.box-container-inner</span> <span class="p">{</span>
+  <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">4px</span> <span class="m">12px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">);</span>
+  <span class="nl">filter</span><span class="p">:</span> <span class="nf">blur</span><span class="p">(</span><span class="m">6px</span><span class="p">);</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">94%</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">3%</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">94%</span><span class="p">;</span>
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Which renders out into a much smoother blend of a drop-shadow, creating a more realistic illusion of depth:</p>
+
+<div class="box-container-depth">
+  <span class="box-container-depth-inner blur"></span>
+</div>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Installing Older Versions of MongoDB on Arch Linux</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="installing-older-versions-of-mongodb-on-arch-linux">Installing Older Versions of MongoDB on Arch Linux</h1>
+
+<p>2023-09-11</p>
+
+<p>I’ve recently been using Arch Linux for my main work environment on my ThinkPad X260. It’s been great. As someone who is constantly drawn to minimalist operating systems such as Alpine or OpenBSD, it’s nice to use something like Arch that boasts that same minimalist approach but with greater documentation/support.</p>
+
+<p>Another major reason for the switch was the need to run older versions of “services” locally. Most people would simply suggest using Docker or vmm, but I personally run projects in self-contained, personalized directories on my system itself. I am aware of the irony in that statement… but that’s just my personal preference.</p>
+
+<p>So I thought I would share my process of setting up an older version of MongoDB (3.4 to be precise) on Arch Linux.</p>
+
+<h2 id="aur-to-the-rescue">AUR to the Rescue</h2>
+
+<p>You will need to target the specific version of MongoDB using the very awesome AUR packages:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yay <span class="nt">-S</span> mongodb34-bin
+</code></pre></div></div>
+
+<p>Follow the instructions and you’ll be good to go. Don’t forget to create the <code>/data/db</code> directory and give it proper permissions:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /data/db/
+<span class="nb">chmod</span> <span class="nt">-R</span> 777 /data/db
+</code></pre></div></div>
+
+<h2 id="what-about-my-tools">What About My “Tools”?</h2>
+
+<p>If you plan to use MongoDB, then you most likely want to utilize the core database tools (restore, dump, etc). The problem is you can’t use the default <code>mongodb-tools</code> package when trying to work with older versions of MongoDB itself. The package will complain about conflicts and ask you to override your existing version. This is <em>not</em> what we want.</p>
+
+<p>So, you’ll have to build from source locally:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/mongodb/mongo-tools
+<span class="nb">cd </span>mongodb-tools
+./make build
+</code></pre></div></div>
+
+<p>Then you’ll need to copy the built executables into the proper directory in order to use them from the terminal:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>bin/<span class="k">*</span> /usr/local/bin/
+</code></pre></div></div>
+
+<p>And that’s it! Now you can run <code>mongod</code> directly or use <code>systemctl</code> to enable it by default. Hopefully this helps anyone else curious about running older (or even outdated!) versions of MongoDB.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

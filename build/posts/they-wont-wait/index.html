@@ -1,0 +1,146 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>They Won't Wait: A Warning for Slow Websites</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="they-wont-wait-a-warning-for-slow-websites">They Won’t Wait: A Warning for Slow Websites</h1>
+
+<p>2019-06-25</p>
+
+<p><em>Your website is probably slow</em>. I’m not trying to make you feel bad or dismiss all the hard work you’ve put into your project. Heck, performance might have been a core value of the design. But websites can always be faster.</p>
+
+<p>People have become increasingly more impatient over the last decade when it comes to technology, specifically non-native web-based interactions. Users expect your website to load almost instantly or they will leave and try another site, probably one of your competitors. Why should they stick around if your competitors’ websites load half a second faster?</p>
+
+<p>Users are tired of being bombarded with tracking scripts, having to download massive component libraries, forced to deal with “accept cookies” prompts, playing a small mini-game of “close those ads!”, and then being subjected to never-ending loading screens. This is not the internet we were promised.</p>
+
+<blockquote>
+  <p>It’s in my nature, I always liked <strong>speed</strong>.</p>
+
+  <p><strong>Guy Lafleur</strong></p>
+</blockquote>
+
+<h2 id="we-can-do-better">We can do better</h2>
+
+<p>If there is only one thing that you learn from this post, hopefully it’s knowing to better value the <strong>time and money of your users</strong>. It’s a user’s <em>choice</em> to visit your website, so taking advantage of their time is extremely careless. Don’t be arrogant and ignore the cost of data on most mobile plans either. Eating up a chunk of someone’s data just for hitting your website is rage-inducing. That’s how you can lose customers permanently.</p>
+
+<p>Let’s do an analogy, because <strong>I love stupid analogies</strong>:</p>
+
+<p>Imagine going to your local hardware store because you need to buy a new hammer. Once you get to the entrance a woman holds the the door closed and asks you if it’s alright for someone to follow you around the store today. You say no. She then follows up by asking if you accept their hardware store agreement before proceeding inside - you tell her “sure”. She finally opens the door and lets you in. As you walk into the store she quickly stuffs a few advertisements for other local businesses into you hand. “Thanks”, you mutter.</p>
+
+<p>Once inside you realize the hardware store is <em>very big</em> and manually looking for a hammer might take a while. You walk up to the front desk to ask where you can find a hammer but notice the cashier is playing with their phone behind the counter. You try to get their attention but they simply raise their hand and shout “Be with you in a minute”. After a short while they get off their phone and <em>finally</em> listen to your question. They then tell you where to find the hammers.</p>
+
+<p>Does this sound like a <em>fast</em> and easy experience?</p>
+
+<p>As silly as this hypothetical trip to the hardware store might be, it’s exactly what many current websites are putting their users through. Users - read <em>customers</em> - are coming to your website with a specific goal in mind; checking out a product, consuming information or just satisfying their curiosity. Stop putting so many blockers and excessive bloat in front of them.</p>
+
+<h2 id="data-doesnt-lie">Data doesn’t lie</h2>
+
+<p>If my terrible analogy wasn’t enough to convince you to implement better performance on your website, then maybe some “BIG DATA” will.</p>
+
+<ul>
+  <li><a href="https://web.archive.org/web/20081117195303if_/http://home.blarg.net/~glinden/StanfordDataMining.2006-11-29.ppt">Amazon (PowerPoint, slide #15)</a>: 100 ms of latency resulted in 1% less sales.</li>
+  <li><a href="https://youtu.be/6x0cAzQ7PVs?t=936">Google (video)</a>: 500 ms caused a 20% drop in traffic.</li>
+  <li><a href="https://www.slideshare.net/devonauerswald/walmart-pagespeedslide">Walmart (slide #46)</a>: a 100 ms improvement brought up to 1% incremental revenue</li>
+  <li><a href="https://blog.mozilla.org/metrics/2010/04/05/firefox-page-load-speed-%E2%80%93-part-ii/">Mozilla</a>: Shaving 2.2 seconds off page load time increased downloads by 15.4%</li>
+  <li><a href="https://www.slideshare.net/stubbornella/designing-fast-websites-presentation/23-1_Create_a_component_library">Yahoo</a>: 400 ms resulted in a 5 to 9% drop in traffic</li>
+</ul>
+
+<p>All data taken from <a href="https://instant.page">instant.page</a> which I am a huge fan of ♥</p>
+
+<p>The fact something as small as 100 ms can have such a profound impact on your bottom-line should be eye-opening. You’re leaving money of the table by not tackling even the low-hanging, easy performance wins. You need to start valuing your users’ time and stop serving them excessive garbage they never asked for.</p>
+
+<h2 id="small-and-easy-wins">Small and easy wins</h2>
+
+<p>Not all of these suggestions can work for every project (due to restrictions, brand guidelines, required marketing targets, etc.) but for most developers/designers they should be easy to implement: (in no particular order of importance)</p>
+
+<ul>
+  <li>Reduce the number of web requests
+    <ul>
+      <li><a href="https://developers.google.com/web/fundamentals/performance/get-started/httprequests-5">HTTP Requests</a></li>
+    </ul>
+  </li>
+  <li>Use web-safe fonts when available or if using custom fonts utilize the <code>font-display</code> property
+    <ul>
+      <li><a href="https://www.cssfontstack.com/">CSS Font Stack</a></li>
+      <li><a href="https://css-tricks.com/font-display-masses/">Font Display for the Masses</a></li>
+    </ul>
+  </li>
+  <li>Make proper use of <em>critical CSS</em>
+    <ul>
+      <li><a href="https://alexwright.net/web-design-secrets/how-to-use-critical-css/">How to Use Critical CSS</a></li>
+      <li>Automatically generate CSS based on “above the fold”: <a href="https://github.com/filamentgroup/criticalCSS">criticalCSS</a></li>
+    </ul>
+  </li>
+  <li>Process all media (images / videos) through 3rd party tools
+    <ul>
+      <li><a href="https://cloudinary.com/">Cloudinary</a></li>
+      <li><a href="https://kraken.io/">Kraken.io</a></li>
+      <li><a href="https://piio.co/">Piio</a></li>
+      <li>Sidenote: this blog uses the <a href="https://nhoizey.github.io/jekyll-cloudinary/">jekyll-cloudinary</a> plugin to automatically process images</li>
+    </ul>
+  </li>
+  <li>Use “just-in-time” preloading (highly recommended for improved UX)
+    <ul>
+      <li><a href="https://instant.page/">Instant Page</a></li>
+    </ul>
+  </li>
+  <li>Avoid using heavy tech-stacks whenever possible
+    <ul>
+      <li>Unless it is a critical use-case, users should not have to process or download extra resources</li>
+      <li>This also includes remove ads, pop-ups, 3rd party sign-up prompts, cookie notifications, over-the-top element animations, and all other <strong>garbage</strong>. This impacts <em>UX</em> performance, which is just as crucial as website loading speed</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="no-need-to-be-extreme">No need to be extreme</h2>
+
+<p>These quick “guidelines” are just a solid jumping-off point when tackling new projects or re-working current websites. There isn’t some agreed upon <em>golden standard</em> when it comes to web performance, but I find these rules work as a great place to start. Hopefully it can help others as well.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Launching Sublime Text with dmenu on Alpine Linux</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="launching-sublime-text-with-dmenu-on-alpine-linux">Launching Sublime Text with dmenu on Alpine Linux</h1>
+
+<p>2023-04-13</p>
+
+<p>Everyone seems to be running some version of VSCode as their main editor these days. But not me. I find VSCode to be too bloated for my needs - not to mention being built on top of electron instead of <em>native</em> code. I prefer running programs that don’t try to devour all of my machine’s available memory or spike my CPU.</p>
+
+<blockquote>
+  <p><strong>Note</strong>: It’s important to remember my personal machine is a ThinkPad X201 with only 6GB of RAM (plan to upgrade to 8GB soon!). Obviously your mileage may vary if you’re using a beefier laptop or desktop…</p>
+</blockquote>
+
+<p>In case the title of this post didn’t make this obvious, my editor of choice is Sublime Text. It’s fast, has a robust plugin ecosystem, and a very friendly community of users. Because of its popularity, troubleshooting any issues you might encounter becomes much easier with the amount of information freely available online.</p>
+
+<p>The only minor downside is that it isn’t <em>fully</em> open source. Personally, I think it is well worth buying a license directly from the developers to support their efforts.</p>
+
+<p>If you haven’t played around with it yet, I highly recommend giving it a try. At the very least, I guarantee you’ll be impressed with the editor’s performance and speed! <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p>
+
+<h2 id="one-small-problem">One Small Problem…</h2>
+
+<p>Sublime is precompiled against glibc and Alpine uses musl. This makes things a little difficult. Luckily we can get around this roadblock by falling back on flatpak (which is unfortunately still locked at version 3 for Sublime).</p>
+
+<p>You’ll need to install flatpak, give your current user permission to install flatpak apps, and then install Sublime.</p>
+
+<p>(The following snippets assume you are using <code>doas</code>. If you are using <code>sudo</code>, be sure to swap accordingly)</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apk add flatpak
+adduser &lt;YourUsername&gt; flatpak
+flatpak remote-add <span class="nt">--user</span> <span class="nt">--if-not-exists</span> flathub https://flathub.org/repo/flathub.flatpakrepo
+</code></pre></div></div>
+
+<p>Congrats. You now have setup <code>flatpak</code> on your machine! Next we install Sublime Text:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flatpak <span class="nb">install </span>flathub com.sublimetext.three
+</code></pre></div></div>
+
+<p>You could stop now and simply open Sublime anytime by running the following command in your terminal:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flatpak run com.sublimetext.three
+</code></pre></div></div>
+
+<p>This works perfectly fine but I find it a little cumbersome. I would much rather open my programs directly through dmenu. Let’s set that up.</p>
+
+<h2 id="creating-system-links">Creating System Links</h2>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>doas <span class="nb">ln</span> <span class="nt">-s</span> ~/.local/share/flatpak/exports/bin/com.sublimetext.three /usr/bin/sublimetext
+</code></pre></div></div>
+
+<p>Now that those directories are linked, simply open dmenu and start typing <code>sublimetext</code>. Done and done. No more terminal commands needed to open Sublime!</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>I am aware that using a terminal-based editor such as vim or emacs would be even <em>more</em> efficient. For my own personal use I find more classical “IDE” applications to work best for me. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

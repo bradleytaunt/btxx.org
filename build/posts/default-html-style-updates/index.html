@@ -1,0 +1,147 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Modern Improvements for Default Browser Styles</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="modern-improvements-for-default-browser-styles">Modern Improvements for Default Browser Styles</h1>
+
+<p>2021-11-09</p>
+
+<p>This website <em>almost</em> exclusively uses the browser’s (whichever one that might be) default styling to render it’s HTML. I firmly believe, and have <a href="/css-js-mistake/">stated in a previous post</a>, that the default HTML styling across all browsers is a thing of beauty. “Consistent and boring” is how I tend to refer to default browser styles - and I mean that in a <em>good way</em>.</p>
+
+<p>But that doesn’t mean some minor, modern improvements couldn’t be made…</p>
+
+<h2 id="boosting-margins-and-increasing-font-size">Boosting Margins and Increasing Font Size</h2>
+
+<p>A little extra breathing room for a website’s content never hurts. Browser defaults set the inner content too close to the main window borders, creating mild eye strain to focus on the far edges of the screen when reading. Pair this with a typeface set too small and you’ve got a recipe for disaster (in terms of user experience and accessibility). Luckily for us, adding two basic CSS properties fixes all of our readability woes. All that is required is a simple boost to the existing <code>margin</code> property set on the <code>body</code> element (I personally lean towards a very specific <code>1.5em</code>) and overriding the default <code>font-size</code> to <code>18px</code><sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span><span class="m">18px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span><span class="m">1.5em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There is one <em>small</em> caveat with setting the <code>font-size</code> across the whole <code>body</code> element: code elements set in <code>monospace</code>. They will stand out larger than the other fonts found in the document (due to variations in different typeface heights, spacing etc.) so we will need to target these elements specifically:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">code</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span><span class="m">14px</span><span class="p">;</span>
+  <span class="c">/* Word wrap is optional if you plan to have long inline code snippets */</span>
+  <span class="nl">word-wrap</span><span class="p">:</span><span class="n">break-word</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="code--pre-tags">Code &amp; Pre Tags</h2>
+
+<p>Since we’ve mentioned <code>code</code> elements, let’s fix those as well. The existing styling for inline code snippets and larger pre-formatted text sections leave a lot to be desired. They don’t provide any means to wrap their inner content or make use of <code>overflow</code> properties to avoid vertically scrolling on smaller device screens. Sharing code examples becomes quite a pain when your webpage’s flow and layout is broken just by including them. Browsers could fix this easily enough by defaulting to:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">pre</span> <span class="p">{</span>
+  <span class="nl">overflow</span><span class="p">:</span><span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="basic-dark-mode-support">Basic Dark Mode Support</h2>
+
+<p>Barebones styling in current web browsers have no sane defaults<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> for system-level dark mode. What a huge letdown. This is where the most “drastic” changes will be implemented with our browser default updates. We will need the browser to change the main <code>background-color</code>, along with resetting both the text and anchor link <code>color</code> for improved accessibility. Browser defaults for anchor link color in “light mode” are blue/purple - so I’ve opted towards using gold, orange and orangered in dark mode respectively:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Dark mode */</span>
+<span class="k">@media</span> <span class="p">(</span><span class="n">prefers-color-scheme</span><span class="p">:</span> <span class="n">dark</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">@media</span> <span class="n">not</span> <span class="n">print</span> <span class="p">{</span>
+    <span class="nt">html</span> <span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="nx">#0e0e0e</span><span class="p">;</span><span class="nl">color</span><span class="p">:</span><span class="nx">#e1e1e1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">a</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span> <span class="nx">gold</span><span class="p">;}</span>
+    <span class="nt">a</span><span class="nd">:visited</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span> <span class="nx">orange</span><span class="p">;}</span>
+    <span class="nt">a</span><span class="nd">:hover</span><span class="o">,</span><span class="nt">a</span><span class="nd">:focus</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span> <span class="nx">orangered</span><span class="p">;}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>That is probably the most streamlined dark mode on the web…</p>
+
+<h2 id="the-reading-length-debate">The “Reading Length” Debate</h2>
+
+<p>Proper reading length tends to be quite the point of contention on the web. Hell, even I’ve <a href="/posts/character-unit/">written about it quite a bit</a> in the past (and many of my side projects follow that standard). The main problem I have with this is lack of <em>user control</em>. I don’t think the browser (or designers for that matter) should determine the best reading length for my own personal reading preferences. UX testing and group feedback has (somewhat) agreed upon 66-75 characters per line to be the most optimal reading experience. That is good to know. I <em>still</em> believe it should come down to user preference.</p>
+
+<p>Do you want to know an incredible feature built into browsers? <em>Window resizing</em>. Abandon the idea that you “know better” than your users and give them the power to adjust as they see fit. The web was meant to be personal and flexible.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>There isn’t much else to say, really. I think these tiny tweaks would greatly improve the default browser experience and maybe even convince others to just <em>use</em> these defaults instead of falling down the CSS rabbit hole (as fun as that might be sometimes). For easier convenience, I’ll leave the full set of CSS changes below:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span><span class="m">18px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span><span class="m">1.5em</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">code</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span><span class="m">14px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">pre</span> <span class="p">{</span>
+  <span class="nl">overflow</span><span class="p">:</span><span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="p">(</span><span class="n">prefers-color-scheme</span><span class="p">:</span> <span class="n">dark</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">@media</span> <span class="n">not</span> <span class="n">print</span> <span class="p">{</span>
+    <span class="nt">html</span> <span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="nx">#0e0e0e</span><span class="p">;</span><span class="nl">color</span><span class="p">:</span><span class="nx">#e1e1e1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">a</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span> <span class="nx">gold</span><span class="p">;}</span>
+    <span class="nt">a</span><span class="nd">:visited</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span> <span class="nx">orange</span><span class="p">;}</span>
+    <span class="nt">a</span><span class="nd">:hover</span><span class="o">,</span><span class="nt">a</span><span class="nd">:focus</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span> <span class="nx">orangered</span><span class="p">;}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p><code>18px</code> seems to be the perfect sweet spot between “almost too large, yet not small enough to strain my eyes” <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>At the time of this article’s publish date <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Stop Using Sticky Navigation on Mobile</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="stop-using-sticky-navigation-on-mobile">Stop Using Sticky Navigation on Mobile</h1>
+
+<p>2019-10-06</p>
+
+<p>Stop styling your web elements to be “sticky” on mobile. This creates a horrible experience for your users and also looks like trash from a UI perspective. Don’t style your navigation (or any components for that matter) to be “sticky” on mobile. They create poor experiences for your users and take away valuable screen space.</p>
+
+<h2 id="what-do-you-mean-by-sticky">What do you mean by “sticky”?</h2>
+
+<p>The concept of <em>sticky</em> elements include but are not exclusive to:</p>
+
+<ul>
+  <li>Navigations that follow users as they scroll</li>
+  <li>Chatbot prompt bubbles eating up half the bottom of the screen</li>
+  <li>Banners or modal prompts that pester the user to “sign up, accept cookies” etc.</li>
+</ul>
+
+<p><strong>These are bad and you should feel bad for implementing them.</strong> Spacing and layout is a critical part of a product’s design and greatly impacts the experience of its users. Stop screwing it up with ugly sticky elements.</p>
+
+<p>First, let’s breakdown “sticky” navigations and why they’re terrible. We’ll also go over some easy solutions to avoid making these bad design decisions in the first place.</p>
+
+<h2 id="the-stalking-navigation">The stalking navigation</h2>
+
+<p>When you make a decision to eat away <code>&gt;50px</code> of space at the top of the page for your site’s navigation - you’re hurting your users. You’re also making their time interacting with your website more painful.</p>
+
+<p>“Wait!” I hear sticky-nav defenders exclaim, “this navigation bar makes it so the user can <em>easily</em> interact with the site’s pages!”</p>
+
+<p><strong>What absolute rubbish.</strong> A user should only see a website’s navigation when they <em>need to use it</em>. This isn’t rocket science.</p>
+
+<p>Let’s a take a look at the problem:</p>
+
+<figure>
+    <img src="/public/images/sticky-bad-navigation.webp" alt="Bad navigation" />
+    <figcaption>Fixed navigation: you lose valuable space for an element that might only be used once per visit (<a href="/public/images/sticky-bad-navigation.webp">direct link to image</a>)</figcaption>
+</figure>
+
+<p>Knowing when to show navigation can be easily solved where the user isn’t bogged down with a chunk of their screen permanently taken away, all the while still having access to the navigation. This can be fixed by simply understanding the user context at a given time. See below:</p>
+
+<figure>
+    <img src="/public/images/sticky-good-navigation.webp" alt="Good navigation" />
+    <figcaption>Static navigation: users can focus on what is important - <strong>the content</strong> (<a href="/public/images/sticky-good-navigation.webp">direct link to image</a>)</figcaption>
+</figure>
+
+<p>Here the navigation flows up with the rest of the page as the user scrolls the main content into view. Don’t worry about creating confusion - the user knows the navigation is still at the top of the page because they <em>watched it scroll out of view</em>. This is best paired by having a matching navigation in the footer of the page as well. That way, when the user makes it to the end of a specific view they can change pages right in the “footer”. No need to scroll back to the top.</p>
+
+<h2 id="the-best-of-both-worlds">The best of both worlds?</h2>
+
+<p>Maybe you want to hide the navigation without losing the flexibility of it always being accessible at the top of the page? This is possible, although I find it still <em>somewhat</em> intrusive on the user. An easy way achieve this is by displaying the navigation when users perform a specific action, such as:</p>
+
+<ul>
+  <li>Long or multiple upward swipes on the page</li>
+  <li>Pull down menu from top of current view (easily shown to user)</li>
+</ul>
+
+<figure>
+    <img src="/public/images/sticky-good-navigation-2.webp" alt="Good navigation displaying top navigation" />
+    <figcaption>Dynamic navigation: show the user the top navigation when a certain action is performed (<a href="/public/images/sticky-good-navigation-2.webp">direct link to image</a>)</figcaption>
+</figure>
+
+<h2 id="navigations-arent-the-only-culprits">Navigations aren’t the only culprits</h2>
+
+<p>I wish that navigation items were the only sinners of the “sticky” position on mobile - but they are not alone. A few other problematic components include:</p>
+
+<ul>
+  <li>Chatbot or support “bubbles”</li>
+  <li>“Agree to our cookies” prompts</li>
+  <li>Time-based pop-up modals</li>
+</ul>
+
+<p>Every time you implement one of these components, somewhere in the world a puppy dies. Seriously - don’t be part of the problem and build these things. Push back on “marketing research” or team leads who tell you that this crap works. You’re making the mobile web worse for everyone and setting a terrible precedent for future developers.</p>
+
+<p>Stay <em>static</em>, my friends!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

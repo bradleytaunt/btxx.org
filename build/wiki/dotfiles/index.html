@@ -1,0 +1,197 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>dotfiles</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="dotfiles">dotfiles</h1>
+
+<p>This page contains my (mostly) up-to-date dotfiles for a wide range of use cases.</p>
+
+<h2 id="vimrc">.vimrc</h2>
+
+<pre><code>" Don't try to be vi compatible
+set nocompatible
+
+" Mouse support
+set mouse=a
+
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
+
+" TODO: Load plugins here (pathogen or vundle)
+
+" Turn on syntax highlighting
+syntax on
+
+" For plugins to load correctly
+filetype plugin indent on
+
+" TODO: Pick a leader key
+" let mapleader = ","
+
+" Security
+set modelines=0
+
+" Show line numbers
+set number
+
+" Show file stats
+set ruler
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=&lt;:&gt; " use % to jump between pairs
+runtime! macros/matchit.vim
+
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+map &lt;leader&gt;&lt;space&gt; :let @/=''&lt;cr&gt; " clear search
+
+" Remap help key.
+inoremap &lt;F1&gt; &lt;ESC&gt;:set invfullscreen&lt;CR&gt;a
+nnoremap &lt;F1&gt; :set invfullscreen&lt;CR&gt;
+vnoremap &lt;F1&gt; :set invfullscreen&lt;CR&gt;
+
+" Textmate holdouts
+
+" Formatting
+map &lt;leader&gt;q gqip
+
+" Visualize tabs and newlines
+set listchars=tab:▸\ ,eol:¬
+" Uncomment this to enable by default:
+" set list " To enable by default
+" Or use your leader key + l to toggle on/off
+map &lt;leader&gt;l :set list!&lt;CR&gt; " Toggle tabs and EOL
+
+" Color scheme (terminal)
+set t_Co=256
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+" in ~/.vim/colors/ and uncomment:
+" colorscheme solarized
+</code></pre>
+
+<h2 id="zshrc-extras--aliases">.zshrc extras / aliases</h2>
+
+<pre><code>export EDITOR="/bin/vim"
+
+alias suck="sudo rm -rf config.h ; sudo make install"
+alias fixmonitor="xrandr --auto --output eDP1 --mode 1366x768 --below DP2-2"
+alias alias vscode="ENABLE_WASM=1 chrome --enable-wasm --disable-unveil"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:/opt/local/bin"
+export PATH="$PATH:/mongodb/bin"
+</code></pre>
+
+<h2 id="mimeappslist">mimeapps.list</h2>
+
+<p>Place this file under <code>/usr/share/applications/mimeapps.list</code></p>
+
+<pre><code>[Default Applications]
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/ftp=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/chrome=org.qutebrowser.qutebrowser.desktop
+text/html=org.qutebrowser.qutebrowser.desktop
+application/x-extension-htm=org.qutebrowser.qutebrowser.desktop
+application/x-extension-html=org.qutebrowser.qutebrowser.desktop
+application/x-extension-shtml=org.qutebrowser.qutebrowser.desktop
+application/xhtml+xml=org.qutebrowser.qutebrowser.desktop
+application/x-extension-xhtml=org.qutebrowser.qutebrowser.desktop
+application/x-extension-xht=org.qutebrowser.qutebrowser.desktop
+image/jpeg=feh
+image/png=feh
+image/webp=feh
+</code></pre>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

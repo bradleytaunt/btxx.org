@@ -1,0 +1,97 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Setting Up 1.1.1.1 for Families on a Pi-Hole</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="setting-up-1111-for-families-on-a-pi-hole">Setting Up 1.1.1.1 for Families on a Pi-Hole</h1>
+
+<p>2021-10-28</p>
+
+<p>After seeing Cloudflare’s 1.1.1.1 for Families mentioned on the <a href="https://news.ycombinator.com/item?id=29024195">front page of HackerNews</a>, I thought it might be helpful to show those currently using a <a href="https://pi-hole.net">pi-hole device</a> how to include 1.1.1.1 alongside it.</p>
+
+<h2 id="keeping-things-updated">Keeping Things Updated</h2>
+
+<p>It should go without saying that you should be running the latest stable pi-hole version for security and full feature support. To do so, simply <code>ssh</code> into your device (or connect to it directly if you prefer) and run the following to check your pi-hole version:</p>
+
+<pre><code>pihole -v
+</code></pre>
+
+<p>And if your version is out of date, run:</p>
+
+<pre><code>pihole -up
+</code></pre>
+
+<p>Once it completes the update everything will be good to go!</p>
+
+<h2 id="adding-1111-1112">Adding 1.1.1.1 (1.1.1.2)</h2>
+
+<p>Now you need to navigate to your main pi-hole admin in your browser (most likely the url will be <em>pi.hole</em>). Login in using your credentials and the do the following steps:</p>
+
+<ol>
+  <li>Navigate to <strong>Settings</strong></li>
+  <li>Navigate to <strong>DNS</strong></li>
+  <li>Under “Upstream DNS Servers” enter:</li>
+</ol>
+
+<ul>
+  <li>Custom 1 (IPv4): 1.1.1.2</li>
+  <li>Custom 2 (IPv4): 1.0.0.2</li>
+</ul>
+
+<figure>
+    <img src="/public/images/pihole-cloudflare.png" alt="PiHole setup admin dashboard" />
+    <figcaption>PiHole DNS settings (<a href="/public/images/pihole-cloudflare.webp">link to hi-res image</a>)</figcaption>
+</figure>
+
+<h2 id="ad-block--malware-protection">Ad-Block &amp; Malware Protection</h2>
+
+<p>You now officially have protection against both intrusive advertisements <em>and</em> sites flagged with malware. Happy (and now safer) browsing!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

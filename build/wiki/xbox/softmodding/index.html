@@ -1,0 +1,84 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Softmodding the Original Xbox</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="softmodding-the-original-xbox">Softmodding the Original Xbox</h1>
+
+<p>This page details the instructions on how to soft mod an original Xbox console (v1.6 in this instance) using a USB flash drive.</p>
+
+<h2 id="materials">Materials</h2>
+
+<ul>
+  <li>A Female USB to Xbox controller port adapter</li>
+  <li>A USB flash drive that is 4GB or smaller</li>
+  <li>(Optional) If running MacOS, a working install of Windows via UTM</li>
+</ul>
+
+<h2 id="preparing-the-usb-drive">Preparing the USB Drive</h2>
+
+<ul>
+  <li>Turn on your console and connect your USB drive via the controller port adapter</li>
+  <li>Navigate to <code>Memory</code> from the Xbox Dashboard</li>
+  <li>Select the device from the available options (WARNING: This is erase everything on the USB)</li>
+  <li>Remove the USB</li>
+</ul>
+
+<h2 id="running-the-exploit">Running the Exploit</h2>
+
+<ul>
+  <li>Download the <a href="https://drive.google.com/drive/folders/1Gs_yYVotDxAxtHZeHUVr_ts7KeMgqEmQ">Xbox Softmodding Tool.zip</a>, open it, open the Softmod Package folder, and extract the contents of Endgame.zip. It should be a folder named <code>helper</code>, a folder named <code>trigger</code>, and a file called <code>payload.xbe</code>.</li>
+  <li>Copy the helper folder, trigger folder, and payload.xbe to the root of your flash drive or memory unit.</li>
+  <li>Plug the memory device into your controller and turn on the Xbox. Select “Memory”, then click your memory device. It will freeze for a minute and then the LED ring on the front of your Xbox should cycle colors before booting into the softmod installer.</li>
+  <li>Press A to install the softmod. Read the prompts that come up and press A to acknowledge them. Your Xbox will reboot.</li>
+  <li>The tool will finish setting up. You will be left on the Xbox Softmodding Tool dashboard, which is just a skinned UnleashX dashboard. You can change the skin under System → Skins.</li>
+</ul>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

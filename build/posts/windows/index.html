@@ -1,0 +1,107 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Setting Up Jekyll on Windows</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="setting-up-jekyll-on-windows">Setting Up Jekyll on Windows</h1>
+
+<p>2022-09-02</p>
+
+<p>I’ve recently been playing around with using Windows 10 as my daily operating system. So far, it has been going fairly well. Nothing will probably ever feel as “optimized” as running a Linux-based system but it works well for my current needs. Getting a Jekyll development environment setup was a different story though…</p>
+
+<p>One of the first issues with using Windows 10 is the need to run a few of my open source projects that are built off Jekyll locally. This process initially seemed a like complex process to get things running smoothly but in the end was very straightforward. The main issue came from needing to bounce around through a handful of separate tutorials to get everything running smoothly.</p>
+
+<p>So, I thought I would make this quick write-up to help those in the same situation (or even for my future self the need arises). Let’s get into it.</p>
+
+<h2 id="wsl">WSL</h2>
+
+<p>The first step involves installing <a href="https://docs.microsoft.com/en-us/windows/wsl/install">WSL</a> in order to run Linux alongside the main Windows OS. The documentation is well written and will get you up-and-running in no time. For quick reference, it essentially comes down to:</p>
+
+<ol>
+  <li>Opening PowerShell or Command Prompt as an administrator</li>
+  <li>Installing via the command: <code>wsl --install</code></li>
+  <li>Restarting your machine after the install completes</li>
+  <li>Creating your UNIX username and password</li>
+</ol>
+
+<h2 id="installing-ruby--dependencies">Installing Ruby &amp; Dependencies</h2>
+
+<p>Once logged into your UNIX terminal session (with your created user) you can begin installing everything we need for Jekyll to work properly. The first step is to installing <code>rvm</code> and the <a href="https://github.com/rvm/ubuntu_rvm">official project documentation</a> does a very good job of walking you through this.</p>
+
+<ul>
+  <li>Be sure dependencies as installed: <code>sudo apt-get install software-properties-common</code></li>
+  <li>
+    <p>Add the PPA and install the package:</p>
+
+    <p>sudo apt-add-repository -y ppa:rael-gc/rvm
+  sudo apt-get update
+  sudo apt-get install rvm</p>
+  </li>
+  <li>Add your existing user to the <code>rvm</code> group: <code>sudo usermod -a -G rvm $USER</code></li>
+</ul>
+
+<p>You will need to close and restart your session to your Ubuntu system for these changes to take. After that, we can use <code>rvm</code> to install the latest version (at this time of writing) of ruby:</p>
+
+<pre><code>rvm install 3.1.2
+</code></pre>
+
+<p>That’s it!</p>
+
+<h2 id="jekyll---finally">Jekyll - Finally!</h2>
+
+<p>The final step is to update our gems and install Jekyll:</p>
+
+<pre><code>gem update
+gem install jekyll bundler
+</code></pre>
+
+<p>Once complete you can now run your Jekyll projects locally through WSL! Nothing ground-breaking but still pretty helpful for first-time users. And best of all, at least I have a good reference point in the future if I ever run into this issue again!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

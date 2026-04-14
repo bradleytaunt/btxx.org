@@ -1,0 +1,138 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>This Site Runs in Memory</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="this-site-runs-in-memory">This Site Runs in Memory</h1>
+
+<p>2026-04-10</p>
+
+<p>Greetings! This website is being served to you from a Raspberry Pi Zero v1.3 running Alpine Linux. The best part? It’s diskless and running entirely from memory!</p>
+
+<p>This is even more impressive considering the Pi Zero only has <code>512MB</code> of total memory, <code>~40MB</code> of which is tied up running the OS. Plus, RAM is so abundant and cheap these days that we can… Oh, right.</p>
+
+<p>Anyway, what a time to be alive!</p>
+
+<div class="alert warning"><b>Wait a minute!</b>Before you start foaming at the mouth and yelling at me in all caps: <i>yes</i>, this site has Cloudflare propped up in front if it. Did you really think 512MB of shared RAM and a single core CPU would be enough to handle heavy traffic spikes??<br /><br /> Doesn't matter to me though, I'm still proud of this experiment!</div>
+
+<p>Before we start, let’s make a grocery list of all the required hardware items we need:</p>
+
+<h2 id="the-hardware">The Hardware</h2>
+
+<ul>
+  <li>Raspberry Pi Zero v1.3</li>
+  <li>8GB+ microSD card (still needed for install and booting into RAM)</li>
+  <li>Waveshare Ethernet HAT (optional, can use OTG adapter instead)</li>
+  <li>Ethernet cable</li>
+  <li>Micro USB power cord / power adapter</li>
+  <li>Cool case (optional)</li>
+</ul>
+
+<p>Additional hardware that will only be needed temporarily for the initial install of Alpine:</p>
+
+<ul>
+  <li>Monitor</li>
+  <li>HDMI to mini-HDMI adapter</li>
+  <li>Keyboard</li>
+</ul>
+
+<h2 id="preparing-our-microsd-card">Preparing Our microSD Card</h2>
+
+<p>The following was performed on macOS. Using a different operating system will require additional steps. Note that we will be extracting the <code>tar</code> content directly on to our microSD card, so make sure you download the Alpine image ending with <code>tar.gz</code>.</p>
+
+<p>Plug in SD card and find the disk with <code>diskutil list</code>. For our example the SD card will be located at <code>/dev/disk4</code>.</p>
+
+<p>Next, wipe and re-partition the card as FAT32:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diskutil eraseDisk FAT32 ALPINE MBRFormat /dev/disk4
+</code></pre></div></div>
+
+<p>Extract the Alpine tarball onto the card:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar </span>xzf alpine-rpi-<span class="k">*</span>.tar.gz <span class="nt">-C</span> /Volumes/ALPINE
+</code></pre></div></div>
+
+<p>Clean up any macOS junk then eject it:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find /Volumes/ALPINE <span class="nt">-name</span> <span class="s1">'._*'</span> <span class="nt">-delete</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> /Volumes/ALPINE/.Spotlight-V100
+<span class="nb">rm</span> <span class="nt">-rf</span> /Volumes/ALPINE/.fseventsd
+<span class="nb">rm</span> <span class="nt">-rf</span> /Volumes/ALPINE/.Trashes
+
+diskutil eject /dev/disk4
+</code></pre></div></div>
+
+<p>Now pop the microSD card into your Pi Zero. Be sure to have your Pi connected to a monitor and keyboard, then turn it on.</p>
+
+<h2 id="alpine-linux-in-diskless-mode">Alpine Linux in Diskless Mode</h2>
+
+<h2 id="optimizing-alpine-linux">Optimizing Alpine Linux</h2>
+
+<h3 id="the-software">The Software</h3>
+
+<ul>
+  <li><strong>Alpine Linux (armhf)</strong>
+    <ul>
+      <li><code>dropbear</code></li>
+      <li><code>darkhttpd</code></li>
+      <li><code>lbu</code></li>
+      <li><code>rsync</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="choosing-a-web-server">Choosing a Web Server</h2>
+
+<h2 id="choosing-a-cdn">Choosing a CDN</h2>
+
+<h2 id="backups">Backups</h2>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

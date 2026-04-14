@@ -1,0 +1,92 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>The Lazy Developer's Dark Mode</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="the-lazy-developers-dark-mode">The Lazy Developer’s Dark Mode</h1>
+
+<p>2021-04-12</p>
+
+<p>After recently jumping back to Jekyll for my personal blog, I decided to take a closer look at how I was supporting <code>dark mode</code> for my visitors. I was using the proper CSS query to target those who had system-wide dark mode enabled, but I found that the code had far too many caveats and targeted too many custom classes.</p>
+
+<p>So I thought to myself, “There <em>has</em> to be a simpler way…”</p>
+
+<h2 id="introducing-dark-mode---the-lazy-way">Introducing Dark Mode - The Lazy Way</h2>
+
+<p>Here is the default dark mode for my current website in all it’s glory:</p>
+
+<pre><code>@media (prefers-color-scheme: dark) {
+    body{background:#2d2d2d;filter:invert(1);}
+    img,.cp_embed_wrapper,pre{filter:invert(1);}
+}
+</code></pre>
+
+<p>Not much to look at, eh? Well, let’s still break it down.</p>
+
+<p>First we set the <code>body</code> to use a nice dark background color (avoid using <code>#000000</code> directly since that can cause some minor eye strain). Next we tell the browser to invert all the child elements by using <code>filter:invert(1)</code>. At this point, you could consider your work done - but there are some edge case elements…</p>
+
+<h2 id="images-codepens-amp-code---oh-my">Images, CodePens &amp; Code - Oh My!</h2>
+
+<p>Most of my articles on this site will include either an image(s), embedded CodePen examples or code snippets directly in the page. For these elements we probably <em>don’t</em> want to invert their color/text etc. All we need to do is run the filter property on these a second time (<em>after</em> the main <code>body</code> attribute):</p>
+
+<pre><code>@media (prefers-color-scheme: dark) {
+    img,.cp_embed_wrapper,pre{filter:invert(1);}
+}
+</code></pre>
+
+<p>Of course, YMMV depending on what other custom elements you want to avoid inverting.</p>
+
+<h2 id="minor-caveats">Minor Caveats</h2>
+
+<p>I should mention that since my website doesn’t use any custom coloring for anchor links, inverting <code>ahref</code> elements works out of the box. Certain projects might still require some custom overrides if the inverted version of a certain custom color looks poor.</p>
+
+<p>That’s it - enjoy being lazy!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

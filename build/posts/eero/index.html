@@ -1,0 +1,201 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Setting Up a Pi-hole Server with Eero</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="setting-up-a-pi-hole-server-with-eero">Setting Up a Pi-hole Server with Eero</h1>
+
+<p>2022-03-14</p>
+
+<p>For the past few years, I’ve been using a set of Eero routers as my home mesh network. It’s worked fairly great in that time and even seamlessly transitioned without any hiccups when my family moved house. During the initial setup, I installed <a href="https://pi-hole.net">Pi-hole</a> on a Raspberry Pi Zero WH because advertisements and tracking scripts suck.</p>
+
+<p>It was an easy process to get everything up and running, but I did notice a lack of detailed steps online for those specifically using Eero systems. So, I thought I would document this process here with the hope that it will help someone else along the way (or at the very least remain a semi-permanent place for my own reference).</p>
+
+<hr />
+
+<p>FYI: You can pay for Eero Secure and allow them to handle ad/tracker blocking for you. Personally, I prefer to have complete control over my blocklists and usage data. YMMV.</p>
+
+<hr />
+
+<h2 id="setting-up-the-pi-hole-server">Setting Up the Pi-hole Server</h2>
+
+<p>Before we get into the step-by-step details, here are the required items you’ll need:</p>
+
+<ol>
+  <li>Raspberry Pi device (I recommend the Pi Zero for simplicity and low cost)</li>
+  <li>microSD card preloaded with <a href="https://www.raspberrypi.com/software/operating-systems/">Raspberry Pi OS Lite</a> (having a desktop GUI is overkill for our use case)</li>
+  <li>micro USB to ethernet adapter (check your local Amazon)</li>
+  <li>Patience!</li>
+</ol>
+
+<p>Before you place your microSD card into the Pi and boot it up, connect it to your local computer (via USB adapter) - we will need to add some files first. Once loaded into the <code>boot</code> folder, add an empty file simply called <code>ssh</code> (no extensions). Next open your preferred text editor and enter the following code, editing the content to match your own country code and home network settings:</p>
+
+<pre><code>country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="WIFI_SSID"
+    scan_ssid=1
+    psk="WIFI_PASSWORD"
+    key_mgmt=WPA-PSK
+}
+</code></pre>
+
+<p>Save this file as <code>wpa_supplicant.conf</code> and add it to the <code>boot</code> directory as well.</p>
+
+<p>You can now safely eject the microSD card and place it into your Raspberry Pi.</p>
+
+<h2 id="plug-it-in-and-boot">Plug it in and Boot!</h2>
+
+<p>Connect power to your Pi and give it a bit of time to boot up. Once you see a nice solid green LED, go back to your local computer’s terminal and enter the following command:</p>
+
+<pre><code>ssh pi@raspberrypi.local
+</code></pre>
+
+<p>If everything was set up properly you will be asked to trust this device. Next, you will be prompted to enter the device password. The default password will be: <code>raspberry</code></p>
+
+<p><strong>Important</strong>: This is assuming you don’t currently have any other Pi devices using this hostname parameter!</p>
+
+<p>Once you are connected directly to the Pi, it’s best to check for updates:</p>
+
+<pre><code>sudo apt update
+</code></pre>
+
+<p>…and if updates are in fact available, install them via:</p>
+
+<pre><code>sudo apt upgrade
+</code></pre>
+
+<p>This next step is optional but I highly recommend it for security purposes. You should change both the hostname and password of this soon-to-be Pi-hole server. To do this simply run:</p>
+
+<pre><code>sudo raspi-config
+</code></pre>
+
+<ol>
+  <li>Edit Hostname: navigate to <code>System Settings</code> –&gt; <code>Hostname</code></li>
+  <li>Edit Password: navigate to <code>System Settings</code> –&gt; <code>Password</code></li>
+</ol>
+
+<p>Once complete, reboot the Pi. Just remember that when you try to reconnect to this device via SSH you’ll need to use both of these new parameters instead of the defaults.</p>
+
+<h2 id="installing-pi-hole">Installing Pi-hole</h2>
+
+<p>This is the easy part:</p>
+
+<pre><code>curl -sSL https://install.pi-hole.net | bash
+</code></pre>
+
+<p>Pi-hole runs a full install script that walks you through step-by-step on setting things up. It’s best to use the suggested defaults during the install - everything is pretty simple.</p>
+
+<p>Near the end of the setup you’ll be show the newly created static IP for this Pi-hole server (both IPv4 and IPv6). Write these down for easy reference in a moment.</p>
+
+<p>Once it’s finished, shutdown the Pi safely by running:</p>
+
+<pre><code>sudo shutdown now
+</code></pre>
+
+<h2 id="hardware-setup">Hardware Setup</h2>
+
+<p>With the Pi shutdown you can safely relocate it to where you have your modem and gateway Eero setup. Connect your new Pi-hole device to the secondary ethernet port on your gateway Eero<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> and power it up. (This is where the microUSB to ethernet adapter for our Pi device is needed)</p>
+
+<p>See the crude diagram below for visual reference:</p>
+
+<figure>
+    <img src="/public/images/eero-pi-hole.webp" alt="Eero Pi-hole connection diagram" />
+    <figcaption>Internet modem --&gt; Eero gateway --&gt; Pi-hole device</figcaption>
+</figure>
+
+<ul>
+  <li><strong>Grey Wire</strong>: Incoming internet connection from ISP</li>
+  <li><strong>Blue Wire</strong>: Ethernet cord connecting modem to gateway Eero</li>
+  <li><strong>Red Wire</strong>: Ethernet cord connecting secondary Eero port to Pi Zero</li>
+</ul>
+
+<p>That’s all we need to do on the hardware side of things.</p>
+
+<h2 id="configuring-the-eero-app">Configuring the Eero App</h2>
+
+<p>With everything connected properly it’s finally time to setup our custom DNS settings through Eero.</p>
+
+<ol>
+  <li>Open the Eero app (iOS or Android)</li>
+  <li>Navigate to <strong>Settings</strong> &gt; <strong>Network Settings</strong> &gt; <strong>DNS</strong></li>
+  <li>Select <strong>Customized DNS</strong> and enter both your saved IPv4 / IPv6 values</li>
+  <li>Eero will prompt you to reboot your network - do it</li>
+</ol>
+
+<p>Next we need to add your Pi-hole’s address as an IPv4 reservation:<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup></p>
+
+<ol>
+  <li>In the Eero app, navigate to <strong>Settings</strong> &gt; <strong>Network Settings</strong> &gt; <strong>Reservations &amp; port forwarding</strong></li>
+  <li>Tap <strong>Add a reservation</strong> and include your Pi-hole’s IP address</li>
+</ol>
+
+<p>After the system reboots everything <em>should</em> be working as intended! You can check by navigating to your Pi-hole IP address in your browser.</p>
+
+<h2 id="closing-thoughts">Closing Thoughts</h2>
+
+<p>None of this stuff if groundbreaking, but my hope is that even one person across the internet finds this helpful! If you run into any major bugs, please leave a comment below and I’ll do my best to help out!</p>
+
+<p>Best of luck blocking those pesky ads and trackers!</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>You don’t <em>have</em> to use your Eero gateway for this step (credit: <a href="https://old.reddit.com/user/RollMeAway83">/u/RollMeAway83</a>) <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Thanks to <a href="https://old.reddit.com/user/YankeesIT">u/YankeesIT</a> for pointing out that this is required not <em>optional</em> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

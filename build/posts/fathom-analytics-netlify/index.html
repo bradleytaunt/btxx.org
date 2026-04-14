@@ -1,0 +1,127 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Setting Up Fathom Analytics with Netlify</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="setting-up-fathom-analytics-with-netlify">Setting Up Fathom Analytics with Netlify</h1>
+
+<p>2021-01-19</p>
+
+<p>It’s no secret that I’m passionate about open source software, but I’m also extremely adamant about protecting the privacy of all users across the web. So when I decided to implement analytics on my own personal website, I ended up choosing <a href="https://usefathom.com/ref/DKHJVX">Fathom</a> (<em>get a $10 credit using that link!</em>).</p>
+
+<p>You should research further into the company yourself if you’re interested, but in a nutshell the Fathom platform provides:</p>
+
+<ul>
+  <li>GDPR, ePrivacy, PECR and CCPA compliance</li>
+  <li>ad-blocker bypasses (in a good way -&gt; zero impact on users)</li>
+  <li>anonymous visitor stats</li>
+  <li>software created by <a href="https://usefathom.com/about">indie developers</a></li>
+</ul>
+
+<p>Although this might sound like a “paid” blog post, I can assure you this is completely based on my own opinions and experience with the service. I’m just very pleased with the product :)</p>
+
+<p>Enough chit-chat - let’s breakdown how to setup Fathom on your own site hosted through Netlify!</p>
+
+<h2 id="step-0-assumptions">Step 0: Assumptions</h2>
+
+<p>I’m going into this tutorial with the assumption that you:</p>
+
+<ol>
+  <li>Have an active <a href="https://usefathom.com/ref/DKHJVX">Fathom account</a> (or are at least trying the 7-day free trial)</li>
+  <li>Have a website already setup on <a href="https://netlify.com">Netlify (custom domain optional)</a></li>
+</ol>
+
+<p>And that’s all you need.</p>
+
+<h2 id="step-1-adding-a-custom-domain-dns-setup">Step 1: Adding a Custom Domain (DNS Setup)</h2>
+
+<p>Even though you have the option to use the <code>default</code> tracking script URL, I would highly recommend setting it up through your own domain. This helps avoid any browser extensions or firewalls that might block outside URL request made by individual sites.</p>
+
+<ol>
+  <li>Navigate to the Fathom <strong>Settings</strong> page in the bottom footer (must be logged in)</li>
+  <li>Select <strong>Domains</strong> from the sidebar</li>
+  <li>Enter your custom domain in the <code>Add a new custom domain</code> input</li>
+  <li>Select <strong>Start Process</strong></li>
+  <li>Keep note of both the <code>CNAME</code> and <code>VALUE</code> (we will copy this in a moment)</li>
+</ol>
+
+<p>Open a new tab, and login to your Netlify account:</p>
+
+<ol>
+  <li>From your <code>Team Overview</code> page, navigate to the top-level <code>Domains</code> page</li>
+  <li>Select the domain you plan to add Fathom to</li>
+  <li>Under <strong>DNS settings</strong> &gt; <strong>DNS records</strong> select <code>Add New Record</code></li>
+  <li>Select <code>CNAME</code> from the dropdown of available options</li>
+  <li>Paste the Fathom <code>CNAME</code> (from the steps above) into the <strong>Name</strong> input</li>
+  <li>Paste the Fathom <code>VALUE</code> (from the steps above) into the <strong>Value</strong> input</li>
+  <li>Click <strong>Save</strong></li>
+</ol>
+
+<p>That’s it for DNS setup!</p>
+
+<h2 id="step-2-adding-fathom-your-website">Step 2: Adding Fathom Your Website</h2>
+
+<p>Now that we will be using our own custom domain for the script, it’s time to actually <em>add it</em> to our website. From the same Fathom <strong>Settings</strong> page as before:</p>
+
+<ol>
+  <li>Navigate to the <strong>Sites</strong> page in the sidebar</li>
+  <li>Enter your custom domain in the <code>Add a new site</code> input and click <strong>Get site code</strong></li>
+  <li>In the modal prompt, select your custom domain from the dropdown list (you’ll see the script code change accordingly)</li>
+  <li>Copy the tracking code snippet and add it to all the pages you plan to track on your site</li>
+  <li>When ready, select <strong>Verify site code</strong></li>
+  <li>If everything went correctly you should be done!</li>
+</ol>
+
+<h2 id="step-3-watch-those-live-stats">Step 3: Watch Those Live Stats!</h2>
+
+<p>Open a cold beer (or a bubbly soda if you prefer) and watch your website visitor stats come rolling in on the dashboard! Not only do you now have solid analytics on your website but you have the piece of mind that your users’ privacy isn’t being invaded. Everybody wins!</p>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Easy Toggle Switches</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="easy-toggle-switches">Easy Toggle Switches</h1>
+
+<p>2019-02-18</p>
+
+<p>Sometimes there is a need to use toggle elements in-place of the default <code>checkbox</code> inputs. The problem is, I tend to see a lot of developers reaching for plugins or JavaScript components in order to implement these toggles.</p>
+
+<p><em>This is overkill</em>. You can create your own custom <code>input</code> elements to mimic toggles perfectly with just a small amount of CSS.</p>
+
+<h2 id="what-we-will-be-building">What we will be building</h2>
+
+<p><img src="/public/images/easy-toggle-switches.png" alt="Easy toggle switches" /></p>
+
+<p><a href="https://codepen.io/bradleytaunt/pen/bGgbajY">Live CodePen Example</a></p>
+
+<h2 id="the-html">The HTML</h2>
+
+<p>The build structure for these toggles is really simple, we only need:</p>
+
+<ul>
+  <li>a parent container to hold all our corresponding elements</li>
+  <li>a checkbox <code>input</code> element (which we will hide)</li>
+  <li>an empty label designed to represent the slider</li>
+  <li>
+    <p>a text label that references the <code>input</code></p>
+
+    <p>/* Main toggle parent container */</p>
+    <div class="toggle-switch">
+      /* Checkbox input, hidden with CSS */
+      <input class="toggle-input" type="checkbox" id="toggle-1" />
+      /* The toggle slider element */
+      <label class="toggle-slider" for="toggle-1"></label>
+      /* The text label to the right of the slider */
+      <label class="toggle-label" for="toggle-1">Toggle Switch</label>
+  </div>
+  </li>
+</ul>
+
+<p>And that’s everything we need for the HTML.</p>
+
+<p><strong>ProTip:</strong> Don’t forget to increment both the <code>id</code> and <code>for</code> attributes when adding additional toggles. This seems like a no-brainer but it’s overlooked more than you think.</p>
+
+<h2 id="the-css">The CSS</h2>
+
+<p>To get things started we will add the styling to the <code>.toggle-switch</code> item directly (using <code>flexbox</code> in this demo for easier layout).</p>
+
+<p><strong>Sidenote</strong>: You will notice the inclusion of CSS variables in this demo - if you are unfamiliar with how to use root variables in CSS, take a look at one of my previous posts: <a href="https://accssible.com/2018/03/24/css-variables/">CSS variables</a>.</p>
+
+<pre><code>:root {
+    --primary-color: #4A90E2;
+}
+
+.toggle-switch {
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    margin: 20px 0;
+}
+</code></pre>
+
+<p>Next we will hide the default browser checkbox element since we won’t be needing it:</p>
+
+<pre><code>.toggle-input {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+}
+</code></pre>
+
+<p>Let’s also add some base styling for the <code>label</code> containing the text corresponding to it’s <code>input</code> sibling:</p>
+
+<pre><code>.toggle-label {
+    color: #ccc;
+    cursor: pointer;
+    font-weight: bold;
+    padding-left: 10px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+    transition: ease all .3s;
+}
+</code></pre>
+
+<p>Now we target the <code>.toggle-slider</code> label and add the styling for the main slider base:</p>
+
+<pre><code>/* This is just the main slider base */
+.toggle-slider {
+    background: #eee;
+    border-radius: 9999px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 
+                inset 0 4px 8px rgba(0,0,0,0.1), 
+                0 1px 1px rgba(255,255,255,1);
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    transition: all ease .3s;
+    width: 40px;
+}
+</code></pre>
+
+<p>We <em>could</em> include a separate element for the circle toggle switcher itself, but instead we will use the <code>:before</code> pseudo element:</p>
+
+<pre><code>.toggle-slider:before {
+    background: white;
+    border-radius: 9999px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1), 
+                0 2px 4px rgba(0,0,0,0.2);
+    content:'';
+    height: 16px;
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    transition: all ease .3s;
+    width: 16px;
+}
+</code></pre>
+
+<h3 id="interaction">Interaction</h3>
+
+<p>Right now we just have a static toggle that does nothing when the user interacts with it. Let’s change that by moving the pseudo element’s position based on the checkbox <code>input</code> state and updating the label text color:</p>
+
+<pre><code>.toggle-input:checked + .toggle-slider {
+    background: var(--primary-color);
+}
+.toggle-input:checked + .toggle-slider:before {
+    /* Move 100% of the width minus it's own width plus initial 'left' */
+    left: calc(100% - 18px);
+}
+
+.toggle-input:checked ~ .toggle-label {
+    color: var(--primary-color);
+}
+</code></pre>
+
+<p>And because we already included the <code>transition</code> property on both the base slider and label text, everything animates nicely between state changes.</p>
+
+<h2 id="final-code">Final code</h2>
+
+<p>To make things easier, you can find the HTML &amp; CSS is their entirety below:</p>
+
+<h3 id="html">HTML</h3>
+
+<pre><code>&lt;div class="toggle-switch"&gt;
+    &lt;input class="toggle-input" type="checkbox" id="toggle-1"&gt;
+    &lt;label class="toggle-slider" for="toggle-1"&gt;&lt;/label&gt;
+    &lt;label class="toggle-label" for="toggle-1"&gt;Toggle Switch&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="toggle-switch"&gt;
+    &lt;input class="toggle-input" type="checkbox" id="toggle-2"&gt;
+    &lt;label class="toggle-slider" for="toggle-2"&gt;&lt;/label&gt;
+    &lt;label class="toggle-label" for="toggle-2"&gt;Toggle Switch&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="toggle-switch"&gt;
+    &lt;input class="toggle-input" type="checkbox" id="toggle-3" checked&gt;
+    &lt;label class="toggle-slider" for="toggle-3"&gt;&lt;/label&gt;
+    &lt;label class="toggle-label" for="toggle-3"&gt;Toggle Switch&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="toggle-switch"&gt;
+    &lt;input class="toggle-input" type="checkbox" id="toggle-4"&gt;
+    &lt;label class="toggle-slider" for="toggle-4"&gt;&lt;/label&gt;
+    &lt;label class="toggle-label" for="toggle-4"&gt;Toggle Switch&lt;/label&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="the-css-1">The CSS</h3>
+
+<pre><code>:root {
+    --primary-color: #4A90E2;
+}
+.toggle-switch {
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    margin: 20px 0;
+}
+.toggle-input {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+}
+.toggle-slider {
+    background: #eee;
+    border-radius: 9999px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 
+                inset 0 4px 8px rgba(0,0,0,0.1), 
+                0 1px 1px rgba(255,255,255,1);
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    transition: all ease .3s;
+    width: 40px;
+}
+.toggle-slider:before {
+    background: white;
+    border-radius: 9999px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1), 
+                0 2px 4px rgba(0,0,0,0.2);
+    content:'';
+    height: 16px;
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    transition: all ease .3s;
+    width: 16px;
+}
+.toggle-input:checked + .toggle-slider {
+    background: var(--primary-color);
+}
+.toggle-input:checked + .toggle-slider:before {
+    left: calc(100% - 18px);
+}
+.toggle-label {
+    color: #ccc;
+    cursor: pointer;
+    font-weight: bold;
+    padding-left: 10px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+    transition: ease all .3s;
+}
+.toggle-input:checked ~ .toggle-label {
+    color: var(--primary-color);
+}
+</code></pre>
+
+<p>Enjoy your custom toggles!</p>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

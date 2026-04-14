@@ -1,0 +1,100 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>CSS: Indenting Text</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="css-indenting-text">CSS: Indenting Text</h1>
+
+<p>2019-04-05</p>
+
+<p>A lot of developers tend to do the bare minimum when it comes to implementing proper website typography. This isn’t an insult - I’m happy that typography is given any thought at all during development, I just believe more can always be done to improve upon it.</p>
+
+<p>In today’s <em>TypeTip</em> we’re going to play around with the <code>text-indent</code> property, look into when it’s best to use it and how to implement it properly.</p>
+
+<h2 id="the-property-and-browser-support">The property and browser support</h2>
+
+<p>Browser support is actually pretty great for such a regularly over-looked CSS property. All major desktop and mobile browsers support it:</p>
+
+<figure>
+    <img src="/public/images/text-indent-compatibility.webp" alt="Text indent browser compatibility" />
+    <figcaption>Full support across all browsers.</figcaption>
+</figure>
+
+<p>Now that doesn’t mean you should just slap this property on all your type elements and call it a day - there are specific use cases for <code>text-indent</code> and some basic rules to follow:</p>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<ol>
+  <li>Increasing readability of large text blocks that would otherwise overwhelm the reader</li>
+  <li>Replicating book or report typography layouts</li>
+</ol>
+
+<h2 id="basic-rules">Basic Rules</h2>
+
+<ol>
+  <li>Best to set this property on inner type children only - meaning items like <code>p</code> or <code>blockquotes</code> instead of main headings</li>
+  <li>When used on paragraph tags it’s best to target only <code>p</code> elements that directly follow a sibling tag (see “The CSS” below)</li>
+</ol>
+
+<h2 id="the-css">The CSS</h2>
+
+<p>Adding the property is extremely trivial, all you need is the following:</p>
+
+<pre><code>/* Best practice for paragraphs */
+p + p {
+    text-indent: 1rem; /* whatever you want */
+}
+</code></pre>
+
+<h2 id="lets-see-it-in-action">Let’s see it in action</h2>
+
+<p><a href="https://codepen.io/bradleytaunt/pen/OGXLEd/">Live CodePen Example</a></p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

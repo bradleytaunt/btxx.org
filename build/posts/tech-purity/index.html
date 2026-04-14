@@ -1,0 +1,97 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Thoughts on Technological Purity</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="thoughts-on-technological-purity">Thoughts on Technological Purity</h1>
+
+<p>2025-12-12</p>
+
+<p>“Everything should be running on OpenBSD. My desktop, router, web server, and even minor local services should <em>all</em> be built on top of the great Pufferfish BSD.”</p>
+
+<p>I told myself this “mantra” not too long ago, after diving head-first into the wonderful world of BSDs. The reasoning for this was to become well-versed in a single operating system, instead of only generally understanding a handful of systems at a top-level.  And in that time I managed to use OpenBSD as <a href="/posts/openbsd-gnome/">my main workstation</a>, <a href="/posts/openbsd-router/">my firewall / router</a>, and <a href="/posts/openbsd-linveo/">my personal web server</a>. I had fulfilled my goal of achieving software purity (or what I <em>thought</em> was purity).</p>
+
+<p>And it was pretty great - initially. Overtime small annoyances began to pop up. Mostly with my workstation. Certain applications were not available, I (begrudgingly) needed to use proprietary software, and my development workflows seemed slower than that on MacOS. Death by a thousand cuts, in a way. So I bailed on the original mantra.</p>
+
+<p>I slowly started moving over some of my devices piece-by-piece. Since I use an iPhone, returning to the M2 MacBook Air (which still is an incredible feat of hardware/software design) for my personal computing device just made sense. Apple is <em>far</em> from a perfect company, but their ecosystem between iOS and macOS is objectively solid.</p>
+
+<p>My website and projects were moved away from my OpenBSD VPS back over to NearlyFreeSpeech. I explain the main reasoning for this in my other post: <a href="/posts/planning-ahead">What Happens After I’m Gone? The Future of the Online Me</a>, if you’re interested. In a nutshell, ease-of-use, future-proofing my online presence (as much as one can) and better productivity won out.</p>
+
+<p>The OpenBSD router setup for my local network was initially switched over to OpenWRT paired with a Raspberry Pi Zero running Pihole. After a month or so of testing, I found the original, CLI-based BSD setup to be more performant and predictable. So I did return to using the original OpenBSD mini-PC router. (Hooray for an OpenBSD win!)</p>
+
+<p>Not long after, I was in a weird state where <strong>almost none</strong> of my hardware or services were using OpenBSD. Which felt <em>wrong</em> in a way, as though I betrayed some kind of sacred ideal. One that I imposed on myself. Some services were still operating on open source software, but I felt like a sellout all the same.</p>
+
+<p>For reference, after departing from the world of “pure” OpenBSD, my current setup is now as follows:</p>
+
+<ul>
+  <li>macOS as my personal workstation
+    <ul>
+      <li>(I do still have an X201 running OpenBSD for testing)</li>
+    </ul>
+  </li>
+  <li>FreeBSD (indirectly, since it was shared hosting) for my web servers</li>
+  <li>NetBSD for small microservices on a tiny VPS (early testing stages)</li>
+  <li>OpenBSD running as my home router</li>
+</ul>
+
+<p>And everything works just <em>fine</em>. I’m productive and the switch hasn’t created any major hiccups with my workflows. And in a way everything is still running on BSD since macOS is built on top of Darwin, right? (I might just be trying to cope here…)</p>
+
+<p>But there is a nagging in the back of my mind. I miss the simplicity of doing things on <em>only</em> OpenBSD. I miss the consistency across all my services and devices. It seems as though my “techie” subconscious just can’t let this “single OS” concept go. I <em>can</em> have everything running off this single operating system but if it makes me less productive and less efficient, why force it? I need to stop looking at things as “all or nothing”. It just creates self-imposed limitations.</p>
+
+<h2 id="stating-the-obvious">Stating the Obvious</h2>
+
+<p>I’m not claiming anything new by saying “Just use what works”. Plenty of developers do this everyday without issue. My core problem is overthinking the issue.</p>
+
+<p>I guess I’m rambling more about my own internal conflict on the matter, and sharing it in hopes of resonating with others who feel the same. If you <em>do</em> feel the same, I would suggest trying your best to move on from it. Or at least keeping an open mind. That’s what I’ve been trying. The slight nagging is still there, but I’ve come to understand it’s based more on gut-feeling than practical logic.</p>
+
+<p>Using open source software (as much as possible) is still important to me. But I’m no longer treating it like a personal dogma.</p>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

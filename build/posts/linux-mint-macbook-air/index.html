@@ -1,0 +1,155 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Linux Mint MacBook Air Setup</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="linux-mint-macbook-air-setup">Linux Mint MacBook Air Setup</h1>
+
+<p>2020-08-16</p>
+
+<p>I don’t like the idea of throwing away old or outdated tech (within reason), so I try to find a new purpose for some of my “retired” devices. This article will cover how to switch over a mid-2011 model MacBook Air to utilize Linux Mint.</p>
+
+<p><strong>Important</strong>: This setup will completely wipe your existing disk and create a fresh install of Linux Mint on the SSD. You have been warned.</p>
+
+<h2 id="the-specs">The Specs</h2>
+
+<p>My old MacBook Air has a pretty decent spec sheet:</p>
+
+<ul>
+  <li>Processor: <strong>1.7GHz dual-core Intel Core i5</strong></li>
+  <li>Memory: <strong>4GB of 1333MHz DDR3</strong></li>
+  <li>Graphics: <strong>Advanced Intel HD Graphics 3000</strong></li>
+  <li>SSD: <strong>128 GB</strong></li>
+</ul>
+
+<p>And let’s take a look at the basic system requirements Linux Mint suggests:</p>
+
+<ul>
+  <li>2GB RAM</li>
+  <li>Dual Core Processor</li>
+  <li>20GB free disk space</li>
+</ul>
+
+<p>We are looking pretty good!</p>
+
+<h2 id="step-1-download-linux-mint">Step 1: Download Linux Mint</h2>
+
+<p>For this setup we will be using the latest, stable version (at this time of writing) of Linux Mint 20 “Ulyana” - Xfce which is 20. You can download the necessary files here:</p>
+
+<ul>
+  <li><a href="https://www.linuxmint.com/edition.php?id=283">Linux Mint 20 “Ulyana” - Xfce</a> 1.8GB</li>
+</ul>
+
+<h2 id="step-2-flash-linux-mint-to-usb-stick">Step 2: Flash Linux Mint to USB Stick</h2>
+
+<p>Next we just need to flash the Linux Mint OS to a USB storage device. If you need to purchase some, you can easily find them on Amazon (affliate link):</p>
+
+<ul>
+  <li>
+    <p><a href="https://www.amazon.com/gp/product/B00JB3NXIS/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00JB3NXIS&amp;linkCode=as2&amp;tag=uglyduck-20&amp;linkId=494f4c1dd4e21782ecb865bcaa5a526b">Kootion 10 Pack 4GB Flash Drive 4gb USB 2.0 Flash Drives Keychain USB Drive Bulk Thumb Drive Swivel Memory Stick Black</a></p>
+  </li>
+  <li>Download <a href="https://www.balena.io/etcher/">Balena Etcher</a> for your current operating system</li>
+  <li>Run the installer</li>
+</ul>
+
+<p>Once installed, open Etcher do the following:</p>
+
+<ol>
+  <li>Select your downloaded Linux Mint ISO file</li>
+  <li>Select your USB stick/device as the media</li>
+  <li>Flash media</li>
+  <li>???</li>
+  <li>Profit!!</li>
+</ol>
+
+<h2 id="step-3-boot-from-usb">Step 3: Boot from USB</h2>
+
+<ul>
+  <li>Make sure your Macbook Air is turned off</li>
+  <li>Plug your newly flashed USB stick into the MacBook Air</li>
+  <li>Turn on the MacBook Air</li>
+  <li>Immediately hold down the <strong>alt/option</strong> button (keep holding until the prompt screen is visible)</li>
+  <li>You will be shown drive “icons” - you want to select your USB drive (normally the far right icon)</li>
+  <li>Press <strong>Enter</strong></li>
+  <li>Select the first item in the list that appears “Start Linux Mint”</li>
+</ul>
+
+<p>After this you will boot into a “live session” of the Linux Mint operating system.</p>
+
+<h2 id="step-4-installing-linux-mint">Step 4: Installing Linux Mint</h2>
+
+<p>Linux Mint makes it very easy for you to install it’s OS step-by-step (similar to most other Linux distros). Simply <strong>double-click</strong> on the “Install Linux Mint” CD icon on the main desktop.</p>
+
+<ul>
+  <li>Choose your language. then hit <strong>Continue</strong></li>
+  <li>Select your preferred keyboard layout, then hit <strong>Continue</strong></li>
+  <li><em>Optional</em>: You might be asked to connect to a WiFi network, if you are set it up now</li>
+  <li>I would suggest downloading the multimedia codecs to make things easier, then hit <strong>Continue</strong></li>
+  <li>For installation type, select “Erase disk and install Linux Mint”, then hit <strong>Continue</strong>
+    <ul>
+      <li>WARNING: This will wipe your current drive completely - make sure you are okay with this!</li>
+    </ul>
+  </li>
+  <li>It will issue you with a warning prompt, simply click <strong>Continue</strong></li>
+  <li>Select your timezone, then hit <strong>Continue</strong></li>
+  <li>Enter your name, a username, a name for your computer, and set a password (you will use this to login moving forward)</li>
+  <li>Wait for the installation to complete</li>
+  <li>Once complete, you will be prompted to <strong>reboot your system</strong></li>
+  <li>After a reboot you will be prompted to remove the USB device and then press <strong>Enter</strong></li>
+  <li>Welcome to Linux Mint!</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Linux Mint is not only a great operating system, but it is also an excellent starting point for newcomers to Linux in general. It’s stable enough to be used as a daily driver and popular enough that most minor issues can be solved with a quick internet search.</p>
+
+<p>Hopefully this inspires others to try “recycling” their older Apple products instead of tossing them away or having them collect dust.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

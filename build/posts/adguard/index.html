@@ -1,0 +1,126 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Setting Up AdGuard Home with Eero</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="setting-up-adguard-home-with-eero">Setting Up AdGuard Home with Eero</h1>
+
+<p>2022-11-04</p>
+
+<p>Eariler this year I posted <a href="/eero">detailed instructions on setting up Pi-Hole with Eero</a> and it seemed to help out a few people having troubles. With AdGuard Home recently popping up on the <a href="https://news.ycombinator.com/item?id=33387678">frontpage of HackerNews</a>, I thought now would be a great time to post instructions of setting up <em>that</em> service alongside Eero devices.</p>
+
+<h2 id="what-youll-need">What You’ll Need</h2>
+
+<ol>
+  <li>Raspberry Pi device (I recommend the Pi Zero for simplicity and low cost)</li>
+  <li>microSD card</li>
+  <li><a href="https://www.raspberrypi.com/software/">Raspberry Pi Imager</a></li>
+  <li>micro USB to ethernet adapter (check your local Amazon)</li>
+  <li>Patience!</li>
+</ol>
+
+<h2 id="setting-up-the-raspberry-pi">Setting Up the Raspberry Pi</h2>
+
+<p>The first thing we need to do is flash Raspberry Pi <strong>Lite</strong> onto our SD card. Open Raspberry Pi Imager, select the <strong>Lite</strong> version of the OS and your respective media (the SD card):</p>
+
+<p><img src="/public/images/rpi-lite-os.webp" alt="Raspberry Pi Lite" /></p>
+
+<p>Don’t flash anything just yet! Be sure to use the gear icon and edit the settings. Set a custom hostname, enable <code>ssh</code> and setup a proper user:</p>
+
+<p><img src="/public/images/rpi-adguard-1.webp" alt="Imager settings" /></p>
+
+<h2 id="plug-it-in-and-boot">Plug it in and Boot!</h2>
+
+<p>Put the SD card into your Pi, connect power and ethernet. Give it a bit of time to boot up. Once you see a nice solid green LED, go back to your local computer’s terminal and enter the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh piguard@piguard.local
+</code></pre></div></div>
+
+<p>If everything was set up properly you will be asked to trust this device. Next, you will be prompted to enter the device password you setup.</p>
+
+<p>Once you are connected directly to the Pi, it’s best to check for updates:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+</code></pre></div></div>
+
+<p>…and if updates are in fact available, install them via:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt upgrade
+</code></pre></div></div>
+
+<h2 id="installing-adguard-home">Installing AdGuard Home</h2>
+
+<p>Simply run the automated installer:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">-S</span> <span class="nt">-L</span> https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh <span class="nt">-s</span> <span class="nt">--</span> <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>Follow the instructions and you’ll be setup in no time! To view your AdGuard dashboard at any time, you can now simply navigate to <code>piguard.local</code>.</p>
+
+<p>If you run into any issues, I strongly suggest <a href="https://github.com/AdguardTeam/AdGuardHome#getting-started">reading through the “Getting Started” guide</a>.</p>
+
+<h2 id="configuring-the-eero-app">Configuring the Eero App</h2>
+
+<p>Once your AdGuard Home server is installed and running, you can finally point your Eero network at it.</p>
+
+<ol>
+  <li>Open the Eero app (iOS or Android)</li>
+  <li>Navigate to <strong>Settings</strong> &gt; <strong>Network Settings</strong> &gt; <strong>DNS</strong></li>
+  <li>Select <strong>Customized DNS</strong> and enter both your saved IPv4 / IPv6 values (These can be found under the <code>Setup Guide</code> tab in the main AdGuard Dashboard)</li>
+  <li>Eero will prompt you to reboot your network - do it</li>
+</ol>
+
+<p>After the system reboots everything <em>should</em> be working as intended!</p>
+
+<h2 id="closing-thoughts">Closing Thoughts</h2>
+
+<p>I’ve personally switched over from Pi-Hole to AdGuard Home - it just feels more robust and the UI is significantly cleaner. Hopefully this helps others trying to do the same!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

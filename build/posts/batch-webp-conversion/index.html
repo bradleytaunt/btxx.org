@@ -1,0 +1,134 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Batch Converting Images to webp with macOS Automator</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="batch-converting-images-to-webp-with-macos-automator">Batch Converting Images to webp with macOS Automator</h1>
+
+<p>2021-10-15</p>
+
+<p>A great deal of my time working as a web/UI designer is spent exporting and/or converting images for software products and websites. Although a lot of modern applications can render image conversions at build time, a custom conversion is sometimes requested for an image to be set as <code>webp</code>.</p>
+
+<p>You <em>could</em> download one of the many native apps from the Mac App Store to do this for you - but why not create your own script and run it with a simple right-click directly inside Finder? <strong>Let’s do just that!</strong></p>
+
+<h2 id="basic-requirements">Basic requirements</h2>
+
+<p><strong>Important!</strong>: As of this time of writing, the official <code>libwebp</code> package release is <em>libwebp-1.2.1-mac-10.15</em>. If this has been updated since then, change the command below to match that of the proper release version.</p>
+
+<p>1) First you will need to download the <code>libwebp</code> package to your Downloads folder: <a href="https://developers.google.com/speed/webp/download">developers.google.com/speed/webp/download</a> 
+  - <em>Look for the “Download for macOS link”</em></p>
+
+<p>2) Next we will need to copy the <code>cwebp</code> folder to our <code>/usr/local/bin</code> directory:
+  - Open macOS Terminal
+  - Run <code>sudo cp /Downloads/libwebp-1.2.1-mac-10.15/bin/cwebp /usr/local/bin</code>
+  - <em>Note:</em> if the <code>/usr/local/bin</code> directory doesn’t exist, simply create it by running: <code>sudo cd /usr/local &amp;&amp; mkdir bin</code></p>
+
+<h2 id="creating-our-custom-automator-script">Creating our custom Automator script</h2>
+
+<p>1) Open the macOS Automator from the Applications folder</p>
+
+<p>2) Select <code>Quick Option</code> from the first prompt</p>
+
+<p>3) Set “Workflow receives current” to <code>image files</code></p>
+
+<p>4) Set the label “in” to <code>Finder</code></p>
+
+<p>5) From the left pane, select “Library &gt; Utilities”</p>
+
+<p>6) From the presented choices in the next pane, drag and drop <code>Run Shell Script</code> into the far right pane</p>
+
+<p>7) Set the area “Pass input” to <code>as arguments</code></p>
+
+<p>8) Enter the following code below as your script and type <code>⌘-S</code> to save (name it something like “Convert to webp”)</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>f <span class="k">in</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+<span class="k">do</span>
+/usr/local/bin/cwebp <span class="nt">-q</span> 85 <span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span> <span class="nt">-o</span> <span class="s2">"</span><span class="k">${</span><span class="nv">f</span><span class="p">%.*</span><span class="k">}</span><span class="s2">.webp"</span>
+<span class="k">done</span>
+</code></pre></div></div>
+
+<p>For visual reference, it should look something like this:</p>
+
+<figure>
+<img src="/public/images/automator.png" alt="macOS Automator" />
+<figcaption>(<a href="/public/images/automator.webp">link to hi-res image</a>)</figcaption>
+</figure>
+
+<p>And when right-clicking an image file in the Finder window, it should now give you the option to convert:</p>
+
+<figure>
+<img src="/public/images/automator-2.png" alt="Right click to convert" />
+<figcaption>(<a href="/public/images/automator-2.webp">link to hi-res image</a>)</figcaption>
+</figure>
+
+<h2 id="making-edits-to-your-script">Making edits to your script</h2>
+
+<p>If you ever have the need to edit this script (for example, changing the default <code>85</code> quality parameter), you will need to navigate to your <code>~/Library/Services</code> folder and open your custom webp Quick Action in the Automator application.</p>
+
+<p>Simple as that!</p>
+
+<h2 id="possible-hiccups">Possible Hiccups</h2>
+
+<p>I was contacted by the very helpful <a href="https://kevq.uk">Kev Quirk</a> about a minor problem he encountered while following this tutorial. When trying to run <code>cwebp</code> he received the following error message:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cwebp cannot be opened because it<span class="s1">'s from an unverified developer
+</span></code></pre></div></div>
+
+<p>Doing the next steps seemed to have fixed this issue for him:</p>
+
+<ol>
+  <li>Click on the “Open in Finder” in the error message prompt</li>
+  <li>Double-click on the <code>cwebp</code> utility to open in Terminal</li>
+  <li>You’ll then be prompted with a pop-up asking if you wish to execute</li>
+</ol>
+
+<p>After following these steps, the issue should be resolved.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

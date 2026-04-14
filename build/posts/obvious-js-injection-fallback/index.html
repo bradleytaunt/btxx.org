@@ -1,0 +1,99 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Obvious Javascript 'Injection' Fallback</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="obvious-javascript-injection-fallback">Obvious Javascript ‘Injection’ Fallback</h1>
+
+<p>2020-12-04</p>
+
+<p>Sometimes websites and web apps might require content to be “injected” via Javascript. I should mention that I am strongly against this practice - but often this kind of thing is out of one’s hands. So, the least I can do is setup these “injections” to have proper fallbacks for users who disable JS. You would be surprised how many developers build <em>empty</em> HTML elements with the assumption they will be filled via Javascript.</p>
+
+<h2 id="our-hypothetical-project">Our Hypothetical Project</h2>
+
+<p>Let’s pretend that we have a total tally that pulls in the number of current users using our fake SaaS app. We would do something like this:</p>
+
+<h3 id="html">HTML</h3>
+
+<p>Here we create an empty <code>h2</code> tag that will update with the current number of users via js:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"total-tally"</span><span class="nt">&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+
+<h3 id="javascript">Javascript</h3>
+
+<p>You’ll have to use your imagination here and assume that the <code>totalTally</code> variable pulls in the numbers dynamically via API:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var totalTally = "273,677" /* This would pull something dynamically in prod */
+document.getElementsByClassName("total-tally")[0].innerHTML=totalTally;
+</code></pre></div></div>
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>The big issue we have now occurs when a user visits this page without JS enabled. The <code>h2</code> tag will remain empty and they won’t see anything. I know this seems like a very avoidable issue, but you would be surprised how often it actually happens on the web.</p>
+
+<h2 id="the-overly-simple-solution">The (overly simple) Solution</h2>
+
+<p>The easiest way to avoid these types of empty tags - add static content. I know - mind blowing, right?</p>
+
+<h3 id="html-updated">HTML (updated)</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"total-tally"</span><span class="nt">&gt;</span>200,000+<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+
+<p>You might be reading this and saying to yourself, “Wow! Thanks Captain Obvious!” and that’s a fair reaction. This is an <em>obvious</em> demo on purpose. If even one single reader learns to avoid leaving empty HTML tags that are solely dependent on Javascript injection, then I’d say this demo was a huge success.</p>
+
+<p>Rule of thumb: don’t make assumption about your users. Play it safe.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

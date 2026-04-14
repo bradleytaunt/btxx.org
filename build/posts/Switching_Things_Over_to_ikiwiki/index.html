@@ -1,0 +1,83 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Switching Things Over to ikiwiki</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="switching-things-over-to-ikiwiki">Switching Things Over to ikiwiki</h1>
+
+<p>2023-12-17</p>
+
+<p>I’ve done it again. My personal website is no longer generated with <a href="https://barf.btxx.org">barf</a> but is instead built on top of ikiwiki. The old RSS feed (<a href="https://btxx.org/atom.xml">btxx.org/atom.xml</a>) still exists but will no longer receive updates. The new feed can be found on the bottom of the homepage (<a href="/index.rss">index.rss</a>)</p>
+
+<h2 id="why-a-wiki">Why a Wiki?</h2>
+
+<p>I love the simplicity of a minimal blog, which is why I always gravitated towards purely “static” site builders. Over time though, I found two minor issues that slowly chipped away at me: ease-of-use and flexibility.</p>
+
+<p>I had a vision, back when I began tinkering with my own place on the web, of building out my own personal “resource center” or wiki. Often times through work or personal projects I stumble into little problems that I need to solve. Most times I find a solution and move on with my life. The problem with this approach is <em>lack of documentation</em>.</p>
+
+<p>What if I come across that issue at a later point in time? Will I even remember my old solution? Probably not. So, I’ve made the switch to a more flexible, personal wiki (which also happens to be a blog!)</p>
+
+<h2 id="text-editors-terminals-and-web-ui---oh-my">Text Editors, Terminals, and Web UI - Oh My!</h2>
+
+<p>ikiwiki comes packed with multiple ways to publish pages and posts. Since it is built with ikiwiki and git version control in mind, you have the ability to push out changes directly to your server similar to that of pre-existing static site generators. It also gives you the choice to <code>ssh</code> directly into your server and publish content from your terminal if you so desire.</p>
+
+<p>Best of all, ikiwiki offers a web UI interface. This is something I have long missed since leaving “dynamic” websites behind.</p>
+
+<h2 id="but-wait-theres-more">But Wait, There’s More!</h2>
+
+<p>Did I mention that this site now supports a built-in search form <em>and</em> a comment system? I’ve been wanting comments or discussions directly on my personal web space for the longest time and now I do! The search function is really an added bonus, mostly for my own personal use to find something I documented quickly.</p>
+
+<h2 id="broken-links-and-bugs">Broken Links and Bugs</h2>
+
+<p>I’ve done my best to properly forward all original posts and pages to their new URLs - but I’m sure some things will be overlooked. So please feel free to reach out and let me know if anything seems broken.</p>
+
+<p>I look forward to growing out this “platform” and seeing how it impacts my workflow writing documentation / blog posts. I hope you’ll come along for the ride!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

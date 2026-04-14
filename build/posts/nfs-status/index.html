@@ -1,0 +1,205 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Creating a Basic Status Page on NearlyFreeSpeech</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="creating-a-basic-status-page-on-nearlyfreespeech">Creating a Basic Status Page on NearlyFreeSpeech</h1>
+
+<p>2025-05-12</p>
+
+<p>Since I talked about <a href="https://btxx.org/posts/nfs-multiple-websites/">hosting multiple websites through NearlyFreeSpeech</a> in the past, I thought it would be nice to walkthrough setting up a barebones “status” page that runs automatically on your existing NFS server. This post isn’t going to be mind blowing, but it will give you a solid overview of some weekly stats, such as:</p>
+
+<ul>
+  <li>basic system info (FreeBSD stats, etc)</li>
+  <li>weekly visitor stats</li>
+  <li>weekly traffic by browser type</li>
+</ul>
+
+<p>You can obviously build off of this “skeleton”, but I find this works well
+enough for my own needs.</p>
+
+<h2 id="live-example">Live Example</h2>
+
+<p>You can see a live example of my own status page
+<a href="https://btxx.org/status.html">here</a>.</p>
+
+<p>The stats on this page are skewed though, since they take into account all
+websites I host through NFS. If you happen to host only a single site on your
+account, the data will be much more specific.</p>
+
+<h2 id="the-status-script">The Status Script</h2>
+
+<p>The script that generates this status page is very basic shell. You could use
+any language really, but I like to keep things as simple as possible (most
+times). Here is the code in all of its glory:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">"/home/public/&lt;your_domain_or_site_folder&gt;/status.html"</span>
+<span class="nv">ACCESS_LOG</span><span class="o">=</span><span class="s2">"/home/logs/access_log"</span>
+<span class="nv">VISITOR_COUNT</span><span class="o">=</span><span class="si">$(</span><span class="nb">awk</span> <span class="s1">'{print $1}'</span> <span class="s2">"</span><span class="nv">$ACCESS_LOG</span><span class="s2">"</span> | <span class="nb">sort</span> | <span class="nb">uniq</span> | <span class="nb">wc</span> <span class="nt">-l</span><span class="si">)</span>
+
+<span class="c"># Capture system data</span>
+<span class="nv">OS</span><span class="o">=</span><span class="si">$(</span><span class="nb">uname</span> <span class="nt">-s</span><span class="si">)</span>
+<span class="nv">RELEASE</span><span class="o">=</span><span class="si">$(</span><span class="nb">uname</span> <span class="nt">-r</span><span class="si">)</span>
+<span class="nv">ARCH</span><span class="o">=</span><span class="si">$(</span><span class="nb">uname</span> <span class="nt">-m</span><span class="si">)</span>
+<span class="nv">SHELL</span><span class="o">=</span><span class="nv">$SHELL</span>
+<span class="nv">RAM</span><span class="o">=</span><span class="si">$(</span>top <span class="nt">-b</span> | <span class="nb">awk</span> <span class="s1">'/Mem:/ {print $2 " used, " $4 " free"}'</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s1">'N/A'</span><span class="si">)</span>
+<span class="nv">UPTIME</span><span class="o">=</span><span class="si">$(</span><span class="nb">uptime</span> | <span class="nb">sed</span> <span class="s1">'s/.*up \([^,]*\),.*/\1/'</span><span class="si">)</span>
+<span class="nv">LOADAVG</span><span class="o">=</span><span class="si">$(</span><span class="nb">uptime</span> | <span class="nb">sed</span> <span class="s1">'s/.*load averages: //'</span><span class="si">)</span>
+
+<span class="o">{</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;meta name="color-scheme" content="light dark"&gt;
+  &lt;title&gt;Status - NearlyFreeSpeech&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;NearlyFreeSpeech.NET Server Info&lt;/h1&gt;
+&lt;p&gt;Generated on: </span><span class="si">$(</span><span class="nb">date</span><span class="si">)</span><span class="sh">&lt;br&gt;
+Stats updated hourly.&lt;/p&gt;
+
+&lt;pre&gt;
+/</span><span class="se">\\</span><span class="sh">,-'''''-,/</span><span class="se">\\</span><span class="sh">
+</span><span class="se">\\</span><span class="sh">_)       (_/
+|           |
+|           |
+ ;         ;
+  '-_____-'
+&lt;/pre&gt;
+
+&lt;h2&gt;System Info&lt;/h2&gt;
+&lt;table border="1"&gt;
+  &lt;tr&gt;&lt;th&gt;OS&lt;/th&gt;&lt;td&gt;</span><span class="nv">$OS</span><span class="sh">&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;th&gt;Release&lt;/th&gt;&lt;td&gt;</span><span class="nv">$RELEASE</span><span class="sh">&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;th&gt;Architecture&lt;/th&gt;&lt;td&gt;</span><span class="nv">$ARCH</span><span class="sh">&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;th&gt;Shell&lt;/th&gt;&lt;td&gt;</span><span class="nv">$SHELL</span><span class="sh">&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;th&gt;RAM&lt;/th&gt;&lt;td&gt;</span><span class="nv">$RAM</span><span class="sh">&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;th&gt;Uptime&lt;/th&gt;&lt;td&gt;</span><span class="nv">$UPTIME</span><span class="sh">&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;th&gt;Load Average&lt;/th&gt;&lt;td&gt;</span><span class="nv">$LOADAVG</span><span class="sh">&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h2&gt;Visitor Stats (Reset Weekly)&lt;/h2&gt;
+&lt;table border="1"&gt;
+  &lt;tr&gt;&lt;th&gt;Metric&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Unique Visitors&lt;/td&gt;&lt;td&gt;</span><span class="nv">$VISITOR_COUNT</span><span class="sh">&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h2&gt;Browser Traffic (Reset Weekly)&lt;/h2&gt;
+&lt;table border="1"&gt;
+  &lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Count&lt;/th&gt;&lt;/tr&gt;
+</span><span class="no">EOF
+
+</span><span class="c"># Output each browser row</span>
+<span class="nb">awk</span> <span class="nt">-F</span><span class="se">\"</span> <span class="s1">'{print $6}'</span> <span class="s2">"</span><span class="nv">$ACCESS_LOG</span><span class="s2">"</span> | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s1">'^-$'</span> | <span class="se">\</span>
+<span class="nb">awk</span> <span class="s1">'
+  /Edg/                       { browsers["Edge"]++ }
+  /Chrome/ &amp;&amp; !/Edg/          { browsers["Chrome"]++ }
+  /Safari/ &amp;&amp; !/Chrome/       { browsers["Safari"]++ }
+  /Firefox/                   { browsers["Firefox"]++ }
+  /MSIE/ || /Trident/         { browsers["Internet Explorer"]++ }
+  /curl/                      { browsers["curl"]++ }
+  /wget/                      { browsers["wget"]++ }
+  END {
+    for (b in browsers) {
+      printf "&lt;tr&gt;&lt;td&gt;%s&lt;/td&gt;&lt;td&gt;%d&lt;/td&gt;&lt;/tr&gt;\n", b, browsers[b]
+    }
+  }
+'</span>
+
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</span><span class="no">EOF
+
+</span><span class="o">}</span> <span class="o">&gt;</span> <span class="s2">"</span><span class="nv">$OUTPUT</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Be sure to change the main variables with your own info (file path, etc.) and
+you should be good to go. Now save this script and place it on your main NFS
+server under the <code>/home/public</code> directory.</p>
+
+<div class="alert warning">
+<span><b>Important!</b>
+Before you setup your automated script, make sure you have enabled <code>Access
+Logs</code> under your NFS site panel (found under <strong>Log Settings</strong>)</span>
+</div>
+
+<p>Our next step is to setup our cronjob.</p>
+
+<h2 id="automating-our-script">Automating Our Script</h2>
+
+<p>Setting up a <code>cronjob</code> through NearlyFreeSpeech is handled through the main
+admin site settings. Login and navigate to your <strong>Sites</strong> panel and select your
+desired website. Under the sidebar heading <strong>Actions</strong> select <strong>Manage
+Scheduled Tasks</strong>. Next, click <strong>Add Scheduled Task</strong>.</p>
+
+<p>On the following page you will want to enter the following:</p>
+
+<ul>
+  <li><strong>Tag</strong>: Whatever name you want</li>
+  <li><strong>URL or Shell Command</strong>: <code>/bin/sh /home/public/&lt;name_of_your_script&gt;.sh</code></li>
+  <li><strong>Enabled</strong>: Yes</li>
+  <li><strong>User</strong>: me</li>
+  <li><strong>Hour</strong>: <code>*</code> (run every hour)</li>
+  <li><strong>Day of Week</strong>: Every</li>
+  <li><strong>Date</strong>: <code>*</code> (every day of the month)</li>
+</ul>
+
+<p>Now click Save and you’re done! Since your script won’t run right away, feel
+free to run it directly from the command line for the first time.</p>
+
+<p>Happy status page building!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

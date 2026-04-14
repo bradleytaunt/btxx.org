@@ -1,0 +1,82 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Applying Email-Based Git Patches in Evolution on Linux</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="applying-email-based-git-patches-in-evolution-on-linux">Applying Email-Based Git Patches in Evolution on Linux</h1>
+
+<p>2023-04-25</p>
+
+<p>Users who work with git patches through email most likely use a terminal-based program such as <code>aerc</code> or <code>mutt</code>. CLI email clients tend to have built-in support for easily applying patches directly to their local repos. But what about people who prefer to use graphical email apps?</p>
+
+<p>Lucky for us, it is actually fairly simple to replicate a similar workflow to that of a CLI client. In this example I will be focusing on the Evolution email client, but the core principles should work in most other GUIs.</p>
+
+<h2 id="the-basics">The Basics</h2>
+
+<div class="alert note">
+  <span><b>Note</b> The following assumes you already have <code>git</code> installed and setup on your existing system.</span>
+</div>
+
+<p>I find it best to first create a top-level folder on your system named <code>patches</code>. We will use this folder as a temporary location for reviewing any <code>git</code> patches submitted via email. I normally place this under <code>/home/&lt;username&gt;/patches</code>.</p>
+
+<p>Next, locate the email patch in Evolution and right-click on it. Select “Save as mbox…” and place this file inside your newly created <code>patches</code> folder.</p>
+
+<p>Now simply open your terminal, navigate to your project and run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git am &lt;path-to-patches-folder&gt;/&lt;patch-filename&gt;.mbox
+</code></pre></div></div>
+
+<p>This should apply the patch directly to your project without issue. You are now free to test these changes locally. If everything looks good, you’re able to instantly push these changes remotely.</p>
+
+<p>Done and done.</p>
+
+<p>Feel free to purge your <code>patches</code> folder regularly or keep them around for future reference if you prefer!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

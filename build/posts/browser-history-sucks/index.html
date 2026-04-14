@@ -1,0 +1,129 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Browser History Sucks</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="browser-history-sucks">Browser History Sucks</h1>
+
+<p>2019-04-20</p>
+
+<p><em>Have you ever needed to step back through your browser history</em> to find a particular site or product? Do you remember that experience being good? Most likely not.</p>
+
+<p>Much like printers, the design of browser history interfaces hasn’t changed in years. This would be fine if these UIs had been well thought out and optimized for an easy user experience - but they weren’t.</p>
+
+<p>Browser history views rely on the user’s own memory for more in-depth searches. This defeats the whole purpose of having a robust, documented history. The browser should be doing this heavy-lifting.</p>
+
+<h2 id="what-browsers-get-wrong">What browsers get wrong</h2>
+
+<p>Modern browsers give the general public too much credit when it comes to memory (I don’t mean this as an insult!). To assume users remember the URL or site name when browsing random pages is short-sighted. I find myself asking these types of questions when jumping back into my view history far too often:</p>
+
+<ul>
+  <li>“That article had <em>something</em> to do with CSS…”</li>
+  <li>“I remember seeing a beautifully designed site a month ago but have no clue what the URL was…”</li>
+  <li>“My browser crashed and I can’t recall that <em>example website</em> I had pinned in my tab for weeks…”</li>
+</ul>
+
+<p>For reference, let’s take a look at the current Chrome (73) history view:</p>
+
+<p><img src="/public/images/browser-history-01.webp" alt="Default Chrome History" /></p>
+
+<p>As you may have noticed - this UI is lackluster at best. An oversimplified search field in the header is the only means of filtering items.</p>
+
+<h2 id="why-not-use-extensions">Why not use extensions?</h2>
+
+<p>I know using browser extensions or tagging favorites can alleviate some of these issues. This is great, but why not simplify everything by having these features <em>inside</em> the history view? If an extension can add these features, why not have those extras built-in?</p>
+
+<h2 id="two-subtle-improvements">Two subtle improvements</h2>
+
+<p>A little goes a long way. With just two small changes, we can drastically increase the history view’s UX.</p>
+
+<p>We start by adding <u>a date picker</u>. Users open the new calendar icon to filter by days, months or years before searching. Seems trivial, but this saves the headache of filtering through all saved history.</p>
+
+<p><img src="/public/images/browser-history-02.webp" alt="Chrome History with date picker" /></p>
+
+<p>The second small functional change we can make is including extra subcategories. These new options allow users to focus their searches based on:</p>
+
+<ul>
+  <li>Session length</li>
+  <li>Number of return visits</li>
+  <li>Last restored tabs</li>
+</ul>
+
+<h3 id="session-length">Session length</h3>
+
+<p><img src="/public/images/browser-history-03.webp" alt="Chrome History by session length" /></p>
+
+<p>Allow users to display their history filtered by session duration. This helps when searching for an stagnant page or pinned site  during a user’s long session. An example default would allow filtering by:</p>
+
+<ul>
+  <li>longest to shortest</li>
+  <li>shortest to longest</li>
+  <li>pinned tabs</li>
+</ul>
+
+<h3 id="return-visits">Return visits</h3>
+
+<p><img src="/public/images/browser-history-04.webp" alt="Chrome History by return visits" /></p>
+
+<p>When users make repeat visits to a site or web app, the browser should keep a record of return sessions. This allows the user to refine their search by many or singular visits.</p>
+
+<h3 id="last-restored-tabs">Last restored tabs</h3>
+
+<p><img src="/public/images/browser-history-05.webp" alt="Chrome History by restored tabs" /></p>
+
+<p>A basic concept, but the ability for users to view all previous  instances of restored tabs is helpful. This would fix most edge cases not covered by the other two categories.</p>
+
+<h2 id="far-from-perfect">Far from perfect</h2>
+
+<p>The Chrome (or any browser for that matter) browser history view is simplistic to a fault. The current UI is prone to human error, since it makes assumptions and relies heavily on user memory.</p>
+
+<p>These are simple fixes that attempt to boost the basic UX of the history view. Are these concepts absolutely perfect? Not at all. Is it at least an improvement? I believe it is. When products decrease the effort required of it’s users, I see that as a positive.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -25,7 +25,7 @@ https://cdn.openbsd.org/pub/OpenBSD/7.6/i386/install76.iso
 </div>
 
 <figure>
-<img src="/public/images/linveo-1.png" alt="The Linveo Media Dashboard">
+<img loading="lazy" src="/public/images/linveo-1.png" alt="The Linveo Media Dashboard">
 <figcaption>The "Media" tab of the Linveo Dashboard. Use the official ISO link and set the Boot Order to CD/DVD.</figcaption>
 </figure>
 

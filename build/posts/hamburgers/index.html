@@ -1,0 +1,95 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Stop Using Hamburger Menus (Sometimes)</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="stop-using-hamburger-menus-sometimes">Stop Using Hamburger Menus (Sometimes)</h1>
+
+<p>2023-05-05</p>
+
+<p>I recently <a href="https://fosstodon.org/@tdarb/110264983268249599">tooted about my hatred of website hamburger menus</a> which was met with a surprising amount of support from other users. It seems like most people <em>don’t actually like hamburger menus</em>. So why do we, as developers, keep using them in our products and designs? Is it our only option? Or is it because we have become conditioned to expect it?</p>
+
+<h2 id="the-core-problem-with-hamburger-menus">The Core Problem with Hamburger Menus</h2>
+
+<p>The biggest headache when coming across these menus on the web is the complete disregard for <strong>accessibility</strong>. Performance and solid user experience is almost always thrown out the window in favour of a “prettier” design layout. You might have made the overall design “cleaner” for your users, but you sacrificed all usability to do so.</p>
+
+<p>I challenge you to visit a webpage or web app with a hamburger menu and try to navigate solely with your keyboard and screen-readers (or better yet - try these screen readers on mobile!). Within seconds you will find a whole mess of issues. Now try the same test with JavaScript disabled… Yikes.</p>
+
+<h2 id="but-i-have-no-choice">“But I Have No Choice!”</h2>
+
+<p>I see this argument pop-up frequently when taking to design leaders or developers. I call bullshit on this excuse. You <em>absolutely</em> have the choice to avoid implementing bad designs - that’s your job! Either you’re not fighting hard enough against those pushing for it, or you’re just trying to build a “pretty” portfolio.</p>
+
+<h2 id="best-alternative-sitemap-footer">Best Alternative: Sitemap Footer</h2>
+
+<p>So instead of just whining about hamburger menus, I will actually offer up a solid replacement: <strong>sitemap footers</strong>. Simply place all your website/application links into the bottom footer and link directly to them from your header. Be sure to also include some form of “Top of the page” link for quick access back to the initial scroll view.</p>
+
+<p>That’s it. There is nothing else you need to do for this to <em>just work</em>. It might sound oversimplified and that’s because it is. Looking for an example? This very website utilizes this technique, so give it a spin! Try using just your keyboard or even better - use a screen reader. Disable JS and CSS and watch it work flawlessly still.</p>
+
+<p><strong>Pros:</strong></p>
+
+<ul>
+  <li>Keyboard navigation accessible</li>
+  <li>Excellent screen-reader support</li>
+  <li>Works on all devices/screens by default (no media queries!)</li>
+  <li>Stays out of the way until called upon (UX goodness)</li>
+  <li>Requires ZERO CSS or JavaScript</li>
+</ul>
+
+<p><strong>Cons:</strong></p>
+
+<ul>
+  <li>Footer can become large with many links (although I <em>really</em> don’t see this as a big deal)</li>
+</ul>
+
+<h2 id="no-excuse">No Excuse</h2>
+
+<p>There really is no excuse to still be using hamburger menus. Users expect them to be present only because we as designers have conditioned them think that way. They deserve a better experience on the web. The <em>least</em> we can do is improve something as simple as website navigation…</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

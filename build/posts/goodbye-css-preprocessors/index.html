@@ -1,0 +1,129 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Goodbye CSS Preprocessors</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="goodbye-css-preprocessors">Goodbye CSS Preprocessors</h1>
+
+<p>2017-09-07</p>
+
+<p>I have been using preprocessors across all my side projects since they first popped onto the scene. Sass, Stylus, LESS — you name the CSS preprocessor and I’ve most likely used it because CSS preprocessors are awesome.</p>
+
+<p>But that all changes moving forward. I’m going back to basics with CSS. Straight vanilla, man.</p>
+
+<p><img src="/public/images/sass-cancel_rl1fsw_c_scale,w_800.webp" alt="No Sass" /></p>
+
+<h2 id="why-and-who-cares">Why? And who cares?</h2>
+
+<p>Let’s start by breaking down the main positives about preprocessors:</p>
+
+<ul>
+  <li>Nested syntax</li>
+  <li>Definable variables</li>
+  <li>Advanced mathematical functions</li>
+  <li>Reusable mixins</li>
+</ul>
+
+<p>All of these features are great and I completely understand the draw (I was also sucked into the hype) - but now let’s see the negatives.</p>
+
+<h2 id="debugging-is-a-chore">1. Debugging is a chore</h2>
+
+<p>So you found some weird padding clobbering an element’s default styles on line 255 of your main complied CSS file? Excellent! Now you just need to figure out which file that property comes from.</p>
+
+<p>This might sound trivial or that you can fix this with rendered comments but if you ever work on a project with hundreds of Sass/Stylus/LESS files all importing and compiling into each other - it can get out of hand.</p>
+
+<p>Solution: Using plain CSS makes using browser dev tools a breeze. See a bug on line 255? No problem, let me fix line 255.</p>
+
+<h2 id="dependencies-for-development">2. Dependencies for development</h2>
+
+<p>Building a project with a preprocessor brings with it unnecessary baggage; dependencies. You’ll need to be running some sort of task runner (see grunt or gulp) that will compile and minify your CSS. I see this as extra overhead both during the initial setup of the project for new team members and the testing environment.</p>
+
+<p>By using plain CSS, you avoid including an extra package in your package.json file (if applicable) or having to rely on third party compilers such as codekit (although I do recommend this app).</p>
+
+<h2 id="variables-amp-mixins-become-unwieldily">3. Variables &amp; mixins become unwieldily</h2>
+
+<p>Both variables and mixins are great in small doses, but if your project has any real size to it these helpers become a hinderance. By using comma-delimited CSS selectors you can achieve the same outcome without the horror of needing a specific preprocessor file to handle just variables and mixins.</p>
+
+<p>Basic example:</p>
+
+<pre><code>selector, selectTwo, .css-class {
+    /* shared styling */
+}
+</code></pre>
+
+<h2 id="welcome-to-nesting-hell">4. Welcome to nesting hell</h2>
+
+<p>Honestly, I’ve never been a fan of nesting. From a file structure perspective it is indeed very “clean”, but you sacrifice that cleanliness in the final compiled production code. You’re making your development environment easier to glance at and work through at the cost of your production-ready, customer facing code.</p>
+
+<p>You also run into another big no-no in my eyes: extreme selector specificity. The DOM target search starts to get out of control once you start having classes and selectors building up towards 10 or more steps.</p>
+
+<p>Bad:</p>
+
+<pre><code>body #home .container .modal nav .inner-nav &gt; ul &gt; li &gt; a {
+    color: red;
+}
+</code></pre>
+
+<p>Good:</p>
+
+<pre><code>.inner-nav a {
+    color: red;
+}
+</code></pre>
+
+<p>Don’t forget the amount of work needed to override styling with such deep selector specificity. That’s where you end up diving into the world of <i>!important</i> tags.</p>
+
+<h2 id="final-thoughts">Final thoughts</h2>
+
+<p>It should go without saying that this is just my personal preference, there is no law behind this. If you use and absolutely love preprocessors - more power to you. All I suggest is using plain old vanilla CSS for your next project and see how it works out.</p>
+
+<p>And do you know what I’ve learned to appreciate after switching back to vanilla? <strong>CSS is more beautiful when developed in it’s rawest form</strong>.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Hosting with Codeberg Pages</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="hosting-with-codeberg-pages">Hosting with Codeberg Pages</h1>
+
+<p>2022-07-29</p>
+
+<p>I recently switched the <a href="https://pblog.btxx.org">pblog</a> project repo over from Sourcehut to Codeberg (mostly for UX reasons) and it got me looking into <a href="https://codeberg.page">Codeberg Pages</a>. It seemed like a cleaner approach to host my personal blog on the same platform I planned to also share the source code.</p>
+
+<p>I decided to share the setup process here since I couldn’t find a straightforward guide explaining everything required to get going. So, let’s dig in.</p>
+
+<h2 id="create-the-repos">Create the Repos</h2>
+
+<p><strong>Disclaimer</strong>: My personal blog uses <a href="https://pblog.btxx.org">pblog</a>, so although these instructions will be catered towards that SSG the same concept <em>should</em> apply for any other generator (Jekyll, Hugo, Next, etc.).</p>
+
+<p>The first step is to create the main repo that would house the core files of <code>pblog</code>. Then we need to make a separate repo simply called <code>pages</code>. This second project is where all the generated “static” files get rendered.</p>
+
+<p><em>Side note</em>: Be sure to at least include a <code>README</code> file in that <code>pages</code> repo. This will avoid any errors or warnings when setting up our submodules in the next steps.</p>
+
+<h2 id="configuration-edits">Configuration Edits</h2>
+
+<p>Once your two repos are created, you will need to make some minor edits to the <code>_config.sh</code> in the core <code>pblog</code> project to tell the build script where the generated files should go (in this case the <code>pages</code> repo):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">"_output/pages/"</span>
+</code></pre></div></div>
+
+<h2 id="the-submodule">The Submodule</h2>
+
+<p>Using terminal, navigate to the <code>_output/</code> directory in your core <code>pblog</code> project. Run the following, remembering to replace the USERNAME parameter with your own:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule add git@codeberg.org:USERNAME/pages.git
+</code></pre></div></div>
+
+<p>If everything worked correctly you should now have a <code>.gitmodules</code> file in your main <code>pblog</code> project. If you get any errors, you might need to include the name of the directory at the end of the command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule add git@codeberg.org:USERNAME/pages.git pages
+</code></pre></div></div>
+
+<h2 id="the-workflow">The Workflow</h2>
+
+<p>Now you can make changes, add new posts and pages in the main <code>pblog</code> project and have those generated files render into your other <code>pages</code> repo. For this workflow, I simply push commits to both projects when I am happy with my changes but I’m sure you could look into automating this process (ie. a single push from the <code>pblog</code> repo forces a the <code>pages</code> repo to also update).</p>
+
+<p>Now you can navigate to the standard Codeberg Pages URL to see it in action:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>USERNAME.codeberg.page
+</code></pre></div></div>
+
+<p>If you want to use your own custom domain (who doesn’t?) then continue reading.</p>
+
+<h2 id="custom-domains-optional">Custom Domains (Optional)</h2>
+
+<p>The first thing you will need to do is add a <code>.domains</code> file to your <code>pages</code> root directory. In this file you will want to list your custom domain on the first line, followed by the standard Codeberg pages URL below it. Like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yourcustomdomain.com
+USERNAME.codeberg.page
+</code></pre></div></div>
+
+<p>I’m keeping this very basic, but I suggest you look further into the <a href="https://docs.codeberg.org/codeberg-pages/#custom-domains">official documentation</a> if there are any extra settings you’d like to tinker with.</p>
+
+<p>The final step is configuring a <code>CNAME</code> DNS setting through your registrar:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@ -&gt; USERNAME.codeberg.page
+</code></pre></div></div>
+
+<p>Give the DNS settings a bit of time to take (24-48 hours) and you’ll have your custom domain working just fine.</p>
+
+<p>Happy hosting!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Deliver the Bare Minimum</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="deliver-the-bare-minimum">Deliver the Bare Minimum</h1>
+
+<p>2024-12-22</p>
+
+<p>I’m a minimalist at heart, so keeping things as simple as possible tends to be my <em>thing</em>. I love tinkering with an idea or product feature while trying to reduce my reliance on dependencies or purposely constraining personally set limits (maybe this is bandwidth, resource usage, etc.). I almost prefer ugly “hacks” in favour of something <em>slightly</em> less performant, just to win the tiniest of savings. It’s silly, but my brain won’t let me escape it. This doesn’t mean it’s always the “correct” way to approach both design and development, but it’s what works best for me.</p>
+
+<p>An issue I tend to see in my travels through the world of software engineering is over-engineering. Shocking, I know. I’m not the first developer to point this out, nor will I be the last. Even still, I believe it deserves being repeated as often as possible. An unoriginal mantra of mine is:</p>
+
+<blockquote>
+  <p>Keep things as simple as you reasonably can.</p>
+</blockquote>
+
+<p>Notice the word: “reasonably”. This is important because simplifying any software task shouldn’t be taken as a blanket statement. Sometimes your hands are tied. That’s fine.</p>
+
+<p>But in most situations you should only deliver the <em>bare minimum</em>.</p>
+
+<h2 id="hypothetical-examples">Hypothetical Examples</h2>
+
+<p>Everyone loves hypothetical thought experiments, right? So here’s one:</p>
+
+<p>Jim is an engineer and works for “THE COMPANY”. A client has requested a JSON file that contains all recent, Canadian buyers of their “PRODUCT ABC”. Jim can handle this task no problem, but thinks it is a little short-sighted. Jim thinks to himself, “What if they want to check buyers from the US? What if they want a shorter or longer time frame?”. So, Jim starts to build a <em>richer</em> experience for the user. He creates a private front-end UI, that gives the client the ability to select country, time-frame, along with buying / selling options, which can then be exported as JSON directly from the browser. It looks great and works flawlessly. Well done, Jim!</p>
+
+<p>In the above example, Jim didn’t do anything <em>horrible</em> per se, but he certainly wasted both his own time and the client’s. Even if the client is “wowed” by this front-end, Jim has actually created more problems for himself. He now has to <em>maintain</em> that front-end. The client might even expect or request additional functionality to that new UI. Jim also could have been handling other prioritized tasks, reviewing code or helping teammates with that reduced bandwidth. Jim should have simply exported the requested JSON data and handed it over.</p>
+
+<p>This whole concept might sound incredibly trivial, but you have no idea how often something like this occurs in software development. Maybe devs are just trying to impress their superiors and coworkers or maybe they’re just trying to stimulate themselves. Whatever the reason, 99% of the time I would say it is a bad decision.</p>
+
+<p>It’s back to that mantra: <em>Keep things as simple as you reasonably can.</em></p>
+
+<h2 id="happy-accidents">Happy Accidents</h2>
+
+<p>I think the legendary Bob Ross said it best:</p>
+
+<blockquote>
+  <p>Just remember that you can always add more, but you can’t take it away.</p>
+</blockquote>
+
+<p>He was talking about layering colors while painting, which in certainly more permanent than most software, but it still works wonderfully to guide us as developers. Tackle each task as you go, don’t increase your own overhead unless it is agreed upon by all parties involved. Impress those around you by keeping things at their <em>bare minimum</em>.</p>
+
+<p><img src="/public/images/bob-ross.webp" alt="Bob Ross painting a picture" /></p>
+
+<p>“The least little bit can do so much.”</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Simple Does Not Mean Ugly</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="simple-does-not-mean-ugly">Simple Does Not Mean Ugly</h1>
+
+<p>2019-03-26</p>
+
+<p>I see new blog posts popping up now and again advocating for designers to keep their products as simple as possible - and I couldn’t agree more.</p>
+
+<p>A lot of designers tend to think they need to reinvent the wheel when it comes to UI concepts that are standard defaults and expected by most users. Not only does this add extra work for your design and development cycles, but also increases the potential of frustration for your users when they are using your product.</p>
+
+<p>Your job as a designer is to focus on the user experience journey and understand what those users <em>expect</em> to happen - not what <em>you want</em> to happen. This is a very delicate balance of design “give and take”, hence why simple designs always seem to work best.</p>
+
+<p><strong>But simple does not mean “ugly”</strong>.</p>
+
+<h2 id="ugly-simple">Ugly Simple</h2>
+
+<p>Anyone who has read some of my opinion pieces on here in regards to UI know that I have a profound distaste for the overused “flat design” trend. Many designers consider this trend a clean and “simple” approach to most UI conventions - which is complete nonsense to most professionals in the industry (at least those not drinking the kool-aid).</p>
+
+<p>Using the term “simple” in the context of UI is currently quite damaging to modern application and product development. Designers take these definitions too literally, leading to stripped down interfaces with little to no usability for their end-users.</p>
+
+<p>Cap Watkins wrote a post back in 2014 where he explained his admiration for <a href="https://capwatkins.com/blog/the-boring-designer">boring designers</a> and how they tackled design problems using the most boring or “lazy” techniques. While I don’t agree completely with his arguments, nor do I think one should try to attain the status of “boring designer”, I can understand his main sentiment: everyone can appreciate obvious and clever design.</p>
+
+<h2 id="fixing-simple">Fixing Simple</h2>
+
+<p>I hate when people point out problems without at least attempting to suggest some sort of solution - which is exactly what I’m going to do here (with only a few set examples of course, otherwise the post would become a book). Let’s take a look at the major culprits I find around the web: navigations, buttons and form elements.</p>
+
+<h3 id="hidden-navigations">1. Hidden Navigations</h3>
+
+<p>How many native apps that you use regularly rely on the trusty “hamburger” menu icon navigation system? What about news sites, video streaming services, or blogs? Maybe you’ve implemented this concept in your own projects as well, advocating for it’s “cleaner” approach to navigation.</p>
+
+<p>The <em>hamburger</em> is a great example of “ugly simple”. You are purposely hiding the main structure that allows your users to move around your product freely behind an <strong>additional</strong> interaction. That is the opposite of simple.</p>
+
+<p>The only time you should be using the “hamburger crutch” as I call it, is for very small screen sizes or when targeting mobile user agents directly. That’s it. If your users are viewing your product on a larger screen, for the love of God, <strong>use the space available</strong>.</p>
+
+<p><img src="/public/images/navigation.webp" alt="Desktop Navigation" /></p>
+
+<h3 id="buttons-not-looking-like-buttons">2. Buttons Not Looking Like Buttons</h3>
+
+<p>It’s difficult for users to actually <strong>do</strong> the action you want them to perform when your buttons look like text. I’m not exactly sure why designers have pivoted towards removing all stylings that regular users have come to expect from button elements, but it’s plaguing far too many websites.</p>
+
+<p>Buttons should be eye-catching, colorful, fun to interact with, and support all proper CSS states. Clients and agencies will tend to push for “cleaner” buttons - which most of the time refers to setting the buttons as simple underlined text items. Do not be brainwashed into thinking this is better:</p>
+
+<p><img src="/public/images/buttons.webp" alt="Button Comparsion" /></p>
+
+<p>You tell me what looks more interactive…</p>
+
+<h3 id="overriding-form-elements">3. Overriding Form Elements</h3>
+
+<p>Designers should rarely rebuild the browser structure for web form elements in their projects. I should clarify - I’m not suggesting that you use the barebones default styles provided by the browser, I’m saying that you shouldn’t hide the elements themselves just to replace them with mimicking components. I find this practice is becoming more and more noticeable with the growing popularity of component-based frameworks. Don’t fall into these bad design habits.</p>
+
+<p>For example, you should leave the following <code>select</code> element as is:</p>
+
+<pre><code>&lt;select&gt;
+    &lt;option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<p>Instead of doing something like this:</p>
+
+<pre><code>&lt;select style="display:none;"&gt;&lt;/select&gt;
+&lt;div class="custom-select-container"&gt;
+    &lt;span&gt;Option&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>There are cleaner ways to customize web forms with straightforward CSS. Have a look at my own open source project <a href="https://normform.netlify.com/">Normform</a> if you’d prefer to just use a lightweight plugin to do this for you. (Shameless plug, I know)</p>
+
+<h2 id="simple-can-be-good">Simple Can Be Good</h2>
+
+<p>Having a boring or lazy design thought-process doesn’t mean you should develop ugly UI for the sake of “simple”. Too often that word is associated with “minimalism” or “less content” and that is only half true.</p>
+
+<p>The <em>experience</em> is what needs to be simple for your users - the UI itself should still be beautiful.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

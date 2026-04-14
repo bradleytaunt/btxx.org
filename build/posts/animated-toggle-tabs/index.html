@@ -1,0 +1,155 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Animated Radio Tab Toggles</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="animated-radio-tab-toggles">Animated Radio Tab Toggles</h1>
+
+<p>2021-01-05</p>
+
+<p><em>In this demo tutorial, we are making the assumption</em> that we need to create a radio slide toggle for our made-up payment options. For this we want to display 3 simple payment choices to the user:</p>
+
+<ul>
+  <li>One-time payment</li>
+  <li>Recurring payment</li>
+  <li>Free tier payment</li>
+</ul>
+
+<h2 id="the-final-demo">The Final Demo</h2>
+
+<p><a href="https://codepen.io/bradleytaunt/embed/vYXjpLO">Live CodePen</a></p>
+
+<p>Let’s get started with the base skeleton.</p>
+
+<h2 id="the-html">The HTML</h2>
+
+<p>There isn't anything special happening here. We just contain all our <code>labels</code> and <code>inputs</code> into a <code>.radio-toggles</code> wrapper, make sure those <code>labels</code> are each properly connected to their corresponding <code>inputs</code>, and then add an empty <code>.slide-item</code> element (more on that later).</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"radio-toggles"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"option-1"</span> <span class="na">name=</span><span class="s">"radio-options"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"option-1"</span><span class="nt">&gt;</span>One-Time<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"option-2"</span> <span class="na">name=</span><span class="s">"radio-options"</span> <span class="na">checked</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"option-2"</span><span class="nt">&gt;</span>Recurring<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"option-3"</span> <span class="na">name=</span><span class="s">"radio-options"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"option-3"</span><span class="nt">&gt;</span>Free<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"slide-item"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="the-css">The CSS</h2>
+
+<p>Now for the main event – the CSS. First we want to style the wrapper that holds all of our pieces together. You can tweak this to your liking, but I prefer a simple and clean style:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.radio-toggles</span> <span class="p">{</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nx">#eee</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nx">lightgrey</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">9999px</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">400px</span><span class="p">;</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Next, we “hide” (only visually) the default <code>radio</code> inputs:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"radio"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">-9999px</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then we give the corresponding <code>label</code> elements a little spacing and breathing room:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">label</span> <span class="p">{</span>
+  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">33.33%</span><span class="p">;</span>
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Remember that <code>.slide-item</code> I referenced earlier? That element will be the visual “slider” that animates between the individual radio options. We style that like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.slide-item <span class="o">{</span>
+  background: white<span class="p">;</span>
+  border-radius: 9999px<span class="p">;</span>
+  box-shadow: 0 2px 4px rgba<span class="o">(</span>0,0,0,0.15<span class="o">)</span><span class="p">;</span>
+  height: calc<span class="o">(</span>100% - 8px<span class="o">)</span><span class="p">;</span>
+  left: calc<span class="o">(</span>33.33% + 4px<span class="o">)</span><span class="p">;</span>
+  position: absolute<span class="p">;</span>
+  width: calc<span class="o">(</span>33.33% - 8px<span class="o">)</span><span class="p">;</span>
+  transition: left .4s<span class="p">;</span>
+  z-index: 0<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>You’ll notice the <code>left</code>, <code>height</code>, and <code>width</code> properties utilize the CSS <code>calc</code> attributes – this just gives some much needed padding and visual clean-up to the whole tabbed interface.</p>
+
+<p>For the finishing touches, we just need to tell the <code>.slide-item</code> where to position itself based on which <code>radio</code> input is currently selected:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"radio"</span><span class="o">]</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="err">1</span><span class="o">)</span><span class="nd">:checked</span> <span class="o">~</span> <span class="nc">.slide-item</span> <span class="p">{</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"radio"</span><span class="o">]</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="err">3</span><span class="o">)</span><span class="nd">:checked</span> <span class="o">~</span> <span class="nc">.slide-item</span> <span class="p">{</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">66.66%</span> <span class="o">+</span> <span class="m">4px</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>That’s pretty much it! You now have a fully functional, animated toggle slider with just a set of simple <code>radio</code> inputs and pure CSS.</p>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

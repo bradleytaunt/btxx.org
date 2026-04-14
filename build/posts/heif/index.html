@@ -1,0 +1,102 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Converting HEIF Images with macOS Automator</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="converting-heif-images-with-macos-automator">Converting HEIF Images with macOS Automator</h1>
+
+<p>2023-07-21</p>
+
+<p>Often times when you save or export photos from iOS to iCloud they often render themselves into <code>heif</code> or <code>heic</code> formats. Both macOS and iOS have no problem working with these formats, but a lot of software programs will not even recognize these filetypes. The obvious step would just be to convert them via an application or online service, right?</p>
+
+<p>Not so fast! Wouldn’t it be much cleaner if we could simply right-click our <code>heif</code> or <code>heic</code> files and convert them directly in Finder? Well, I’ve got some good news for you…</p>
+
+<h2 id="basic-requirements">Basic Requirements</h2>
+
+<ol>
+  <li>You will need to have <a href="https://homebrew.sh">Homebrew</a> installed</li>
+  <li>You will need to install the <code>libheif</code> package through Homebrew: <code>brew install libheif</code></li>
+</ol>
+
+<h2 id="creating-our-custom-automator-script">Creating our custom Automator script</h2>
+
+<p>For this example script we are going to convert the image to JPG format. You can freely change this to whatever format you wish (PNG, TIFF, etc.). We’re just keeping things basic for this tutorial. Don’t worry if you’ve never worked with Automator before because setting things up is incredibly simple.</p>
+
+<ol>
+  <li>Open the macOS Automator from the Applications folder</li>
+  <li>Select <code>Quick Option</code> from the first prompt</li>
+  <li>Set “Workflow receives current” to <code>image files</code></li>
+  <li>Set the label “in” to <code>Finder</code></li>
+  <li>From the left pane, select “Library &gt; Utilities”</li>
+  <li>From the presented choices in the next pane, drag and drop <code>Run Shell Script</code> into the far right pane</li>
+  <li>Set the area “Pass input” to <code>as arguments</code></li>
+  <li>Enter the following code below as your script and type <code>⌘-S</code> to save (name it something like “Convert HEIC/HEIF to JPG”)</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>f <span class="k">in</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+<span class="k">do</span>
+/opt/homebrew/bin/heif-convert <span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span> <span class="s2">"</span><span class="k">${</span><span class="nv">f</span><span class="p">%.*</span><span class="k">}</span><span class="s2">.jpg"</span>
+<span class="k">done</span>
+</code></pre></div></div>
+
+<h2 id="making-edits">Making Edits</h2>
+
+<p>If you ever have the need to edit this script (for example, changing the default format to <code>png</code>), you will need to navigate to your <code>~/Library/Services</code> folder and open your custom heif Quick Action in the Automator application.</p>
+
+<p>Simple as that. Happy converting!</p>
+
+<p>If you’re interested, I also have some other Automator scripts available:</p>
+
+<ul>
+  <li><a href="/posts/batch-webp-conversion/">Batch Converting Images to webp with macOS Automator</a></li>
+  <li><a href="/posts/macos-convert-to-html/">Convert Files to HTML with macOS Automator Quick Actions</a></li>
+</ul>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

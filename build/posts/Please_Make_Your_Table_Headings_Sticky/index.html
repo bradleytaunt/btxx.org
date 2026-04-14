@@ -1,0 +1,89 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Please Make Your Table Headings Sticky</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="please-make-your-table-headings-sticky">Please Make Your Table Headings Sticky</h1>
+
+<p>2024-02-23</p>
+
+<p>I often stumble upon large data sets or table layouts across the web. When these tables contain hundreds of rows of content, things become problematic once you start to scroll…</p>
+
+<video width="100%" controls="">
+  <source src="/public/videos/not-fixed-header-tables.mp4" type="video/mp4" />
+Your browser does not support the video tag.
+</video>
+
+<h2>This should be a header</h2>
+
+<p>Look at that table header disappear! Now, if I scroll all the way down to item #300 (for example) will I remember what each column’s data is associated with? If this is my first time looking at this table - probably not. Luckily we can fix this (no pun intended!) with a tiny amount of CSS.</p>
+
+<h2 id="sticky-header">Sticky Header</h2>
+
+<p>Check it out:</p>
+
+<video width="100%" controls="">
+  <source src="/public/videos/fixed-header-tables.mp4" type="video/mp4" />
+Your browser does not support the video tag.
+</video>
+
+<p>Pretty awesome, right? It might look like magic but it’s actually very easy to implement. You only need to add 2 CSS properties on your <code>thead</code>:</p>
+
+<pre><code>position: sticky;
+top: 0;
+</code></pre>
+
+<p>That’s it! Best of all, <code>sticky</code> has <a href="https://caniuse.com/?search=sticky">~96% global support</a> which means this isn’t some “bleeding-edge” property and can safely support a ton of browsers. Not to mention the improved experience for your end-users!</p>
+
+<p>You can view a live demo of this table on the <a href="https://codepen.io/bradleytaunt/pen/bGZyJBj">CodePen example pen</a>.</p>
+
+<p>If you found this interesting, feel free to check out my other table-focused post: <a href="/posts/tables/">Making Tables Responsive With Minimal CSS</a></p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

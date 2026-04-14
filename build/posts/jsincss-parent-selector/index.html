@@ -1,0 +1,126 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Using Parent Selectors in CSS</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="using-parent-selectors-in-css">Using Parent Selectors in CSS</h1>
+
+<p>2018-12-19</p>
+
+<p>I recently saw a Twitter thread posted by <a href="https://twitter.com/innovati/status/1068998114491678720">Tommy Hodgins</a> on implementing highly requested styling features in CSS with only a minimal amount of JavaScript. Many of his examples are great, but the <code>parent</code> selector instantly peaked my interest.</p>
+
+<p>Being able to target an element’s parent always becomes a minor annoyance (since vanilla CSS does not support it) - so you always end up having to do something a little ugly like:</p>
+
+<pre><code>var el = document.getElementById('custom-div');
+var parent = el.closest(selectors);
+</code></pre>
+
+<p>And then add any custom styling to the parent element directly in JavaScript - or toggle a class which opens a whole other can of worms.</p>
+
+<h2 id="save-the-day-with-a-hrefhttpswwwnpmjscompackagejsincss-parent-selectorjsincss-parent-selectora-and-a-hrefhttpsgithubcomtomhodginsqaffeineqaffeinea">Save the day with <a href="https://www.npmjs.com/package/jsincss-parent-selector">jsincss-parent-selector</a> and <a href="https://github.com/tomhodgins/qaffeine">qaffeine</a></h2>
+
+<p>By using the <code>jsincss-parent-selector</code> and <code>qaffeine</code> plugins we can target an element’s parent in CSS without breaking a sweat. Let’s break it down:</p>
+
+<h3 id="import-the-packages">Import the packages</h3>
+
+<pre><code>npm install jsincss-parent-selector qaffeine
+</code></pre>
+
+<h3 id="html-ex-indexhtml">HTML (ex. index.html)</h3>
+
+<p>Now we add our very simple HTML skeleton:</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;link rel="stylesheet" href="output.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;main&gt;
+                &lt;h2&gt;This is a header&lt;/h2&gt;
+            &lt;/main&gt;
+        &lt;/header&gt;
+    &lt;/body&gt;
+    &lt;script src=output.js&gt;&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="javascript-ex-inputjs">JavaScript (ex. input.js)</h3>
+
+<pre><code>const qaffeine = require('qaffeine')
+const parent = require('jsincss-parent-selector')
+
+qaffeine(
+{
+    stylesheet: {},
+    rules: {
+    parent
+    }
+},
+'input.css',
+'output.js',
+'output.css'
+)
+</code></pre>
+
+<h3 id="css-ex-inputcss">CSS (ex. input.css)</h3>
+
+<pre><code>header {
+    display: block;
+}
+main[--js-parent] {
+    background: blue;
+}
+</code></pre>
+
+<p>Then simply run <code>node</code> against your <code>js</code> file. That’s it! I would also suggest checking out Tommy’s <a href="https://www.youtube.com/watch?v=rG8cLe7VbW0">video covering this topic</a> if you prefer to follow along.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

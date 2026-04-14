@@ -1,0 +1,80 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Bringing dwm Shortcuts to GNOME</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="bringing-dwm-shortcuts-to-gnome">Bringing dwm Shortcuts to GNOME</h1>
+
+<p>2023-11-02</p>
+
+<p>The <code>dwm</code> window manager is my standard “go-to” for most of my personal laptop environments. For desktops with larger, higher resolution monitors I tend to lean towards using GNOME. The GNOME DE is fairly solid for my own purposes. This article isn’t going to deep dive into GNOME itself, but instead highlight some minor configuration changes I make to mimic a few <code>dwm</code> shortcuts.</p>
+
+<p>For reference, I’m running GNOME 45.0 on Ubuntu 23.10</p>
+
+<h2 id="setting-up-fixed-workspaces">Setting Up Fixed Workspaces</h2>
+
+<p>When I use <code>dwm</code> I tend to have a hard-set amount of <code>tags</code> to cycle through (normally 4-5). Unfortunately, dynamic rendering is the default for workspaces (ie. tags) in GNOME. For my personal preference I set this setting to <code>fixed</code>. We can achieve this by opening <strong>Settings</strong> &gt;  <strong>Multitasking</strong> and selecting “Fixed number of workspaces”.</p>
+
+<p><img src="/public/images/gnome-1.png" alt="Screenshot of GNOME's Multitasking Settings GUI" /></p>
+
+<h2 id="setting-our-keybindings">Setting Our Keybindings</h2>
+
+<p>Now all that is left is to mimic <code>dwm</code> keyboard shortcuts, in this case: <code>ALT</code> + <code>$num</code> for switching between workspaces and <code>ALT</code> + <code>SHIFT</code> + <code>$num</code> for moving windows across workspaces. These keyboard shortcuts can be altered under <strong>Settings</strong> → <strong>Keyboard</strong> → <strong>View and Customize Shortcuts</strong> → <strong>Navigation</strong>.</p>
+
+<p>You’ll want to make edits to both the “Switch to workspace <em>n</em>” and “Move window to workspace <em>n</em>”.</p>
+
+<p><img src="/public/images/gnome-2.png" alt="Screenshot of GNOME's keyboard shortcut GUI" /></p>
+
+<p><img src="/public/images/gnome-3.png" alt="Screenshot of GNOME's keyboard shortcut GUI" /></p>
+
+<p>That’s it. You’re free to include even more custom keyboard shortcuts (open web browser, lock screen, hibernate, etc.) but this is a solid starting point. Enjoy tweaking GNOME!</p>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

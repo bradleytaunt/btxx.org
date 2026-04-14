@@ -1,0 +1,186 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Burning and Playing PS2 Games without a Modded Console</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="burning-and-playing-ps2-games-without-a-modded-console">Burning and Playing PS2 Games without a Modded Console</h1>
+
+<p>2024-09-02</p>
+
+<div class="alert note">
+  <span><b>Important</b> I do not support pirating or obtaining illegal copies of video games. This process should only be used to copy your existing PS2 games for backup, in case of accidental damage to the original disc.</span>
+</div>
+
+<h2 id="requirements">Requirements</h2>
+
+<p><strong>Note</strong>: This tutorial is tailored towards macOS and Linux users. Most things should work out-of-the-box on Windows.</p>
+
+<p>You will need:</p>
+
+<ol>
+  <li>An official PS2 game disc (the one you wish to copy)</li>
+  <li>A PS2 <strong>Slim</strong> console</li>
+  <li>An computer/laptop with a optical DVD drive (or a portable USB DVD drive)</li>
+  <li>Some time and a coffee! (or tea)</li>
+</ol>
+
+<h2 id="create-an-iso-image-of-your-ps2-disc">Create an ISO Image of Your PS2 Disc:</h2>
+
+<h3 id="macos-instructions">macOS Instructions</h3>
+
+<ol>
+  <li>Insert your PS2 disc into your optical drive.</li>
+  <li>Open <strong>Disk Utility</strong> (Applications &gt; Utilities)</li>
+  <li>In Disk Utility, select your PS2 disc from the sidebar</li>
+  <li>Click on the <strong>File</strong> menu, then select <strong>New Image &gt; Image from [Disc Name]</strong></li>
+  <li>Choose a destination to save the ISO file and select the format as DVD/CD Master</li>
+  <li>Name your file and click <strong>Save</strong>. Disk Utility will create a <code>.cdr</code> file, which is essentially an ISO file</li>
+</ol>
+
+<p>Before we move on, we will need to convert that newly created <code>cdr</code> file into <code>ISO</code>.</p>
+
+<p>Navigate to the directory where the <code>.cdr</code> file is located and use the <code>hdiutil</code> command to convert the .<code>cdr</code> file to an ISO file:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hdiutil convert yourfile.cdr <span class="nt">-format</span> UDTO <span class="nt">-o</span> yourfile.iso
+</code></pre></div></div>
+
+<p>You’ll end up with a file named <code>yourfile.iso.cdr</code>. Rename it by removing the <code>.cdr</code> extension to make it an <code>.iso</code> file:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>yourfile.iso.cdr yourfile.iso
+</code></pre></div></div>
+
+<p>Done and done.</p>
+
+<h3 id="linux-alpine-instructions">Linux (Alpine) Instructions</h3>
+
+<p>Insert your PS2 game disc and run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>lsblk
+</code></pre></div></div>
+
+<p>Look for your optical drive in the list. It’s usually labeled something like <code>/dev/sr0</code> or <code>/dev/cdrom</code>. Once you’ve identified it, use the <code>dd</code> command to create an ISO image from that disc:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo dd </span><span class="k">if</span><span class="o">=</span>/dev/sr0 <span class="nv">of</span><span class="o">=</span>~/ps2game.iso <span class="nv">bs</span><span class="o">=</span>2048 <span class="nv">status</span><span class="o">=</span>progress
+</code></pre></div></div>
+
+<p>Give that some time to complete. Once finished, move on.</p>
+
+<h2 id="installing-wine">Installing Wine</h2>
+
+<p>For Mac and Linux users, you will need to install Wine in order to run the ESR patcher:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># macOS</span>
+brew <span class="nb">install </span>wine-stable
+
+<span class="c"># Linux (Debian)</span>
+apt <span class="nb">install </span>wine
+
+<span class="c"># Linux (Alpine)</span>
+apk add wine
+</code></pre></div></div>
+
+<h2 id="clone--run-the-patcher">Clone &amp; Run the Patcher</h2>
+
+<p>The following steps work for both macOS and Linux:</p>
+
+<ol>
+  <li>Clone the FreeDVDBoot ESR Patcher:<br /> <code>git clone https://git.sr.ht/~bt/fdvdb-esr</code></li>
+  <li>Navigate to the cloned project folder:<br /> <code>cd /path/to/fdvdb-esr</code></li>
+  <li>The run the executable:<br /> <code>wine FDVDB_ESR_Patcher.exe</code></li>
+</ol>
+
+<p><img src="/public/images/patcher-gui.png" alt="The patcher running through Wine on macOS" /></p>
+
+<p>Now you need to select your previously cloned <code>ISO</code> file, use the default Payload setting and then click <strong>Patch!</strong>. After a few seconds your file should be patched.</p>
+
+<h2 id="burning-our-iso-to-dvd">Burning Our ISO to DVD</h2>
+
+<p>It’s time for the main event!</p>
+
+<h3 id="macos-instructions-1">macOS Instructions</h3>
+
+<p>Insert a blank DVD-R into your disc drive and mount it. Then right click on your patched <code>ISO</code> file and run “Burn Disk Image <filename> to Disc...".</filename></p>
+
+<p>From here, you want to make sure you select the slowest write speed and enable verification. Once the file is written to the disc and verified (verification might fail - it is safe to ignore) you can remove the disc from the drive.</p>
+
+<h3 id="linux-alpine-instructions-1">Linux (Alpine) Instructions</h3>
+
+<p>For Linux, you will need to install <code>cdrkit</code>, which provides the <code>genisoimage</code> and <code>wodim</code> tools for burning ISOs to DVDs.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apk add cdrkit
+</code></pre></div></div>
+
+<p>Next, you’ll need to identify your DVD writer device. Use the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wodim <span class="nt">-scanbus</span>
+</code></pre></div></div>
+
+<p>This will list the available devices. Typically, the device will be something like <code>/dev/sr0</code>.</p>
+
+<p>Now that you have your ISO and the device name, burn the ISO to the DVD:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wodim <span class="nv">dev</span><span class="o">=</span>/dev/sr0 <span class="nv">speed</span><span class="o">=</span>4 <span class="nt">-v</span> <span class="nt">-data</span> /path/to/your/ps2game.iso
+</code></pre></div></div>
+
+<p>Take note of the <code>speed=4</code> here. This lower speed helps avoid any issues when specifically burning PS2 game files.</p>
+
+<p>(Optional) If you want to verify that the burn was successful, you can use the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">md5sum</span> /dev/sr0
+</code></pre></div></div>
+
+<p>That’s it!</p>
+
+<h2 id="before-playing-the-game">Before Playing the Game</h2>
+
+<p>In some instances, you might need to change the PS2 disc speed from <strong>Standard</strong> to <strong>Fast</strong> in the main “Browser” setting before you put the game into your console. After that, enjoy playing your cloned PS2 game!</p>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Using Netlify for Dynamic URL Redirects</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="using-netlify-for-dynamic-url-redirects">Using Netlify for Dynamic URL Redirects</h1>
+
+<p>2021-12-03</p>
+
+<p>With the <a href="/minor-website-changes/">recent domain switch</a> that took place on this website, I needed to have a dependable setup to forward my old domain URLs to the new one. While using something like “URL forwarding” through your domain provider could work, it doesn’t natively support <em>dynamic</em> linking. Let me explain using a basic example:</p>
+
+<ul>
+  <li>A user clicks on a link that targets a post on your old domain:<br /> <code>olddomain.com/random-post</code></li>
+  <li>You want that link to forward using the same permalink structure:<br /> <code>newdomain.com/random-post</code></li>
+  <li>“URL forwarding” through your domain provider <strong>does not</strong> support this</li>
+</ul>
+
+<p>Simple stuff. So, let’s breakdown how to easily set this up on Netlify <em>for free</em>.</p>
+
+<h2 id="setting-up-netlify">Setting Up Netlify</h2>
+
+<ul>
+  <li>Create an account (or login to an existing one) and setup a new site<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></li>
+  <li>Change your “old” domain name nameservers to match Netlify’s (normally done through your domain register)
+    <ul>
+      <li><code>dns1.p03.nsone.net</code></li>
+      <li><code>dns2.p03.nsone.net</code></li>
+      <li><code>dns3.p03.nsone.net</code></li>
+      <li><code>dns4.p03.nsone.net</code></li>
+    </ul>
+  </li>
+  <li>Back in Netlify: under <strong>Domain Settings</strong> you need to add your custom “old” domain under the <strong>Custom domains</strong> section under <strong>Domain management</strong></li>
+  <li>
+    <p>Lastly, add the following content inside a <code>_redirects</code> file (no extension) to your website content/build (changing to your own domains, of course)</p>
+
+    <p>https://olddomain.com/* https://newdomain.com/:splat 301!</p>
+  </li>
+</ul>
+
+<p>That’s it! Now Netlify will dynamically forward all your pre-existing URLs from your old domain to the new one. No pesky <code>.htaccess</code> files or running your own basic web server(s)!</p>
+
+<p>Hopefully this helps others trying to dynamically redirect their domains without the headache.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>I normally set this up through Github / git hosting <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Convert Files to HTML with macOS Automator Quick Actions</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="convert-files-to-html-with-macos-automator-quick-actions">Convert Files to HTML with macOS Automator Quick Actions</h1>
+
+<p>2022-01-28</p>
+
+<p>Since a few people have reached out and thanked me for my previous post <a href="/posts/batch-webp-conversion">Batch Converting Images to webp with macOS Automator</a>, I thought I would continue to share more of my own custom Automator Quick Actions. Today’s post will cover the ability to convert <em>any</em> text-based document into pure HTML.</p>
+
+<p>I know - there are over 6 billion conversion apps that do this very same thing. But our way of doing it is <em>cooler</em>. Our conversion tool:</p>
+
+<ul>
+  <li>Will run directly inside macOS Finder (right-click actions FTW)</li>
+  <li>Can batch convert multiple files at once</li>
+  <li>Can convert mixed files types at the same time</li>
+</ul>
+
+<p>And it can do all of this for free on your existing macOS system. No apps required. So, enough chit-chat, let’s get started!</p>
+
+<h2 id="the-dependencies">The Dependencies</h2>
+
+<p>Unfortunately, setting things up isn’t as simple as clicking a single <code>Install</code> button and calling it a day. But don’t start to panic! I assure you everything we’ll be doing is actually quite easy to breeze through - <em>trust me</em>.</p>
+
+<p>Our main requirements will consistent of the following:</p>
+
+<ul>
+  <li>Homebrew</li>
+  <li>Pandoc</li>
+  <li>Ability to open Terminal</li>
+</ul>
+
+<h2 id="installing-homebrew">Installing Homebrew</h2>
+
+<p>Homebrew is a simple package manager for macOS. The beauty of having Homebrew is the flexibility in the future for installing other custom packages. Overall it’s just a nice piece of software to have on your machine.</p>
+
+<p>If you have already installed Homebrew in the past, ignore this step and continue down the page. If not, simply open your Terminal and run:</p>
+
+<pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+</code></pre>
+
+<p>Let that finish and you’re done! Also feel free to read more about Homebrew on the <a href="https://brew.sh">official website</a>. Knowledge is power!</p>
+
+<h2 id="installing-pandoc">Installing Pandoc</h2>
+
+<p>The package that is going to be doing all the heavy-lifting for us is <a href="https://pandoc.org">pandoc</a>. Because we have Homebrew on our machine now, installing this package is as simple as opening our Terminal again and running:</p>
+
+<pre><code>brew install pandoc
+</code></pre>
+
+<p>Wait for everything to finish and you’re done!</p>
+
+<h2 id="our-custom-automator-quick-action">Our Custom Automator Quick Action</h2>
+
+<p>Next you’ll want to open the macOS Automator app and create a new “Quick Action” when given the prompt to do so.</p>
+
+<p><img src="/public/images/new-automator.webp" alt="Toggle prompt for new automation in macOS Automator" /></p>
+
+<p><em>After opening Automator, select “Quick Action” from the menu</em></p>
+
+<p>Now do the following (reference the image further below to make sure your parameters match):</p>
+
+<ol>
+  <li>Set “Workflow receives current” to <strong>documents</strong> in <strong>any application</strong></li>
+  <li>In the search bar type in “Run Shell Script”</li>
+  <li>Drag-and-drop the “Run Shell Script” from the left pane into the right pane</li>
+  <li>Set the “Shell” parameter to <strong>/bin/bash</strong></li>
+  <li>Set “Pass input” as <strong>as arguments</strong></li>
+</ol>
+
+<p>Once all that is done, simply paste the following in the open text field within the “Run Shell Script” item:</p>
+
+<pre><code>for f in "$@"
+do
+/opt/homebrew/bin/pandoc -o "${f%.*}.html" "$f"
+done
+</code></pre>
+
+<p>If you’ve done everything correctly it should look something like this:</p>
+
+<p><img src="/public/images/new-automator-2.webp" alt="Automator quick action details for converting to HTML" /></p>
+
+<p>Save this new Quick Action (Name is something like “Convert to HTML” to keep things simple). That’s it! Amazing, right?</p>
+
+<h2 id="time-to-convert">Time to Convert</h2>
+
+<p>Now it is finally time to see our Quick Action is <em>action</em>! Navigate to any document file in a Finder window and follow along.</p>
+
+<ol>
+  <li>First, right-click on the file you wish to convert. See Fig.1)</li>
+  <li>In the pop-up container, scroll down and hover over <code>Quick Actions</code>.</li>
+  <li>A secondary pop-out will appear. Look for the action <code>Convert File to HTML</code> and click it. See Fig.2)</li>
+</ol>
+
+<p><img src="/public/images/macos-convert-1.webp" alt="A markdown file in macOS Finder" /></p>
+
+<p><em>Fig 1: Finding and right-clicking on your desired file</em></p>
+
+<p><img src="/public/images/macos-convert-2.webp" alt="Convert to HTML action selection" /></p>
+
+<p><em>Fig 2: From the “Quick Actions” menu, select “Convert to HTML”</em></p>
+
+<p>If everything was set up properly (and depending on the size of the file) you should see your converted HTML file show up right next to your existing document. Time to celebrate!</p>
+
+<p>Don’t forget - you can also <em>batch</em> convert multiple files and multiple file <em>types</em> at once. The possibilities are endless!</p>
+
+<p><img src="/public/images/macos-convert-3.webp" alt="Finder window showing a Markdown file and an HTML file" /></p>
+
+<p><em>Our converted document is now available in HTML. Absolutely glorious.</em></p>
+
+<h2 id="no-limits">No Limits</h2>
+
+<p>Although this article has mainly focused on converting documents to HTML, <code>pandoc</code> is so powerful you could do any number of conversions. Re-using these steps above, you have the ability to make as many different conversion quick actions as your heart desires!</p>
+
+<p>Have fun converting!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

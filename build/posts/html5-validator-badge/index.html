@@ -1,0 +1,117 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Using HTML Validator Badges Again</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="using-html-validator-badges-again">Using HTML Validator Badges Again</h1>
+
+<p>2019-07-05</p>
+
+<p>There was a time on the Internet when websites wore badges of honor, declaring that their code was semantic and followed the W3C guidelines. The validators we used weren’t great (and <strong>still</strong> aren’t perfect) but they represented a community that took pride in caring about the quality of their work. I think it’s time we bring HTML badges back.</p>
+
+<h2 id="getting-the-flaws-out-of-the-way">Getting the flaws out of the way</h2>
+
+<p>Of course, there were reasons why these badges slowly faded out of popularity. Some of the reasoning made sense, but most felt like a stretch in logic from my perspective. I always looked at it as a “the good outweighs the bad”.</p>
+
+<p>Jukka Korpela’s post way back in 2003, <a href="http://jkorpela.fi/html/validation.html">HTML validation is a good tool but just a tool</a>, highlighted a lot of problems with relying so heavily on these HTML validators. I suggest you give it a read if this kind of thing interests you. I found it fascinating, even though I disagree with most of the points he makes.</p>
+
+<p>Some negatives used to dismiss HTML badges:</p>
+
+<ul>
+  <li><strong>The badge system is outdated</strong>
+    <ul>
+      <li>Dismissing the worth of something based on how long it has been around is foolish. Many tools and frameworks are “outdated” but are still used to this day with great success.</li>
+    </ul>
+  </li>
+  <li><strong>HTML5 doesn’t <em>require</em> validation</strong>
+    <ul>
+      <li>Technically <em>no subset of HTML</em> requires validation - but developers should aim for it. The W3C validators perform a solid job of keeping a standard for web development, so by following a standard we can keep experiences consistent for users.</li>
+    </ul>
+  </li>
+  <li><strong>Validation is too formal</strong>
+    <ul>
+      <li>I believe in the ability to achieve your desired outcome based on almost any constraints. If a project leans you towards invalid or non-semantic structure to fulfill requirements, a better approach needs to be evaluated. We as developers tend to settle too quickly on the easiest option available to us.</li>
+    </ul>
+  </li>
+  <li><strong>Websites / web apps are just <em>too complex</em> to follow the W3C guidelines</strong>
+    <ul>
+      <li>I call <em>BS</em> on this argument. The complexity of a website should have nothing to do with keeping semantic standards. <em>This is your job.</em></li>
+    </ul>
+  </li>
+  <li><strong>It only exists to catch syntax errors</strong>
+    <ul>
+      <li>For the record, I still see this more of a positive take on using validators. Subtle and nuanced syntax mistakes can be easily overlooked by the human eye.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="nobody-puts-badges-in-a-corner">“Nobody puts <em>badges</em> in a corner”</h2>
+
+<p>A large of amount of designers / developers tend to forget that there are new people entering our industry everyday and they might not be as well versed in the basics of the web (HTML &amp; CSS specifically). Since so many newcomers start out with JavaScript frameworks or jump onto pre-existing projects, they don’t always grasp the core foundation of valid markup. Some frameworks even break basic standards for visuals or easier development environments - setting their initial expectations that ugly semantics is acceptable code. The ends justify the means, etc.</p>
+
+<p>Guiding first-timers towards HTML validators let’s them rethink their structure when building products or at least give some forethought to their outputted code. We, the more <em>verteran</em> members of the community, have the knowledge of proper semantics since we grew our careers around this “trend”. We shouldn’t assume newbies have the same understanding. The basics are important.</p>
+
+<h2 id="open-source-html5-badge">Open source HTML5 badge</h2>
+
+<p>Since the W3C doesn’t officially produce any badges for HTML5 validation<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>, I’ve gone ahead and open sourced <code>SVG</code> and <code>PNG</code> versions of a badge based off the current W3C designs. You can check out the Github repo: <a href="https://github.com/bradleytaunt/html5-valid-badge">HTML5 Valid Badge</a></p>
+
+<p>If you decide to use these badges, be sure to link these images to your valid passing URL (<a href="https://html5.validator.nu">html5.validator.nu</a>). You can see an example of the link in the footer of this website.</p>
+
+<p>Please feel free to reach out and share your websites / projects that pass as valid HTML and include an HTML valid badge. I’d love to check them out!</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="http://html5doctor.com/html5-check-it-before-you-wreck-it-with-miketm-smith/">Interview with Mike Smith</a>: “There won’t be any proper Valid HTML5 icon forthcoming, so if you’d like to use one in your content, you’ll probably need to create one on your own.” <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

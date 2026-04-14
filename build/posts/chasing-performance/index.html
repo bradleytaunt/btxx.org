@@ -1,0 +1,300 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Chasing Performance</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="chasing-performance">Chasing Performance</h1>
+
+<p>2017-11-20</p>
+
+<h2 id="update">Update</h2>
+
+<p>This post is no longer relevant since this blog has been redesigned since. I’m keeping this article up as a point of reference.</p>
+
+<hr />
+
+<p>So I decided to participate in Smashing Mag’s <a href="https://www.smashingmagazine.com/2017/10/front-end-performance-challenge/">Front End Performance Challenge</a>, not only for the potential of winning the prize but to further experiment with optimizing my site. (Web performance is a passion of mine)</p>
+
+<p>Below I will breakdown the before &amp; after statistics of my personal site and what changes I made in great detail.</p>
+
+<p>I will be using both my homepage and the image-heavy article I recently wrote, <a href="/blog/the-death-of-personality/">The Death of Personality</a>, as the basis for my tests.</p>
+
+<h3 id="lighthouse-score---homepage">Lighthouse Score - Homepage</h3>
+
+<p><a href="/public/images/lighthouse-homepage-original.webp">Full source original stats</a> // <a href="/public/images/lighthouse-homepage-updated.webp">Full source updated stats</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Stats</th>
+            <th>Before</th>
+            <th>After</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Performance</td>
+            <td>82</td>
+            <td>98</td>
+        </tr>
+        <tr>
+            <td>Accessibility</td>
+            <td>100</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Best Practices</td>
+            <td>75</td>
+            <td>94</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="lighthouse-score---article-page">Lighthouse Score - Article Page</h3>
+
+<p><a href="public/images/lighthouse-article-original.webp">Full source original stats</a> // <a href="public/images/lighthouse-article-updated.webp">Full source updated stats</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Stats</th>
+            <th>Before</th>
+            <th>After</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Performance</td>
+            <td>39</td>
+            <td>96</td>
+        </tr>
+        <tr>
+            <td>Accessibility</td>
+            <td>97</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Best Practices</td>
+            <td>69</td>
+            <td>94</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="web-page-test---homepage">Web Page Test - Homepage</h3>
+
+<p><a href="/public/images/webpagetest-homepage-original.webp">Full source original stats</a> // <a href="/public/images/webpagetest-homepage-updated.webp">Full source updated stats</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Stats</th>
+            <th>Before</th>
+            <th>After</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Initial Load Time</td>
+            <td>0.91s</td>
+            <td class="after bar">0.41s</td>
+        </tr>
+        <tr>
+            <td>Visually Complete</td>
+            <td>0.9s</td>
+            <td>0.7s</td>
+        </tr>
+        <tr>
+            <td>Fully Loaded</td>
+            <td>0.94s</td>
+            <td>0.65s</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="web-page-test---article-page">Web Page Test - Article Page</h3>
+
+<p><a href="/public/images/webpagetest-article-original.webp">Full source original stats</a> // <a href="/public/images/webpagetest-article-updated.webp">Full source updated stats</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Stats</th>
+            <th>Before</th>
+            <th>After</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Initial Load Time</td>
+            <td>4.7s</td>
+            <td>0.5s</td>
+        </tr>
+        <tr>
+            <td>Visually Complete</td>
+            <td>3.1s</td>
+            <td>0.8s</td>
+        </tr>
+        <tr>
+            <td>Fully Loaded</td>
+            <td>4.8s</td>
+            <td>0.67s</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="quick-look">Quick Look</h3>
+<p>Though my homepage only made some minor speed performance enhancements, my article post’s initial load time was slimmed down by a <strong>whopping 4.2 seconds!</strong> That’s pretty incredible and very noticeable from an end-user’s perspective.</p>
+
+<h3 id="so---what-changed">So - What Changed?</h3>
+
+<p>Webfonts</p>
+
+<p>I’m not using any webfonts but instead defaulting to the user’s OS System Fonts. I love custom typefaces but performance takes just too much of a hit on my personal site to bother with them.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+<span class="nl">font-family</span><span class="p">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="p">,</span><span class="n">BlinkMacSystemFont</span><span class="p">,</span><span class="s1">"Segoe UI"</span><span class="p">,</span><span class="n">Roboto</span><span class="p">,</span><span class="n">Oxygen</span><span class="p">,</span><span class="n">Ubuntu</span><span class="p">,</span><span class="n">Cantarell</span><span class="p">,</span><span class="s1">"Open Sans"</span><span class="p">,</span><span class="s1">"Helvetica Neue"</span><span class="p">,</span><span class="nb">sans-serif</span><span class="p">,</span><span class="s1">"Sans Serif"</span><span class="p">,</span><span class="n">Icons</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For reference, there are some things you should to look out for when using custom typefaces:</p>
+
+<ul>
+  <li>Readability and accessibility</li>
+  <li>Possible extra overhead loading in a custom @font-face</li>
+  <li>Try to avoid any <a href="https://css-tricks.com/fout-foit-foft/">FOUT, FOIT, FOFT</a></li>
+  <li>Don’t go down the rabbit hole of using 3rd party plugins to optimize something as basic as a typeface</li>
+</ul>
+
+<h3 id="critical-css">Critical CSS</h3>
+
+<p>This part was easy. In order to avoid the weird styling ‘pops’ present on some websites when initially loading with slow connections, it’s best to place all your most critical styling inline and then load your external CSS once everything else has loaded.</p>
+
+<p>On top of that, I decided to also implement Filament Group’s <a href="https://github.com/filamentgroup/loadCSS">loadCSS</a> function to load my CSS asynchronously. If you are not currently using this in any of your projects; stop reading this and go do it! It’s a game changer.</p>
+
+<h3 id="critical-javascript">Critical JavaScript</h3>
+
+<p>My personal site only uses a small amount of JavaScript on the article post Jekyll template pages. By using the <code>defer</code> property I can be sure to load the <code>IntersectionObserver</code> API polyfill after the rest of the DOM as finished loading.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"</span> <span class="na">defer</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>I could probably optimize this further by only calling these scripts if an image is actually present in the article post, but this fits my needs nicely as is.</p>
+
+<h3 id="responsive-images">Responsive Images</h3>
+
+<p>The only images I use are those included in supported blog posts, so the first step was making sure to only call <code>iolazy.min.js</code> on those specific template pages. The next step was defaulting to <code>webp</code> image formats with a lossless <code>jpg</code> fall-back with the help of the <code>picture</code> element:</p>
+
+<p><span class="sidenote">I’ve also included responsive image sizes for further optimization based on screen size and loading speeds.</span></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;figure&gt;</span>
+<span class="nt">&lt;picture&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">type=</span><span class="s">"image/webp"</span>
+    <span class="na">data-srcset=</span><span class="s">"
+    /images/articles/webp/flat-design-toggles_p0v2hv_c_scale,w_200.webp 200w,
+    /images/articles/webp/flat-design-toggles_p0v2hv_c_scale,w_1400.webp 1400w"</span>
+    <span class="na">class=</span><span class="s">"lazyload"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;img</span>
+    <span class="na">sizes=</span><span class="s">"(max-width: 1400px) 100vw, 1400px"</span>
+    <span class="na">data-srcset=</span><span class="s">"
+    /images/articles/flat-design-toggles_qfre51_c_scale,w_200.webp 200w,
+    /images/articles/flat-design-toggles_qfre51_c_scale,w_727.webp 727w,
+    /images/articles/flat-design-toggles_qfre51_c_scale,w_1065.webp 1065w,
+    /images/articles/flat-design-toggles_qfre51_c_scale,w_1400.webp 1400w"</span>
+    <span class="na">src=</span><span class="s">"/images/placeholder.webp"</span>
+    <span class="na">alt=</span><span class="s">"Toggles Comparison"</span>
+    <span class="na">class=</span><span class="s">"lazyload"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/picture&gt;</span>
+<span class="nt">&lt;/figure&gt;</span>
+</code></pre></div></div>
+
+<p>What about users with JavaScript disabled I hear you ask? It’s time for <code>noscript</code> to save the day:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;noscript&gt;</span>
+  <span class="nt">&lt;picture&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">type=</span><span class="s">"image/webp"</span>
+    <span class="na">srcset=</span><span class="s">"
+    /images/articles/webp/flat-design-toggles_p0v2hv_c_scale,w_200.webp 200w,
+    /images/articles/webp/flat-design-toggles_p0v2hv_c_scale,w_1400.webp 1400w"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span>
+    <span class="na">sizes=</span><span class="s">"(max-width: 1400px) 100vw, 1400px"</span>
+    <span class="na">srcset=</span><span class="s">"
+    /images/articles/flat-design-toggles_qfre51_c_scale,w_200.webp 200w,
+    /images/articles/flat-design-toggles_qfre51_c_scale,w_727.webp 727w,
+    /images/articles/flat-design-toggles_qfre51_c_scale,w_1065.webp 1065w,
+    /images/articles/flat-design-toggles_qfre51_c_scale,w_1400.webp 1400w"</span>
+    <span class="na">src=</span><span class="s">"/images/articles/flat-design-toggles_qfre51_c_scale,w_1400.webp"</span>
+    <span class="na">alt=</span><span class="s">"Toggles Comparison"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/picture&gt;</span>
+<span class="nt">&lt;/noscript&gt;</span>
+</code></pre></div></div>
+
+<h3 id="https-amp-caching">HTTPS &amp; Caching</h3>
+
+<p>The Lighthouse audit also suggested implementing an SSL certificate (something I’ve been meaning to do for a while anyway) and also utilize CDN caching. So it was Cloudflare to the rescue!</p>
+
+<p>Since my website is hosted through Github, setting up a <em>free</em> SSL certificate and enabling site-wide caching was a breeze. If you’re interested in setting this up yourself, step-by-step instructions can be found <a href="https://gist.github.com/cvan/8630f847f579f90e0c014dc5199c337b">here</a>.</p>
+
+<p>This simple update helped boost my best practices score from a 69 to a 94. Yet another performance enhancement you should be enabling for all your current and future projects!</p>
+
+<h2 id="performance-happiness">Performance Happiness</h2>
+
+<p>Overall I’m pretty content with the <strong>major</strong> performance boost my site has received from these fairly <em>minor</em> updates and I hope this article inspires other designers and developers to jump into updating their own site/app performance speeds. The pay-off is truly worth it!</p>
+
+<h3 id="some-extra-reading-material">Some Extra Reading Material</h3>
+
+<ul>
+  <li><a href="https://www.amazon.ca/Web-Performance-Action-Building-Faster/dp/1617293776/ref=sr_1_1?ie=UTF8&amp;qid=1510585897&amp;sr=8-1&amp;keywords=web+performance+in+action">Web Performance in Action</a> by <i>Jeremy Wagner</i></li>
+  <li><a href="https://www.amazon.ca/Responsible-Responsive-Design-Scott-Jehl/dp/1937557162/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1510585972&amp;sr=1-1&amp;keywords=responsible+responsive+design">Responsible Responsive Design</a> by <i>Scott Jehl</i></li>
+  <li><a href="https://www.amazon.ca/Designing-Progressive-Enhancement-Building-Everyone/dp/0321658884/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1510586005&amp;sr=1-1">Designing with Progressive Enhancement: Building the Web that Works for Everyone</a> by <i>Todd Parker, Scott Jehl,‎ Maggie Costello Wachs,‎ Patty Toland</i></li>
+</ul>
+
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

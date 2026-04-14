@@ -1,0 +1,111 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Setup an OpenBSD VM on macOS Using UTM</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="setup-an-openbsd-vm-on-macos-using-utm">Setup an OpenBSD VM on macOS Using UTM</h1>
+
+<p>2025-03-12</p>
+
+<p>The <a href="https://mac.getutm.app">UTM app</a> for macOS is an excellent piece of software for those wanting a streamlined GUI when working with virtual machines. Their existing <a href="https://mac.getutm.app/gallery/">Gallery</a> of pre-built images is great, but it currently lacks any of the BSDs. Lucky for us, creating your own OpenBSD VM is very straightforward.</p>
+
+<figure>
+  <img src="/public/images/openbsd-mac-utm.webp" alt="OpenBSD running inside UTM" />
+  <figcaption>OpenBSD 7.6 running inside UTM on macOS</figcaption>
+</figure>
+
+<h2 id="download-openbsd-iso">Download OpenBSD ISO</h2>
+
+<p>Download the latest <code>arm64</code> OpenBSD install ISO from the official site:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-O</span> https://cdn.openbsd.org/pub/OpenBSD/7.6/arm64/install76.iso
+</code></pre></div></div>
+
+<h2 id="create-a-utm-virtual-machine">Create a UTM Virtual Machine</h2>
+
+<ol>
+  <li>Open UTM</li>
+  <li>Click create a <strong>New Virtual Machine</strong></li>
+  <li>Select <strong>Virtualize</strong> → <strong>Other</strong></li>
+  <li>Select <strong>CD/DVD Image</strong> and choose your ISO file</li>
+  <li>Set your <strong>Storage</strong> to your desired size (ie. <code>15GB</code>)</li>
+  <li>Set your <strong>Shared Directory</strong> (ie. <code>Downloads</code>)</li>
+  <li>Name your VM and click <strong>Continue</strong></li>
+</ol>
+
+<h2 id="tweaking-vm-settings">Tweaking VM Settings</h2>
+
+<ol>
+  <li>Edit the VM config under <strong>QEMU</strong> → <strong>Display</strong> and change it to <code>virtio-ramfb</code>.</li>
+  <li>Under <strong>System</strong> check the <code>Force Multicore</code> checkbox</li>
+</ol>
+
+<h2 id="network--display">Network &amp; Display</h2>
+
+<p>If you require network access, make sure you set <code>virtio-net-pci</code> under <strong>Emulated Network Interface</strong> in the <strong>Network</strong> settings tab. This is normally set correctly by default, but you should always double check.</p>
+
+<h2 id="installing-openbsd">Installing OpenBSD</h2>
+
+<ol>
+  <li>Start the VM</li>
+  <li>Boot from the OpenBSD install ISO</li>
+  <li>Follow the OpenBSD installation prompts
+    <ul>
+      <li>I have a <a href="/wiki/openbsd/installation/">step-by-step installation guide</a> (if required)</li>
+    </ul>
+  </li>
+  <li>After installation choose <code>Halt</code></li>
+  <li>Under <strong>USB Drive</strong> settings remove the ISO from path and set <strong>Image Type</strong> to <em>Disk Image</em></li>
+  <li>Reboot into the OpenBSD VM</li>
+</ol>
+
+<p>Didn’t I say it was easy? Now you can start playing with OpenBSD on your Mac! 🐡</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

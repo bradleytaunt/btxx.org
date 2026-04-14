@@ -1,0 +1,157 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>cgit</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="cgit">cgit</h1>
+
+<p>This page contains a comprehensive guide to setting up cgit on NearlyFreeSpeech.</p>
+
+<p><strong>Important</strong>: It is assumed that you already have an account with NFS and also have access to a “site” online.</p>
+
+<p>Most of the following has been lifted from <a href="https://members.nearlyfreespeech.net/wiki/Applications/Cgit">NearlyFreeSpeech cgit application walkthrough</a> but has been tweaked and updated.</p>
+
+<h2 id="setup-git-repostories">Setup <code>git</code> Repostories</h2>
+
+<p>The first thing we need to do is setting up our <code>git</code> repos, with the ability for the public to clone our projects. Each one of your project repos will need to follow this same procedure.</p>
+
+<p>Make sure to change your “domain” folder accordingly.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /home/public/git.btxx.org
+
+<span class="nb">mkdir </span>myproject.git
+<span class="nb">cd </span>myproject.git
+
+git init <span class="nt">--bare</span>
+
+<span class="c"># Configure for HTTP access</span>
+git config http.getanyfile <span class="nb">true
+</span>git config http.uploadpack <span class="nb">true</span>
+
+<span class="c"># Update server info (crucial for HTTP cloning)</span>
+git update-server-info
+
+<span class="c"># Set up the post-update hook</span>
+<span class="nb">cat</span> <span class="o">&gt;</span> hooks/post-update <span class="o">&lt;&lt;</span> <span class="sh">'</span><span class="no">EOF</span><span class="sh">'
+#!/bin/sh
+exec git update-server-info
+</span><span class="no">EOF
+
+</span><span class="nb">chmod</span> +x hooks/post-update
+</code></pre></div></div>
+
+<p>Then make sure to include the following <code>.htaccess</code> file at the root of your domain folder (ie. <code>git.btxx.org/</code>):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SetEnv GIT_PROJECT_ROOT /home/public/git.btxx.org
+SetEnv GIT_HTTP_EXPORT_ALL
+</code></pre></div></div>
+
+<p>Now you can test this locally by running:</p>
+
+<pre><code>git clone https://git.btxx.org/myproject.git
+</code></pre>
+
+<h2 id="building-cgit">Building cgit</h2>
+
+<p>The following assumes that you wish to have cgit running at the top-level of your chosen domain (ie. git.example.com)</p>
+
+<p>SSH into your account then download and unpack the latest release:</p>
+
+<pre><code>git clone git://git.zx2c4.com/cgit cgit-src
+cd cgit-src
+</code></pre>
+
+<p>Create a cgit.conf file with desired locations:</p>
+
+<pre><code>CGIT_SCRIPT_PATH = /home/public
+CGIT_DATA_PATH = $(CGIT_SCRIPT_PATH)
+CGIT_CONFIG = $(CGIT_SCRIPT_PATH)/cgitrc
+CACHE_ROOT = $(CGIT_SCRIPT_PATH)/cgitcache
+prefix = $(CGIT_SCRIPT_PATH)/local
+</code></pre>
+
+<p>Get the git sources (needed to build libgit):</p>
+
+<pre><code>git submodule init
+git submodule update
+</code></pre>
+
+<p>Build and install it:</p>
+
+<pre><code>gmake install
+</code></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Make a text file named <code>cgitrc</code> where you specified CGIT_CONFIG and add the following (these are some personal defaults to make things cleaner):</p>
+
+<pre><code>logo=/cgit.png
+root-title=main root title
+root-desc=description for your git server
+root-readme=/home/public/about.md
+virtual-root=/
+
+about-filter=/home/public/cgit-src/filters/about-formatting.sh
+readme=:README.md
+readme=:README
+
+include=/home/protected/cgitrepos
+</code></pre>
+
+<p>Then in the specified file (<code>cgitrepos</code>), place your repos, ex:</p>
+
+<pre><code>repo.url=MyRepo
+repo.path=/home/public/MyRepo.git
+repo.desc=This is my git repository
+</code></pre>
+
+<p><strong>And you should be good to go!</strong></p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

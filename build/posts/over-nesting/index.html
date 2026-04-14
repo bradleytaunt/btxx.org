@@ -1,0 +1,109 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Over-Nesting</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="over-nesting">Over-Nesting</h1>
+
+<p>2019-01-06</p>
+
+<p>I think since our design industry moves so quickly and exciting new technologies get released almost daily, that we often forget some of the basics when writing CSS. I bring this up because I’ve recently worked on a few projects that show a slight disregard for proper class/selector nesting.</p>
+
+<p>Now it’s completely understandable why designers and teams alike shrug off the concept of “over-nesting”:</p>
+
+<ul>
+  <li>As a team we know the structure of our code (no outside party needs to interact with it)</li>
+  <li>Everything is written in <code>insert pre-processor here</code> - so it’s cleaner/compiled anyway</li>
+  <li>It’s <em>technically</em> DRY</li>
+</ul>
+
+<p>I personally believe these are all weak excuses that don’t justify the poor experience future maintainers of your code will face. <em>You should always write your code with the idea someone completely new to the project will have to maintain it</em>.</p>
+
+<p>Let’s look at an average example of poor nesting that I’ve seen out in the wild:</p>
+
+<pre><code>/* These children elements can't be used outside 
+of the parent - not very flexible */
+.main-container {
+    .child-container {
+        /* This class specificity is too deep */
+        .sub-child-container {}
+    }
+}
+</code></pre>
+
+<p>Even if you know a child element will never be structured outside of it’s parent, what harm does it cause to still place it out of such deep specificity?</p>
+
+<pre><code>/* This code is far more reusable */
+.main-container {}
+.child-container {}
+.sub-child-container {}
+</code></pre>
+
+<h3 id="exceptions">Exceptions</h3>
+
+<p>As with anything, there are exceptions to the <em>rule</em>. If the nested elements pertain to the parent itself, it makes complete sense to group these stylings together. A button or link item are excellent examples of this:</p>
+
+<pre><code>.btn-lg {
+    &amp;:hover {}
+    &amp;:active {}
+    &amp;:disabled{}
+}
+
+.link-item {
+    &amp;:hover{}
+    &amp;:focus{}
+}
+</code></pre>
+
+<p>Of course, this is all easier said than done. Limitations exist within teams or even on an individual level that might make this impossible to change. Maybe you don’t have the authority to rework your current CSS or it would eat up too many cycles and time is valuable - especially in the world of startups.</p>
+
+<p>I’m not saying this is <strong>the only way to structure CSS</strong> - I’m only trying to make the lives of future designers/developers easier moving forward.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

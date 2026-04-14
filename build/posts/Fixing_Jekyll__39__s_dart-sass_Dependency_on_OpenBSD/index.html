@@ -1,0 +1,71 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Fixing Jekyll's dart-sass Dependency on OpenBSD</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="fixing-jekylls-dart-sass-dependency-on-openbsd">Fixing Jekyll’s dart-sass Dependency on OpenBSD</h1>
+
+<p>2024-06-30</p>
+
+<p>I recently wrote about <a href="https://btxx.org/posts/Building_rbenv_on_OpenBSD_7.5/">working with multiple Ruby versions on OpenBSD</a> which still works just fine, but I noticed a bug when trying to build a couple of my Jekyll projects locally:</p>
+
+<pre><code>NotImplementedError: dart-sass for x86_64-openbsd7.5
+</code></pre>
+
+<p>For reference, these projects are being built with Ruby 3.3.0 against Jekyll 4.3.3. After doing some research, I came across this ticket that was somewhat buried in the search results: <a href="https://github.com/jekyll/jekyll/issues/9493">https://github.com/jekyll/jekyll/issues/9493</a></p>
+
+<p>The issue <em>seems</em> to be caused by the lack of the <code>dart-sass</code> gem in OpenBSD. Luckily there is a fairly easy fix - we just need to hard-set the <code>jekyll-sass-converter</code> version in our <code>Gemfile</code>:</p>
+
+<pre><code>gem 'jekyll-sass-converter', '~&gt; 2.2'
+</code></pre>
+
+<p>After making this change and running <code>bundle install</code> again, my Jekyll projects started building (and serving) perfectly! Hopefully this helps others trying to build their own Jekyll projects on OpenBSD.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Improving Github's New Design</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="improving-githubs-new-design">Improving Github’s New Design</h1>
+
+<p>2020-07-07</p>
+
+<p>Like many other Github users, I am not a big fan of their recent repository page redesign. In my mind it seems like a change just for the sake of change - the original UI worked perfectly fine.</p>
+
+<p><em>Sigh.</em></p>
+
+<p>I was planning on recreating the original Github layout with custom CSS but decided against it. Tackling such a big change in design would cause headaches if Github ever changed even one simple class or id on a given element. My final conclusion was to just improve their new design with my own personal quality of life improvements.</p>
+
+<p>So, enough chit-chat. Let’s get into it.</p>
+
+<h2 id="current-design-2020">Current Design (2020)</h2>
+
+<p>The default view for a repo’s homepage and ticket items are locked at a set <code>max-width</code>. This causes some visual strain in comparison to the full-width headers and navigations directly above. I use a decently sized montior when using your app Gitub - <strong>let me use all the space available to me</strong>!</p>
+
+<figure>
+<img src="/public/images/github-design-current.webp" alt="Current Github design" />
+<figcaption>The current design of a repo's homepage. (<a href="/public/images/github-design-current.webp">direct link to image</a>)</figcaption>
+</figure>
+
+<figure>
+<img src="/public/images/github-ticket.webp" alt="Github ticket design" />
+<figcaption>The current design of a ticket item (<a href="/public/images/github-ticket.webp">direct link to image</a>)</figcaption>
+</figure>
+
+<h2 id="my-improvements">My Improvements</h2>
+
+<p>Your users shouldn’t have to jump around the page looking for the important information they want to see. Resetting the basic repo information to the left side of the screen allows user to <em>instantly</em> read-up on the project details. (This design is catered towards left-to-right readers mind you).</p>
+
+<p>We now also utilize all the available screen space, dependent on the user’s browser window size.</p>
+
+<figure>
+<img src="/public/images/github-design-current-redesign.webp" alt="Current Github redesign" />
+<figcaption>The repo's homepage now uses all available space (<a href="/public/images/github-design-current-redesign.webp">direct link to image</a></figcaption>
+</figure>
+
+<p>We make similar updates to the ticket item view and also remove the out-of-place <code>margin-bottom</code> from the project link headers.</p>
+
+<figure>
+<img src="/public/images/github-ticket-redesign.webp" alt="Github ticket redesign" />
+<figcaption>Github ticket items now align better with their header siblings (<a href="/public/images/github-ticket-redesign.webp">direct link to image</a>)</figcaption>
+</figure>
+
+<h2 id="try-it-yourself">Try It Yourself!</h2>
+
+<p>You can very easily implement these custom CSS changes with an extension for the browser of your choice:</p>
+
+<ul>
+  <li>Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/styl-us/">Stylus</a></li>
+  <li>Chrome: <a href="https://chrome.google.com/webstore/detail/stylebot/oiaejidbmkiecgbjeifoejpgmdaleoha">Stylebot</a></li>
+</ul>
+
+<p>Then create a new custom CSS file to target <code>github.com</code> with the following properties:</p>
+
+<pre><code>.container-xl {
+    max-width: 100%;
+}
+
+.repository-content .gutter-condensed.gutter-lg {
+    flex-direction: row-reverse !important;
+}
+
+.repository-content #discussion_bucket .gutter-condensed.gutter-lg {
+    flex-direction: row !important;
+}
+
+.repohead &gt; div.d-flex {
+    margin-bottom: 0 !important;
+}
+
+#show_issue {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.repository-content #discussion_bucket,
+#partial-discussion-header {
+    width: 100%;
+}
+</code></pre>
+
+<p>That’s it! Feel free to improve on this and further make it your own! I might create a new repo for this project if I end up adding even more improvements to the core CSS.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

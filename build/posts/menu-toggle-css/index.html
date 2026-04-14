@@ -1,0 +1,148 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Menu Toggle with Pure CSS</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="menu-toggle-with-pure-css">Menu Toggle with Pure CSS</h1>
+
+<p>2020-10-19</p>
+
+<p>When thinking through navigation designs for mobile devices sometimes the best option is to store away the content behind a toggle button. This button would then display the menu items upon interaction. Let me show you how to create such an element with only CSS - no need for JavaScript today!</p>
+
+<h2 id="before-we-begin">Before we begin</h2>
+
+<p>I would like to point out that the concept of “toggling” the main menu (even for mobile) is not always the best solution. If you’re interested, you can take a look at a previous article I wrote explaining why: <a href="/hamburger-menu-alternative.html">Using Hamburger Menus? Try Sausage Links</a></p>
+
+<p>Now that we have mentioned possible pitfalls of relying so heavily on toggle menus, let’s build one!</p>
+
+<h2 id="our-final-product">Our Final Product</h2>
+
+<p><img src="/public/images/menu-toggle-css.png" alt="Menu toggle made from pure CSS" /></p>
+
+<p><a href="https://codepen.io/bradleytaunt/pen/mdEEvEX">Live CodePen Example</a></p>
+
+<h2 id="the-html">The HTML</h2>
+
+<p>To implement this design you really don’t need much in terms of HTML:</p>
+
+<ul>
+  <li>A single <code>checkbox</code> input</li>
+  <li>A <code>label</code> that corresponds to the <code>checkbox</code></li>
+  <li>
+    <p>A <code>nav</code> element to house our unordered list items</p>
+
+    <p><!-- The checkbox input & label partner -->
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle">Menu</label></p>
+
+    <p><!-- The navigation we wish to toggle --></p>
+    <nav>
+      <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Articles</a></li>
+          <li><a href="">Colophon</a></li>
+          <li><a href="">Contact</a></li>
+      </ul>
+  </nav>
+  </li>
+</ul>
+
+<p>That’s it!</p>
+
+<h2 id="the-css">The CSS</h2>
+
+<p>The first thing we need to do is “hide” the <code>checkbox</code> input element. It’s important to avoid using <code>display: none</code> or <code>visibility: hidden</code> in order to achieve this. Those CSS properties can negatively impact accessibility (specifically screen readers). So we will be relying on the <code>position</code>, <code>z-index</code> and <code>opacity</code> properties to help us out.</p>
+
+<pre><code>/* Set the input position to absolute, send it off screen with zero opacity */
+input[type="checkbox"] {
+    left: -9999px;
+    opacity: 0;
+    position: absolute;
+}
+</code></pre>
+
+<p>Then we give our corresponding <code>label</code> a minor face-lift to make it appear more button-like:</p>
+
+<pre><code>/* Minor visual styling to make the label more button-y */
+label {
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px;
+}
+</code></pre>
+
+<p>For our main <code>nav</code> element, we want to set it’s position to <code>absolute</code> in order to avoid any janky page rendering issues that might occur when toggling the menu:</p>
+
+<p>`
+    /* Set nav to absolute (avoids odd page rendering space pop-in) */
+    nav {
+        opacity: 0;
+        position: absolute;
+        z-index: -2;
+    }</p>
+
+<p>The last step is to actually <em>show</em> the menu if the user toggles the <code>checkbox</code>:</p>
+
+<pre><code>/* Show nav when checkbox is checked */
+input[type="checkbox"]:checked ~ nav {
+    opacity: 1;
+    z-index: 1;
+}
+</code></pre>
+
+<p>It might not look like much, but you now have a fully functional menu toggle - <strong>made with pure CSS</strong>!</p>
+
+<h2 id="with-great-power">With Great Power…</h2>
+
+<p>Although this design is very simple to implement, please remember to use these types of menus wisely. Just because you <em>can</em> do something, doesn’t always mean you <em>should</em>.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

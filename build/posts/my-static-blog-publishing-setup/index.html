@@ -1,0 +1,146 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>My Static Blog Publishing Setup and an Apology to RSS Subscribers</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="my-static-blog-publishing-setup-and-an-apology-to-rss-subscribers">My Static Blog Publishing Setup and an Apology to RSS Subscribers</h1>
+
+<p>2022-03-21</p>
+
+<p>In case you missed it, this website is now generated with pure HTML &amp; CSS. Although, generated isn’t the proper way to describe it anymore. <em>Written</em> is a better description.</p>
+
+<p>No more Markdown files. No more build scripts. No more Jekyll. Clean, simple, static HTML &amp; CSS is my “CMS”. More on that in a moment. First, I must apologize.</p>
+
+<h2 id="im-sorry-dear-rss-subscribers">I’m Sorry Dear RSS Subscribers</h2>
+
+<p>RSS feeds are tricky things for me personally. I always botch them with a site redesign or a re-structure of my previous posts. Those of you subscribed via RSS were likely bombarded with post spam when I rebuilt this website. Sorry about that - I know how annoying that can be.</p>
+
+<p>Fortunately, that all stops today. Moving forward my RSS feed (Atom) will be edited manually with every new post I write. Each entry will feature the post title, post url, and post date. No summaries or full-inline content will be included (since that would involve a great amount of extra overhead). RSS subs will need to follow the link directly if they are interested in the article itself. I hope this doesn’t anger too many readers…</p>
+
+<p>Again, sorry everyone.</p>
+
+<h2 id="what-is-this-new-blog-system">What is this New Blog “System”</h2>
+
+<p>This publishing flow isn’t for everyone and is less flexible than pre-existing static site generators (referred to as SSGs moving forward). For me though, it works. I find it more flexible than most SSGs.</p>
+
+<p>There are a couple articles that explain the reasoning behind this system better than I could (plus, why would I repeat the same points?):</p>
+
+<ul>
+  <li><a href="http://john.ankarstrom.se/html/">Writing HTML in HTML</a></li>
+  <li><a href="https://blog.steren.fr/2020/my-stack-will-outlive-yours/">My stack will outlive yours</a></li>
+</ul>
+
+<p>So, what does my blog-posting system look like?</p>
+
+<h2 id="simple-explanation">Simple Explanation</h2>
+
+<ol>
+  <li>Copy an existing article’s <code>HTML</code> file</li>
+  <li>Change file name, edit the page title, heading, post date and comment link</li>
+  <li>Write the new article content</li>
+  <li>Make manual new entry in RSS feed</li>
+  <li>Save changes, push to git repo</li>
+  <li>Sync new file(s) / changes to remote server</li>
+</ol>
+
+<p>Pretty simple, eh? Let’s break things down into greater detail though…</p>
+
+<h2 id="detailed-explanation">Detailed Explanation</h2>
+
+<h4 id="text-editor">Text Editor</h4>
+
+<p>I code and write everything exclusively in Sublime Text on my MacBook Air. I know, it’s not an open source editor, but I love how incredibly fast and intuitive it is. I used VSCode in the past but ended up requiring far too many plugins to get things setup the way I like it. Sublime Text works best for me even right out of the box. (I do need Emmet and theming changes though).</p>
+
+<p>I perform the following for a new article:</p>
+
+<ul>
+  <li>Copy an existing article, ie. <code>blog-post-1.html</code></li>
+  <li>Rename article file name, ie. <code>blog-post-2.html</code></li>
+  <li>Open this newly created file and change:
+    <ul>
+      <li>page <code>title</code> tag</li>
+      <li>page <code>h1</code> heading and top bar text</li>
+      <li><code>time</code> tag to match publish date</li>
+      <li>comment <code>mailto:</code> link url</li>
+    </ul>
+  </li>
+  <li>Start writing content inside the <code>article</code> section</li>
+</ul>
+
+<p>Once the article is complete, I add a static entry in my <code>feed.xml</code> and run a crude rsync script. More on that below.</p>
+
+<h4 id="git">Git</h4>
+
+<p>Normally I would pull, commit and push directly in my Terminal - but lately I’ve been enjoying my time using Sublime Merge. I’m a sucker for visually appealing GUI applications and Merge is the perfect balance of simplicity and beauty. I recommend it if you haven’t tried it yet.</p>
+
+<h4 id="hosting">Hosting</h4>
+
+<p>This blog is now hosted through NearlyFreeSpeech. I could opt for a free service like Netlify or DigitalOcean Apps but I feel it’s important to help support communities that align with my own core beliefs. From their <a href="https://www.nearlyfreespeech.net/about/">about page</a>:</p>
+
+<blockquote>
+  <p>NearlyFreeSpeech.NET is about three things: fairness, innovation, and free speech.</p>
+</blockquote>
+
+<p>Hard to argue with those principles. If you’re feeling generous, I’d greatly appreciate anyone who considers contributing to <a href="https://www.nearlyfreespeech.net/contribute/tdarb.org">offset this website’s hosting costs through NearlyFreeSpeech</a> (code: tdarb). No money is directly handed to me, it pays NFS directly for hosting fees. Donate if you feel like this humble blog of mine has helped you in any way. No pressure!</p>
+
+<p>NFS gives me server access via <code>SSH</code> (and even <code>SFTP</code> if I desire) which makes things simple to sync my local files with production code. This is handled via rsync with a basic <code>deploy.sh</code> script:</p>
+
+<pre><code>rsync -vrzc --exclude 'deploy.sh' --exclude '.git' --delete ./ username@my.remote.nfs.server:
+</code></pre>
+
+<p>The included parameters ensure files with a conflicting checksum are updated on the server, instead of re-syncing all the files every time the script runs. That would be overkill.</p>
+
+<h2 id="closing-thoughts">Closing Thoughts</h2>
+
+<p>I love this new setup. It’s portable, lightweight, has zero dependencies, and gives me the opportunity to write directly in HTML. Others may find this workflow idiotic or cumbersome but I couldn’t disagree more. Site wide changes can be made with simple <code>Find/Replace</code> actions or even whipping up a basic script. Things should be as complex as you wish to make them!</p>
+
+<p>At the end of the day, anything that helps you be more efficient and gets you producing more content is a winning strategy in my book. Who knows, this concept could even inspire one random reader out there to do the same.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

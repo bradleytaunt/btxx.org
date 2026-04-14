@@ -1,0 +1,104 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Dual Booting OpenBSD and Alpine Linux on a X220 ThinkPad</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="dual-booting-openbsd-and-alpine-linux-on-a-x220-thinkpad">Dual Booting OpenBSD and Alpine Linux on a X220 ThinkPad</h1>
+
+<p>2024-07-10</p>
+
+<p>I’ve always found it useful to run both OpenBSD and some form of Linux variation on my personal machines. Most times, I would default to running one OS on bare metal, while the other would simply live in a VM. This works <em>okay</em> but I prefer my operating systems having a “hardware separator” - if that makes sense? So, I set off to start dual booting both OpenBSD and Alpine Linux on my X220 ThinkPad.</p>
+
+<p>I should mention that I planned to write this blog post a couple weeks ago, but the original Dogfish mSATA SSD I ordered wasn’t compatible with my X220 (even though they say it is supported…). Luckily, I found a replacement drive in one of my “computer parts” drawer. Hoarding tech always prevails!</p>
+
+<figure>
+  <img src="/public/images/dual-boot-2.jpeg" alt="The inside of my X220, showing the Dogfish mSATA drive in place." />
+  <figcaption>The original Dogfish mSATA slotted in the X220. Too bad it didn't work...</figcaption>
+</figure>
+
+<p>I came across my old Raspberry Pi 400, which I previously <a href="/posts/pi-400-internal-ssd/">wrote about when stuffing an SSD inside it</a>, and proceeded to gut the drive. It’s a cheap KingSpec SSD with a whopping 64GB of storage space. But that didn’t matter since the plan was to install the wonderfully small Alpine Linux. 64 GB would be plenty of space for us!</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>I already had the Alpine Linux ISO installed on a random thumb drive, so that made things quicker right off the bat. The next step was opening up my X220 and slotting in the very tiny mSATA.</p>
+
+<p>This introduced the first minor issue: the drive was too small. I could have looked into something more “professional-looking” in order to seat the drive properly but I decided to <em>stick</em> with electrical tape. Get it?… After applying the tape I closed the machine back up.</p>
+
+<figure>
+  <img src="/public/images/dual-boot-3.jpeg" alt="The inside of my X220, showing the KingSpec mSATA drive in place with electrical tape." />
+  <figcaption>The KingSpec mSATA slotted in the X220 and secured with top-of-the-line electrical tape...</figcaption>
+</figure>
+
+<h2 id="installing-alpine-linux">Installing Alpine Linux</h2>
+
+<p>Next, I needed to tell the BIOS to boot into my thumb drive containing the Alpine ISO. Once the proper order was set, I rebooted the machine and ran through the standard Alpine installer. No problems to report there.</p>
+
+<figure>
+  <img src="/public/images/dual-boot-4.jpeg" alt="My X220 booting into the Alpine ISO thumb drive" />
+  <figcaption>My X220 booting into the Alpine ISO thumb drive</figcaption>
+</figure>
+
+<figure>
+  <img src="/public/images/dual-boot-5.jpeg" alt="The Alpine Linux installer showing both disk options for installation destination" />
+  <figcaption>The Alpine Linux installer showing both disk options for installation destination. SDA is currently running OpenBSD.</figcaption>
+</figure>
+
+<p>Once that was done, I rebooted the machine, being sure to remove the thumb drive and set the BIOS order to point to the new mSATA disk. Then I ran through my personal <a href="https://git.sr.ht/~bt/alpine-suck-installer">Alpine Suck installer</a> to get my go-to applications installed alongside my <code>dwm</code> desktop environment. Again, no problems to report during this process.</p>
+
+<figure>
+  <img src="/public/images/dual-boot-6.jpeg" alt="Alpine Linux running the dwm desktop environment on my X220" />
+  <figcaption>Alpine Linux running my personal `dwm` setup. Absolutely beautiful.</figcaption>
+</figure>
+
+<h2 id="extras">Extras?</h2>
+
+<p>That’s really it. Nothing super interesting to report, but that seems to be the running theme with these older ThinkPad machines: they were built for tinkering and taking apart regularly. If I was less lazy, I could look into setting up a boot loader to avoid swapping between disks via BIOS settings, but for my use case this setup works fine. Now I have the power of OpenBSD <em>and</em> Linux on my personal machine!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

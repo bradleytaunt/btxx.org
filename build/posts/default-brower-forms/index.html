@@ -1,0 +1,171 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Very Basic Form Styling</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="very-basic-form-styling">Very Basic Form Styling</h1>
+
+<p>2019-11-13</p>
+
+<p>Web forms can be great - I’m borderline obsessed with them. I love tinkering with pre-existing logins / sign up pages and I’ve also open sourced a minimal CSS form-styling plugin: <a href="https://normform.netlify.com/">Normform</a>. While simple CSS plugins like these can be helpful, I often feel like we are over-engineering our web forms. I’m certainly guilty of it.</p>
+
+<p>That’s not to say developers should just use default browser styling for their forms and call it a day - that is far from ideal. Just pull-back on adding so much styling garbage to the forms themselves.</p>
+
+<p>Let’s check out an embedded demo below to see what some bare-bones form styling could look like:</p>
+
+<p><a href="https://codepen.io/bradleytaunt/pen/oNwzvMa">Live CodePen Example</a></p>
+
+<p>This form isn’t going to win any design awards or blow anyone away with its creativity. That’s okay - because it gets the job done. Users understand it’s a form and items are broken down into digestible chunks. Mission accomplished, right?</p>
+
+<h2 id="breaking-the-form-down">Breaking the form down</h2>
+
+<p>Let’s take a look at the HTML of the entire form:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+      <span class="nt">&lt;legend&gt;</span>Personal Details<span class="nt">&lt;/legend&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"username"</span><span class="nt">&gt;</span>Desired Username:<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"username"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"name"</span><span class="nt">&gt;</span>Full Name:<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"name"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"email"</span><span class="nt">&gt;</span>Email Address:<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">id=</span><span class="s">"email"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"date"</span><span class="nt">&gt;</span>Date of Birth:<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">id=</span><span class="s">"date"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+  <span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+      <span class="nt">&lt;legend&gt;</span>Contact Details<span class="nt">&lt;/legend&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"address"</span><span class="nt">&gt;</span>Home Address:<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"address"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"postal"</span><span class="nt">&gt;</span>Postal Code:<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"postal"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"phone"</span><span class="nt">&gt;</span>Phone Number:<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">id=</span><span class="s">"phone"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+  <span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+      <span class="nt">&lt;legend&gt;</span>Select an Option<span class="nt">&lt;/legend&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"radio-1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"radio-1"</span> <span class="na">name=</span><span class="s">"radio-choice"</span><span class="nt">&gt;</span>
+          The option is pretty nice
+      <span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"radio-2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"radio-2"</span> <span class="na">name=</span><span class="s">"radio-choice"</span><span class="nt">&gt;</span>
+          This option is a little bit better
+      <span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"radio-3"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"radio-3"</span> <span class="na">name=</span><span class="s">"radio-choice"</span><span class="nt">&gt;</span>
+          This option is the best
+      <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+  <span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+      <span class="nt">&lt;legend&gt;</span>Notifications<span class="nt">&lt;/legend&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"checkbox-1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"checkbox-1"</span><span class="nt">&gt;</span>
+          I would like to receive email notifications
+      <span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"checkbox-2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"checkbox-2"</span><span class="nt">&gt;</span>
+          I would like to subscribe to the weekly newsletter
+      <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+  <span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"reset"</span> <span class="na">value=</span><span class="s">"Reset"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Submit"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<p>Notice the <code>fieldset</code> and <code>legend</code> elements? I bet you don’t see or hear about those HTML items very often. By default, <code>fieldset</code> allows sibling or related inputs to be semantically grouped together. The <code>legend</code> elements give the user great visual cues about which items are grouped together, helping to focus on each section individually as they complete the form. Use these grouping elements as much as possible (when it makes sense of course) for a better guided experience for your users.</p>
+
+<p>Avoid making your own custom sections and instead use these existing HTML semantics.</p>
+
+<h2 id="almost-no-css-at-all">Almost no CSS at all</h2>
+
+<p>Now it’s time to style this form with only 6 property declarations:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">form</span> <span class="nt">label</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">form</span> <span class="nt">input</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">inline-block</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">form</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"radio"</span><span class="o">],</span>
+<span class="nt">form</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"checkbox"</span><span class="o">],</span>
+<span class="nt">form</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"reset"</span><span class="o">],</span>
+<span class="nt">form</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"submit"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Of course, you can always add minor adjustments (like in my demo example above)</p>
+
+<ul>
+  <li>Legend typeface and sizing</li>
+  <li>Form and fieldset background colors</li>
+  <li>Extra margin and padding</li>
+  <li>Custom reset / submit buttons</li>
+</ul>
+
+<p>But the main point of this post is to showcase how little CSS is needed to implement decent web forms - so any further improvements are up to you, dear reader.</p>
+
+<p>Just try not to reinvent the wheel.</p>
+
+<h2 id="final-rant---dont-ignore-the-reset">Final rant - don’t ignore the reset</h2>
+
+<p>A lot of “modern” web forms have moved away from including the reset input on their forms, which I think is fairly short-sighted. Resetting all form fields might be a smaller edge case, but it is certainly a better option than relying on the user to <i>refresh</i> or in some cases, individually deleting each input. Yikes.</p>
+
+<p>Happy form building!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

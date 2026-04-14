@@ -1,0 +1,75 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Setting Up a Free SSL</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="setting-up-a-free-ssl">Setting Up a Free SSL</h1>
+
+<p>2018-08-07</p>
+
+<p>I never had to worry about SSL certificates when I originally hosted my blog through Github Pages, but since switching over to Surge.sh I lost my ability to utilize <code>https</code> protocol.</p>
+
+<p>Luckily, Cloudflare offers a very simple way to implement SSL on your website - and it’s free!</p>
+
+<h3 id="ssl-in-3-easy-steps">SSL in 3 easy steps</h3>
+
+<ol>
+  <li>You will need to have a Cloudflare account - <a href="https://dash.cloudflare.com/sign-up">you can setup one here</a>. Be sure to select the ‘Free’ pricing plan (unless you want some extras features)</li>
+  <li>Follow the process on updating your nameservers to the proper Cloudflare servers and wait for your domain to update the changes. (This can take up to 24 hours)</li>
+  <li>From the main Cloudflare dashboard navigate to the Crypto tab. Then under the SSL section, select “Flexible” from the dropdown.</li>
+</ol>
+
+<h3 id="enjoy-your-newly-secure-site">Enjoy your newly secure site</h3>
+
+<p>That’s it! Give it a bit of time and soon your website will support <code>https</code> and best of all it costs you nothing!</p>
+
+<p>I suggest checking out the other interesting features Cloudflare offers while your playing with the dashboard as well. They have a lot of impressive options that can really improve the overall performance of your site / web app.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Using User-Select</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="using-user-select">Using User-Select</h1>
+
+<p>2019-06-04</p>
+
+<p>Highlighting text in order to copy, cut or paste content is a staple action across the web. Now, what if I told you the ability to control what a user can select is configurable with a single CSS property?</p>
+
+<h2 id="introducing-the-css-property">Introducing the CSS property</h2>
+
+<p>Simply put, the <code>user-select</code> property is defined as follows:</p>
+
+<blockquote>
+  <p><code>user-select</code> controls whether the user can select text (cursor or otherwise)</p>
+</blockquote>
+
+<h2 id="the-css">The CSS</h2>
+
+<p>The property’s available attributes are very straightforward (just remember to target specific browsers for full support!)</p>
+
+<pre><code>/* Default */
+p.default {
+    user-select: auto;
+    -moz-user-select: auto;
+    -webkit-user-select: auto;
+}
+
+/* Disable the user from selecting text */
+p.no-select {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Select all text when user clicks */
+p.select-all {
+    user-select: all;
+    -moz-user-select: all;
+    -webkit-user-select: all;
+}
+</code></pre>
+
+<h2 id="lets-see-it-in-action">Let’s see it in action</h2>
+
+<p>Try selecting the separate paragraph elements in the CodePen below:</p>
+
+<p><a href="https://codepen.io/bradleytaunt/pen/QRooZp/">Live CodePen Example</a></p>
+
+<h2 id="browser-support">Browser Support</h2>
+
+<p>The great news is <code>user-select</code> is fully supported across all modern browsers (even as far back as IE10!)</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

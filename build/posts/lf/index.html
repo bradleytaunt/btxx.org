@@ -1,0 +1,88 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Installing Custom Fonts on Linux from the Command Line</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="installing-custom-fonts-on-linux-from-the-command-line">Installing Custom Fonts on Linux from the Command Line</h1>
+
+<p>2022-09-20</p>
+
+<p>Installing custom fonts is a fairly streamlined feature on operating systems like MacOS and Windows. Linux, on the other hand, struggles to make this workflow <em>easy</em> for everyday users. Many newcomers tend to get frustrated with using the default “Fonts” application managers shipped with most Linux distros.</p>
+
+<p>But I’m here to tell you to <strong>ditch</strong> those GUI font installers. Let’s install our custom fonts in the command line!</p>
+
+<h2 id="get-your-font-files">Get Your Font Files</h2>
+
+<p>You can’t install custom fonts if you don’t have any. For this tutorial we are going to assume that we are trying to install a typeface set named <code>LinuxFont</code>. We are going to assume that we have already downloaded and extracted a folder named <code>LinuxFont</code> into our <code>Downloads</code> directory.</p>
+
+<p>Inside this hypothetical folder is a collection of <code>OTF</code> (opentype) font files. This will be important information in a moment.</p>
+
+<h2 id="terminal-time">Terminal Time</h2>
+
+<p>Now our goal is to simply copy this new typeface folder into our user font directory. Open Terminal and run the following from your <code>Downloads</code> directory:</p>
+
+<pre><code>sudo cp -r LinuxFont /usr/local/share/fonts/opentype/
+</code></pre>
+
+<p><strong>Important</strong>: If your font files are NOT opentype format, be sure to copy your files to the proper directory (truetype for TTF, etc.)</p>
+
+<p>Next we need to make sure we have full read and write privileges for this new folder:</p>
+
+<pre><code>sudo chmod -R 0777 /usr/local/share/fonts/opentype/LinuxFont
+</code></pre>
+
+<p>The last thing we need to do is reload the font cache on our system:</p>
+
+<pre><code>sudo fc-cache -fv
+</code></pre>
+
+<p>That’s it! You should now have access to your custom typeface in all your applications system wide.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

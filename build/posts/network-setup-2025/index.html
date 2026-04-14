@@ -1,0 +1,129 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>My OpenBSD Home Network Setup</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="my-openbsd-home-network-setup">My OpenBSD Home Network Setup</h1>
+
+<p>2025-08-25</p>
+
+<p>I recently moved to an area with more internet provider options, all of which were <em>not</em> satellite-based. This change allowed me leave my current provider (Starlink) and also freed my network from being locked behind CGNAT. The jump from ~150Mbps to 1Gbps has been fantastic, but the real benefit in this switch has been the ability to overhaul my home network setup.</p>
+
+<p>My simple setup includes:</p>
+
+<ul>
+  <li>Custom OpenBSD router</li>
+  <li>Self-hosting my own web server</li>
+  <li>Eeros setup as “dumb” APs</li>
+</ul>
+
+<p>I plan to write-up an updated guide for building out my simple OpenBSD router (the older article can be <a href="/posts/openbsd-router">found here</a>) and another tutorial for setting up an <code>httpd</code> web server on a Raspberry Pi 400 running OpenBSD, but today we will just look at the basics of my personal home network.</p>
+
+<h2 id="the-setup">The Setup</h2>
+
+<p>I know a lot of people have their networking devices beautifully organized,
+allowing them to display all the hardware “out in the open”. I’m not one of those people.
+My network hardware is stored inside one of my basement utility closets, which
+sits between my main basement and the room that houses my furnace and hot water tank. Classy, I know.</p>
+
+<p>So please excuse the “dungeon” look in the photo below.</p>
+
+<figure>
+<img src="/public/images/network-2025.jpg" alt="Photo of my network setup.
+Shows a modem plugged into a small OpenBSD router, and a Raspberry Pi 400
+plugged into that router via ethernet" />
+<figcaption>My network setup. Main modem is connected to the OpenBSD router,
+which is the gatekeeper for everything else on the network.</figcaption>
+</figure>
+
+<p>Let me further example the picture above:</p>
+
+<ol>
+  <li>The black device on the far left is my ISP’s modem</li>
+  <li>The smaller black device in the back is a fanless mini PC (Intel Celeron J1900 4xi225V NIC) I picked up off Aliexpress. Currently running OpenBSD, acting as my main router/gateway</li>
+  <li>The Raspberry Pi 400 on the right side of the screen is my self-hosted web
+server (This website will be hosted there soon!)</li>
+  <li><strong>Bonus</strong>: There is an older 32” TV off the to far right side. This is
+connected to the Raspberry Pi in case I need to perform any “onsite”
+debugging or tweaking that can’t be done remotely</li>
+</ol>
+
+<p>I will also give a break down of the colored ethernet cords:</p>
+
+<ol>
+  <li>Yellow is the “internet” being fed from the modem to my router</li>
+  <li>Blue connects to my Eero Gateway (not pictured), which is setup in the main
+basement</li>
+  <li>Red connects to the Raspberry Pi server</li>
+  <li>White connects to my Xbox Series S (not pictured), also setup in the main
+basement</li>
+</ol>
+
+<h2 id="stats--improvements">Stats &amp; Improvements</h2>
+
+<p>I consistently get ~900Mbps from devices connected directly to the OpenBSD
+router, and ~280Mbps at the furthest part of my house (connected wirelessly to the 3rd
+Eero mesh AP). Not too shabby.</p>
+
+<p>I would love to replace my Eero APs with mesh devices running something like
+OpenWRT, since these Amazon devices still “phone home”. These Eeros where all I had on hand, 
+so I’m just dealing with it for now…</p>
+
+<p>(I do have one D-Link DIR-878 running OpenWRT already - so maybe just grabbing
+a second one of those could work?)</p>
+
+<h2 id="closing-remarks">Closing Remarks</h2>
+
+<p>That’s pretty much the gist of it. I plan to get those more details guides
+posted soon, now that the craziness from the move has settled down. Hopefully
+those can be a little more helpful for anyone interesed in setting up
+a similar OpenBSD-based network.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

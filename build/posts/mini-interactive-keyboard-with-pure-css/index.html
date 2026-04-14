@@ -1,0 +1,200 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Mini Interactive Keyboard with Pure CSS</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="mini-interactive-keyboard-with-pure-css">Mini Interactive Keyboard with Pure CSS</h1>
+
+<p>2020-05-13</p>
+
+<p>Lately, I’ve become obsessed with trying to see what I can create using only HTML and CSS (besides websites of course). Since playing with the concept of <a href="https://uglyduck.ca/fake-3d-elements-with-css/">faking 3D elements</a>, I wanted to circle back around to an older CodePen I created: a mini, interactive undo keyboard.</p>
+
+<h2 id="see-it-in-action">See it in action</h2>
+
+<p>Below you can view a live demo of the mini keyboard itself. This demo is nothing special, but takes design inspiration from Apple’s magic keyboards (if that wasn’t already obvious).</p>
+
+<p><img src="/public/images/undo-keyboard.png" alt="Undo keyboard with two buttons to click" /></p>
+
+<p><a href="https://codepen.io/bradleytaunt/pen/PadQMP">Live CodePen Example</a></p>
+
+<p>So now that we have seen what we plan to build, let’s break down the process of creating this stupid, fun project!</p>
+
+<h2 id="the-html">The HTML</h2>
+
+<p>The core skeleton of this project is very simple, since the keyboard consists of only 2 interactive buttons on top of a basic base element:</p>
+
+<ul>
+  <li>Keyboard base</li>
+  <li>Command button</li>
+  <li>
+    <p>‘Z’ letter button</p>
+
+    <p><!-- This is keyboard main base --></p>
+    <div class="base">
+    
+      <!-- Command Button -->
+      <button class="command"> 
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+          <span>command</span>
+      </button>
+    
+      <!-- "Z" Letter Button -->
+      <button class="z">
+          <span>Z</span>
+      </button>
+    
+  </div>
+  </li>
+</ul>
+
+<h2 id="the-css">The CSS</h2>
+
+<p>Here is where all the magic happens. Let’s break these elements into their own sections, starting with the <strong>base styling</strong>:</p>
+
+<pre><code>/* Custom typeface */
+@import url("https://fonts.googleapis.com/css?family=Muli");
+
+/* Basic layout styling */
+body {
+background: #d2dcff;
+margin: 80px 0 40px;
+}
+</code></pre>
+
+<p>We then tackle the basic <strong>keyboard base</strong> element:</p>
+
+<pre><code>.base {
+background: linear-gradient(180deg, #eee 0%, #d8d8d8 100%);
+border-radius: 20px;
+box-shadow: inset 0 3px 5px rgba(255,255,255,0.3), inset 0 1px 3px rgba(255,255,255,0.5), 0 10px 0 #afafaf;
+display: flex;
+height: 310px;
+margin: 0 auto;
+position: relative;
+width: 620px;
+}
+
+/* This pseudo element is used for more realistic drop-shadows */
+.base:after {
+bottom: 0;
+box-shadow: 0 10px 80px rgba(0,0,0,0.5);
+content: '';
+height: 50px;
+left: 7.5%;
+position: absolute;
+width: 85%;
+z-index: -1;
+}
+</code></pre>
+
+<p>Next, we target all shared styles between the <strong>2 keyboard buttons</strong> to avoid repeating ourselves later on:</p>
+
+<pre><code>.command, .z {
+    -webkit-appearance: none;
+    background: linear-gradient(180deg, #fff 0%, #f2f2f2 100%);
+    border: 0;
+    border-radius: 20px;
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.5), 0 10px 0 #c9c9c9, 0 10px 6px rgba(0,0,0,0.3), 0 12px 8px rgba(0,0,0,0.5);
+    cursor: pointer;
+    display: inline-block;
+    height: 260px;
+    margin: 15px 0 0 20px;
+    outline: 0;
+    position: relative;
+    width: 300px;
+    z-index: 2;
+}
+
+.command span, .z span {
+    font-family: 'Muli', 'Helvetica', sans-serif;
+}
+
+/* Styling when pressed */
+.command:active, .z:active {
+    box-shadow: inset 0 10px 10px rgba(0,0,0,0.2), inset 0 10px 30px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.6);
+    margin: 25px 0 0 20px;
+}
+</code></pre>
+
+<p>All that remains is to add the custom styling for each independent button:</p>
+
+<pre><code>/* Custom Command styling */
+.command svg {
+    height: 60px;
+    right: 15px;
+    position: absolute;
+    stroke: #9f9f9f;
+    top: 15px;
+    width: 60px;
+}
+.command span {
+    bottom: 15px;
+    color: #9f9f9f;
+    font-size: 58px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+/* Custom "Z" Letter styling */
+.z {
+    width: 260px;
+}
+.z span {
+    color: #9f9f9f;
+    font-size: 150px;
+}
+</code></pre>
+
+<h2 id="taking-it-further">Taking it further</h2>
+
+<p>You could easily improve upon this concept by rendering an entire interactive keyboard, if you so desired. But this is maybe something I would tackle at a later date when I have a little more free time 😉 For now, a simple mini undo keyboard is fun enough to play with.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

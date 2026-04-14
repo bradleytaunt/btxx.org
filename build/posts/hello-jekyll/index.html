@@ -1,0 +1,87 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Goodbye WordPress, Hello Jekyll (Again)</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="goodbye-wordpress-hello-jekyll-again">Goodbye WordPress, Hello Jekyll (Again)</h1>
+
+<p>2020-08-13</p>
+
+<p>For the past four months this blog has been running on WordPress - but that ended today. I’ve officially switched back over to Jekyll. I’m not going to spend too much time delving into <em>why</em> I made the transition back, but I’ll leave some cliff-notes for any interested parties.</p>
+
+<h2 id="the-big-issues-with-my-wordpress-setup">The big issues with <em>my</em> WordPress setup</h2>
+
+<p>I have to state that these problems existed based on <em>my own</em> setup / hosting choices with WordPress - this is not a direct reflection of WP itself.</p>
+
+<ol>
+  <li><strong>No theme editor access</strong>
+  - I was using EasyWP (Namecheap etc.) for my web hosting. It only cost me $3.88/month, which was very cheap for the quality of service provided. Unfortunately, this low price came with some setbacks. EasyWP doesn’t allow users to edit <code>header.php</code> or <code>functions.php</code> files directly in the theme editor. Having to resort to FTP for simple one-line change was annoying.</li>
+  <li><strong>Super cache</strong>
+  - Caching web pages is wonderful for users on subsequent visits, but EasyWP took this to the extreme. Making minor styling updates sometimes required code changes in the <code>header.php</code> file directly in order to persist (see problem with editing these files in point #1).</li>
+  <li><strong>Monthly cost</strong>
+  - As I stated above, spending $3.88 on a monthly basis was peanuts in the grand scheme of things. Still, an extra monthly subscription for a side hobby seemed overkill for my use case.</li>
+  <li><strong>Future proofing</strong>
+  - In the end, having the core website generate itself into static files means it will stand the test of time on the interwebs. HTML &amp; CSS FTW.</li>
+</ol>
+
+<h2 id="what-i-lost-in-the-switch">What I lost in the switch</h2>
+
+<ol>
+  <li><strong>Comments</strong>
+  - I loved the concept of owing / hosting comments directly on each post but this seemed like a fair trade-off when compared to the positives listed above. I might circle back around and use something like <a href="https://commento.io/">Commento</a> or <a href="https://github.com/imsun/gitment">Gitment</a></li>
+  <li><strong>Blog anywhere</strong>
+  - Having the ability to hop on any machine, log in to my site and blog was awesome. Over time though, I found myself not doing this very often. Most times when composing an article I found I would write it out, edit and publish all in one sitting. Cool concept - just not as useful.</li>
+</ol>
+
+<h2 id="moving-forward">Moving forward</h2>
+
+<p>I’ve learned to stick with what keeps me productive (and in this case, keeps me writing consistently). I still love WordPress and won’t hesitate to reach for it when the need arrives. Unfortunately, it seems my personal website isn’t one of those instances.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

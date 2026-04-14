@@ -1,0 +1,120 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Building rbenv on OpenBSD 7.5</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="building-rbenv-on-openbsd-75">Building rbenv on OpenBSD 7.5</h1>
+
+<p>2024-06-02</p>
+
+<p>I use Ruby (specifically with Jekyll) for a lot of my clubs/projects while using my personal laptop (<a href="/posts/x220/">X220 ThinkPad</a>) which is runs OpenBSD. Since I recently upgraded to OpenBSD 7.5 I thought it could be helpful for others if I shared my process of building and using <code>rbenv</code> to install different Ruby versions.</p>
+
+<h2 id="before-we-build">Before We Build</h2>
+
+<p>First, be sure to install the required packages in order to build from source, and then clone the core <code>rbenv</code> repo:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pkg_add git gcc gmake libffi libyaml openssl
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+</code></pre></div></div>
+
+<h2 id="building-rbenv">Building <code>rbenv</code></h2>
+
+<p>Add <code>rbenv</code> to your PATH and initialize it (place this inside your <code>.bashrc</code> or <code>.zshrc</code> etc):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.rbenv/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.rbenv/shims:</span><span class="nv">$PATH</span><span class="s2">"</span>
+<span class="nb">export </span><span class="nv">RUBY_CONFIGURE_OPTS</span><span class="o">=</span><span class="s2">"--with-openssl-dir=/usr/local"</span>
+<span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>rbenv init -<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Or if you’re using <code>fish</code> like I am most of the time:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span> <span class="nt">-x</span> PATH <span class="nv">$HOME</span>/.rbenv/bin <span class="nv">$PATH</span>
+<span class="nb">set</span> <span class="nt">-x</span> PATH <span class="nv">$HOME</span>/.rbenv/shims <span class="nv">$PATH</span>
+<span class="nb">set</span> <span class="nt">-x</span> RUBY_CONFIGURE_OPTS <span class="s2">"--with-openssl-dir=/usr/local"</span>
+status <span class="nt">--is-interactive</span><span class="p">;</span> and <span class="nb">source</span> <span class="o">(</span>rbenv init -|psub<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Then reload your shell:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># zsh</span>
+<span class="nb">source</span> ~/.zshrc
+
+<span class="c"># fish</span>
+<span class="nb">.</span> ~/.config/fish/config.fish
+</code></pre></div></div>
+
+<p>Next we will need to install <code>ruby-build</code> as a <code>rbenv</code> plugin. Clone the ruby-build repository into the rbenv plugins directory:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+</code></pre></div></div>
+
+<h2 id="installing-ruby-and-setting-our-version">Installing Ruby and Setting Our Version</h2>
+
+<p>Now use <code>rbenv</code> to install the desired version of Ruby (we will get an older version for this example):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.3.0
+</code></pre></div></div>
+
+<p>If you run into issues, you may need to specify your openssl directory:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">RUBY_CONFIGURE_OPTS</span><span class="o">=</span><span class="s2">"--with-openssl-dir=/usr/local"</span> rbenv <span class="nb">install </span>3.3.0
+</code></pre></div></div>
+
+<p>If you’re on a slower machine (like mine) this might take a little bit. Just grab a coffee or a snack while you wait!</p>
+
+<p>Then navigate to your project of choice and set the <code>local</code> Ruby version:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">local </span>3.3.0
+</code></pre></div></div>
+
+<p>That’s it! If you’d prefer to set this version of Ruby for all projects going forward, simply replace <code>local</code> with <code>global</code>.</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>

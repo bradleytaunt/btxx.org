@@ -1,0 +1,192 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<link rel="icon" href="data:," />
+	<title>Publishing Simple Books With Jekyll</title>
+	<link href="/index.rss" type="application/rss+xml" rel="alternate" title="RSS feed for blog posts" />
+	<link rel="stylesheet" href="/public/style.css?v=2.1" />
+</head>
+
+<body id="top">
+	<div id="header">
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li><li><a href="#footer">More...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+<h1 id="publishing-simple-books-with-jekyll">Publishing Simple Books With Jekyll</h1>
+
+<p>2019-06-20</p>
+
+<p>When thinking about writing, designing and ultimately publishing an ebook, most people don’t think of using a static site generator. Having products like Amazon Publishing, LaTeX or even Microsoft Word available, why should you use Jekyll?</p>
+
+<p>Two reasons:</p>
+
+<ul>
+  <li>extremely easy to use</li>
+  <li>total customization</li>
+</ul>
+
+<p>I know these same arguments could be made towards the other options mentioned above, but I’m biased towards Jekyll since I love the simplicity of HTML and CSS. Hopefully, after reading this post, you will feel the same as well!</p>
+
+<h2 id="no-developer-skills-needed">No developer skills needed</h2>
+
+<p>You won’t need any hardcore development skills or in-depth knowledge of Jekyll to get the most out of this publishing technique. The theme (<a href="https://github.com/henrythemes/jekyll-book-theme">Jekyll Book Theme</a>)  will allow you to focus on your book’s content rather than wrestling with typography and page layouts. A basic command line script will perform all the heavy lifting for us at the end.</p>
+
+<h2 id="what-are-we-creating">What are we creating?</h2>
+
+<p>You can see the demo of the <em>online</em> and PDF versions of the book below:</p>
+
+<ul>
+  <li><a href="http://henrythemes.github.io/jekyll-book-theme/">Jekyll Book Theme (Website)</a></li>
+  <li><a href="/public/jekyll-book-theme-sample.pdf">Jekyll Book Theme (PDF Sample)</a></li>
+</ul>
+
+<p>So without wasting anymore time, let’s get started!</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#setup-jekyll">Setup Jekyll</a></li>
+  <li><a href="#book-theme">Using the “Book” Jekyll Theme</a></li>
+  <li><a href="#chapter-collections">Writing Chapters</a></li>
+  <li><a href="#html-to-pdf">HTML to PDF</a></li>
+  <li><a href="#closing-thoughts">Closing Thoughts</a></li>
+</ol>
+
+<h2 id="setup-jekyll">1. Setup Jekyll</h2>
+
+<p>Before we can really do anything else, you will need to install and setup Jekyll. The best way to do so is by following the instructions on the official Jekyll website:</p>
+
+<ul>
+  <li><a href="https://jekyllrb.com/docs/installation/">Installing Jekyll</a></li>
+</ul>
+
+<p>Run through the simple step-by-step installation instructions based on your operating system.</p>
+
+<h3 id="basic-requirements">Basic requirements</h3>
+
+<ul>
+  <li>Ruby version 2.4.0 or above</li>
+  <li>RubyGems</li>
+  <li>GCC and Make (in case your system doesn’t have them installed)</li>
+</ul>
+
+<h2 id="book-theme">2. Using the "Book" template</h2>
+
+<p>The example we will be referencing in this post is the open source Jekyll theme called “Jekyll Book Theme”. This theme as been designed and optimized for publishing ebooks with Jekyll.</p>
+
+<p>Simply following the instructions on the main README page of the <a href="https://github.com/henrythemes/jekyll-book-theme">jekyll-book-theme repo</a>.</p>
+
+<p><strong>Important</strong>: Take the time to edit the <code>title</code>, and <code>author</code> properties in the <code>_config.yml</code> file in the root directory. Make sure these reflect your own book’s content.</p>
+
+<p>That’s it. Now let’s tell Jekyll how we want it to format our chapters.</p>
+
+<h2 id="chapter-collections">3. Working with chapter collections</h2>
+
+<p>By default, Jekyll will look for latest posts in the <code>_post</code> directory. This is useful for blogs and basic static websites - but not for us. We want chapters.</p>
+
+<h3 id="using-custom-collections">Using custom collections</h3>
+
+<p>Thankfully, Jekyll is flexible and allows us to set our own custom “collections”. Collections are ways to group related content together for easier use dynamically. Our plan is to setup a collection that will house our chapter markdown files in numeric order. You can see this in the “book” template top level directory. It should look like the following:</p>
+
+<ul>
+  <li><code>_chapters</code>
+    <ul>
+      <li><code>01.md</code></li>
+      <li><code>02.md</code></li>
+      <li><code>03.md</code></li>
+      <li><code>etc..</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="but-the-template-already-has-this-setup">But the template already has this setup</h3>
+
+<p>By default the Jekyll Book Theme template has this chapters collection implemented and working as intended. The reason I broke it down step-by-step is so that you can have some better understanding about what is happening “under the hood”.</p>
+
+<p>Teach a person to fish and all that jazz.</p>
+
+<p>Now all you need to do is break your chapters down into their own numbered markdown files inside <code>_chapters</code>.</p>
+
+<h2 id="html-to-pdf">4. HTML to PDF</h2>
+
+<p><img src="/public/images/publishing-with-jekyll.webp" alt="Publishing with Jekyll" /></p>
+
+<p>Before you can convert your digital book “website”, you need to install the <code>wkhtmltopdf</code> package. Download and follow the instructions below:</p>
+
+<ul>
+  <li><a href="https://wkhtmltopdf.org/">wkhtmltopdf</a></li>
+</ul>
+
+<h3 id="command-line-conversion">Command line conversion</h3>
+
+<p>In your terminal, navigate inside the <code>_site</code> folder of your jekyll build and then run the following command:</p>
+
+<pre><code>for f in *.html; do wkhtmltopdf -g -s Letter --no-background "$f" "${f/_*_/_}.pdf";done
+</code></pre>
+
+<p>Shortly after you should have a generated PDF file inside the <code>_site</code> folder - most likely named <code>index.html.pdf</code>. That’s it! Enjoy your fully formatted PDF version of your book!</p>
+
+<h2 id="closing-thoughts">5. Closing Thoughts</h2>
+
+<p>There are a good amount of pros and cons to this approach of “publishing” PDF versions of your book. Since I’m a sucker for <em>good</em> and <em>bad</em> bullet lists, let’s do just that:</p>
+
+<p><strong>The Good</strong></p>
+
+<ul>
+  <li>Online version and PDF versions share same styling (keeps things consistent)</li>
+  <li>Chapters are written in <code>markdown</code> (increased flexibility of writing apps etc.)</li>
+  <li>Very fast and streamlined build process</li>
+  <li>PDF format renders out the chapter headers for built-in navigation</li>
+</ul>
+
+<p><strong>The Bad</strong></p>
+
+<ul>
+  <li>Chapters are spit out as one long, single page (I’m sure this could be rectified with some custom work)</li>
+  <li>More suited for short stories, papers, essay articles (not so great for epic novels)</li>
+  <li>I’m sure there are other cons I am missing?</li>
+</ul>
+
+<p>In the end, using something like LaTeX would certainly grant the user more flexibility in design and layout of the final “print” PDF product - but I’m a sucker for using Jekyll when I can.</p>
+
+<p>Please let me know if you decide to use this method and end up publishing your own book 😀 I would love to check it out!</p>
+  </div>
+  <span class="contribute-footer">Found this blog useful?<br/> Consider <a href="/contribute">contributing to hosting costs!</a></span>
+  <div id="footer">
+    <div class="footer-nav">
+      <h3>Site Navigation</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contribute/">Contribute</a></li>
+        <li><a href="/uses/">Uses</a></li>
+        <li><a href="/colophon/">Colophon</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/now/">Now</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/index.rss">RSS</a></li>
+      </ul>
+    </div>
+    <small>
+      <a href="#top">&uarr; Top of page</a><br/><br/>
+      Website generated with <a href="https://wruby.site">wruby</a><br/>
+      Hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech.NET</a><br/>
+      Proudly powered by <a href="https://freebsd.org">FreeBSD</a><br/><br/>
+      Supporter of <a href="https://nextdns.io/?from=74d3p3h8">NextDNS</a> &amp; <a href="https://usefathom.com/ref/DKHJVX">Fathom Analytics</a><br/>
+      View the <a href="https://git.sr.ht/~bt/btxx.org">source code for this website</a><br/>
+      No ads. No tracking. No cookies. Ever.
+    </small>
+  </div>
+</body>
+</html>
