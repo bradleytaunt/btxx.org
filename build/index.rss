@@ -8,98 +8,7 @@
     <title>btxx.org RSS Feed</title>
     <link>https://btxx.org</link>
     <description>The official RSS Feed for https://btxx.org</description>
-    <pubDate>Tue, 14 Apr 2026 13:52:31 -0400</pubDate>
-    <item>
-      <title>Hosting a Website Entirely in RAM on a Raspberry Pi Zero</title>
-      <link>https://btxx.org/posts/diskless-web-server/</link>
-      <description>&lt;h1 id=&quot;hosting-a-website-entirely-in-ram-on-a-raspberry-pi-zero&quot;&gt;Hosting a Website Entirely in RAM on a Raspberry Pi Zero&lt;/h1&gt;
-
-&lt;p&gt;2026-04-10&lt;/p&gt;
-
-&lt;p&gt;Greetings! This website is being served to you from a Raspberry Pi Zero v1.3 running Alpine Linux. The best part? It’s diskless and running entirely from memory!&lt;/p&gt;
-
-&lt;p&gt;This is even more impressive considering the Pi Zero only has &lt;code&gt;512MB&lt;/code&gt; of total memory, &lt;code&gt;~40MB&lt;/code&gt; of which is tied up running the OS. Plus, RAM is so abundant and cheap these days that we can… Oh, right.&lt;/p&gt;
-
-&lt;p&gt;Anyway, what a time to be alive!&lt;/p&gt;
-
-&lt;div class=&quot;alert warning&quot;&gt;&lt;b&gt;Wait a minute!&lt;/b&gt;Before you start foaming at the mouth and yelling at me in all caps: &lt;i&gt;yes&lt;/i&gt;, this site has Cloudflare propped up in front if it. Did you really think 512MB of shared RAM and a single core CPU would be enough to handle heavy traffic spikes??&lt;br /&gt;&lt;br /&gt; Doesn&#39;t matter to me though, I&#39;m still proud of this experiment!&lt;/div&gt;
-
-&lt;p&gt;Before we start, let’s make a grocery list of all the required hardware items we need:&lt;/p&gt;
-
-&lt;h2 id=&quot;the-hardware&quot;&gt;The Hardware&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Raspberry Pi Zero v1.3&lt;/li&gt;
-  &lt;li&gt;8GB+ microSD card (still needed for install and booting into RAM)&lt;/li&gt;
-  &lt;li&gt;Waveshare Ethernet HAT (optional, can use OTG adapter instead)&lt;/li&gt;
-  &lt;li&gt;Ethernet cable&lt;/li&gt;
-  &lt;li&gt;Micro USB power cord / power adapter&lt;/li&gt;
-  &lt;li&gt;Cool case (optional)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Additional hardware that will only be needed temporarily for the initial install of Alpine:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Monitor&lt;/li&gt;
-  &lt;li&gt;HDMI to mini-HDMI adapter&lt;/li&gt;
-  &lt;li&gt;Keyboard&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;preparing-our-microsd-card&quot;&gt;Preparing Our microSD Card&lt;/h2&gt;
-
-&lt;p&gt;The following was performed on macOS. Using a different operating system will require additional steps. Note that we will be extracting the &lt;code&gt;tar&lt;/code&gt; content directly on to our microSD card, so make sure you download the Alpine image ending with &lt;code&gt;tar.gz&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Plug in SD card and find the disk with &lt;code&gt;diskutil list&lt;/code&gt;. For our example the SD card will be located at &lt;code&gt;/dev/disk4&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Next, wipe and re-partition the card as FAT32:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;diskutil eraseDisk FAT32 ALPINE MBRFormat /dev/disk4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Extract the Alpine tarball onto the card:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xzf alpine-rpi-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.tar.gz &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; /Volumes/ALPINE
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Clean up any macOS junk then eject it:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find /Volumes/ALPINE &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;._*&#39;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-delete&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /Volumes/ALPINE/.Spotlight-V100
-&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /Volumes/ALPINE/.fseventsd
-&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /Volumes/ALPINE/.Trashes
-
-diskutil eject /dev/disk4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now pop the microSD card into your Pi Zero. Be sure to have your Pi connected to a monitor and keyboard, then turn it on.&lt;/p&gt;
-
-&lt;h2 id=&quot;alpine-linux-in-diskless-mode&quot;&gt;Alpine Linux in Diskless Mode&lt;/h2&gt;
-
-&lt;h2 id=&quot;optimizing-alpine-linux&quot;&gt;Optimizing Alpine Linux&lt;/h2&gt;
-
-&lt;h3 id=&quot;the-software&quot;&gt;The Software&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Alpine Linux (armhf)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code&gt;dropbear&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;darkhttpd&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;lbu&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;rsync&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;choosing-a-web-server&quot;&gt;Choosing a Web Server&lt;/h2&gt;
-
-&lt;h2 id=&quot;choosing-a-cdn&quot;&gt;Choosing a CDN&lt;/h2&gt;
-
-&lt;h2 id=&quot;backups&quot;&gt;Backups&lt;/h2&gt;
-
-</description>
-      <pubDate>Fri, 10 Apr 2026 12:00:00 -0400</pubDate>
-      <dc:date>2026-04-10T12:00:00-04:00</dc:date>
-    </item>
+    <pubDate>Tue, 14 Apr 2026 13:59:16 -0400</pubDate>
     <item>
       <title>Snail Mail Sign-Ups</title>
       <link>https://btxx.org/posts/snail-mail-signups/</link>
@@ -18652,6 +18561,6 @@ main[--js-parent] {
       <pubDate>Tue, 28 Jun 2016 12:00:00 -0400</pubDate>
       <dc:date>2016-06-28T12:00:00-04:00</dc:date>
     </item>
-    <dc:date>2026-04-14T13:52:31-04:00</dc:date>
+    <dc:date>2026-04-14T13:59:16-04:00</dc:date>
   </channel>
 </rss>
