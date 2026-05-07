@@ -15,6 +15,9 @@ All git repos can be found: [SourceHut](https://git.sr.ht/~bt)
 [openbased](https://openbased.btxx.org)
 : Setup OpenBSD as a daily driver using only the base programs
 
+[zero](https://zero.btxx.org)
+: Serving a website on a Raspberry Pi Zero from Memory
+
 [minwm](https://git.sr.ht/~bt/minwm)
 : An extremely minimal window manager
 

@@ -1,18 +1,17 @@
 # Contribute
 
-Enjoy my ramblings on this site? Found a particular article helpful?  Maybe consider donating to offset domain renewals and email costs!
+Enjoy my ramblings on this site? Found a particular article helpful?  Maybe consider contributing to domain renewals and hosting costs!
 
-If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you're more than welcome to help contribute to **domain costs and renewals**:
+If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech account**:
 
-[Buy me a coffee](https://buymeacoffee.com/wqtmtn7ir)
+[Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
 
-Donations help cover the costs of running and maintaining this website, including but not limited to: 
+By funding the hosting provider directly, you help cover the costs of running and maintaining this website, including but not limited to:
 
+- bandwidth
 - domain renewals
 - email service / forwarding
-- ongoing articles & maintenance
-
-You can see the fully transparent breakdown below:
+- ongoing maintenance
 
 <div class="table-container">
 <table border="1">
@@ -69,18 +68,47 @@ You can see the fully transparent breakdown below:
       <td>$38.28</td>
     </tr>
     <tr>
+      <td>wruby.site</td>
+      <td>$43.78</td>
+      <td></td>
+      <td>$43.78</td>
+    </tr>
+    <tr>
       <td></td>
       <td></td>
       <td></td>
-      <td><b>$206.24</b></td>
+      <td><b>$250.02</b></td>
     </tr>
   </tbody>
 </table>
 </div>
 
-The average billing for all of the above is **~$206.24/year** (**~$17/month**).
+<div class="table-container">
+<table border="1">
+  <caption>Web Hosting Costs* (USD)</caption>
+  <thead>
+    <tr>
+      <th>Daily</th>
+      <th>Monthly</th>
+      <th>Yearly</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$0.06</td>
+      <td>$1.83</td>
+      <td><b>$21.96</b></td>
+    </tr>
+  </tbody>
+</table>
+<small>* This covers all hosting for the above projects/domains.</small>
+</div>
 
-The "buy me a coffee" page linked above will provide even more details, should you have any questions.
+The average billing for all of the above is **~$271.98/year** (**~$22/month**).
+
+The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: **no part of your contribution is sent to me**.
+
+Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
 
 ## Other Ways to Support
 

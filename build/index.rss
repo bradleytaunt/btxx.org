@@ -8,7 +8,347 @@
     <title>btxx.org RSS Feed</title>
     <link>https://btxx.org</link>
     <description>The official RSS Feed for https://btxx.org</description>
-    <pubDate>Tue, 14 Apr 2026 13:59:16 -0400</pubDate>
+    <pubDate>Thu, 07 May 2026 10:05:27 -0400</pubDate>
+    <item>
+      <title>Serving a Website on a Raspberry Pi Zero Running Entirely in RAM</title>
+      <link>https://btxx.org/posts/memory/</link>
+      <description>&lt;h1 class=&quot;no_toc&quot; id=&quot;serving-a-website-on-a-raspberry-pi-zero-running-entirely-in-ram&quot;&gt;Serving a Website on a Raspberry Pi Zero Running Entirely in RAM&lt;/h1&gt;
+&lt;p&gt;2026-05-07&lt;/p&gt;
+
+&lt;p&gt;My micro site, &lt;a href=&quot;https://zero.btxx.org&quot;&gt;zero.btxx.org&lt;/a&gt;, is being served to the public internet from a Raspberry Pi Zero v1.3 running Alpine Linux.&lt;/p&gt;
+
+&lt;p&gt;The best part? It’s diskless and running entirely from memory!&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/public/images/pi-zero.png&quot; alt=&quot;The Raspberry Pi Zero with two backup Pis beside it&quot; /&gt;
+  &lt;figcaption&gt;My Raspberry Pi Zero silently running in my cold-storage room (with two extra Pis for moral support). Serving &lt;a href=&quot;https://zero.btxx.org&quot;&gt;zero.btxx.org&lt;/a&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This is even more impressive considering the Pi Zero only has &lt;strong&gt;512MB of total memory&lt;/strong&gt;, &lt;code&gt;~40MB&lt;/code&gt; of which is tied up running Alpine Linux. But since RAM is so abundant and cheap these days that we can… Oh, right.&lt;/p&gt;
+
+&lt;p&gt;Anyway, what a time to be alive! If you’re interested in running your own website off a Pi Zero, follow along!&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-local-hardware&quot; id=&quot;markdown-toc-the-local-hardware&quot;&gt;The (Local) Hardware&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#why-the-512mb-micro-sd-card&quot; id=&quot;markdown-toc-why-the-512mb-micro-sd-card&quot;&gt;Why the 512MB Micro SD Card?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-external-hardware&quot; id=&quot;markdown-toc-the-external-hardware&quot;&gt;The (External) Hardware&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#vps-stats&quot; id=&quot;markdown-toc-vps-stats&quot;&gt;VPS Stats&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#preparing-our-microsd-card&quot; id=&quot;markdown-toc-preparing-our-microsd-card&quot;&gt;Preparing Our microSD Card&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#alpine-linux-in-diskless-mode&quot; id=&quot;markdown-toc-alpine-linux-in-diskless-mode&quot;&gt;Alpine Linux in Diskless Mode&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#software&quot; id=&quot;markdown-toc-software&quot;&gt;Software&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#darkhttpd&quot; id=&quot;markdown-toc-darkhttpd&quot;&gt;&lt;code&gt;darkhttpd&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ngnix&quot; id=&quot;markdown-toc-ngnix&quot;&gt;&lt;code&gt;ngnix&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#rsync&quot; id=&quot;markdown-toc-rsync&quot;&gt;&lt;code&gt;rsync&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#lbu&quot; id=&quot;markdown-toc-lbu&quot;&gt;&lt;code&gt;lbu&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#opening-ports&quot; id=&quot;markdown-toc-opening-ports&quot;&gt;Opening Ports&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tierhive-vps&quot; id=&quot;markdown-toc-tierhive-vps&quot;&gt;TierHive VPS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tierhive-haproxy&quot; id=&quot;markdown-toc-tierhive-haproxy&quot;&gt;TierHive HAProxy&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#terminating-tls-on-a-vps&quot; id=&quot;markdown-toc-terminating-tls-on-a-vps&quot;&gt;Terminating TLS on a VPS&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#backups&quot; id=&quot;markdown-toc-backups&quot;&gt;Backups&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#happy-hosting&quot; id=&quot;markdown-toc-happy-hosting&quot;&gt;Happy Hosting!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Before we start, let’s make a list of all the required hardware items we need.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-local-hardware&quot;&gt;The (Local) Hardware&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Raspberry Pi Zero v1.3&lt;/li&gt;
+  &lt;li&gt;512MB+ microSD card (still needed for install and booting into RAM)&lt;/li&gt;
+  &lt;li&gt;Waveshare Ethernet HAT (optional, can use OTG adapter instead)&lt;/li&gt;
+  &lt;li&gt;Ethernet cable&lt;/li&gt;
+  &lt;li&gt;Micro USB power cord / power adapter&lt;/li&gt;
+  &lt;li&gt;Cool case (optional)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;why-the-512mb-micro-sd-card&quot;&gt;Why the 512MB Micro SD Card?&lt;/h3&gt;
+
+&lt;p&gt;This will make our image backups much easier (at the end of this post). Since we are limited to a maximum RAM space of &lt;code&gt;512MB&lt;/code&gt; (storage), it makes sense to avoid backing up more than we need.&lt;/p&gt;
+
+&lt;p&gt;Additional hardware that will only be needed temporarily for the initial install of Alpine:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Monitor&lt;/li&gt;
+  &lt;li&gt;HDMI to mini-HDMI adapter&lt;/li&gt;
+  &lt;li&gt;Keyboard&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-external-hardware&quot;&gt;The (External) Hardware&lt;/h2&gt;
+
+&lt;p&gt;Since I plan to avoid handling the heavy TLS termination directly on the Pi Zero, I’m going to funnel secure traffic through a separate, tiny VPS. I’m currently using &lt;a href=&quot;https://tierhive.com/r/AD3AFC1F50FF&quot;&gt;TierHive&lt;/a&gt; (referral) which has been fantastic so far. They’re still in alpha, but that’s fine for this personal experiment.&lt;/p&gt;
+
+&lt;p&gt;I’ve selected TierHive based on their low pricing and pre-built HAProxy configuration options.&lt;/p&gt;
+
+&lt;h3 id=&quot;vps-stats&quot;&gt;VPS Stats&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Alpine Linux&lt;/li&gt;
+  &lt;li&gt;128 MB RAM&lt;/li&gt;
+  &lt;li&gt;1 GB Storage (NVMe)&lt;/li&gt;
+  &lt;li&gt;1 vCPU&lt;/li&gt;
+  &lt;li&gt;~$4/year&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But don’t worry about this right now. We’ll get into those details shortly! Feel free to use a different provider or a free service like Cloudflare&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot; role=&quot;doc-noteref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; if that’s your jam.&lt;/p&gt;
+
+&lt;h2 id=&quot;preparing-our-microsd-card&quot;&gt;Preparing Our microSD Card&lt;/h2&gt;
+
+&lt;p&gt;The following was performed on macOS. Using a different operating systems will require different steps. Note that we will be extracting the &lt;code&gt;tar&lt;/code&gt; content directly on to our microSD card, so make sure you download the Alpine image ending with &lt;code&gt;tar.gz&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Plug in SD card and find the disk with &lt;code&gt;diskutil list&lt;/code&gt;. For our example the SD card will be located at &lt;code&gt;/dev/disk4&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Wipe and re-partition the card as FAT32:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;diskutil eraseDisk FAT32 ALPINE MBRFormat /dev/disk4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Extract the Alpine tarball onto the card:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xzf alpine-rpi-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.tar.gz &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; /Volumes/ALPINE
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Clean up any macOS junk then eject it:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find /Volumes/ALPINE &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;._*&#39;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-delete&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /Volumes/ALPINE/.Spotlight-V100
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /Volumes/ALPINE/.fseventsd
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /Volumes/ALPINE/.Trashes
+
+diskutil eject /dev/disk4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now pop the microSD card into your Pi Zero. Be sure to have your Pi connected to a monitor and keyboard, then turn it on.&lt;/p&gt;
+
+&lt;h2 id=&quot;alpine-linux-in-diskless-mode&quot;&gt;Alpine Linux in Diskless Mode&lt;/h2&gt;
+
+&lt;p&gt;Once the Pi boots into the Alpine Live environment, login with &lt;code&gt;root&lt;/code&gt; (no password required). Take note that the SD card should be located at &lt;code&gt;/dev/mmcblk0&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Normally you would run &lt;code&gt;setup-alpine&lt;/code&gt; and walk through the installer, but we need to configure &lt;code&gt;lbu&lt;/code&gt; first. This will allow us to save our configurations and site files on to our SD card in order to keep persistent changes on reboot.&lt;/p&gt;
+
+&lt;div class=&quot;language-ssh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;setup&lt;/span&gt;-lbu mmcblk0p1
+&lt;span class=&quot;k&quot;&gt;mkdir&lt;/span&gt; -p /media/mmcblk0p1/cache
+&lt;span class=&quot;k&quot;&gt;setup&lt;/span&gt;-apkcache /media/mmcblk0p1/cache
+&lt;span class=&quot;k&quot;&gt;lbu&lt;/span&gt; commit -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pay close attention to &lt;code&gt;lbu commit -d&lt;/code&gt;. You will need to run this anytime you install/remove packages or change files on the system. Otherwise they will be lost on future reboots or power outages.&lt;/p&gt;
+
+&lt;p&gt;With that complete, we can now continue with the install by running &lt;code&gt;setup-alpine&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This walks you through:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Keyboard&lt;/strong&gt;: Pick yours&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hostname&lt;/strong&gt;: Name your Pi whatever&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Networking&lt;/strong&gt;: Setup &lt;code&gt;eth0&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DNS&lt;/strong&gt;: &lt;code&gt;8.8.8.8&lt;/code&gt; is fine (or whatever you want)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Timezone&lt;/strong&gt;: Pick yours&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Mirror&lt;/strong&gt;: Press &lt;code&gt;f&lt;/code&gt; to select the fastest based on your location&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SSH server&lt;/strong&gt;: &lt;code&gt;dropbear&lt;/code&gt; is MUCH lighter than the others. Highly recommend this!&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Root password&lt;/strong&gt;: Set one&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Disk&lt;/strong&gt;: IMPORTANT! Pick &lt;code&gt;none&lt;/code&gt; here. This keeps it &lt;em&gt;diskless&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When it asks you about storing configs / APK cache, it should already have your previously configured &lt;code&gt;/media/mmcblk0p1/cache&lt;/code&gt; sets as default. Keep those the same.&lt;/p&gt;
+
+&lt;p&gt;Now with the install complete you can reboot the system. Once it boots up and you login, you can check that everything is running in memory by running:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; /
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If the &lt;code&gt;root&lt;/code&gt; (/) is mounted as &lt;code&gt;tmpfs&lt;/code&gt; or &lt;code&gt;ramfs&lt;/code&gt;, it’s running in RAM. Hooray!&lt;/p&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+
+&lt;h3 id=&quot;darkhttpd&quot;&gt;&lt;code&gt;darkhttpd&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Since we only need to serve basic HTTP (VPS handles the TLS, remember?) the best web server option for our limited resources is &lt;code&gt;darkhttpd&lt;/code&gt;. Let’s install and setup a boot runtime to persist on reboots:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;doas apk add darkhttpd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then we need to make a runtime file at &lt;code&gt;/etc/init.d/darkhttpd&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/sbin/openrc-run&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;darkhttpd static web server&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/usr/bin/darkhttpd&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;command_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/var/www/example.com --port &amp;lt;desired-port-number&amp;gt; --maxconn 20&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;command_background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pidfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/run/darkhttpd.pid&quot;&lt;/span&gt;
+
+depend&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    need net
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then get everything running right away:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x /etc/init.d/darkhttpd
+rc-update add darkhttpd default
+rc-service darkhttpd start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here you can see that we place our website files under &lt;code&gt;/var/www&lt;/code&gt;. Make sure you let &lt;code&gt;lbu&lt;/code&gt; know to include this directory or else you will lose these files on reboot!&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lbu include /etc/init.d/darkhttpd
+lbu include /var/www
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Also notice the &lt;code&gt;maxconn&lt;/code&gt; parameter. Feel free to adjust this as you see fit. That’s it!&lt;/p&gt;
+
+&lt;h3 id=&quot;ngnix&quot;&gt;&lt;code&gt;ngnix&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;If you require a little more flexibility or control of your web server, you can always use &lt;code&gt;ngnix&lt;/code&gt; instead.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;doas apk add ngnix
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then create a site-specific configuration file at &lt;code&gt;/etc/ngnix/http.d/yourdomain.com.conf&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    listen 8080&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    server_name yourdomain.com&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    root /var/www/yourdomain.com&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    index index.html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    try_files &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt;/ &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;404&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    error_page 404 /404&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    location &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /404 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; internal&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The same rules used for &lt;code&gt;darkhttpd&lt;/code&gt; apply for keeping files persistent on reboots / power cycles:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rc-update add ngnix default
+rc-service ngnix start
+
+lbu include /etc/ngnix
+lbu include /var/www
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;rsync&quot;&gt;&lt;code&gt;rsync&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;To sync our changes from our local machine to this Raspberry Pi, we will need &lt;code&gt;rsync&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;doas apk add rsync
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feel free to skip this if you prefer to use something like &lt;code&gt;scp&lt;/code&gt; or directly port files over with an FTP client. This is just personal preference.&lt;/p&gt;
+
+&lt;h3 id=&quot;lbu&quot;&gt;&lt;code&gt;lbu&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Now that we have everything we want/need on our Pi, include all these configuration and website files you wish to keep persistent on your micro SD card:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lbu commit &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Our final software stack at a glance:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;dropbear&lt;/code&gt; (setup during install)&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;darkhttpd&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;lbu&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;rsync&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;opening-ports&quot;&gt;Opening Ports&lt;/h2&gt;
+
+&lt;p&gt;Since we plan to use our external VPS for handling the TLS termination, we only need to open a single port (&lt;code&gt;80&lt;/code&gt; in this example, but use whatever you want) on our local network. I’m not going to go into super detail here, since home networks vary greatly. Just know that you need to open port &lt;code&gt;80&lt;/code&gt; and ensure you target the IP of your Raspberry Pi Zero device (which you should also setup a static IP for to avoid headaches). Pay close attention to the targeted ports in the instructions below.&lt;/p&gt;
+
+&lt;div class=&quot;alert warning&quot;&gt;
+  &lt;span&gt;&lt;b&gt;Important:&lt;/b&gt; If your ISP hands out a dynamic IP for your home network, you will need to configure some form of DDNS. My recommendation would be &lt;a href=&quot;https://duckdns.org&quot;&gt;DuckDNS&lt;/a&gt;.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;tierhive-vps&quot;&gt;TierHive VPS&lt;/h2&gt;
+
+&lt;p&gt;For our needs we really only need the low-end specs for our VPS:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Alpine Linux&lt;/li&gt;
+  &lt;li&gt;128MB Memory&lt;/li&gt;
+  &lt;li&gt;1GB Storage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Setup and install the above as you normally would with a standard Alpine configuration. Once complete, login by using the provided &lt;code&gt;ssh&lt;/code&gt; target under the VPS settings page.&lt;/p&gt;
+
+&lt;p&gt;The only real package we need on this VPS is &lt;code&gt;socat&lt;/code&gt;. We will be using &lt;code&gt;socat&lt;/code&gt; to direct internet traffic to our local Raspberry Pi Zero. (Since TierHive is a NAT VPS provider)&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apk add socat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then create &lt;code&gt;/etc/local.d/forward.start&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+socat TCP-LISTEN:80,fork,reuseaddr TCP:&amp;lt;your-home-ip&amp;gt;:48080 &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Replace &lt;code&gt;&amp;lt;your-home-ip&amp;gt;&lt;/code&gt; with your actual home IP or DDNS hostname, and &lt;code&gt;48080&lt;/code&gt; with whatever external port you forwarded on your router.&lt;/p&gt;
+
+&lt;p&gt;Also take note, you will need your router to be forwarding ports properly. So for example:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TCP 48080 -&amp;gt; Pi:&amp;lt;PORT-CONFIGURED&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;tierhive-haproxy&quot;&gt;TierHive HAProxy&lt;/h2&gt;
+
+&lt;p&gt;Now we will tie TierHive’s HAProxy Edge service to our newly setup VPS. Navigate to the “HAProxy” menu in the TierHive admin and select “Add Domain”. Input your custom domain and follow the instructions to add a &lt;code&gt;TXT&lt;/code&gt; file to your DNS records. This is used to authenticate your domain.&lt;/p&gt;
+
+&lt;p&gt;Once that is confirmed, click the “Configure Backends” button. Then do the following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Single Server&lt;/li&gt;
+  &lt;li&gt;Regional Access&lt;/li&gt;
+  &lt;li&gt;Select VPS Server (Use the dropdown and select your VPS)&lt;/li&gt;
+  &lt;li&gt;Set the port (&lt;code&gt;80&lt;/code&gt; for our example config)&lt;/li&gt;
+  &lt;li&gt;Save!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It will take roughly 5 minutes for these changes to propagate. Once complete, you will now have TierHive’s HAProxy running in front of your tiny VPS, which points to your local Pi Zero!&lt;/p&gt;
+
+&lt;h3 id=&quot;terminating-tls-on-a-vps&quot;&gt;Terminating TLS on a VPS&lt;/h3&gt;
+
+&lt;p&gt;You could stop now and have a working website. The major problem is lack of TLS, which isn’t ideal for websites in 2026. The good news is that TierHive has automatic SSL renewal built-in to their HAProxy service. You just need to click the “Active SSL” within your domain settings under the HAProxy admin page.&lt;/p&gt;
+
+&lt;p&gt;Give it a little bit of time to propagate and you’re golden! Now all your TLS handshakes are handled by TierHive, freeing up your Pi to focus on just serving the static content.&lt;/p&gt;
+
+&lt;h2 id=&quot;backups&quot;&gt;Backups&lt;/h2&gt;
+
+&lt;p&gt;Backups are extremely easy with this setup. On the same network you can simply run:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh root@YOUR-PI-ZERO-IP &lt;span class=&quot;s2&quot;&gt;&quot;dd if=/dev/mmcblk0 bs=4M&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; zero-backup.img
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This image is a &lt;strong&gt;byte-for-byte clone&lt;/strong&gt;. Flash it to a new card and it will boot up the exact same as your current micro SD card. Just make sure the new SD card is the same size or larger!&lt;/p&gt;
+
+&lt;p&gt;You can also freely remove the micro SD card once the Pi has fully booted, since it runs in memory. Then you can plug the card into a separate device and backup directly, instead of relying on a spotty network connection!&lt;/p&gt;
+
+&lt;h2 id=&quot;happy-hosting&quot;&gt;Happy Hosting!&lt;/h2&gt;
+
+&lt;p&gt;That’s all there is to it. It might seem a little complex at first glance, but I assure you it’s fairly easy once you get started.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this inspires others to give self-hosting a shot!&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Although, I would recommend staying away from such massive internet monopolies. Kind of defeats the purpose of self-hosting, no? &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+      <pubDate>Thu, 07 May 2026 12:00:00 -0400</pubDate>
+      <dc:date>2026-05-07T12:00:00-04:00</dc:date>
+    </item>
     <item>
       <title>Snail Mail Sign-Ups</title>
       <link>https://btxx.org/posts/snail-mail-signups/</link>
@@ -18561,6 +18901,6 @@ main[--js-parent] {
       <pubDate>Tue, 28 Jun 2016 12:00:00 -0400</pubDate>
       <dc:date>2016-06-28T12:00:00-04:00</dc:date>
     </item>
-    <dc:date>2026-04-14T13:59:16-04:00</dc:date>
+    <dc:date>2026-05-07T10:05:27-04:00</dc:date>
   </channel>
 </rss>
