@@ -168,15 +168,15 @@ lbu include /var/www
 
 Also notice the `maxconn` parameter. Feel free to adjust this as you see fit. That's it!
 
-### `ngnix`
+### `nginx`
 
-If you require a little more flexibility or control of your web server, you can always use `ngnix` instead.
+If you require a little more flexibility or control of your web server, you can always use `nginx` instead.
 
 ~~~sh
-doas apk add ngnix
+doas apk add nginx
 ~~~
 
-Then create a site-specific configuration file at `/etc/ngnix/http.d/yourdomain.com.conf`:
+Then create a site-specific configuration file at `/etc/nginx/http.d/yourdomain.com.conf`:
 
 ~~~sh
 server {
@@ -195,10 +195,10 @@ server {
 The same rules used for `darkhttpd` apply for keeping files persistent on reboots / power cycles:
 
 ~~~sh
-rc-update add ngnix default
-rc-service ngnix start
+rc-update add nginx default
+rc-service nginx start
 
-lbu include /etc/ngnix
+lbu include /etc/nginx
 lbu include /var/www
 ~~~
 
@@ -229,7 +229,7 @@ lbu commit -d
 
 ## Opening Ports
 
-Since we plan to use our external VPS for handling the TLS termination, we only need to open a single port (`80` in this example, but use whatever you want) on our local network. I'm not going to go into super detail here, since home networks vary greatly. Just know that you need to open port `80` and ensure you target the IP of your Raspberry Pi Zero device (which you should also setup a static IP for to avoid headaches). Pay close attention to the targeted ports in the instructions below.
+Since we plan to use our external VPS for handling the TLS termination, we only need to open a single port (`80` in this example, but use whatever you want) on our local network. I'm not going to go into super detail here, since home networks vary greatly. Just know that you need to open port `80` and ensure you target the IP of your Raspberry Pi Zero device (which you should also setup a static IP to avoid headaches). Pay close attention to the targeted ports in the instructions below.
 
 <div class="alert warning">
   <span><b>Important:</b> If your ISP hands out a dynamic IP for your home network, you will need to configure some form of DDNS. My recommendation would be <a href="https://duckdns.org">DuckDNS</a>.</span>
