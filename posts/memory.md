@@ -51,7 +51,7 @@ I've selected TierHive based on their low pricing and pre-built HAProxy configur
 - 128 MB RAM
 - 1 GB Storage (NVMe)
 - 1 vCPU
-- ~$4/year
+- ~$2/year
 
 But don't worry about this right now. We'll get into those details shortly! Feel free to use a different provider or a free service like Cloudflare[^1] if that's your jam.
 
