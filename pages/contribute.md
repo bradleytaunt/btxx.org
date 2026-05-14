@@ -6,6 +6,8 @@ If you feel the burning desire to support this small blog of mine or any number 
 
 [Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
 
+<p><strong>Current balance:</strong> <!-- BALANCE GOES HERE --></p>
+
 By funding the hosting provider directly, you help cover the costs of running and maintaining this website, including but not limited to:
 
 - bandwidth

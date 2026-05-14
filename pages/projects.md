@@ -18,7 +18,7 @@ All git repos can be found: [SourceHut](https://git.sr.ht/~bt)
 [zero](https://zero.btxx.org)
 : Serving a website on a Raspberry Pi Zero from Memory
 
-[minwm](https://git.sr.ht/~bt/minwm)
+[minwm](https://minwm.btxx.org)
 : An extremely minimal window manager
 
 [stato](https://git.sr.ht/~bt/stato)
