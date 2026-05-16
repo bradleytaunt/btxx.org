@@ -94,6 +94,7 @@ Normally you would run `setup-alpine` and walk through the installer, but we nee
 
 ~~~ssh
 setup-lbu mmcblk0p1
+mount -o remount,rw /media/mmcblk0p1
 mkdir -p /media/mmcblk0p1/cache
 setup-apkcache /media/mmcblk0p1/cache
 lbu commit -d

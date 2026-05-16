@@ -1,6 +1,16 @@
 # Bradley Taunt
 
-Developer &amp; designer who talks about software, design, and life.
+~~~diagram
+      _____
+    \\-     -/
+ \\_/         \\
+ |        O O |
+ |_  <   )  3 )
+ / \\         /
+    /-_____-\\
+~~~
+
+Developer &amp; designer who talks about software, design, and life. OpenBSD enthusiast.
 
 - [About](/about)
 - [Colophon](/colophon)

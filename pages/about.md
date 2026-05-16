@@ -9,7 +9,7 @@ I also actively maintain several [open source projects](/projects).
 Core tools are: 
 
 **Development**
-: HTML, CSS, Ruby/Rails, JavaScript (*yuck*)
+: HTML, CSS, Ruby/Rails, Linux/BSD Server Admin
 
 **Design**
 : Sketch, Figma, Photoshop, Balsamiq
