@@ -18,6 +18,16 @@ Currently improving my skills with Rails & MongoDB. I also enjoy tinkering with 
 
 ## Popular OpenBSD Articles
 
+~~~diagram
+      _____
+    \\-     -/
+ \\_/         \\
+ |        O O |
+ |_  <   )  3 )
+ / \\         /
+    /-_____-\\
+~~~
+
 * [Installing OpenBSD on Linveo KVM VPS](/posts/openbsd-linveo/)
 * [Building a Simple Router with OpenBSD](/posts/openbsd-router/)
 * [Setup Mullvad VPN on OpenBSD via WireGuard](/posts/openbsd-mullvad/)

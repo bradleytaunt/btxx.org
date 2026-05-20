@@ -4,7 +4,7 @@ Enjoy my ramblings on this site? Found a particular article helpful?  Maybe cons
 
 If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech account**:
 
-[Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
+💚 [Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
 
 <p><strong>Current balance:</strong> <!-- BALANCE GOES HERE --></p>
 

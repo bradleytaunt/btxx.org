@@ -1,10 +1,25 @@
 @import url("syntax.css");
 
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/public/fonts/BricolageGrotesque-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/public/fonts/BricolageGrotesque-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: bold;
+}
+
 *{box-sizing:border-box;}
 
 body {
-  background: #f2f2f2;
-  font-family: system-ui, sans-serif;
+  background: snow;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-optical-sizing: auto;
   line-height: 1.33;
   margin: 0 auto;
   max-width: 680px;
@@ -24,14 +39,16 @@ body {
 #header #nav a {
     background: white;
     border: 1px solid black;
+    border-radius: 24px;
     cursor: pointer;
     display: block;
-    padding: 6px;
+    padding: 8px 12px;
 }
 
 #main {
     background: white;
     border: 1px solid;
+    border-radius: 24px;
     margin: 0;
     padding: 0 15px;
 }
@@ -71,6 +88,10 @@ dt:not(:has(a)) {
     font-weight: 600;
 }
 
+i, em {
+    font-family: "Georgia", serif;
+}
+
 img{height:auto;max-width:100%;}
 
 blockquote {
@@ -85,17 +106,22 @@ figure { margin: 2.5rem auto; }
 figure img { display: block; margin: 0 auto 10px; }
 figcaption { opacity: 0.7; text-align: center; }
 
-pre, p code, li code { font-size: 14px; }
+pre, p code, li code, dd code { font-size: 15px; }
+p code, li code, dd code { color: brown; }
 
 pre {
   background: #f2f2f2;
-  border: 1px solid;
-  padding: 6px;
+  padding: 8px 15px;
   overflow: auto;
 }
 pre:has(code.language-diagram) {
     background: none;
     border: 0;
+}
+
+.highlighter-rouge {
+    margin-left: -15px;
+    width: calc(100% + 30px);
 }
 
 table {
@@ -123,7 +149,9 @@ table td:last-of-type, table th:last-of-type {
 
 .alert {
     border: 1px solid currentColor;
-    padding: 4px;
+    border-radius: 24px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.7);
+    padding: 8px 12px;
 }
 .alert b {
     display: block;
@@ -140,9 +168,10 @@ table td:last-of-type, table th:last-of-type {
 .contribute-footer {
   background: honeydew;
   border: 1px solid;
+  border-radius: 24px;
   display: block;
   margin: 10px 0 0;
-  padding: 10px;
+  padding: 10px 15px;
 }
 
 #footer {
@@ -199,6 +228,7 @@ table td:last-of-type, table th:last-of-type {
         background: black;
         border-left: 4px solid lightgrey;
     }
+    p code, li code, dd code { color: orange; }
     pre {
         background: black;
     }
