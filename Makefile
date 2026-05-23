@@ -1,5 +1,6 @@
 build:
 	rm -rf build && mkdir build
+	cp robots.txt build/
 	ruby wruby.rb
 clean:
 	rm -rf build/*

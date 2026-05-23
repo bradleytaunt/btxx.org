@@ -1,0 +1,116 @@
+# Block AI training crawlers and scrapers
+
+# OpenAI
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+User-agent: Claude-User
+Disallow: /
+
+# Google AI (separate from regular Googlebot search indexing)
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GoogleOther
+Disallow: /
+
+# Common Crawl (feeds many AI training datasets)
+User-agent: CCBot
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+# Meta / Facebook AI
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Disallow: /
+
+# Amazon
+User-agent: Amazonbot
+Disallow: /
+
+# Apple
+User-agent: Applebot-Extended
+Disallow: /
+
+# Cohere
+User-agent: cohere-ai
+Disallow: /
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+# Mistral
+User-agent: MistralAI-User
+Disallow: /
+
+# DeepSeek
+User-agent: DeepSeekBot
+Disallow: /
+
+# You.com
+User-agent: YouBot
+Disallow: /
+
+# Diffbot
+User-agent: Diffbot
+Disallow: /
+
+# Omgili / Webz.io (data broker)
+User-agent: omgili
+Disallow: /
+User-agent: omgilibot
+Disallow: /
+
+# Timpi
+User-agent: TimpiBot
+Disallow: /
+
+# Catch-all archivers and scrapers commonly used for AI datasets
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Kangaroo Bot
+Disallow: /
+
+User-agent: Velen Crawler
+Disallow: /
+
+# Allow regular search engines (remove these blocks if you want to be findable)
+User-agent: *
+Allow: /
