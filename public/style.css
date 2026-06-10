@@ -2,9 +2,16 @@
 
 @font-face {
   font-family: 'Bricolage Grotesque';
-  src: url('/public/fonts/w95f.woff2') format('woff2');
+  src: url('/public/fonts/BricolageGrotesque-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/public/fonts/BricolageGrotesque-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: bold;
 }
 
 *{box-sizing:border-box;}
