@@ -118,6 +118,12 @@ This walks you through:
 
 When it asks you about storing configs / APK cache, it should already have your previously configured `/media/mmcblk0p1/cache` sets as default. Keep those the same.
 
+Make sure to run the following *before* rebooting or else all your hard work will be lost!
+
+~~~sh
+lbu commit
+~~~
+
 Now with the install complete you can reboot the system. Once it boots up and you login, you can check that everything is running in memory by running:
 
 ~~~sh
