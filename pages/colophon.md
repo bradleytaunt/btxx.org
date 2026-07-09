@@ -22,7 +22,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hosted on:</td>
-      <td><a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech</a></td>
+      <td><a href="/infra">Raspberry Pi Zero v1.1</a></td>
     </tr>
     <tr>
       <td>Source code available:</td>
@@ -34,11 +34,11 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hardware used:</td>
-      <td>M2 MacBook Air, ThinkPad X201</td>
+      <td>ThinkPad T480s, ThinkPad X201</td>
     </tr>
     <tr>
       <td>Developed on:</td>
-      <td>OpenBSD, MacOS &amp; Linux</td>
+      <td>OpenBSD</td>
     </tr>
   </tbody>
 </table>

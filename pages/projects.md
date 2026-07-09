@@ -6,14 +6,14 @@ All git repos can be found: [SourceHut](https://git.sr.ht/~bt)
 
 ## Active Projects
 
+[openbased](https://openbased.btxx.org)
+: A collection of tutorials focused on all things OpenBSD
+
 [httpd.rocks](https://httpd.rocks)
 : Setup an HTTPS-enabled web server with `httpd` on OpenBSD
 
 [caddy.ninja](https://caddy.ninja)
 : Setup an HTTPS-enabled web server with `caddy` on Alpine Linux
-
-[openbased](https://openbased.btxx.org)
-: Setup OpenBSD as a daily driver using only the base programs
 
 [zero](https://zero.btxx.org)
 : Serving a website on a Raspberry Pi Zero from Memory

@@ -2,22 +2,24 @@
 
 Enjoy my ramblings on this site? Found a particular article helpful?  Maybe consider contributing to domain renewals and hosting costs!
 
-If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech account**:
+If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to donate!
 
-💚 [Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
+<a href="https://liberapay.com/btxx/donate"><img alt="Donate using Liberapay" src="/public/images/donate.svg"></a>
 
-<p><strong>Current balance:</strong> <!-- BALANCE GOES HERE --></p>
-
-By funding the hosting provider directly, you help cover the costs of running and maintaining this website, including but not limited to:
+Donations help cover the costs of running and maintaining this website, including but not limited to:
 
 - bandwidth
 - domain renewals
 - email service / forwarding
 - ongoing maintenance
 
+All prices below are listed in USD.
+
+## Domains
+
 <div class="table-container">
 <table border="1">
-  <caption>Domain & Email Costs (USD)</caption>
+  <caption>Domain & Email Costs (Annual)</caption>
   <thead>
     <tr>
       <th>Domain</th>
@@ -85,36 +87,41 @@ By funding the hosting provider directly, you help cover the costs of running an
 </table>
 </div>
 
+## Web Servers
+
 <div class="table-container">
 <table border="1">
-  <caption>Web Hosting Costs* (USD)</caption>
+  <caption>Web Server Costs (Annual)</caption>
   <thead>
     <tr>
-      <th>Daily</th>
-      <th>Monthly</th>
-      <th>Yearly</th>
+      <th>Service</th>
+      <th>Cost</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>$0.06</td>
-      <td>$1.83</td>
-      <td><b>$21.96</b></td>
+      <td>TinyKVM VPS <br><small>Running OpenBSD</small></td>
+      <td>$15</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi 3B (Apollo) <br> <small>Running Alpine Linux</small></td>
+      <td>~$7*</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi Zero v1.1 (Hermes) <br> <small>Running Alpine Linux</small></td>
+      <td>~$5*</td>
     </tr>
   </tbody>
 </table>
-<small>* This covers all hosting for the above projects/domains.</small>
 </div>
 
-The average billing for all of the above is **~$271.98/year** (**~$22/month**).
+<small>* This is based on rough estimates for electrical use</small>
 
-The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: **no part of your contribution is sent to me**.
-
-Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
+You can read more details about these services on [my infrastructure page](/infra).
 
 ## Other Ways to Support
 
-If directly contributing to the NFS services cost isn't your jam, feel free to check out a couple of my referral prgrams below:
+If directly donating isn't your jam, feel free to check out a couple of my referral programs below:
 
 - [Sign up for Fathom Analytics](https://usefathom.com/ref/DKHJVX). You get a $10 credit towards your account and I get a minor, continuous kickback (for as long as you continue to use the service).
 - [Sign up for TierHive](https://tierhive.com/r/AD3AFC1F50FF)
