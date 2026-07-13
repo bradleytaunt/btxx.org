@@ -4,7 +4,12 @@ I try my best to self host as much as possible. The goal is to keep the setup cl
 
 This setup won't allow me to claim "99.99% uptime" or blazing fast speeds, but it gives me full control and fits my basic requirements.
 
-## Raspberry Pi 3B (Apollo)
+<figure>
+  <img src="/public/images/infrastructure.png" alt="A photo of my networking setup in my utility room">
+  <figcaption>A glimpse of my networking setup: My secondary Mango mini router (VPN) on the left,  my Raspberry Pi Zero (Hermes) in the center, and my Raspberry Pi 3 (Apollo) on the right. Backup Pis are there for moral support.</figcaption>
+</figure>
+
+## Raspberry Pi 3B ([Apollo](https://apollo.btxx.org))
 
 This is my main server. Used for all side projects.
 
@@ -15,15 +20,15 @@ This is my main server. Used for all side projects.
 ### Hosting
 
 - [1kb.club](https://1kb.club)
-- [1mb.club](https://1mb.club)
-- [512kb.club](https://512kb.club)
+- 1mb.club (soon!)
+- 512kb.club (soon!)
 - [caddy.ninja](https://caddy.ninja)
 - [wruby.site](https://wruby.site)
 - [xhtml.club](https://xhtml.club)
 
 ---
 
-## Raspberry Pi Zero  v1.1 (Hermes)
+## Raspberry Pi Zero  v1.1 ([Hermes](https://hermes.btxx.org))
 
 This is my secondary server. Used for my personal website and subdomains.
 

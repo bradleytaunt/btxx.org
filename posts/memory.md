@@ -234,14 +234,6 @@ lbu commit -d
 - `lbu`
 - `rsync`
 
-## Opening Ports
-
-Since we plan to use our external VPS for handling the TLS termination, we only need to open a single port (`80` in this example, but use whatever you want) on our local network. I'm not going to go into super detail here, since home networks vary greatly. Just know that you need to open port `80` and ensure you target the IP of your Raspberry Pi Zero device (which you should also setup a static IP to avoid headaches). Pay close attention to the targeted ports in the instructions below.
-
-<div class="alert warning">
-  <span><b>Important:</b> If your ISP hands out a dynamic IP for your home network, you will need to configure some form of DDNS. My recommendation would be <a href="https://duckdns.org">DuckDNS</a>.</span>
-</div>
-
 ## TierHive VPS
 
 For our needs we really only need the low-end specs for our VPS:
@@ -252,25 +244,84 @@ For our needs we really only need the low-end specs for our VPS:
 
 Setup and install the above as you normally would with a standard Alpine configuration. Once complete, login by using the provided `ssh` target under the VPS settings page.
 
-The only real package we need on this VPS is `socat`. We will be using `socat` to direct internet traffic to our local Raspberry Pi Zero. (Since TierHive is a NAT VPS provider)
+The only required packages we need on this VPS are `socat` and `wireguard`. We will be using `socat` to direct internet traffic to our local Raspberry Pi Zero. (Since TierHive is a NAT VPS provider)
 
 ~~~sh
-apk add socat
+apk add socat wireguard-tools
 ~~~
 
-Then create `/etc/local.d/forward.start`:
+### Setting Up Wireguard Tunneling
+
+On both the Raspberry Pi Zero (local) and our TierHive VPS we need to do the following, ensuring to keep note of both device private/public keys:
+
+~~~sh
+mkdir -p /etc/wireguard
+cd /etc/wireguard
+umask 077
+wg genkey > private.key
+wg pubkey < private.key > public.key
+~~~
+
+Then edit the **TierHive VPS** wireguard config at `/etc/wireguard/wg0.conf`:
+
+~~~sh
+# TierHive VPS
+[Interface]
+Address = 10.10.0.1/24
+ListenPort = 2437
+PrivateKey = VPS_PRIVATE
+
+[Peer]
+PublicKey = PI_PUBLIC
+AllowedIPs = 10.10.0.2/32
+~~~
+
+Make note of the `2437` port. That is what TierHive uses by default for it's HAProxy edge we plan to setup shortly.
+
+Next, edit a similar `/etc/wireguard/wg0.conf` on the **Raspberry Pi Zero** locally, swapping out the `Endpoint` with your VPS IP:
+
+~~~sh
+# Local Raspberry Pi Zero
+[Interface]
+Address = 10.10.0.2/24
+PrivateKey = PI_PRIVATE
+
+[Peer]
+PublicKey = VPS_PUBLIC
+Endpoint = <YOUR-VPS-IP>:2437
+AllowedIPs = 10.10.0.1/32
+PersistentKeepalive = 25
+~~~
+
+Now start Wireguard on both VPS and your local Pi and make sure they run at boot time:
+
+~~~sh
+wg-quick up wg0
+
+doas rc-update add wg-quick default
+doas sh -c 'echo WG_INTERFACES=\"wg0\" >> /etc/conf.d/wg-quick'
+~~~
+
+**Important**: To avoid losing your Wireguard config and keys on your local Pi, make sure you commit your changes:
+
+~~~sh
+doas lbu add /etc/wireguard
+doas lbu commit -d
+~~~
+
+### Setting Up socat
+
+Now create `/etc/local.d/forward.start`:
 
 ~~~sh
 #!/bin/sh
-socat TCP-LISTEN:80,fork,reuseaddr TCP:<your-home-ip>:48080 &
+socat TCP-LISTEN:9877,fork,reuseaddr TCP:10.10.0.2:80 &
 ~~~
 
-Replace `<your-home-ip>` with your actual home IP or DDNS hostname, and `48080` with whatever external port you forwarded on your router.
-
-Also take note, you will need your router to be forwarding ports properly. So for example:
+That's it. Now run it right away (make sure it is executable!) with:
 
 ~~~sh
-TCP 48080 -> Pi:<PORT-CONFIGURED>
+sh /etc/local.d/forward.start
 ~~~
 
 ## TierHive HAProxy
@@ -282,7 +333,7 @@ Once that is confirmed, click the "Configure Backends" button. Then do the follo
 1. Single Server
 2. Regional Access
 3. Select VPS Server (Use the dropdown and select your VPS)
-4. Set the port (`80` for our example config)
+4. Set the port (`80` for example is fine)
 5. Save!
 
 It will take roughly 5 minutes for these changes to propagate. Once complete, you will now have TierHive's HAProxy running in front of your tiny VPS, which points to your local Pi Zero!
