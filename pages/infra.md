@@ -9,7 +9,21 @@ This setup won't allow me to claim "99.99% uptime" or blazing fast speeds, but i
   <figcaption>A glimpse of my networking setup: My secondary Mango mini router (VPN) on the left,  my Raspberry Pi Zero (Hermes) in the center, and my Raspberry Pi 3 (Apollo) on the right. Backup Pis are there for moral support.</figcaption>
 </figure>
 
-## Raspberry Pi 3B ([Apollo](https://apollo.btxx.org))
+## Raspberry Pi 3B+ ([Hades](https://hades.btxx.org))
+
+This is my personal server. Used for my personal blog/website.
+
+- **OS**: Alpine Linux (Running in RAM!)
+- **CPU**: BCM2837 (4) @ 1.20 GHz
+- **MEM**: 905.98MiB
+
+### Hosting
+
+- [btxx.org](https://btxx.org) (this website!)
+
+---
+
+## Raspberry Pi 3B+ ([Apollo](https://apollo.btxx.org))
 
 This is my main server. Used for all side projects.
 
@@ -30,7 +44,7 @@ This is my main server. Used for all side projects.
 
 ## Raspberry Pi Zero  v1.1 ([Hermes](https://hermes.btxx.org))
 
-This is my secondary server. Used for my personal website and subdomains.
+This is my secondary server. Used for most of my personal subdomains.
 
 - **OS**: Alpine Linux (Running in RAM!)
 - **CPU**: BCM2835 @ 1.00 GHz
@@ -38,14 +52,13 @@ This is my secondary server. Used for my personal website and subdomains.
 
 ### Hosting
 
-- [btxx.org](https://btxx.org) (this website!)
-  - [anon.btxx.org](https://anon.btxx.org)
-  - [audit.btxx.org](https://audit.btxx.org)
-  - [hermes.btxx.org](https://hermes.btxx.org)
-  - [minwm.btxx.org](https://minwm.btxx.org)
-  - [search.btxx.org](https://search.btxx.org)
-  - [vanillacss.btxx.org](https://vanillacss.btxx.org)
-  - [zero.btxx.org](https://zero.btxx.org)
+- [anon.btxx.org](https://anon.btxx.org)
+- [audit.btxx.org](https://audit.btxx.org)
+- [hermes.btxx.org](https://hermes.btxx.org)
+- [minwm.btxx.org](https://minwm.btxx.org)
+- [search.btxx.org](https://search.btxx.org)
+- [vanillacss.btxx.org](https://vanillacss.btxx.org)
+- [zero.btxx.org](https://zero.btxx.org)
 
 ---
 

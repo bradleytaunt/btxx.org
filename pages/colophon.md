@@ -22,7 +22,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hosted on:</td>
-      <td><a href="/infra">Raspberry Pi Zero v1.1</a></td>
+      <td><a href="/infra">Raspberry Pi 3 B+</a></td>
     </tr>
     <tr>
       <td>Source code available:</td>

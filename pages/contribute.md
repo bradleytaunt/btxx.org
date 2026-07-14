@@ -4,7 +4,7 @@ Enjoy my ramblings on this site? Found a particular article helpful?  Maybe cons
 
 If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to donate!
 
-<a href="https://liberapay.com/btxx/donate"><img alt="Donate using Liberapay" src="/public/images/donate.svg"></a>
+### [Buy me a coffee!](https://buymeacoffee.com/wqtmtn7ir)
 
 Donations help cover the costs of running and maintaining this website, including but not limited to:
 
@@ -105,6 +105,10 @@ All prices below are listed in USD.
     </tr>
     <tr>
       <td>Raspberry Pi 3B (Apollo) <br> <small>Running Alpine Linux</small></td>
+      <td>~$7*</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi 3B (Hades) <br> <small>Running Alpine Linux</small></td>
       <td>~$7*</td>
     </tr>
     <tr>

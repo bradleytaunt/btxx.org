@@ -6,7 +6,7 @@ All git repos can be found: [SourceHut](https://git.sr.ht/~bt)
 
 ## Active Projects
 
-[openbased](https://openbased.btxx.org)
+[openbased](https://openbased.xyz)
 : A collection of tutorials focused on all things OpenBSD
 
 [httpd.rocks](https://httpd.rocks)

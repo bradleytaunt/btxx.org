@@ -183,7 +183,13 @@ If you require a little more flexibility or control of your web server, you can 
 doas apk add nginx
 ~~~
 
-Then create a site-specific configuration file at `/etc/nginx/http.d/yourdomain.com.conf`:
+Then create a site-specific configuration file at: 
+
+~~~sh
+/etc/nginx/http.d/yourdomain.com.conf
+~~~
+
+and include the following:
 
 ~~~sh
 server {
