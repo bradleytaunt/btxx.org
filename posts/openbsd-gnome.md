@@ -30,7 +30,7 @@ You should always check the man pages directly since they can change over time b
 
 ~~~sh
 rcctl disable xenodm
-rcctl enable multicast messagebus avahi_daemon gdm apmd messagebus
+rcctl enable multicast messagebus avahi_daemon gdm apmd
 reboot
 ~~~
 

@@ -100,28 +100,16 @@ All prices below are listed in USD.
   </thead>
   <tbody>
     <tr>
-      <td>TinyKVM VPS <br><small>Running OpenBSD</small></td>
+      <td>OpenBSD VPS <br><small>Running OpenBSD + httpd</small></td>
       <td>$15</td>
     </tr>
     <tr>
-      <td>Raspberry Pi 3B (Apollo) <br> <small>Running Alpine Linux</small></td>
-      <td>~$7*</td>
-    </tr>
-    <tr>
-      <td>Raspberry Pi 3B (Hades) <br> <small>Running Alpine Linux</small></td>
-      <td>~$7*</td>
-    </tr>
-    <tr>
-      <td>Raspberry Pi Zero v1.1 (Hermes) <br> <small>Running Alpine Linux</small></td>
-      <td>~$5*</td>
+      <td>Alpine Linux VPS <br> <small>Running Alpine + Caddy</small></td>
+      <td>~$15</td>
     </tr>
   </tbody>
 </table>
 </div>
-
-<small>* This is based on rough estimates for electrical use</small>
-
-You can read more details about these services on [my infrastructure page](/infra).
 
 ## Other Ways to Support
 
