@@ -303,9 +303,13 @@ Now start Wireguard on both VPS and your local Pi and make sure they run at boot
 
 ~~~sh
 wg-quick up wg0
+~~~
 
-doas rc-update add wg-quick default
-doas sh -c 'echo WG_INTERFACES=\"wg0\" >> /etc/conf.d/wg-quick'
+I prefer to keep things under `/etc/local.d/wg-quick.start` and be sure to make it executable afterwards:
+
+~~~sh
+#!/bin/sh
+wg-quick up wg0
 ~~~
 
 **Important**: To avoid losing your Wireguard config and keys on your local Pi, make sure you commit your changes:
@@ -313,21 +317,6 @@ doas sh -c 'echo WG_INTERFACES=\"wg0\" >> /etc/conf.d/wg-quick'
 ~~~sh
 doas lbu add /etc/wireguard
 doas lbu commit -d
-~~~
-
-### Setting Up socat
-
-Now create `/etc/local.d/forward.start`:
-
-~~~sh
-#!/bin/sh
-socat TCP-LISTEN:9877,fork,reuseaddr TCP:10.10.0.2:80 &
-~~~
-
-That's it. Now run it right away (make sure it is executable!) with:
-
-~~~sh
-sh /etc/local.d/forward.start
 ~~~
 
 ## TierHive HAProxy

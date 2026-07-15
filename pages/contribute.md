@@ -19,69 +19,53 @@ All prices below are listed in USD.
 
 <div class="table-container">
 <table border="1">
-  <caption>Domain & Email Costs (Annual)</caption>
+  <caption>Domain Costs (Annual)</caption>
   <thead>
     <tr>
       <th>Domain</th>
-      <th>Renewal</th>
-      <th>Email</th>
-      <th>Total</th>
+      <th>Renewal Cost</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>btxx.org</td>
       <td>$16.38</td>
-      <td>$10.98</td>
-      <td>$27.36</td>
     </tr>
     <tr>
       <td>1kb.club</td>
-      <td>$29.08</td>
-      <td></td>
       <td>$29.08</td>
     </tr>
     <tr>
       <td>1mb.club</td>
       <td>$29.08</td>
-      <td></td>
-      <td>$29.08</td>
     </tr>
     <tr>
       <td>512kb.club</td>
-      <td>$29.08</td>
-      <td></td>
       <td>$29.08</td>
     </tr>
     <tr>
       <td>xhtml.club</td>
       <td>$29.08</td>
-      <td></td>
-      <td>$29.08</td>
+    </tr>
+    <tr>
+      <td>openbased.xyz</td>
+      <td>$19.68</td>
     </tr>
     <tr>
       <td>httpd.rocks</td>
-      <td>$24.28</td>
-      <td></td>
       <td>$24.28</td>
     </tr>
     <tr>
       <td>caddy.ninja</td>
       <td>$38.28</td>
-      <td></td>
-      <td>$38.28</td>
     </tr>
     <tr>
       <td>wruby.site</td>
       <td>$43.78</td>
-      <td></td>
-      <td>$43.78</td>
     </tr>
     <tr>
       <td></td>
-      <td></td>
-      <td></td>
-      <td><b>$250.02</b></td>
+      <td><b>$258.72</b></td>
     </tr>
   </tbody>
 </table>
@@ -100,16 +84,28 @@ All prices below are listed in USD.
   </thead>
   <tbody>
     <tr>
-      <td>OpenBSD VPS <br><small>Running OpenBSD + httpd</small></td>
+      <td>TinyKVM VPS <br><small>Running OpenBSD</small></td>
       <td>$15</td>
     </tr>
     <tr>
-      <td>Alpine Linux VPS <br> <small>Running Alpine + Caddy</small></td>
-      <td>~$15</td>
+      <td>Raspberry Pi 3B (Apollo) <br> <small>Running Alpine Linux</small></td>
+      <td>~$7*</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi 3B (Hades) <br> <small>Running Alpine Linux</small></td>
+      <td>~$7*</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi Zero v1.1 (Hermes) <br> <small>Running Alpine Linux</small></td>
+      <td>~$5*</td>
     </tr>
   </tbody>
 </table>
 </div>
+
+<small>* This is based on rough estimates for electrical use</small>
+
+You can read more details about these services on [my infrastructure page](/infra).
 
 ## Other Ways to Support
 

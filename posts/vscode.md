@@ -2,6 +2,10 @@
 
 2023-06-05
 
+<div class="alert">
+	<span><b>Update (July 07, 2026)</b><br> This unfortunately no longer works.</span>
+</div>
+
 VSCode and its many variations are not available on OpenBSD. This doesn't cause issue with many OpenBSD users, but those making the jump from Linux might miss access to such a popular editor. Lucky for us, there is a *hacky* workaround to solve this problem.
 
 ## VSCode in the Browser
