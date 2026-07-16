@@ -71,6 +71,7 @@ h1 { margin-top: 0; }
 h2 { margin-top: 2rem; }
 img { display: block; height: auto; max-width: 100%; }
 code { font-size: 14px; }
+p code, li code, blockquote code { color: brown; }
 pre:not(:has(code.language-diagram)) { border: 1px solid gray; padding: 8px; overflow: auto; }
 figure { border: 1px solid; margin: 2rem 0; }
 figcaption { background: black; color: white; padding: 4px; }
@@ -118,6 +119,7 @@ dl dd { margin-bottom: 10px; }
   a:visited { color: #f8f; }
   a:active { color: red; }
   blockquote { color: lightgoldenrodyellow; }
+  p code, li code, blockquote code { color: yellow; }
   #main {
     background: #2d2d2d;
   }

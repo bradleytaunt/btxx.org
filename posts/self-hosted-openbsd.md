@@ -1,6 +1,6 @@
 # Setup a Simple, Self-Hosted Web Server with OpenBSD
 {:.no_toc}
-2026-07-15
+2026-07-16
 
 This very website is being served to you via `httpd` from my local HP T630 thin client running OpenBSD.
 
