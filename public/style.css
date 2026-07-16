@@ -22,12 +22,16 @@ body {
   align-items: center;
   color: white;
   display: flex;
-  font-family: "Georgia", serif;
+  font-family: monospace;
   font-size: 24px;
+  font-variant: small-caps;
+  height: 100%;
   text-decoration: none;
+  word-spacing: -5px;
 }
+#header a:hover, #header a:active { text-decoration: underline; }
 #header img {
-  margin-right: 5px;
+  margin-right: 10px;
   max-height: 45px;
   width: auto;
 }

@@ -25,6 +25,10 @@ For those interested I try to keep the details of the blog up-to-date with the i
       <td><a href="https://openbsd.org">OpenBSD</a></td>
     </tr>
     <tr>
+      <td>Hosted on:</td>
+      <td><a href="/infra">HP T630 Thin Client</a></td>
+    </tr>
+    <tr>
       <td>Source code available:</td>
       <td><a href="https://git.sr.ht/~bt/btxx.org">SourceHut</a></td>
     </tr>
