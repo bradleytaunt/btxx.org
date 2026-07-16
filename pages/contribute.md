@@ -32,6 +32,14 @@ All prices below are listed in USD.
       <td>$16.38</td>
     </tr>
     <tr>
+      <td>openbased.xyz</td>
+      <td>$19.68</td>
+    </tr>
+    <tr>
+      <td>httpd.rocks</td>
+      <td>$24.28</td>
+    </tr>
+    <tr>
       <td>1kb.club</td>
       <td>$29.08</td>
     </tr>
@@ -46,14 +54,6 @@ All prices below are listed in USD.
     <tr>
       <td>xhtml.club</td>
       <td>$29.08</td>
-    </tr>
-    <tr>
-      <td>openbased.xyz</td>
-      <td>$19.68</td>
-    </tr>
-    <tr>
-      <td>httpd.rocks</td>
-      <td>$24.28</td>
     </tr>
     <tr>
       <td>caddy.ninja</td>
@@ -71,7 +71,7 @@ All prices below are listed in USD.
 </table>
 </div>
 
-## Web Servers
+## Devices
 
 <div class="table-container">
 <table border="1">
@@ -84,20 +84,12 @@ All prices below are listed in USD.
   </thead>
   <tbody>
     <tr>
-      <td>TinyKVM VPS <br><small>Running OpenBSD</small></td>
+      <td>OpenBSD VPS <br><small>Running OpenBSD</small></td>
       <td>$15</td>
     </tr>
     <tr>
-      <td>Raspberry Pi 3B (Apollo) <br> <small>Running Alpine Linux</small></td>
-      <td>~$7*</td>
-    </tr>
-    <tr>
-      <td>Raspberry Pi 3B (Hades) <br> <small>Running Alpine Linux</small></td>
-      <td>~$7*</td>
-    </tr>
-    <tr>
-      <td>Raspberry Pi Zero v1.1 (Hermes) <br> <small>Running Alpine Linux</small></td>
-      <td>~$5*</td>
+      <td>HP T630 <br> <small>Running OpenBSD</small></td>
+      <td>~$8*</td>
     </tr>
   </tbody>
 </table>
