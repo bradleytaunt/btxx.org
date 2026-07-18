@@ -2,7 +2,7 @@
 
 This page is based off the [now page concept](https://nownownow.com/about) by Derek Sivers.
 
-Last updated April 2026.
+Last updated July 2026.
 
 ## Work
 
@@ -10,7 +10,7 @@ Last updated April 2026.
 
 ## Life
 
-- Raising my three children (aged 7, 6 and 4 respectively) with my wonderful wife
+- Raising my three children (aged 8, 6 and 4 respectively) with my wonderful wife
 - Trying to contribute more to open source projects that I actively use
 - Advancing my knowledge of Ruby
-- Currently replaying Dark Souls Remastered (for the 800th time...)
+- Looking forward to playing through Halo: Campaign Evolved

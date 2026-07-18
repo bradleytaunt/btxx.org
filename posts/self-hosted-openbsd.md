@@ -1,12 +1,10 @@
 # Setup a Simple, Self-Hosted Web Server with OpenBSD
 {:.no_toc}
-2026-07-16
+2026-07-18
 
-This very website is being served to you via `httpd` from my local HP T630 thin client running OpenBSD.
+This website is being served to you from my HP T630 thin client, running OpenBSD and httpd. Pretty cool, right? And best of all you can do the same!
 
-Pretty awesome, right? The best part is that you can *easily* do it too, even with limited knowledge of OpenBSD. Feel free to follow along if this is something you'd be inclined to try yourself. (Which I highly recommend!)
-
-Also, if you're interested, I have more detailed specs about this local server posted on my [infrastructure page](/infra).
+I'm going to walkthrough how to host your own websites locally on OpenBSD. This guide is going to be kept simple on purpose, so feel free to expand on it as you see fit!
 
 * toc
 {:toc}
@@ -16,7 +14,7 @@ Also, if you're interested, I have more detailed specs about this local server p
 - Cheap, low spec VPS (checkout [Low End Talk](https://lowendtalk.com) for deals)
 	- Why the VPS? This will allow us to hide our home IP from the nasty interwebs!
 - Local server (thin client, mini PC box) that can run OpenBSD
-- Coffee and a happy attitude!
+- Coffee and a positive attitude!
 
 But wait! I hear you question right away:
 
@@ -30,6 +28,8 @@ But you do whatever you like, I'm not your dad.
 
 I won't be covering the details of installing OpenBSD, since the core installer does an excellent job itself. I'll assume you have base OpenBSD running on both your VPS of choice and your local server.
 
+### Wireguard
+
 First thing we need to do is install Wireguard on both machines:
 
 ~~~sh
@@ -40,7 +40,8 @@ Then we need to generate both private and public keys (again, on both machines):
 
 ~~~sh
 umask 077
-wg genkey | tee private.key | wg pubkey > public.key
+wg genkey > private.key
+wg pubkey < private.key > public.key
 ~~~
 
 Take note of each machine's private and public key sets. Make sure to delete these key files once you include them to the configuration files below.
