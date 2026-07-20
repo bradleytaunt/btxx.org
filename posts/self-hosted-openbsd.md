@@ -2,7 +2,7 @@
 {:.no_toc}
 2026-07-18
 
-This website is being served to you from my HP T630 thin client, running OpenBSD and httpd. Pretty cool, right? And best of all you can do the same!
+This website is being served to you from my HP T630 thin client, running OpenBSD and httpd[^1]. Pretty cool, right? And best of all you can do the same!
 
 I'm going to walkthrough how to host your own websites locally on OpenBSD. This guide is going to be kept simple on purpose, so feel free to expand on it as you see fit!
 
@@ -179,4 +179,6 @@ If you ended up running your own server based on this guide or even found it a l
 - [Donate to Wireguard](https://www.wireguard.com/donations/)
 
 We wouldn't have the ability to make awesome stuff like this without the existence these incredible pieces of open software!
+
+[^1]: I'm also running everything through `relayd` in order to include additional security headers. You can do the same by following the instructions found here: [httpd.rocks](https://httpd.rocks)
 
