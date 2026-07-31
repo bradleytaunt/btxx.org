@@ -29,7 +29,7 @@ body {
 }
 #header a:hover, #header a:active { text-decoration: underline; }
 #header img {
-  margin-right: 10px;
+  margin: 0 5px 0 10px;
   max-height: 45px;
   width: auto;
 }
@@ -85,6 +85,8 @@ blockquote { color: brown }
 blockquote cite { font-variant: small-caps; }
 dl dt { font-weight: bold; }
 dl dd { margin-bottom: 10px; }
+
+img.poweredby { background: white; border:1px solid; border-radius: 4px; display: inline-block; max-width: 110px; }
 
 .alert {
   background: lightgoldenrodyellow;

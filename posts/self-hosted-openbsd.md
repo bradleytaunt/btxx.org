@@ -2,10 +2,10 @@
 {:.no_toc}
 2026-07-18
 
-<p><strike>This website is being served to you from my HP T630 thin client, running OpenBSD and httpd[^1]. Pretty cool, right? And best of all you can do the same!</strike></p>
+<p><strike>This website is being served to you from my HP T630 thin client, running OpenBSD and httpd. Pretty cool, right? And best of all you can do the same!</strike></p>
 
 <div class="alert">
-    <b>Update:</b> Unfortunately, I can no longer host local servers since my home network has switched over to 5G. I take my main router with me when traveling, so I cannot consistently keep up a connection. This website is now hosted on <a href="https://www.nearlyfreespeech.net/contribute/btxx.org">NearlyFreeSpeech</a> and powered by FreeBSD.
+    <b>Update:</b> OpenBSD is no longer used to serve this website. This site is now hosted back on <a href="/contribute">NearlyFreeSpeech.NET</a>, since my home network is too unstable to provide a consistent uptime. I also talk more about this concept in my post <a href="/posts/planning-ahead/">What Happens After I'm Gone? The Future of the Online Me</a>.
 </div>
 
 I'm going to walkthrough how to host your own websites locally on OpenBSD. This guide is going to be kept simple on purpose, so feel free to expand on it as you see fit!

@@ -58,7 +58,7 @@ Reasons why I like **RamHost**:
 * Supports OpenBSD (and many others)
 * Online since 2009
 * No bullshit UI, gets out of your way
-* Costs just [$15/year](https://tinykvm.com) for 384 MB RAM / 10 GB Storage / 500 GB Traffic
+* Costs just [$15/year](https://tinykvm.com) for 512 MB RAM / 10 GB Storage / 500 GB Traffic
 
 The only downside is that there is no direct "contributions" funding for your account. Fortunately, you can add multiple points of contact that can be notified about upcoming renewals. Their support is quite good as well, so I would be hopeful they would provide assistance for non-techy individuals taking over an existing account.
 

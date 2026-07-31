@@ -59,10 +59,10 @@ I'm proud to support open source products and privacy-respecting communities. Th
   </thead>
   <tbody>
     <tr>
-      <td>M2 MacBook Air</td>
-      <td>Apple M2</td>
+      <td>ThinkPad T480s</td>
+      <td>Intel i5-8350U (8) @ 3.600GHz</td>
       <td>16GB</td>
-      <td>MacOS Sequoia</td>
+      <td>Zorin OS</td>
     </tr>
     <tr>
       <td>ThinkPad X201</td>
