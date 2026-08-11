@@ -45,7 +45,7 @@ Below I have some extra, optional steps to help further configure your system.
 Since I use a 4K monitor with my main mini PC, text and window UI can look pretty small with the default settings in GNOME. After the initial boot into the system, I make changes under **Settings** -> **Displays** and set the scale to 200%. It should change automatically, but in some instances a reboot will be required.
 
 <figure>
-<img src="/public/images/openbsd-gnome-settings.png" alt="GNOME Displays Settings pane">
+<img src="/public/images/openbsd-gnome-settings.webp" alt="GNOME Displays Settings pane">
 <figcaption>GNOME Displays setting set to 200%</figcaption>
 </figure>
 

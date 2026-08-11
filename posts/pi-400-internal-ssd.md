@@ -13,7 +13,7 @@ Enough chit-chat - on to the build!
 Below you can see the final look of my modded Raspberry Pi 400, which I have personally named the **Raspberry Pi 400X**:
 
 <figure>
-    <img src="/public/images/pi-400-final.png" alt="Pi 400 with internal SSD">
+    <img src="/public/images/pi-400-final.webp" alt="Pi 400 with internal SSD">
     <figcaption>The finished Raspberry Pi 400X (<a href="/public/images/pi-400-final.webp">link to hi-res image</a>)</figcaption>
 </figure>
 
@@ -39,7 +39,7 @@ The final product requires us to attach the half size mSATA SSD to the (gutted) 
 With your trusty metal cutting scissors (or whatever tool you prefer) you will need to cut out room for our enclosure internals to fit within:
 
 <figure>
-    <img src="/public/images/pi-heatsink.png" alt="The cutout heatsink">
+    <img src="/public/images/pi-heatsink.webp" alt="The cutout heatsink">
     <figcaption>I drew the outline of the enclosure on the metal first before cutting. (<a href="/public/images/pi-heatsink.webp">direct link to image</a>)</figcaption>
 </figure>
 
@@ -50,14 +50,14 @@ Next you will need to carefully remove the Pi board itself from the red part of 
 
 
 <figure>
-    <img src="/public/images/pi-plastic-back.png" alt="Plastic dremled back">
+    <img src="/public/images/pi-plastic-back.webp" alt="Plastic dremled back">
     <figcaption>Here you can see my terrible sanding job on the far left plastic snap-lock (<a href="/public/images/pi-plastic-back.webp">direct link to image</a>)</figcaption>
 </figure>
 
 While you have the Pi board removed you should also cut out a slot for the USB-C to USB-A cable to connect our mSATA to one of our USB 3 ports on the Pi. For this I've opted to butcher the lock port (will I ever really use that anyway?)
 
 <figure>
-    <img src="/public/images/pi-outer-port.png" alt="Back of the Pi opening">
+    <img src="/public/images/pi-outer-port.webp" alt="Back of the Pi opening">
     <figcaption>Don't judge...I'm sure most people could do a cleaner job! (<a href="/public/images/pi-outer-port.webp">direct link to image</a>)</figcaption>
 </figure>
 
@@ -65,7 +65,7 @@ Now all that's left is to insert our gutted mSATA enclosure (with the half size 
 , tape it down with some hideous electrical tape and close this bad boy back up!
 
 <figure>
-    <img src="/public/images/pi-internal-ssd.png" alt="The internal SSD">
+    <img src="/public/images/pi-internal-ssd.webp" alt="The internal SSD">
     <figcaption>Take note of the tiny triangle piece of foam on the Type-C connector. This helps avoid direct contact with the back of the keyboard module! (<a href="/public/images/pi-internal-ssd.webp">link to hi-res image</a>)</figcaption>
 </figure>
 

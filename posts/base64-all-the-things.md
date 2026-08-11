@@ -25,7 +25,7 @@ Into this:
 ## See it in action
 
 <figure>
-<img src="https://cdn.dribbble.com/users/29329/screenshots/9072216/media/0137ce6b6a5fa89d729ac9e4d488f002.png" alt="Just an image">
+<img src="https://cdn.dribbble.com/users/29329/screenshots/9072216/media/0137ce6b6a5fa89d729ac9e4d488f002.webp" alt="Just an image">
 <figcaption>This image is pulled in with an HTTP request (<a href="https://cdn.dribbble.com/users/29329/screenshots/9072216/media/0137ce6b6a5fa89d729ac9e4d488f002.webp">direct link to image</a>)</figcaption>
 </figure>
 

@@ -34,11 +34,11 @@ doas mkdir /etc/wireguard
 
 Login to your Mullvad account and navigate to **Downloads** > **WireGuard configuration**. On this page select **Linux** as your platform and then click **Generate key**.
 
-![The initial view for generating the WireGuard key in Mullvad](/public/images/mullvad-1.png)
+![The initial view for generating the WireGuard key in Mullvad](/public/images/mullvad-1.webp)
 
 Mullvad will then ask you to customize your setup. Choose your desired country, location, and server. Below that you will see options for connection protocol, tunnel traffic, along with a section to customize your level of content blocking. Edit these as you see fit.
 
-![The web view showing detailed configuration options for the WireGuard settings](/public/images/mullvad-2.png)
+![The web view showing detailed configuration options for the WireGuard settings](/public/images/mullvad-2.webp)
 
 Once you're done just download the file (or scan the code).
 

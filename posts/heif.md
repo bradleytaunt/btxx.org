@@ -27,7 +27,7 @@ For this example script we are going to convert the image to JPG format. You can
 ~~~sh
 for f in "$@"
 do
-/opt/homebrew/bin/heif-convert "$f" "${f%.*}.jpg"
+/opt/homebrew/bin/heif-convert "$f" "${f%.*}.webp"
 done
 ~~~
 

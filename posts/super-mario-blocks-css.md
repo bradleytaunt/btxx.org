@@ -6,7 +6,7 @@ Just because we can, let's make a quick demo on how to build interactive element
 
 What our final product will look like:
 
-![Mario blocks cretaed with CSS](/public/images/mario-block.png)
+![Mario blocks cretaed with CSS](/public/images/mario-block.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/JjEPOVe)
 

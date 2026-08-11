@@ -26,7 +26,7 @@ In that time, I played around with the tablet myself to have a better grasp of t
 I decided to get my own Chrome OS device and snagged the [Lenovo 10e Chromebook Tablet](https://www.lenovo.com/ca/en/laptops/lenovo/student-chromebooks/Lenovo-10e-Chromebook-Tablet/p/82AM000EUS) (on sale).
 
 <figure>
-    <img src="/public/images/lenovo-tablet.png" alt="Lenovo 10e Tablet">
+    <img src="/public/images/lenovo-tablet.webp" alt="Lenovo 10e Tablet">
     <figcaption>Introducing the Lenovo 10e Chromebook tablet. This bad boy can do close to everything your current computer can do but it'll cost you $129...</figcaption>
 </figure>
 

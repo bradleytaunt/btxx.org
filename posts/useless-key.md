@@ -5,7 +5,7 @@
 The title of this article probably triggers nostalgic memories for old school Resident Evil veterans like myself. My personal favourite in the series (not that anyone asked) was the original, 1998 version of Resident Evil 2 (RE2). I believe that game stands the test of time and is very close to a masterpiece. The recent remake lost a lot of the charm and nuance that made the original so great, which is why I consistently fire up the PS1 version on my PS2 Slim.
 
 <figure>
-  <img src="/public/images/re2-crt.jpg" alt="A photo of RE2 on my CRT TV, running on PS2">
+  <img src="/public/images/re2-crt.webp" alt="A photo of RE2 on my CRT TV, running on PS2">
   <figcaption>Resident Evil 2 (PS1) running on my PS2, hooked up to my Toshiba CRT TV.</figcaption>
 </figure>
 
@@ -16,7 +16,7 @@ But the point of this post isn't to gush over RE2. Instead I would like to discu
 Just like the first Resident Evil that came before it, RE2 has no in-game HUD (heads-up display) to speak of. It's just your playable character and the environment. No ammo-counters. No health bars. No "quest" markers. Nothing.
 
 <figure>
-  <img src="/public/images/re2-no-hud.jpg" alt="The player character aiming at a zombie in RE2">
+  <img src="/public/images/re2-no-hud.webp" alt="The player character aiming at a zombie in RE2">
   <figcaption>This is how the game looks while you play. Zero HUD elements.</figcaption>
 </figure>
 
@@ -38,7 +38,7 @@ A great deal of newer games come pre-packaged with a mini-map on the main interf
 As for RE2, you collect maps throughout your adventure and, just like most other systems in the game, you need to consciously open the map menu to view them. You know, just like in real life. This creates a higher tension as well, since you need to constantly reference your map (on initial playthroughs) to figure out where the heck to go. You feel the pressure of someone frantically pulling out a physical map and scanning their surroundings. It also helps the player build a mental model in their head, thus providing even more of that sweet, sweet immersion. 
 
 <figure>
-  <img src="/public/images/re2-map.jpg" alt="A map of the police station in RE2">
+  <img src="/public/images/re2-map.webp" alt="A map of the police station in RE2">
   <figcaption>The map of the Raccoon City Police Station.</figcaption>
 </figure>
 
@@ -47,7 +47,7 @@ As for RE2, you collect maps throughout your adventure and, just like most other
 The game doesn't display any health bar or player status information. In order to view your current status (symbolized by "Fine", "Caution" or "Danger") you need to open your inventory screen. From here you can heal yourself (if needed) and see the status type change in real-time.
 
 <figure>
-  <img src="/public/images/re2-health.png" alt="The condition section in RE2 inventory screen showing 'Fine'">
+  <img src="/public/images/re2-health.webp" alt="The condition section in RE2 inventory screen showing 'Fine'">
   <figcaption>The "condition" health status. This is fine.</figcaption>
 </figure>
 
@@ -56,7 +56,7 @@ But that isn't the only way to visually see your current status.
 Here's a scenario: you're traveling down a hallway, turn a corner and run right into the arms of a zombie. She takes a couple good bites out of your neck before you push her aside. You unload some handgun rounds into her and down she goes. As you run over her body she reaches out and chomps on your leg as a final "goodbye". You break free and move along but notice something different in your character's movement - they're holding their stomach and limping.
 
 <figure>
-  <img src="/public/images/re2-injured.jpg" alt="The player character in RE2 holding their stomach because of an injury">
+  <img src="/public/images/re2-injured.webp" alt="The player character in RE2 holding their stomach because of an injury">
   <figcaption>Here we can see the character "Hunk" holding his stomach and limping, indicating an injury without the need for a custom HUD element.</figcaption>
 </figure>
 

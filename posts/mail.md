@@ -12,7 +12,7 @@ I recently covered how to [work with git email patches in Evolution on Linux](/p
 
 The first thing you'll need to do is make a new `Patches` mailbox folder inside your existing mail account. Once done, your default Mail sidebar should look similar to the following:
 
-![The Apple Mail sidebar with the Patches folder present](/public/images/apple-mail-1.png)
+![The Apple Mail sidebar with the Patches folder present](/public/images/apple-mail-1.webp)
 
 *The Apple Mail sidebar with the "Patches" folder present*
 
@@ -22,7 +22,7 @@ Now navigate to the email message containing a `git` patch. Right-click and sele
 
 Inside this folder you should see something similar to the following structure:
 
-![The contents of the saved Patches mailbox folder](/public/images/apple-mail-2.png)
+![The contents of the saved Patches mailbox folder](/public/images/apple-mail-2.webp)
 
 *The contents of the saved Patches mailbox folder*
 

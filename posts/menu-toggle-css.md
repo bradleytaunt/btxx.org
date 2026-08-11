@@ -12,7 +12,7 @@ Now that we have mentioned possible pitfalls of relying so heavily on toggle men
 
 ## Our Final Product
 
-![Menu toggle made from pure CSS](/public/images/menu-toggle-css.png)
+![Menu toggle made from pure CSS](/public/images/menu-toggle-css.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/mdEEvEX)
 

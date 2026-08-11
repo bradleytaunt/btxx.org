@@ -10,6 +10,6 @@ I use Firefox as my main browser (specifically the Nightly build) which has vert
 
 When everything is set properly, you'll have something that looks like this:
 
-![Safari with vertical tabs](/public/images/safari-vertical-tabs.png)
+![Safari with vertical tabs](/public/images/safari-vertical-tabs.webp)
 
 One **minor drawback** is not having access to a direct URL input, since we have removed the horizontal tab bar altogether. Using a set of curated bookmarks could help avoid the need for direct input, along with setting our new tab page to DuckDuckGo or any other search engine.

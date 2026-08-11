@@ -6,7 +6,7 @@
 
 I'm no stranger to robotic lawnmowers. When my wife and I moved into our rural home just over five years ago, we picked up the Husqvarna 450X Automower since I was far too lazy to manually mow my property and the cost was equal to that of a standard riding mower. It was a no-brainer.
 
-![The Husqvarna 450X](/public/images/mower-1.jpeg)
+![The Husqvarna 450X](/public/images/mower-1.webp)
 
 *The Husqvarna 450X (not mine but same model)*
 

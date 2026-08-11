@@ -8,7 +8,7 @@ Default radio inputs are notoriously horrible looking and are something designer
 
 This is what we will be designing:
 
-![Custom radio inputs](/public/images/custom-radio-inputs.png)
+![Custom radio inputs](/public/images/custom-radio-inputs.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/oNjwMyX)
 

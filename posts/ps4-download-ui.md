@@ -6,7 +6,7 @@ Overall, I'm fairly impressed with the user interface design of Sony's PS4 syste
 
 One of the key UI items I've always been a fan of is the download progress view under the `Notifications` settings. So I figured I'd try my hand at recreating this with pure CSS. Here is the final result:
 
-![PS4 loading screen bar](/public/images/ps4-loading.png)
+![PS4 loading screen bar](/public/images/ps4-loading.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/qBroORG)
 

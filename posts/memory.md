@@ -7,7 +7,7 @@ My micro site, [zero.btxx.org](https://zero.btxx.org), is being served to the pu
 The best part? It's diskless and running entirely from memory!
 
 <figure>
-  <img src="/public/images/pi-zero.png" alt="The Raspberry Pi Zero with two backup Pis beside it">
+  <img src="/public/images/pi-zero.webp" alt="The Raspberry Pi Zero with two backup Pis beside it">
   <figcaption>My Raspberry Pi Zero silently running in my cold-storage room (with two extra Pis for moral support). Serving <a href="https://zero.btxx.org">zero.btxx.org</a></figcaption>
 </figure>
 

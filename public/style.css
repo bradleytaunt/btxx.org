@@ -115,6 +115,9 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
     margin-left: 80px;
     width: calc(100% - 80px);
   }
+  figure {
+    margin: 2rem 0;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

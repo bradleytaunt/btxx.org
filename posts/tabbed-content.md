@@ -4,7 +4,7 @@
 
 Creating tabs is a fairly trivial and common practice in web design, but many times it requires JavaScript to properly implement. Fortunately it *is* possible to create tabbed content with only using CSS.
 
-![Tabbed elements with only CSS](/public/images/tabbed-content.png)
+![Tabbed elements with only CSS](/public/images/tabbed-content.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/abjmayw)
 

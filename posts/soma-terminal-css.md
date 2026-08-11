@@ -10,7 +10,7 @@ So, why am I writing about this *three years later*? Well, I never did a proper 
 
 ## The Live Demo
 
-![Terminal based off the SOMA computers](/public/images/soma-terminal.png)
+![Terminal based off the SOMA computers](/public/images/soma-terminal.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/ZEeLgmz)
 

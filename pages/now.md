@@ -13,4 +13,4 @@ Last updated July 2026.
 - Raising my three children (aged 8, 6 and 4 respectively) with my wonderful wife
 - Trying to contribute more to open source projects that I actively use
 - Advancing my knowledge of Ruby
-- Looking forward to playing through Halo: Campaign Evolved
+- Playing through Metro: Last Light for the first time

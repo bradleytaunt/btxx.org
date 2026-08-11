@@ -35,7 +35,7 @@ Luckily for me, the Mini Mangos were perfect for my basic requirements:
 ## Setting Up the Yellow Squares
 
 <figure>
-<img src="/public/images/mango-router-1.png" alt="The Mango router from the left side">
+<img src="/public/images/mango-router-1.webp" alt="The Mango router from the left side">
 <figcaption>The little yellow mango in all its glory...</figcaption>
 </figure>
 

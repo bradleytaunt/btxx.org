@@ -31,7 +31,7 @@ I should start by mentioning that this concept is far from **new**. There are a 
 
 Enough chit-chat, let's take a look at sausage links in action:
 
-![Scrolling menu with sausage links](/public/images/scrolling-navigation.png)
+![Scrolling menu with sausage links](/public/images/scrolling-navigation.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/QXjjbE/)
 

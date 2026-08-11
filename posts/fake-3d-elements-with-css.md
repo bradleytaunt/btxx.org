@@ -6,7 +6,7 @@ Although not always practical, creating the illusion that some of your web eleme
 
 This is what I ended up creating:
 
-![Blue 3D orb made out pure CSS](/public/images/css-orb.png)
+![Blue 3D orb made out pure CSS](/public/images/css-orb.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/VwvzKyb)
 

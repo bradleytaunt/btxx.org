@@ -400,21 +400,21 @@ Navigate to **Network** > **Interfaces** and click *Edit* on the `lan` interface
 - **IPV4 broadcast**: 192.168.1.255
 
 <figure>
-  <img src="/public/images/diy-network-1.png" alt="Screenshot of the LuCi OpenWrt UI. Updating the main IP of the device.">
+  <img src="/public/images/diy-network-1.webp" alt="Screenshot of the LuCi OpenWrt UI. Updating the main IP of the device.">
   <figcaption>Update the main device IP to <code>192.168.1.2</code>, then reboot.</figcaption>
 </figure>
 
 Then navigate to the **Advanced Settings** tab under the same section and update the custom DNS to `192.168.1.1`:
 
 <figure>
-  <img src="/public/images/diy-network-2.png" alt="Screenshot of the LuCi OpenWrt UI. Updating the custom DNS to point to our OpenBSD router.">
+  <img src="/public/images/diy-network-2.webp" alt="Screenshot of the LuCi OpenWrt UI. Updating the custom DNS to point to our OpenBSD router.">
   <figcaption>Point the custom DNS records to our OpenBSD router (<code>192.168.1.1</code>)</figcaption>
 </figure>
 
 Finally, navigate to the **DHCP Server** tab and check the *Ignore interface* option, since DHCP will be handled by our OpenBSD router:
 
 <figure>
-  <img src="/public/images/diy-network-3.png" alt="Screenshot of the LuCi OpenWrt UI. Disable DHCP on the access point itself.">
+  <img src="/public/images/diy-network-3.webp" alt="Screenshot of the LuCi OpenWrt UI. Disable DHCP on the access point itself.">
   <figcaption>Disable DHCP on the AP itself. This is all handled by our OpenBSD router.</figcaption>
 </figure>
 
@@ -429,7 +429,7 @@ Now to setup the actual WiFi!
 Head under **Network** > **Wireless** to configure both your 2.4GHz and 5GHz WiFi bands. Select **Edit** for each band and customize them as you see fit. (Always best to go with an obscure, strong password!)
 
 <figure>
-  <img src="/public/images/diy-network-4.png" alt="Screenshot of the LuCi OpenWrt UI. Configuring the wifi access point.">
+  <img src="/public/images/diy-network-4.webp" alt="Screenshot of the LuCi OpenWrt UI. Configuring the wifi access point.">
   <figcaption>Setup your WiFi access points for the 2.4GHz and 5GHz bands. Set the security level and passwords under the "Wireless Security" tab.</figcaption>
 </figure>
 
@@ -460,7 +460,7 @@ When all of that is setup, connect your Pi-hole via ethernet to the OpenBSD rout
 Once the device is finished booting, navigate to `192.168.2.100` in your browser and login to the Pi-hole admin. From there you will want to navigate **Settings** > **DNS** and toggle the UI view from "Basic" to "Expert". Check both IPv4 boxes for Quad9 (or your own preferred fallback) and make sure you uncheck both *Never forward non-FQDN queries* and *Never forward reverse lookups for private IP ranges*. 
 
 <figure>
-  <img src="/public/images/diy-network-5.png" alt="Screenshot of the Pi-hole Admin UI. Configuring the custom DNS settings.">
+  <img src="/public/images/diy-network-5.webp" alt="Screenshot of the Pi-hole Admin UI. Configuring the custom DNS settings.">
   <figcaption>Make sure you uncheck both the "Never forward non-FQDN queries" and "Never forward reverse lookups for private IP ranges" options.</figcaption>
 </figure>
 

@@ -8,7 +8,7 @@ Sometimes there is a need to use toggle elements in-place of the default `checkb
 
 ## What we will be building
 
-![Easy toggle switches](/public/images/easy-toggle-switches.png)
+![Easy toggle switches](/public/images/easy-toggle-switches.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/bGgbajY)
 

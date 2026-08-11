@@ -6,7 +6,7 @@ Everyone can appreciate fancy, animated buttons - but often times they come with
 
 ## The Demo
 
-![Four buttons that shine when hovered](/public/images/shiny-buttons.png)
+![Four buttons that shine when hovered](/public/images/shiny-buttons.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/oNBQevj)
 

@@ -92,7 +92,7 @@ ninja grub-image
 It's alive! We got a successful boot!
 
 <figure>
-  <img src="/public/images/serenity-t60.jpg" alt="SerenityOS running on my ThinkPad T60">
+  <img src="/public/images/serenity-t60.webp" alt="SerenityOS running on my ThinkPad T60">
   <figcaption>SerenityOS running on my T60. Isn't it beautiful?</figcaption>
 </figure>
 

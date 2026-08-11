@@ -15,9 +15,9 @@ My main goals when starting this project were to have a daily driver that was:
 
 Overall, I think I achieved what I was aiming for. After logging in (there is no login manager, you do it directly through the boot terminal) you will see:
 
-![](/public/images/alpine-1.jpg)
+![](/public/images/alpine-1.webp)
 
-(You can view the [full res image here](/public/images/alpine-1.jpg))
+(You can view the [full res image here](/public/images/alpine-1.webp))
 
 For reference this is running on a X260 ThinkPad with 16GB RAM, docked and connected to a 27" 4K monitor.
 

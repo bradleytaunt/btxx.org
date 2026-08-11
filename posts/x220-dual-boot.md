@@ -7,7 +7,7 @@ I've always found it useful to run both OpenBSD and some form of Linux variation
 I should mention that I planned to write this blog post a couple weeks ago, but the original Dogfish mSATA SSD I ordered wasn't compatible with my X220 (even though they say it is supported...). Luckily, I found a replacement drive in one of my "computer parts" drawer. Hoarding tech always prevails!
 
 <figure>
-  <img src="/public/images/dual-boot-2.jpeg" alt="The inside of my X220, showing the Dogfish mSATA drive in place.">
+  <img src="/public/images/dual-boot-2.webp" alt="The inside of my X220, showing the Dogfish mSATA drive in place.">
   <figcaption>The original Dogfish mSATA slotted in the X220. Too bad it didn't work...</figcaption>
 </figure>
 
@@ -20,7 +20,7 @@ I already had the Alpine Linux ISO installed on a random thumb drive, so that ma
 This introduced the first minor issue: the drive was too small. I could have looked into something more "professional-looking" in order to seat the drive properly but I decided to *stick* with electrical tape. Get it?... After applying the tape I closed the machine back up.
 
 <figure>
-  <img src="/public/images/dual-boot-3.jpeg" alt="The inside of my X220, showing the KingSpec mSATA drive in place with electrical tape.">
+  <img src="/public/images/dual-boot-3.webp" alt="The inside of my X220, showing the KingSpec mSATA drive in place with electrical tape.">
   <figcaption>The KingSpec mSATA slotted in the X220 and secured with top-of-the-line electrical tape...</figcaption>
 </figure>
 
@@ -29,19 +29,19 @@ This introduced the first minor issue: the drive was too small. I could have loo
 Next, I needed to tell the BIOS to boot into my thumb drive containing the Alpine ISO. Once the proper order was set, I rebooted the machine and ran through the standard Alpine installer. No problems to report there.
 
 <figure>
-  <img src="/public/images/dual-boot-4.jpeg" alt="My X220 booting into the Alpine ISO thumb drive">
+  <img src="/public/images/dual-boot-4.webp" alt="My X220 booting into the Alpine ISO thumb drive">
   <figcaption>My X220 booting into the Alpine ISO thumb drive</figcaption>
 </figure>
 
 <figure>
-  <img src="/public/images/dual-boot-5.jpeg" alt="The Alpine Linux installer showing both disk options for installation destination">
+  <img src="/public/images/dual-boot-5.webp" alt="The Alpine Linux installer showing both disk options for installation destination">
   <figcaption>The Alpine Linux installer showing both disk options for installation destination. SDA is currently running OpenBSD.</figcaption>
 </figure>
 
 Once that was done, I rebooted the machine, being sure to remove the thumb drive and set the BIOS order to point to the new mSATA disk. Then I ran through my personal [Alpine Suck installer](https://git.sr.ht/~bt/alpine-suck-installer) to get my go-to applications installed alongside my `dwm` desktop environment. Again, no problems to report during this process.
 
 <figure>
-  <img src="/public/images/dual-boot-6.jpeg" alt="Alpine Linux running the dwm desktop environment on my X220">
+  <img src="/public/images/dual-boot-6.webp" alt="Alpine Linux running the dwm desktop environment on my X220">
   <figcaption>Alpine Linux running my personal `dwm` setup. Absolutely beautiful.</figcaption>
 </figure>
 

@@ -83,7 +83,7 @@ The following steps work for both macOS and Linux:
 2. Navigate to the cloned project folder:<br> `cd /path/to/fdvdb-esr`
 3. The run the executable:<br> `wine FDVDB_ESR_Patcher.exe`
 
-![The patcher running through Wine on macOS](/public/images/patcher-gui.png)
+![The patcher running through Wine on macOS](/public/images/patcher-gui.webp)
 
 Now you need to select your previously cloned `ISO` file, use the default Payload setting and then click **Patch!**. After a few seconds your file should be patched.
 

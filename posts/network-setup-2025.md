@@ -22,7 +22,7 @@ sits between my main basement and the room that houses my furnace and hot water 
 So please excuse the "dungeon" look in the photo below.
 
 <figure>
-<img src="/public/images/network-2025.jpg" alt="Photo of my network setup.
+<img src="/public/images/network-2025.webp" alt="Photo of my network setup.
 Shows a modem plugged into a small OpenBSD router, and a Raspberry Pi 400
 plugged into that router via ethernet"/>
 <figcaption>My network setup. Main modem is connected to the OpenBSD router,

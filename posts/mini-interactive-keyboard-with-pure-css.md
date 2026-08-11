@@ -8,7 +8,7 @@ Lately, I've become obsessed with trying to see what I can create using only HTM
 
 Below you can view a live demo of the mini keyboard itself. This demo is nothing special, but takes design inspiration from Apple's magic keyboards (if that wasn't already obvious).
 
-![Undo keyboard with two buttons to click](/public/images/undo-keyboard.png)
+![Undo keyboard with two buttons to click](/public/images/undo-keyboard.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/PadQMP)
 

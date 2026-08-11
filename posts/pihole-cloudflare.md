@@ -33,7 +33,7 @@ Now you need to navigate to your main pi-hole admin in your browser (most likely
 
 
 <figure>
-    <img src="/public/images/pihole-cloudflare.png" alt="PiHole setup admin dashboard">
+    <img src="/public/images/pihole-cloudflare.webp" alt="PiHole setup admin dashboard">
     <figcaption>PiHole DNS settings (<a href="/public/images/pihole-cloudflare.webp">link to hi-res image</a>)</figcaption>
 </figure>
 

@@ -34,19 +34,19 @@ Download the [Raspberry Pi Lite OS](https://downloads.raspberrypi.com/raspios_li
 * Select "Custom Image" use the Raspberry Pi Lite OS you just downloaded
 * Choose your device (in this case the microSD)
 
-![Raspberry Pi Imager showing the image and device output to write the files](/public/images/starlink-pihole-1.png)
+![Raspberry Pi Imager showing the image and device output to write the files](/public/images/starlink-pihole-1.webp)
 
 When you click `Next`, you will be prompted to edit settings. Click `Yes`, fill out your custom details below and enable `ssh`:
 
-![Raspberry Pi Imager showing customization options](/public/images/starlink-pihole-2.png)
+![Raspberry Pi Imager showing customization options](/public/images/starlink-pihole-2.webp)
 
 > **Note:** If you do not have an Ethernet HAT or adapter, but sure to add your WiFi details in the settings so your device will connect to your local network on boot.
 
-![Raspberry Pi Imager enabling SSH](/public/images/starlink-pihole-3.png)
+![Raspberry Pi Imager enabling SSH](/public/images/starlink-pihole-3.webp)
 
 Click `Save` and then proceed to write to the device.
 
-![Raspberry Pi Imager writing the image to the microSD card](/public/images/starlink-pihole-4.png)
+![Raspberry Pi Imager writing the image to the microSD card](/public/images/starlink-pihole-4.webp)
 
 After it completes, eject the microSD card and get your Pi device ready!
 
@@ -87,13 +87,13 @@ curl -sSL https://install.pi-hole.net | bash
 
 Just follow the guided setup (it is pretty straight-forward):
 
-![Pi-Hole installer, selecting DNS](/public/images/starlink-pihole-5.png)
+![Pi-Hole installer, selecting DNS](/public/images/starlink-pihole-5.webp)
 
 Select `Yes` when asked to install the Web Admin Interface:
 
-![Pi-Hole installer, choosing to install the web admin interface](/public/images/starlink-pihole-6.png)
+![Pi-Hole installer, choosing to install the web admin interface](/public/images/starlink-pihole-6.webp)
 
-![Pi-Hole installer, terminal showing the web interface installing](/public/images/starlink-pihole-7.png)
+![Pi-Hole installer, terminal showing the web interface installing](/public/images/starlink-pihole-7.webp)
 
 Once that completes you'll be shown your Pi-Hole's IPv4 and IPv6 addresses. **Keep note of these for later**.
 
@@ -116,4 +116,4 @@ You might be required to reboot your network again. Once that is complete we can
 
 Navigate to the Pi-Hole's IP (or the hostname you created for it) on your local computer. From here you can tweak the device settings as much or as little as you'd like! Enjoy ad-free and tracker-free browsing!
 
-![Pi-Hole running locally in the browser](/public/images/starlink-pihole-8.png)
+![Pi-Hole running locally in the browser](/public/images/starlink-pihole-8.webp)

@@ -2,7 +2,7 @@
 
 2024-04-11
 
-![Screenshot of OpenBSD 7.5 running dwm](/public/images/open-suck-75.png)
+![Screenshot of OpenBSD 7.5 running dwm](/public/images/open-suck-75.webp)
 
 *OpenBSD 7.5 running dwm on my X220*
 

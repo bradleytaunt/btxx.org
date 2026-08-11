@@ -46,14 +46,14 @@ done
 For visual reference, it should look something like this:
 
 <figure>
-<img src="/public/images/automator.png" alt="macOS Automator">
+<img src="/public/images/automator.webp" alt="macOS Automator">
 <figcaption>(<a href="/public/images/automator.webp">link to hi-res image</a>)</figcaption>
 </figure>
 
 And when right-clicking an image file in the Finder window, it should now give you the option to convert:
 
 <figure>
-<img src="/public/images/automator-2.png" alt="Right click to convert">
+<img src="/public/images/automator-2.webp" alt="Right click to convert">
 <figcaption>(<a href="/public/images/automator-2.webp">link to hi-res image</a>)</figcaption>
 </figure>
 

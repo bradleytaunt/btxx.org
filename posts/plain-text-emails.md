@@ -9,7 +9,7 @@ When it comes to website / product design and development most devs should try t
 Email has been possible since the 1960s with [time-sharing computers](https://en.wikipedia.org/wiki/Time-sharing) being used to share files and messages across early devices. Around the 80s and 90s it seemed as though [GOSIP](https://en.wikipedia.org/wiki/Government_Open_Systems_Interconnection_Profile) would dominate the market, but this was knocked out in favor of SMTP, POP3 and IMAP in 1995 when the [National Science Foundation ended its sponsorship of the Internet backbone](http://www.walthowe.com/navnet/history.html), and all traffic relied on commercial networks.
 
 <figure>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Timesharing_and_Development_KA-10s_at_BBN%2C_circa_1970.jpg" alt="First computers to send and receive email" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Timesharing_and_Development_KA-10s_at_BBN%2C_circa_1970.webp" alt="First computers to send and receive email" />
     <figcaption>The first computers to send and receive email. Source: <a href="https://en.wikipedia.org/wiki/File:Timesharing_and_Development_KA-10s_at_BBN,_circa_1970.webp">Wikipedia</a></figcaption>
 </figure>
 

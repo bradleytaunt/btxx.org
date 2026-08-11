@@ -36,12 +36,12 @@ I chose the easier battery-removal method because I don't trust myself enough wi
 The next step involves removing the back cover and disconnecting the battery. This is fairly easy, as there is only one connector you need to unplug. Just be gentle with it.
 
 <figure>
-  <img src="/public/images/openbsd-chromebook-1.jpg" alt="The back cover of the chromebook removed and the battery cable disconnected">
+  <img src="/public/images/openbsd-chromebook-1.webp" alt="The back cover of the chromebook removed and the battery cable disconnected">
   <figcaption>The disconnected battery on the ASUS CX1100CN. The white connector is what you're looking for.</figcaption>
 </figure>
 
 <figure>
-  <img src="/public/images/openbsd-chromebook-2.jpg" alt="A close up of the battery connector">
+  <img src="/public/images/openbsd-chromebook-2.webp" alt="A close up of the battery connector">
   <figcaption>Extra, close-up (fuzzy) of the battery connector. Slide the connector off towards the battery - don't lift it straight up.</figcaption>
 </figure>
 
@@ -74,7 +74,7 @@ From here you can follow the next steps and options in the [Firmware Utility Scr
 Once that firmware utility is flashed we can reboot and install OpenBSD! Boot up your Chromebook with a OpenBSD Live USB plugged in and select it at the main boot menu.
 
 <figure>
-  <img src="/public/images/openbsd-chromebook-3.jpg" alt="The glorious coreboot boot menu">
+  <img src="/public/images/openbsd-chromebook-3.webp" alt="The glorious coreboot boot menu">
   <figcaption>It's alive! It's allliiiivvveee!</figcaption>
 </figure>
 

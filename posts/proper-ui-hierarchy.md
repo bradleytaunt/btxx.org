@@ -24,7 +24,7 @@ The statement that flat design is inherently worse than it's predecessor **is no
 
 In this demo we will be improving the default flat design inspired button layout of the following:
 
-![Proper UI buttons, blue and green](/public/images/proper-ui.png)
+![Proper UI buttons, blue and green](/public/images/proper-ui.webp)
 
 [Live CodePen Example](https://codepen.io/bradleytaunt/pen/yLXJmdy)
 

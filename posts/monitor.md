@@ -46,7 +46,7 @@ Here are some benefits at a glance:
 - I'm able to instantly understand frustrations of everyday users while developing new features or tweaking existing UIs. Being able to advocate for our end-users by using legit use cases is extremely helpful. (Removes the "design by gut-feeling" mistakes)
 
 <figure>
-    <img src="/public/images/dither-desktop.png" alt="My current desktop setup with the X260 ThinkPad">
+    <img src="/public/images/dither-desktop.webp" alt="My current desktop setup with the X260 ThinkPad">
     <figcaption>My ThinkPad X260, along with my MageGee wired mechanical keyboard and Logitech Pebble mouse. Small notebook and pen for note-taking.</figcaption>
 </figure>
 

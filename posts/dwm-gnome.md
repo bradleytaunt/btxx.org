@@ -10,7 +10,7 @@ For reference, I'm running GNOME 45.0 on Ubuntu 23.10
 
 When I use `dwm` I tend to have a hard-set amount of `tags` to cycle through (normally 4-5). Unfortunately, dynamic rendering is the default for workspaces (ie. tags) in GNOME. For my personal preference I set this setting to `fixed`. We can achieve this by opening **Settings** >  **Multitasking** and selecting "Fixed number of workspaces".
 
-![Screenshot of GNOME's Multitasking Settings GUI](/public/images/gnome-1.png)
+![Screenshot of GNOME's Multitasking Settings GUI](/public/images/gnome-1.webp)
 
 ## Setting Our Keybindings
 
@@ -18,9 +18,9 @@ Now all that is left is to mimic `dwm` keyboard shortcuts, in this case: `ALT` +
 
 You'll want to make edits to both the "Switch to workspace *n*" and "Move window to workspace *n*". 
 
-![Screenshot of GNOME's keyboard shortcut GUI](/public/images/gnome-2.png)
+![Screenshot of GNOME's keyboard shortcut GUI](/public/images/gnome-2.webp)
 
-![Screenshot of GNOME's keyboard shortcut GUI](/public/images/gnome-3.png)
+![Screenshot of GNOME's keyboard shortcut GUI](/public/images/gnome-3.webp)
 
 That's it. You're free to include even more custom keyboard shortcuts (open web browser, lock screen, hibernate, etc.) but this is a solid starting point. Enjoy tweaking GNOME!
 
