@@ -1,17 +1,31 @@
 # Contribute
 
-Enjoy my ramblings on this site? Found a particular article helpful?  Maybe consider contributing to domain renewals and hosting costs!
+Enjoy my ramblings on this site? Found a particular article helpful?  
+
+Maybe consider contributing to domain renewals and hosting costs!
+
+## Donations
 
 If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help by donating!
 
-💚 [PayPal.me](https://www.paypal.com/paypalme/bradtaunt)
+❤️ [PayPal.me](https://www.paypal.com/paypalme/bradtaunt)
 
-By donating you help cover the costs of running and maintaining this website, including but not limited to:
+
+## Buy Stickers
+
+If donating isn't your thing, you can always **buy some stickers**! 
+
+I've designed a few stickers based on things I love: OpenBSD, Raspberry Pis, etc. No AI or generated materials used!
+
+💚 [Buy some stickers](https://www.stickermule.com/bt)
+
+By donating (or buying a sticker!) you help cover the costs of running and maintaining this website, including:
 
 - bandwidth
 - domain renewals
 - email service / forwarding
 - ongoing maintenance
+- writing new articles / tutorials
 
 <div class="table-container">
 <table border="1">
@@ -78,8 +92,8 @@ By donating you help cover the costs of running and maintaining this website, in
   </thead>
   <tbody>
     <tr>
-      <td>Server 1 (OpenBSD)</td>
-      <td>$15</td>
+      <td><a href="https://obsd.btxx.org">Server 1</a> (OpenBSD)</td>
+      <td>$6</td>
     </tr>
     <tr>
       <td>Server 2 (NetBSD)</td>
@@ -90,11 +104,11 @@ By donating you help cover the costs of running and maintaining this website, in
 <small>* This covers the hosting for all the above projects.</small>
 </div>
 
-The average billing for all of the above is **~$285.42/year** (**~$24/month**).
+The average billing for all of the above is **~$286.42/year** (**~$23/month**).
 
 ## Other Ways to Support
 
-If directly donating isn't your jam, feel free to check out a couple of my referral prgrams below:
+Feel free to check out a couple of my additional referral programs below:
 
 - [Sign up for Fathom Analytics](https://usefathom.com/ref/DKHJVX). You get a $10 credit towards your account and I get a minor, continuous kickback (for as long as you continue to use the service).
 - [Sign up for TierHive](https://tierhive.com/r/AD3AFC1F50FF)

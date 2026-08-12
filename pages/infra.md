@@ -82,3 +82,20 @@ Used for all OpenBSD related projects.
 - [obsd.btxx.org](https://obsd.btxx.org/)
 - [openbased.xyz](https://openbased.xyz)
 - [httpd.rocks](https://httpd.rocks)
+
+---
+
+## RamHost VPS
+
+This is also *not* self-hosted.
+
+Used for all NetBSD related projects.
+
+- **OS**: NetBSD 10.1 amd64
+- **CPU**: AMD 686-class (1)
+- **MEM**: 495MiB
+
+### Hosting:
+
+- [nbsd.btxx.org](https://nbsd.btxx.org)
+- [bozo.httpd.rocks](https://bozo.httpd.rocks)

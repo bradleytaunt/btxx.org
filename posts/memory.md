@@ -134,7 +134,7 @@ If the `root` (/) is mounted as `tmpfs` or `ramfs`, it's running in RAM. Hooray!
 
 ## Software
 
-### `darkhttpd`
+### darkhttpd
 
 Since we only need to serve basic HTTP (VPS handles the TLS, remember?) the best web server option for our limited resources is `darkhttpd`. Let's install and setup a boot runtime to persist on reboots:
 
@@ -175,7 +175,7 @@ lbu include /var/www
 
 Also notice the `maxconn` parameter. Feel free to adjust this as you see fit. That's it!
 
-### `nginx`
+### nginx
 
 If you require a little more flexibility or control of your web server, you can always use `nginx` instead.
 
@@ -215,7 +215,7 @@ lbu include /etc/nginx
 lbu include /var/www
 ~~~
 
-### `rsync`
+### rsync
 
 To sync our changes from our local machine to this Raspberry Pi, we will need `rsync`:
 
@@ -225,7 +225,7 @@ doas apk add rsync
 
 Feel free to skip this if you prefer to use something like `scp` or directly port files over with an FTP client. This is just personal preference.
 
-### `lbu`
+### lbu
 
 Now that we have everything we want/need on our Pi, include all these configuration and website files you wish to keep persistent on your micro SD card:
 

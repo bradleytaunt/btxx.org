@@ -12,6 +12,9 @@ All git repos can be found: [SourceHut](https://git.sr.ht/~bt)
 [httpd.rocks](https://httpd.rocks)
 : Setup an HTTPS-enabled web server with `httpd` on OpenBSD
 
+[bozo.httpd.rocks](https://bozo.httpd.rocks)
+: Setup an HTTPS-enabled web server with `bozohttpd` on NetBSD
+
 [caddy.ninja](https://caddy.ninja)
 : Setup an HTTPS-enabled web server with `caddy` on Alpine Linux
 
