@@ -16,6 +16,14 @@ Core tools are:
 
 Currently improving my skills with Rails & MongoDB. I also enjoy tinkering with basic shell scripts and [Unix systems](/public/images/unix.gif).
 
+### Extras
+
+You can also: 
+
+- Find out what I'm up to right [now](/now)
+- Try out some of my wife's [recipes](/recipes)
+- Check out my "official" [resume](/resume)
+
 ## Popular OpenBSD Articles
 
 ~~~diagram

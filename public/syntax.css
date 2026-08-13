@@ -3,6 +3,7 @@
 .highlight {
   color: #000707;
   background-color: lightcyan;
+  border-radius: 12px;
 }
 .highlight .gl {
   color: #f3ffff;

@@ -13,9 +13,10 @@ end
 # Load configuration
 config = YAML.load_file('_config.yml')
 
-site_url    = config['site_url']
-site_name   = config['site_name']
-author_name = config['author_name']
+# Settings
+site_url         = config['site_url']
+site_name        = config['site_name']
+author_name      = config['author_name']
 
 posts_dir        = config['directories']['posts']
 pages_dir        = config['directories']['pages']
@@ -30,8 +31,8 @@ root_index_file  = config['files']['root_index']
 posts_index_file = config['files']['posts_index']
 rss_file         = config['files']['rss']
 
-post_count    = config['misc']['post_count']
-compress_site = config['misc']['compress_site']
+post_count       = config['misc']['post_count']
+compress_site    = config['misc']['compress_site']
 
 # Make sure output directories exist
 [output_dir, posts_output_dir, pages_output_dir].each { |dir| FileUtils.mkdir_p(dir) }
@@ -81,9 +82,11 @@ def generate_index(posts, header_content, footer_content, root_index_file, post_
   header = replace_title_placeholder(header_content, root_title)
 
   index_content = header + root_html + "<ul class=\"posts\">\n"
-  posts.first(post_count).each { |post| index_content << "<li><span>#{post[:date]}</span><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a></li>\n" }
-  index_content << ("</ul>" + footer_content)
+  posts.first(post_count).each do |post| 
+    index_content << "<li><span>#{post[:date]}</span><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a></li>\n"
+  end
 
+  index_content << ("</ul>" + footer_content)
   File.write("#{output_dir}/index.html", index_content)
 end
 
@@ -96,9 +99,11 @@ def generate_full_posts_list(posts, header_content, footer_content, posts_index_
   header = replace_title_placeholder(header_content, posts_title)
 
   list_content = header + posts_html + "<ul class=\"posts\">\n"
-  posts.each { |post| list_content << "<li><span>#{post[:date]}</span><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a></li>\n" }
-  list_content << "</ul>\n" + footer_content
+  posts.each do |post| 
+    list_content << "<li><span>#{post[:date]}</span><a href='/#{posts_dir}/#{post[:link]}'>#{post[:title]}</a></li>\n"
+  end
 
+  list_content << "</ul>\n" + footer_content
   File.write("#{output_dir}/posts/index.html", list_content)
 end
 
@@ -133,13 +138,17 @@ end
 # Process header, posts, pages, etc.
 header_content = read_utf8(header_file)
 
-posts = process_markdown_files(posts_dir, posts_output_dir, header_content, footer_content).sort_by { |post| -post[:date].to_time.to_i }
+posts = process_markdown_files(posts_dir, posts_output_dir, header_content, footer_content).sort_by do |post| 
+  -post[:date].to_time.to_i
+end
+
 pages = process_markdown_files(pages_dir, pages_output_dir, header_content, footer_content)
 
 generate_index(posts, header_content, footer_content, root_index_file, post_count, output_dir, posts_dir)
 generate_full_posts_list(posts, header_content, footer_content, posts_index_file, output_dir, posts_dir)
 FileUtils.cp_r(public_dir, output_dir)
 generate_rss(posts, rss_file, author_name, site_name, site_url, posts_dir)
+
 system("find #{output_dir} -type f \\( -name '*.html' -o -name '*.css' \\) -exec gzip -k -f {} \\;") if compress_site == true
 
 puts "Blog built successfully in '#{output_dir}' folder. Have a great day!"
