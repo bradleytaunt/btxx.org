@@ -1,8 +1,8 @@
 # Contribute
 
-If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech account**!
+If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech (NFS) account**!
 
-❤️ [Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
+<a class="button" href="https://www.nearlyfreespeech.net/contribute/btxx.org">❤️ Add funds to my account</a>
 
 <p><strong>Current balance:</strong> <!-- BALANCE GOES HERE --></p>
 
@@ -24,7 +24,7 @@ If donating isn't your thing, you can always **buy some stickers**!
 
 I've designed a few stickers based on things I love: OpenBSD, FreeBSD, Raspberry Pis, etc. No AI or generated materials used at all!
 
-💚 [Buy some stickers](https://www.stickermule.com/bt)
+<a href="https://www.stickermule.com/bt" class="button">💚 Buy some stickers</a>
 
 <div class="table-container">
 <table border="1">

@@ -33,6 +33,10 @@ For those interested I try to keep the details of the blog up-to-date with the i
       <td><a href="https://choosealicense.com/licenses/mit/">MIT</a></td>
     </tr>
     <tr>
+      <td>Typeface used:</td>
+      <td><a href="https://font.subf.dev/en/">Maple Mono</a></td>
+    </tr>
+    <tr>
       <td>Hardware used:</td>
       <td>ThinkPad T480s, GMKtec G2 Plus, ThinkPad X201</td>
     </tr>
