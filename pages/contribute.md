@@ -1,4 +1,4 @@
-# Contribute
+# Contribute / Donate
 
 Enjoy my ramblings on this site? Found a particular article helpful?  
 
@@ -96,7 +96,7 @@ By donating (or buying a sticker!) you help cover the costs of running and maint
       <td>$6</td>
     </tr>
     <tr>
-      <td>Server 2 (NetBSD)</td>
+      <td><a href="https://stats.bozo.httpd.rocks">Server 2</a> (NetBSD)</td>
       <td>$15</td>
     </tr>
   </tbody>

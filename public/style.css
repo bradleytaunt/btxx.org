@@ -1,16 +1,37 @@
 @import url("syntax.css");
-/*@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');*/
-/*@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');*/
-/*@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400&display=swap');*/
-/*@import url('https://fonts.googleapis.com/css2?family=Sono:wght,MONO@200..800,1&display=swap');*/
-@import url('https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap');
 
 * {box-sizing: border-box;}
 
+@font-face {
+  font-family: 'Maple Mono';
+  src: url('/public/fonts/MapleMono-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Maple Mono';
+  src: url('/public/fonts/MapleMono-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Maple Mono';
+  src: url('/public/fonts/MapleMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-  font-family: "National Park", sans-serif;
+  background: #273749;
+  color: #d9e9f2;
+  font-family: "Maple Mono", monospace;
   font-size: 18px;
-  line-height: 1.33;
+  line-height: 1.57;
   margin: 0;
   padding: 0;
 }
@@ -39,16 +60,13 @@ body {
 }
 
 #aside {
-  background: #f0f4f9;
-  border: 1px solid #c4c7c5;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-right: 2px solid #abd5ed;
   align-self: flex-start;
+  height: 100vh;
   overflow: auto;
   padding-top: 5px;
   position: sticky;
-  margin: 10px 0 10px 10px;
-  top: 10px;
+  top: 0;
   width: 100px;
 }
 
@@ -59,11 +77,12 @@ body {
 }
 #nav ul li {
   display: block;
+  font-size: 14px;
   margin-bottom: 5px;
 }
 #nav ul li a {
   align-items: center;
-  color: #444746;
+  color: #d9e9f2;
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -73,7 +92,7 @@ body {
 }
 #nav ul li a:hover,
 #nav ul li a:active {
-  color: #0068ce;
+  color: #abd5ed;
 }
 #nav ul li a span {
   display: block;
@@ -85,32 +104,65 @@ body {
 
 #main {
   display: flex;
+  margin: 0 auto;
+  max-width: 75ch;
   padding: 0;
   width: 100%;
 }
 
 #content {
-  max-width: 72ch;
-  padding: 10px 10px 10px 15px;
+  padding: 10px 10px 10px 20px;
   width: calc(100% - 100px);
 }
 
+#content p {
+  text-wrap: balance;
+}
+
+#content ul, #content ol {
+  line-height: 1.75;
+}
+
 a,a:visited {
-  color: #0068ce;
+  color: #abd5ed;
 }
 a:hover,a:active {
   text-decoration: none;
 }
 
-h1 { 
+hr {
+  background: #abd5ed;
+  border: 0;
+  height: 2px;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+h1 {
+  color: white;
   font-size: 2.4rem;
   line-height: 1.1;
-  margin-top: 0; 
+  margin-top: 5px; 
 }
-h2 { margin-top: 2rem; }
+h2 {
+  color: #a4ccb1;
+  margin-top: 2rem;
+}
+h3 {
+  color: #fbdbb6;
+  margin-top: 2rem;
+}
 img { display: block; height: auto; max-width: 100%; }
-code { font-size: 14px; }
-p code, li code, blockquote code { color: brown; }
+code {
+  font-family: "Maple Mono", monospace;
+}
+p code, li code, blockquote code {
+  border: 1.8px solid #91a8b6;
+  border-radius: 6px;
+  color: #edabab;
+  padding: 1px 4px;
+  word-break: keep-all;
+}
 pre:not(:has(code.language-diagram)) { 
   border: 1px solid gray;
   border-radius: 12px;
@@ -119,14 +171,14 @@ pre:not(:has(code.language-diagram)) {
 }
 
 figure { 
-  border: 1px solid #c4c7c5;
+  border: 2px solid #abd5ed;
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 10px 0;
   margin: 2rem 0;
 }
 figcaption {
-  border-top: 1px solid #c4c7c5;
+  border-top: 2px solid #abd5ed;
   font-size: 90%;
   padding: 10px 10px 0;
   text-align: center;
@@ -137,7 +189,7 @@ table {
   margin: 2rem 0;
   width: 100%;
 }
-blockquote { color: brown }
+blockquote { color: seashell; }
 blockquote cite { font-variant: small-caps; }
 dl dt { font-weight: bold; }
 dl dd { margin-bottom: 10px; }
@@ -152,8 +204,12 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
   padding: 8px;
 }
 .alert b {
+  color: darkgoldenrod;
   display: block;
   text-transform: uppercase;
+}
+.alert a, .alert a:visited {
+  color: darkgoldenrod;
 }
 
 .posts { 
@@ -161,12 +217,19 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
   padding: 0;
 }
 .posts li { margin-bottom: 15px; }
-.posts span { display: block; opacity: 0.6 }
+.posts span {
+  display: block;
+  font-size: 90%;
+  opacity: 0.6
+}
 
+#footer {
+  line-height: 1.33;
+}
 #footer img { margin-top: 10px; }
 .contribute-footer {
   background: #E9FDF2;
-  border: 1px solid lightgreen;
+  border: 2px solid lightgreen;
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   color: black;
@@ -181,20 +244,21 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
 
 @media(max-width:650px) {
   body {
-    font-size: 16px;
+    font-size: 15px;
   }
   h1 {
     font-size: 2rem;
+    margin-top: 0;
   }
   #aside {
-    font-size: 11px;
+    line-height: 1.33;
     width: 70px;
+  }
+  #nav ul li {
+    font-size: 11px;
   }
   #nav ul li a {
     padding: 6px 8px;
-  }
-  #nav ul li a span {
-    width: 16px;
   }
   #content {
     padding-left: 10px;
@@ -206,7 +270,7 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
 }
 
 @media (prefers-color-scheme: dark) {
-  html { color: white; }
+  html { background: #240624; color: white; }
   pre:not(:has(code.language-diagram)) { background: black; }
   blockquote { color: lightgoldenrodyellow; }
   p code, li code, blockquote code { color: yellow; }
@@ -223,9 +287,6 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
   }
   #nav ul li a {
     color: white;
-  }
-  #main {
-    background: #240624;
   }
   .contribute-footer {
     background: #5F044C;

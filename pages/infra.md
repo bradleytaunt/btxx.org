@@ -97,5 +97,5 @@ Used for all NetBSD related projects.
 
 ### Hosting:
 
-- [nbsd.btxx.org](https://nbsd.btxx.org)
+- [stats.bozo.httpd.rocks](https://stats.bozo.httpd.rocks/)
 - [bozo.httpd.rocks](https://bozo.httpd.rocks)

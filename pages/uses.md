@@ -65,10 +65,16 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <td>Zorin OS</td>
     </tr>
     <tr>
+      <td>GMKtec G2 Plus</td>
+      <td>Intel(R) N150 (4) @ 3.60 GHz</td>
+      <td>12GB</td>
+      <td>Ubuntu</td>
+    </tr>
+    <tr>
       <td>ThinkPad X201</td>
       <td>Intel Core i5-520M @ 2.9 GHz</td>
       <td>8GB</td>
-      <td>OpenBSD 7.8 running <a href="https://codeberg.org/btxx/minwm">minwm</a></td>
+      <td>OpenBSD</td>
     </tr>
   </tbody>
 </table>
