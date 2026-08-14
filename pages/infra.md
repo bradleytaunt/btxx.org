@@ -28,7 +28,7 @@ This is my main server. Used for my main blog and top-level side projects.
 
 ## Raspberry Pi Zero  v1.1 ([Hermes](https://hermes.btxx.org))
 
-This is my secondary server. Used for most of my personal subdomains.
+This is my secondary server. Used mostly for experimental side projects.
 
 - **OS**: Alpine Linux (Running in RAM!)
 - **CPU**: BCM2835 @ 1.00 GHz
@@ -36,17 +36,7 @@ This is my secondary server. Used for most of my personal subdomains.
 
 ### Hosting:
 
-- [anon.btxx.org](https://anon.btxx.org)
-- [audit.btxx.org](https://audit.btxx.org)
-- [barf.btxx.org](https://barf.btxx.org)
-- [cv.btxx.org](https://cv.btxx.org)
 - [hermes.btxx.org](https://hermes.btxx.org)
-- [jsfree.btxx.org](https://jsfree.btxx.org)
-- [minwm.btxx.org](https://minwm.btxx.org)
-- [normform.btxx.org](https://normform.btxx.org)
-- [search.btxx.org](https://search.btxx.org)
-- [shinobi.btxx.org](https://shinobi.btxx.org)
-- [vanillacss.btxx.org](https://vanillacss.btxx.org)
 - [zero.btxx.org](https://zero.btxx.org)
 
 ---
@@ -59,11 +49,21 @@ Used for all my side projects that require a more consistent up-time.
 
 ### Hosting:
 
-- [btxx.org](https://btxx.org) (this website!)
 - [1kb.club](https://1kb.club)
 - [512kb.club](https://512kb.club)
 - [1mb.club](https://1mb.club)
 - [xhtml.club](https://xhtml.club)
+- [btxx.org](https://btxx.org) (this website!)
+  - [anon.btxx.org](https://anon.btxx.org)
+  - [audit.btxx.org](https://audit.btxx.org)
+  - [barf.btxx.org](https://barf.btxx.org)
+  - [cv.btxx.org](https://cv.btxx.org)
+  - [jsfree.btxx.org](https://jsfree.btxx.org)
+  - [minwm.btxx.org](https://minwm.btxx.org)
+  - [normform.btxx.org](https://normform.btxx.org)
+  - [search.btxx.org](https://search.btxx.org)
+  - [shinobi.btxx.org](https://shinobi.btxx.org)
+  - [vanillacss.btxx.org](https://vanillacss.btxx.org)
 
 ---
 
