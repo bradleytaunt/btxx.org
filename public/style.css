@@ -69,12 +69,11 @@ body {
   padding: 8px;
   text-align: center;
   text-decoration: none;
-  transition-timing-function: ease-in-out;
-  transition: 0.2s;
   width: 100%;
 }
-#nav ul li a:hover {
-  font-weight: 600;
+#nav ul li a:hover,
+#nav ul li a:active {
+  color: #0068ce;
 }
 #nav ul li a span {
   display: block;
@@ -92,8 +91,15 @@ body {
 
 #content {
   max-width: 72ch;
-  padding: 10px 10px 10px 20px;
+  padding: 10px 10px 10px 15px;
   width: calc(100% - 100px);
+}
+
+a,a:visited {
+  color: #0068ce;
+}
+a:hover,a:active {
+  text-decoration: none;
 }
 
 h1 { 
@@ -121,12 +127,16 @@ figure {
 }
 figcaption {
   border-top: 1px solid #c4c7c5;
-  color: #2d2d2d; 
+  font-size: 90%;
   padding: 10px 10px 0;
   text-align: center;
 }
 figure img { border-radius: 12px; margin: 0 auto 10px; padding: 0 10px; }
-table { margin: 2rem 0; width: 100%; }
+table {
+  border-collapse: collapse;
+  margin: 2rem 0;
+  width: 100%;
+}
 blockquote { color: brown }
 blockquote cite { font-variant: small-caps; }
 dl dt { font-weight: bold; }
@@ -159,8 +169,13 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
   border: 1px solid lightgreen;
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: black;
   margin: 2rem 0;
   padding: 10px;
+}
+.contribute-footer a,
+.contribute-footer a:visited {
+  color: forestgreen;
 }
 .footnotes { font-size: 90%; }
 
@@ -193,12 +208,32 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
 @media (prefers-color-scheme: dark) {
   html { color: white; }
   pre:not(:has(code.language-diagram)) { background: black; }
-  a { color: #6bf; }
-  a:visited { color: #f8f; }
-  a:active { color: red; }
   blockquote { color: lightgoldenrodyellow; }
   p code, li code, blockquote code { color: yellow; }
+  a,a:visited {
+    color: #fed87f;
+  }
+  #nav ul li a:hover,
+  #nav ul li a:active {
+    color: #fed87f;
+  }
+  #aside {
+    background: #1f1c20;
+    border-color: black;
+  }
+  #nav ul li a {
+    color: white;
+  }
   #main {
-    background: #2d2d2d;
+    background: #240624;
+  }
+  .contribute-footer {
+    background: #5F044C;
+    border-color: #9200a7;
+    color: white;
+  }
+  .contribute-footer a,
+  .contribute-footer a:visited {
+    color: #e594f1;
   }
 }
