@@ -89,7 +89,6 @@ I'm proud to support open source products and privacy-respecting communities. Th
 ## "Mobile" Devices
 
 - iPhone SE (2020)
-- ZTE Cymbal 2
 - Casio F-91W
 - RPi Zero
 - RPi Zero W
@@ -98,7 +97,7 @@ I'm proud to support open source products and privacy-respecting communities. Th
 ## Gaming / Entertainment
 
 - Xbox Series S
-- Nintendo Switch
+- Nintendo Switch 2
 - Playstation 2
 
 ## Software
@@ -109,10 +108,11 @@ I try my best to use only free and open source software. Unfortunately, some cir
 
 - aerc-mail
 - Bitwarden
+- Chromium
 - dmenu
 - dwm
 - Firefox
-- Chromium
+- Inkscape
 - pass
 - qutebrowser
 - slstatus

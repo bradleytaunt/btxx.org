@@ -1,6 +1,8 @@
 # Bradley Taunt
 
-Developer &amp; designer who talks about software, design, and life.
+Greetings, internet traveler. Welcome to my website!
+
+I'm a developer &amp; designer hybrid who spends his time writing about software, design, and life.
 
 E-mail
 : [bt@btxx.org](mailto:bt@btxx.org)
@@ -14,4 +16,4 @@ Codeberg
 Mastodon
 : [mastodon.bsd.cafe/@bt](https://mastodon.bsd.cafe/@bt)
 
-## Latest Posts
+## Latest Posts ([All](/posts))

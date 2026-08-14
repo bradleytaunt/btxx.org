@@ -1,31 +1,30 @@
-# Contribute / Donate
+# Contribute
 
-Enjoy my ramblings on this site? Found a particular article helpful?  
+If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech account**!
 
-Maybe consider contributing to domain renewals and hosting costs!
+❤️ [Add funds to my NearlyFreeSpeech.NET account](https://www.nearlyfreespeech.net/contribute/btxx.org)
 
-## Donations
+<p><strong>Current balance:</strong> <!-- BALANCE GOES HERE --></p>
 
-If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help by donating!
-
-❤️ [PayPal.me](https://www.paypal.com/paypalme/bradtaunt)
-
-
-## Buy Stickers
-
-If donating isn't your thing, you can always **buy some stickers**! 
-
-I've designed a few stickers based on things I love: OpenBSD, Raspberry Pis, etc. No AI or generated materials used!
-
-💚 [Buy some stickers](https://www.stickermule.com/bt)
-
-By donating (or buying a sticker!) you help cover the costs of running and maintaining this website, including:
+By funding the hosting provider directly, you help cover the costs of running and maintaining this website, including but not limited to:
 
 - bandwidth
 - domain renewals
 - email service / forwarding
 - ongoing maintenance
 - writing new articles / tutorials
+
+The account contribution page linked above will provide even more details, should you have any questions. In a nutshell: **no part of your contribution is sent to me**.
+
+Instead, it is applied *directly* to my NearlyFreeSpeech hosting account.
+
+## Buy Stickers
+
+If donating isn't your thing, you can always **buy some stickers**! 
+
+I've designed a few stickers based on things I love: OpenBSD, FreeBSD, Raspberry Pis, etc. No AI or generated materials used at all!
+
+💚 [Buy some stickers](https://www.stickermule.com/bt)
 
 <div class="table-container">
 <table border="1">
@@ -83,6 +82,26 @@ By donating (or buying a sticker!) you help cover the costs of running and maint
 
 <div class="table-container">
 <table border="1">
+  <caption>Web Hosting Costs*</caption>
+  <thead>
+    <tr>
+      <th>Daily</th>
+      <th>Monthly</th>
+      <th>Yearly</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$0.06</td>
+      <td>$1.83</td>
+      <td><b>$21.96</b></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-container">
+<table border="1">
   <caption>VPS Costs*</caption>
   <thead>
     <tr>
@@ -101,7 +120,6 @@ By donating (or buying a sticker!) you help cover the costs of running and maint
     </tr>
   </tbody>
 </table>
-<small>* This covers the hosting for all the above projects.</small>
 </div>
 
 The average billing for all of the above is **~$286.42/year** (**~$23/month**).
@@ -118,3 +136,7 @@ That way we each get something out of it!
 You can still enjoy everything on this blog (and the mentioned projects) for free, so please don't feel obligated to give.
 
 Thank you.
+
+---
+
+<small>* This covers the hosting for <i>some</i> of the above projects.</small>

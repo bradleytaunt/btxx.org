@@ -21,7 +21,6 @@ This is my main server. Used for my main blog and top-level side projects.
 
 ### Hosting:
 
-- [btxx.org](https://btxx.org) (this website!)
 - [caddy.ninja](https://caddy.ninja)
 - [wruby.site](https://wruby.site)
 
@@ -60,6 +59,7 @@ Used for all my side projects that require a more consistent up-time.
 
 ### Hosting:
 
+- [btxx.org](https://btxx.org) (this website!)
 - [1kb.club](https://1kb.club)
 - [512kb.club](https://512kb.club)
 - [1mb.club](https://1mb.club)

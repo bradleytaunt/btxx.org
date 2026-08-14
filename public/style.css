@@ -36,29 +36,6 @@ body {
   padding: 0;
 }
 
-#header {
-  background: black;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-#header a {
-  align-items: center;
-  color: white;
-  display: flex;
-  font-family: "Georgia", serif;
-  font-size: 24px;
-  height: 100%;
-  text-decoration: none;
-}
-#header a:hover, #header a:active { text-decoration: underline; }
-#header img {
-  margin: 0 5px 0 10px;
-  max-height: 45px;
-  width: auto;
-}
-
 #aside {
   border-right: 2px solid #abd5ed;
   align-self: flex-start;
@@ -105,7 +82,7 @@ body {
 #main {
   display: flex;
   margin: 0 auto;
-  max-width: 75ch;
+  max-width: 72ch;
   padding: 0;
   width: 100%;
 }
@@ -160,7 +137,8 @@ p code, li code, blockquote code {
   border: 1.8px solid #91a8b6;
   border-radius: 6px;
   color: #edabab;
-  padding: 1px 4px;
+  padding: 0 4px;
+  white-space: nowrap;
   word-break: keep-all;
 }
 pre:not(:has(code.language-diagram)) { 
@@ -245,6 +223,7 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
 @media(max-width:650px) {
   body {
     font-size: 15px;
+    line-height: 1.6;
   }
   h1 {
     font-size: 2rem;
@@ -252,7 +231,7 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
   }
   #aside {
     line-height: 1.33;
-    width: 70px;
+    width: 78px;
   }
   #nav ul li {
     font-size: 11px;
@@ -262,39 +241,12 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
   }
   #content {
     padding-left: 10px;
-    width: calc(100% - 70px);
+    width: calc(100% - 78px);
+  }
+  #content p {
+    text-wrap: auto;
   }
   figure {
     margin: 2rem 0;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  html { background: #240624; color: white; }
-  pre:not(:has(code.language-diagram)) { background: black; }
-  blockquote { color: lightgoldenrodyellow; }
-  p code, li code, blockquote code { color: yellow; }
-  a,a:visited {
-    color: #fed87f;
-  }
-  #nav ul li a:hover,
-  #nav ul li a:active {
-    color: #fed87f;
-  }
-  #aside {
-    background: #1f1c20;
-    border-color: black;
-  }
-  #nav ul li a {
-    color: white;
-  }
-  .contribute-footer {
-    background: #5F044C;
-    border-color: #9200a7;
-    color: white;
-  }
-  .contribute-footer a,
-  .contribute-footer a:visited {
-    color: #e594f1;
   }
 }

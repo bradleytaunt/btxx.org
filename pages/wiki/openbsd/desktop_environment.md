@@ -7,7 +7,7 @@ Everything posted here relies on my personal "Open Suck" project: [Open Suck](ht
 ## Show Don't Tell
 
 <figure>
-<img src="/public/images/open-suck-75.png" alt="Screenshot of OpenBSD 7.5 running dwm">
+<img src="/public/images/open-suck-75.webp" alt="Screenshot of OpenBSD 7.5 running dwm">
 <figcaption>Open Suck: OpenBSD 7.5 running dwm on my X220</figcaption>
 </figure>
  

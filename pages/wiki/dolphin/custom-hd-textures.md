@@ -22,4 +22,4 @@ That's it!
 5. Dump all texture files into this newly created folder
 6. Enjoy HD textures!
 
-![The graphics settings for the Dolphin emulator](/public/images/dolphin-textures.png)
+![The graphics settings for the Dolphin emulator](/public/images/dolphin-textures.webp)
