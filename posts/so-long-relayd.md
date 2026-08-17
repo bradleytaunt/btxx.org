@@ -3,7 +3,7 @@
 
 2026-08-17
 
-Running `relayd` alongside `httpd` on your OpenBSD web servers is no longer necessary for injecting HTTP secuirty headers. Thanks to the incredible work by [rsadowski@](https://marc.info/?l=openbsd-cvs&m=178495844507568&w=2) we now have the ability to set our security headers directly inside `httpd`. Pretty awesome, right?
+Running `relayd` alongside `httpd` on your OpenBSD web servers is no longer necessary for injecting HTTP security headers. Thanks to the incredible work by [rsadowski@](https://marc.info/?l=openbsd-cvs&m=178495844507568&w=2) we now have the ability to set our security headers directly inside `httpd`. Pretty awesome, right?
 
 <div class="alert">
   <span><b>Note:</b> I still love <code>relayd</code> and I'm aware that it offers more than simply applying HTTP security headers. If you still prefer using it, that's okay! Please don't yell at me!</span>
