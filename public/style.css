@@ -147,7 +147,7 @@ img { display: block; height: auto; max-width: 100%; }
 code {
   font-family: "Maple Mono", monospace;
 }
-p code, li code, blockquote code {
+p code, li code, blockquote code, .alert code {
   border: 1.8px solid #91a8b6;
   border-radius: 6px;
   color: #edabab;
