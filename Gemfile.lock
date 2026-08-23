@@ -1,21 +1,31 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    kramdown (2.5.1)
-      rexml (>= 3.3.9)
+    kramdown (2.5.2)
+      rexml (>= 3.4.4)
     rexml (3.4.4)
-    rouge (4.6.1)
-    rss (0.3.1)
+    rouge (5.1.0)
+      strscan (~> 3.1)
+    rss (0.3.3)
       rexml
+    strscan (3.1.8)
 
 PLATFORMS
-  arm64-darwin-24
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   kramdown
   rouge
   rss
 
+CHECKSUMS
+  bundler (4.0.18) sha256=02d9a17429de1847b4e0c9f27a9ee4b20c0a74c0a641b4e77195d6019e3618ac
+  kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
+  rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
+  rouge (5.1.0) sha256=b77c632842ab7f5147940212f0345808cccfbce864fd5b631d7d12a35ac85452
+  rss (0.3.3) sha256=37ef1ec4d691d67edbe92159079a4e89a0965e6a6b32246009ae3d734d12d1ab
+  strscan (3.1.8) sha256=aae2db611a225559f21ffbb71765c9a4e60fd262534a9ea84f4f11c7f32f679e
+
 BUNDLED WITH
-   2.6.1
+  4.0.18

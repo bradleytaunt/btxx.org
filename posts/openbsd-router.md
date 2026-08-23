@@ -105,8 +105,8 @@ block all
 # Normalize incoming packets
 match in all scrub (no-df random-id max-mss 1440)
 
-# Protect against spoofing
-antispoof quick for { lo $int_if }
+# Protect against spoofing on BOTH interfaces
+antispoof quick for { lo $int_if $ext_if }
 
 # NAT for LAN to WAN
 match out on $ext_if from 192.168.1.0/24 to any nat-to ($ext_if)
@@ -146,10 +146,10 @@ match in all scrub (no-df random-id max-mss 1440)
 - This helps avoid fragmentation attacks for incoming traffic.
 
 ~~~sh
-antispoof quick for { lo $int_if }
+antispoof quick for { lo $int_if $ext_if }
 ~~~
 
-- Defends against forged source IPs, especially on the LAN interface. This is very important.
+- Defends against forged source IPs on both interfaces, especially on LAN. This is very important.
 
 ~~~sh
 match out on $ext_if from 192.168.1.0/24 to any nat-to ($ext_if)
