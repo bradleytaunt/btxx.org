@@ -332,7 +332,7 @@ match out log on egress from  $xbox to any nat-to ($ext_if:0) static-port
 match in all scrub (no-df random-id max-mss 1440)
 
 # Protect against spoofing
-antispoof quick for { lo $int_if $int2_if }
+antispoof quick for { lo $int_if $int2_if $ext_if }
 
 # Allow LAN clients to connect through router
 pass in on $int_if
@@ -367,7 +367,7 @@ match out log on egress from  $xbox to any nat-to ($ext_if:0) static-port
 - Here we are telling our router to use specific ports for Xbox inside of default randomization
 
 ~~~sh
-antispoof quick for { lo $int_if $int2_if }
+antispoof quick for { lo $int_if $int2_if $ext_if }
 
 pass in on $int2_if
 ~~~
