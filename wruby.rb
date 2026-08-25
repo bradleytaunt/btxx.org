@@ -1,4 +1,5 @@
 require 'kramdown'
+require 'rouge'
 require 'fileutils'
 require 'date'
 require 'rss'
@@ -59,7 +60,7 @@ def process_markdown_files(input_directory, output_directory, header_content, fo
 
     title = extract_title_from_md(lines)
     date = Date.parse(lines[2]&.strip || '') rescue Date.today
-    html_content = Kramdown::Document.new(md_content).to_html
+    html_content = to_html(md_content)
 
     relative_path = path.sub("#{input_directory}/", '').sub('.md', '')
     item_dir = File.join(output_directory, relative_path)
@@ -77,7 +78,7 @@ end
 def generate_index(posts, header_content, footer_content, root_index_file, post_count, output_dir, posts_dir)
   root_index_content = read_utf8(root_index_file)
   root_title = extract_title_from_md(root_index_content.lines)
-  root_html = Kramdown::Document.new(root_index_content).to_html
+  root_html = to_html(root_index_content)
 
   header = replace_title_placeholder(header_content, root_title)
 
@@ -94,7 +95,7 @@ end
 def generate_full_posts_list(posts, header_content, footer_content, posts_index_file, output_dir, posts_dir)
   posts_index_content = read_utf8(posts_index_file)
   posts_title = extract_title_from_md(posts_index_content.lines)
-  posts_html = Kramdown::Document.new(posts_index_content).to_html
+  posts_html = to_html(posts_index_content)
 
   header = replace_title_placeholder(header_content, posts_title)
 
@@ -133,6 +134,25 @@ def generate_rss(posts, rss_file, author_name, site_name, site_url, posts_dir)
   end
 
   File.write(rss_file, rss)
+end
+
+# Proper syntax highlighting (avoids deprecated warnings)
+class RougePygmentsWrapper < Rouge::Formatters::HTMLPygments
+  def initialize(opts = {})
+    super(Rouge::Formatters::HTML.new, opts.fetch(:css_class, 'highlight'))
+  end
+end
+
+KRAMDOWN_OPTS = {
+  syntax_highlighter: 'rouge',
+  syntax_highlighter_opts: {
+    formatter: RougePygmentsWrapper,
+    css_class: 'highlight'
+  }
+}.freeze
+
+def to_html(md)
+  Kramdown::Document.new(md, **KRAMDOWN_OPTS).to_html
 end
 
 # Process header, posts, pages, etc.
