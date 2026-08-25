@@ -45,7 +45,7 @@ SetEnv GIT_HTTP_EXPORT_ALL
 
 Now you can test this locally by running:
 
-~~~
+~~~sh
 git clone https://git.btxx.org/myproject.git
 ~~~
 
@@ -55,46 +55,58 @@ The following assumes that you wish to have cgit running at the top-level of you
 
 SSH into your account then download and unpack the latest release:
 
-    git clone git://git.zx2c4.com/cgit cgit-src
-    cd cgit-src
+~~~sh
+git clone git://git.zx2c4.com/cgit cgit-src
+cd cgit-src
+~~~
 
 Create a cgit.conf file with desired locations:
 
-    CGIT_SCRIPT_PATH = /home/public
-    CGIT_DATA_PATH = $(CGIT_SCRIPT_PATH)
-    CGIT_CONFIG = $(CGIT_SCRIPT_PATH)/cgitrc
-    CACHE_ROOT = $(CGIT_SCRIPT_PATH)/cgitcache
-    prefix = $(CGIT_SCRIPT_PATH)/local
+~~~sh
+CGIT_SCRIPT_PATH = /home/public
+CGIT_DATA_PATH = $(CGIT_SCRIPT_PATH)
+CGIT_CONFIG = $(CGIT_SCRIPT_PATH)/cgitrc
+CACHE_ROOT = $(CGIT_SCRIPT_PATH)/cgitcache
+prefix = $(CGIT_SCRIPT_PATH)/local
+~~~
 
 Get the git sources (needed to build libgit):
 
-    git submodule init
-    git submodule update
+~~~sh
+git submodule init
+git submodule update
+~~~
 
 Build and install it:
 
-    gmake install
+~~~sh
+gmake install
+~~~
 
 ## Configuration
 
 Make a text file named `cgitrc` where you specified CGIT_CONFIG and add the following (these are some personal defaults to make things cleaner):
 
-    logo=/cgit.png
-    root-title=main root title
-    root-desc=description for your git server
-    root-readme=/home/public/about.md
-    virtual-root=/
+~~~sh
+logo=/cgit.png
+root-title=main root title
+root-desc=description for your git server
+root-readme=/home/public/about.md
+virtual-root=/
 
-    about-filter=/home/public/cgit-src/filters/about-formatting.sh
-    readme=:README.md
-    readme=:README
+about-filter=/home/public/cgit-src/filters/about-formatting.sh
+readme=:README.md
+readme=:README
 
-    include=/home/protected/cgitrepos
+include=/home/protected/cgitrepos
+~~~
 
 Then in the specified file (`cgitrepos`), place your repos, ex:
 
-    repo.url=MyRepo
-    repo.path=/home/public/MyRepo.git
-    repo.desc=This is my git repository
+~~~sh
+repo.url=MyRepo
+repo.path=/home/public/MyRepo.git
+repo.desc=This is my git repository
+~~~
 
 **And you should be good to go!**

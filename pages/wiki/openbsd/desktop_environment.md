@@ -26,14 +26,18 @@ The Open Suck installer gives you the absolute barebones desktop experience:
 
 Before we begin setting things up, you will need to install `git`, `vim`, `bash`:
 
-    pkg_add git vim bash
+~~~sh
+pkg_add git vim bash
+~~~
 
 ## Cloning the Project
 
 Clone the main installer project and navigate instead the directory:
 
-    git clone https://git.sr.ht/~bt/open-suck-installer
-    cd open-suck-installer
+~~~sh
+git clone https://git.sr.ht/~bt/open-suck-installer
+cd open-suck-installer
+~~~
 
 ## Installing
 
@@ -42,15 +46,17 @@ Clone the main installer project and navigate instead the directory:
 
 ## TL;DR
 
-    cd open-suck-installer # CD into this repository
-    doas sh ./install-dependencies.sh # Install OpenBSD packages
-    doas sh ./install.sh # Install suckless tools
-    cp .xinitrc ~/.xinitrc # Apply .xinitrc
+~~~sh
+cd open-suck-installer # CD into this repository
+doas sh ./install-dependencies.sh # Install OpenBSD packages
+doas sh ./install.sh # Install suckless tools
+cp .xinitrc ~/.xinitrc # Apply .xinitrc
+~~~
 
 Reboot the machine. Log in as your main user. Run:
 
-
-    startx
-
+~~~sh
+startx
+~~~
 
 That's it! You now have a fully functional desktop environment built on top of `dwm`.

@@ -9,11 +9,15 @@ We will use the `wp-cli` that comes packaged with NearlyFreeSpeech (NFS):
 
 For help using WP-CLI from the SSH command line, use this command:
 
-    wp help
+~~~sh
+wp help
+~~~
 
 To download and unpack the latest version of WordPress, enter the following command:
 
-    wp core download
+~~~sh
+wp core download
+~~~
 
 ## Create a MySQL Process and Database
 
@@ -59,41 +63,49 @@ To get your permalinks to work properly, you must set up an .htaccess file.
 
 Next, create an `.htaccess` file for your WordPress site. We suggest doing this directly from the SSH command line using the cat shell command:
 
-    cat >.htaccess <<NFSNRULES # This line is a shell command, not part of .htaccess!
-    RewriteEngine On
-    RewriteBase /
-    RewriteRule ^index\.php$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.php [L]
-    NFSNRULES
+~~~sh
+cat >.htaccess <<NFSNRULES # This line is a shell command, not part of .htaccess!
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+NFSNRULES
+~~~
 
 If you prefer, you can copy-paste the text into an editor:
 
-    RewriteEngine On
-    RewriteBase /
-    RewriteRule ^index\.php$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.php [L]
+~~~sh
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+~~~
 
 We need to run the following commands in order to install, uninstall, activate, and deactivate plugins/themes from within the admin web GUI of WordPress:
 
-    chgrp web .htaccess
-    chmod 664 .htaccess
-    chgrp -R web *
-    find . -type d -exec chmod 775 {} \;
-    find . -type f -exec chmod 664 {} \;
-    wp config set FS_METHOD direct
+~~~sh
+chgrp web .htaccess
+chmod 664 .htaccess
+chgrp -R web *
+find . -type d -exec chmod 775 {} \;
+find . -type f -exec chmod 664 {} \;
+wp config set FS_METHOD direct
+~~~
 
 ## Enable File Uploading
 
 In your main WordPress installation folder enter the following SSH commands:
 
-    cd wp-content
-    mkdir -p uploads
-    chgrp -R web uploads
-    chmod -R 775 uploads
+~~~sh
+cd wp-content
+mkdir -p uploads
+chgrp -R web uploads
+chmod -R 775 uploads
+~~~
 
 ## Keeping WordPress Up-To-Date Automatically via Command Line
 
@@ -103,13 +115,17 @@ To help you keep WordPress up-to-date, NFS provides a streamlined script.
 
 This command, which must be run from an interactive ssh session, will set up our system to check your WordPress install (and themes & plugins) for you every day, and update them automatically when needed:
 
-    wp-update.sh -a
+~~~sh
+wp-update.sh -a
+~~~
 
 By default, it will tell you via email when updates happen. If you don't want that, just add `-q` (for "quiet") to the command. It will work silently unless there is an error.
 
 If you get errors from wp-cron (not wp-update) about failed automatic updates, you may also wish to add this to your wp-config.php file:
 
-    define( 'AUTOMATIC_UPDATER_DISABLED', true );
+~~~sh
+define( 'AUTOMATIC_UPDATER_DISABLED', true );
+~~~
 
 This disables the insecure automatic updater bundled with recent versions of WordPress.
 
@@ -133,11 +149,15 @@ This is a two-step process. You must back up both the files and the database.
 
 To back up your WordPress files directly from a Unix-like system of your own, you can use a command like:
 
-    ssh yourmembername_siteshortname@ssh.phx.nearlyfreespeech.net tar -C /home/public -cvf - . | gzip >name-of-wordpress-backup.tar.gz
+~~~sh
+ssh yourmembername_siteshortname@ssh.phx.nearlyfreespeech.net tar -C /home/public -cvf - . | gzip >name-of-wordpress-backup.tar.gz
+~~~
 
 To back up WordPress to a file on our system that you can transfer via SFTP to your own computer, you can use a command like:
 
-    tar -C /home/public -cvzf /home/tmp/name-of-wordpress-backup.tar.gz .
+~~~sh
+tar -C /home/public -cvzf /home/tmp/name-of-wordpress-backup.tar.gz .
+~~~
 
 This assumes that your WordPress install is in the default location (`/home/public`). It will put your backup file in your `/home/tmp` directory.
 
@@ -147,10 +167,14 @@ Do not try to back up your WordPress folder into your WordPress folder, as that 
 
 If you have a Unix-like system of your own (e.g. macOS or Linux), you can do the backup directly from there using your local command prompt using the MySQL username and password you created for WordPress:
 
-    ssh yourmembername_siteshortname@ssh.phx.nearlyfreespeech.net wp db export - | gzip >wordpress-backup.sql.gz
+~~~sh
+ssh yourmembername_siteshortname@ssh.phx.nearlyfreespeech.net wp db export - | gzip >wordpress-backup.sql.gz
+~~~
 
 Or you can do it from the SSH command line via WP-CLI:
 
-    wp db export /home/tmp/wordpress-backup.sql
+~~~sh
+wp db export /home/tmp/wordpress-backup.sql
+~~~
 
 The `wordpress-backup.sql` file this generates will be stored in your site's `/home/tmp` directory. Download it from there to have a local copy.

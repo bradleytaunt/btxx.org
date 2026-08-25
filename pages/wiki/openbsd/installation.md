@@ -52,7 +52,9 @@ Make sure you have the latest OpenBSD image formatted on your USB device and tha
 
 Before we do anything, we should give our main user full access via `doas`. Login as `root` and run the following:
 
-    echo "permit nopass :wheel" >> /etc/doas.conf
+~~~sh
+echo "permit nopass :wheel" >> /etc/doas.conf
+~~~
 
 Now you can logout or reboot the machine.
 
@@ -69,13 +71,15 @@ Simply run the command: `fw_update`
 
 To enable wifi on your device, run the following command (filling in the proper details where need be)
 
-    ifconfig iwn0 up
-    ifconfig iwn0 scan
-    echo "join WIFI-NAME wpakey PASSPHRASE" >> /etc/hostname.iwn0
-    echo "dhcp" >> /etc/hostname.iwn0
-    echo "inet6 autoconf" >> /etc/hostname.iwn0
-    echo "up powersave" >> /etc/hostname.iwn0
-    dhclient iwn0
+~~~sh
+ifconfig iwn0 up
+ifconfig iwn0 scan
+echo "join WIFI-NAME wpakey PASSPHRASE" >> /etc/hostname.iwn0
+echo "dhcp" >> /etc/hostname.iwn0
+echo "inet6 autoconf" >> /etc/hostname.iwn0
+echo "up powersave" >> /etc/hostname.iwn0
+dhclient iwn0
+~~~
 
 Take note of the `iwn0`, as this might differ on your machine. (You can check this by running `ifconfig`)
 
@@ -86,9 +90,11 @@ You might also need to run `doas sh /etc/netstart` after.
 
 This step is optional and targeted towards devices with batteries (obviously). Properly setup apmd:
 
-    rcctl enable apmd
-    rcctl set apmd flags -A
-    rcctl start apmd
+~~~sh
+rcctl enable apmd
+rcctl set apmd flags -A
+rcctl start apmd
+~~~
 
 
 ## Next Steps

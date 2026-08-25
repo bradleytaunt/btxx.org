@@ -3,14 +3,14 @@
 If you're using a 4K monitor, you may want to scale things properly. Add the
 following to the top of the `~/.xinitrc` file:
 
-~~~
+~~~sh
 export GDK_SCALE=1.5
 export QT_SCALE_FACTOR=1.5
 ~~~
 
 Then include the following to the existing `~/.Xdefaults` file:
 
-~~~
+~~~sh
 Xft.dpi: 144
 Xcursor.theme: Adwaita
 Xcursor.size: 34
