@@ -1,12 +1,10 @@
 # Contribute
 
-If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech (NFS) account**!
+If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to **buy me a coffee**!
 
-<a class="button" href="https://www.nearlyfreespeech.net/contribute/btxx.org">❤️ Add funds to NFS account</a>
+<a class="button" href="https://buymeacoffee.com/wqtmtn7ir">☕ Buy me a coffee</a>
 
-<p><strong>Current balance:</strong> <!-- BALANCE GOES HERE --></p>
-
-By funding the hosting provider directly, you help cover the costs of running and maintaining this website, including but not limited to:
+By donating, you help cover the costs of running and maintaining this website, including but not limited to:
 
 - bandwidth
 - domain renewals
@@ -86,26 +84,6 @@ For full transparency, below you can find the cost of all domains and services I
 
 <div class="table-container">
 <table border="1">
-  <caption>Web Hosting Costs*</caption>
-  <thead>
-    <tr>
-      <th>Daily</th>
-      <th>Monthly</th>
-      <th>Yearly</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>$0.06</td>
-      <td>$1.83</td>
-      <td><b>$21.96</b></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<div class="table-container">
-<table border="1">
   <caption>VPS Costs*</caption>
   <thead>
     <tr>
@@ -126,7 +104,7 @@ For full transparency, below you can find the cost of all domains and services I
 </table>
 </div>
 
-The average billing for all of the above is **~$286.42/year** (**~$23/month**).
+The average billing for all of the above works out to **~$23/month**.
 
 ## Other Ways to Support
 
@@ -134,6 +112,7 @@ Feel free to check out a couple of my additional referral programs below:
 
 - [Sign up for Fathom Analytics](https://usefathom.com/ref/DKHJVX). You get a $10 credit towards your account and I get a minor, continuous kickback (for as long as you continue to use the service).
 - [Sign up for TierHive](https://tierhive.com/r/AD3AFC1F50FF)
+- [Sign up for Linveo VPS](https://billing.linveo.com/order/forms/a/MTM4Ng==)
 
 That way we each get something out of it!
 

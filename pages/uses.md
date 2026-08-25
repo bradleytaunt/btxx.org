@@ -62,7 +62,7 @@ I'm proud to support open source products and privacy-respecting communities. Th
       <td>ThinkPad T480s</td>
       <td>Intel i5-8350U (8) @ 3.600GHz</td>
       <td>16GB</td>
-      <td>Zorin OS</td>
+      <td>Bluefin Linux</td>
     </tr>
     <tr>
       <td>GMKtec G2 Plus</td>

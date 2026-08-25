@@ -37,17 +37,19 @@ body {
 }
 
 #aside {
-  border-right: 2px solid #abd5ed;
   align-self: flex-start;
-  height: 100vh;
   overflow: auto;
-  padding-top: 5px;
+  padding-left: 10px;
+  padding-top: 15px;
   position: sticky;
   top: 0;
   width: 100px;
 }
 
 #nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -55,11 +57,15 @@ body {
 #nav ul li {
   display: block;
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 #nav ul li a {
   align-items: center;
-  color: #d9e9f2;
+  background: #122b3b;
+  border: 2px solid;
+  border-radius: 6px;
+  color: #abd5ed;
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -69,7 +75,7 @@ body {
 }
 #nav ul li a:hover,
 #nav ul li a:active {
-  color: #abd5ed;
+  color: #edabab;
 }
 #nav ul li a span {
   display: block;
@@ -82,7 +88,7 @@ body {
 #main {
   display: flex;
   margin: 0 auto;
-  max-width: 72ch;
+  max-width: calc(72ch + 100px);
   padding: 0;
   width: 100%;
 }
@@ -244,17 +250,21 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
   }
   #aside {
     line-height: 1.33;
-    width: 78px;
+    padding-left: 5px;
+    padding-top: 0;
+    width: 70px;
   }
   #nav ul li {
-    font-size: 11px;
+    font-size: 10px;
+    margin-bottom: 10px;
   }
   #nav ul li a {
     padding: 6px 8px;
   }
   #content {
     padding-left: 10px;
-    width: calc(100% - 78px);
+    padding-top: 0;
+    width: calc(100% - 70px);
   }
   #content p {
     text-wrap: auto;

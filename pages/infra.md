@@ -8,7 +8,7 @@ This setup won't allow me to claim "99.99% uptime" or blazing fast speeds, but i
 
 <figure>
   <img src="/public/images/infrastructure-v2.webp" alt="A photo of my networking setup in my utility room">
-  <figcaption>A glimpse of my networking setup: My secondary Mango mini router (VPN) on the left,  my Raspberry Pi Zero (Hermes) in the center, and my Raspberry Pi 3 (Apollo) on the right. Backup Pis are there for moral support.</figcaption>
+  <figcaption>A glimpse of my networking setup: My secondary Mango mini router (VPN) on the left,  my Raspberry Pi Zero (Hermes) in the center, and my Raspberry Pi 3 (Apollo) on the right. A basic TP-Link ethernet switch can be seen at the back. Extra Pis are there for moral support.</figcaption>
 </figure>
 
 ## Raspberry Pi 3B+ ([Apollo](https://apollo.btxx.org))
@@ -21,7 +21,7 @@ This is my main server. Used for my main blog and top-level side projects.
 
 ### Hosting:
 
-- [caddy.ninja](https://caddy.ninja)
+- [btxx.org](https://btxx.org) (this website!)
 - [wruby.site](https://wruby.site)
 
 ---
@@ -36,12 +36,22 @@ This is my secondary server. Used mostly for experimental side projects.
 
 ### Hosting:
 
+- [anon.btxx.org](https://anon.btxx.org)
+- [audit.btxx.org](https://audit.btxx.org)
+- [barf.btxx.org](https://barf.btxx.org)
+- [cv.btxx.org](https://cv.btxx.org)
 - [hermes.btxx.org](https://hermes.btxx.org)
+- [jsfree.btxx.org](https://jsfree.btxx.org)
+- [minwm.btxx.org](https://minwm.btxx.org)
+- [normform.btxx.org](https://normform.btxx.org)
+- [search.btxx.org](https://search.btxx.org)
+- [shinobi.btxx.org](https://shinobi.btxx.org)
+- [vanillacss.btxx.org](https://vanillacss.btxx.org)
 - [zero.btxx.org](https://zero.btxx.org)
 
 ---
 
-## NearlyFreeSpeech.NET
+## Sourcehut Pages
 
 This is *not* self-hosted.
 
@@ -53,17 +63,6 @@ Used for all my side projects that require a more consistent up-time.
 - [512kb.club](https://512kb.club)
 - [1mb.club](https://1mb.club)
 - [xhtml.club](https://xhtml.club)
-- [btxx.org](https://btxx.org) (this website!)
-  - [anon.btxx.org](https://anon.btxx.org)
-  - [audit.btxx.org](https://audit.btxx.org)
-  - [barf.btxx.org](https://barf.btxx.org)
-  - [cv.btxx.org](https://cv.btxx.org)
-  - [jsfree.btxx.org](https://jsfree.btxx.org)
-  - [minwm.btxx.org](https://minwm.btxx.org)
-  - [normform.btxx.org](https://normform.btxx.org)
-  - [search.btxx.org](https://search.btxx.org)
-  - [shinobi.btxx.org](https://shinobi.btxx.org)
-  - [vanillacss.btxx.org](https://vanillacss.btxx.org)
 
 ---
 
