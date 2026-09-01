@@ -22,7 +22,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hosted on:</td>
-      <td><a href="/infra">Raspberry Pi 3B+</a></td>
+      <td><a href="/infra">NearlyFreeSpeech.NET</a></td>
     </tr>
     <tr>
       <td>Source code available:</td>
@@ -38,11 +38,11 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Hardware used:</td>
-      <td>ThinkPad T480s, GMKtec G2 Plus, ThinkPad X201</td>
+      <td>M1 MacBook Air, ThinkPad T480s, GMKtec G2 Plus, ThinkPad X201</td>
     </tr>
     <tr>
       <td>Developed on:</td>
-      <td>OpenBSD, &amp; Linux</td>
+      <td>OpenBSD, NetBSD, MacOS, &amp; Linux</td>
     </tr>
   </tbody>
 </table>

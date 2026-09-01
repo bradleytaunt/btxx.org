@@ -1,10 +1,12 @@
 # Contribute
 
-If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to **buy me a coffee**!
+If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech (NFS) account!**
 
-<a class="button" href="https://buymeacoffee.com/wqtmtn7ir">☕ Buy me a coffee</a>
+<a class="button" href="https://www.nearlyfreespeech.net/contribute/btxx.org">❤️ Add funds to NFS account</a>
 
-By donating, you help cover the costs of running and maintaining this website, including but not limited to:
+<p><strong>Current balance:</strong> <!-- BALANCE GOES HERE -->$35.66<!-- /BALANCE GOES HERE (updated 2026-09-01 10:00:07 UTC) --></p>
+
+By funding the hosting provider directly, you help cover the costs of running and maintaining this website, including but not limited to:
 
 - bandwidth
 - domain renewals
@@ -84,27 +86,51 @@ For full transparency, below you can find the cost of all domains and services I
 
 <div class="table-container">
 <table border="1">
-  <caption>VPS Costs*</caption>
+  <caption>Web Hosting Costs</caption>
   <thead>
     <tr>
-      <th>VPS</th>
+      <th>Daily</th>
+      <th>Monthly</th>
+      <th>Yearly</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$0.06</td>
+      <td>$1.83</td>
+      <td><b>$21.96</b></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-container">
+<table border="1">
+  <caption>Additional Costs</caption>
+  <thead>
+    <tr>
+      <th>Service</th>
       <th>Yearly</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><a href="https://obsd.btxx.org">Server 1</a> (OpenBSD)</td>
-      <td>$6</td>
+      <td>$15</td>
     </tr>
     <tr>
       <td><a href="https://stats.bozo.httpd.rocks">Server 2</a> (NetBSD)</td>
       <td>$15</td>
     </tr>
+    <tr>
+      <td><a href="https://sourcehut.org">SourceHut</a> (Git Forge)</td>
+      <td>$20</td>
+    </tr>
   </tbody>
 </table>
 </div>
 
-The average billing for all of the above works out to **~$23/month**.
+The average billing for all of the above works out to **~$25/month**.
 
 ## Other Ways to Support
 
@@ -119,7 +145,3 @@ That way we each get something out of it!
 You can still enjoy everything on this blog (and the mentioned projects) for free, so please don't feel obligated to give.
 
 Thank you.
-
----
-
-<small>* This covers the hosting for <i>some</i> of the above projects.</small>

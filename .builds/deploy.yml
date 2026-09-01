@@ -1,0 +1,27 @@
+image: netbsd/latest
+packages:
+- ruby
+- rsync
+secrets:
+  - ed9e4efb-54f3-4e5a-8893-a6ac262df30d
+  - 5dd47c15-9600-452e-b9a7-77312af1800d
+environment:
+  repo: btxx.org
+  dest: /home/public/btxx.org
+  server: ssh.nyc1.nearlyfreespeech.net
+  BUNDLE_PATH: vendor/bundle
+submitter:
+  git.sr.ht:
+    enabled: true
+    allow-refs:
+      - refs/heads/deploy
+tasks:
+- ssh-setup: |
+    ssh-keyscan -H -4 $server >> ~/.ssh/known_hosts
+- build: |
+    cd $repo
+    bundle install
+    bundle exec ruby wruby.rb
+- deploy: |
+    cd $repo
+    rsync -rltvz --delete build/ nfsn:$dest/
