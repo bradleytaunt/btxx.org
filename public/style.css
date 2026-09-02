@@ -222,6 +222,7 @@ img.poweredby { background: white; border:1px solid; border-radius: 4px; display
 
 #footer {
   line-height: 1.33;
+  margin-bottom: 10px;
 }
 #footer img { margin-top: 10px; }
 .contribute-footer {
