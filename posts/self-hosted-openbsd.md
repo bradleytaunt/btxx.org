@@ -1,5 +1,5 @@
 # Setup a Simple, Self-Hosted Web Server with OpenBSD
-{:.no_toc}
+
 2026-07-18
 
 <p><strike>This website is being served to you from my HP T630 thin client, running OpenBSD and httpd. Pretty cool, right? And best of all you can do the same!</strike></p>

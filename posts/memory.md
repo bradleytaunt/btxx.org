@@ -1,5 +1,5 @@
 # Serving a Website on a Raspberry Pi Zero Running Entirely in RAM
-{:.no_toc}
+
 2026-05-08
 
 My micro site, [zero.btxx.org](https://zero.btxx.org), is being served to the public internet from a Raspberry Pi Zero v1.3 running Alpine Linux. 
