@@ -5,7 +5,7 @@
 <p><strike>This website is being served to you from my HP T630 thin client, running OpenBSD and httpd. Pretty cool, right? And best of all you can do the same!</strike></p>
 
 <div class="alert">
-    <b>Update:</b> OpenBSD is no longer used to serve this website. This site is now powered by FreeBSD, running on <a href="/infra">NearlyFreeSpeech.NET</a>.
+    <b>Update:</b> OpenBSD is no longer used to serve this website. This site is now powered by FreeBSD, running on <a href="/infra">NearlyFreeSpeech.NET</a>
 </div>
 
 I'm going to walkthrough how to host your own websites locally on OpenBSD. This guide is going to be kept simple on purpose, so feel free to expand on it as you see fit!

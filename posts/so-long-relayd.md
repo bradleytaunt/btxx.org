@@ -8,9 +8,6 @@ Running `relayd` alongside `httpd` on your OpenBSD web servers is no longer nece
   <span><b>Note:</b> I still love <code>relayd</code> and I'm aware that it offers more than simply applying HTTP security headers. If you still prefer using it, that's okay! Please don't yell at me!</span>
 </div>
 
-* :toc
-{:toc}
-
 ## Requirements
 
 As of this time of writing (August 2026) you'll need to be running your system on OpenBSD `-current` in order to use these new header sets in `httpd`. If you're okay with being on the "cutting-edge", you can update by running the following:
