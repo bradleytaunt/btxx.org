@@ -17,6 +17,10 @@ For those interested I try to keep the details of the blog up-to-date with the i
   </thead>
   <tbody>
     <tr>
+      <td>Powered by:</td>
+      <td><a href="https://freebsd.org">FreeBSD</a></td>
+    </tr>
+    <tr>
       <td>Built with:</td>
       <td><a href="https://wruby.site">wruby</a></td>
     </tr>
@@ -34,7 +38,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Typeface used:</td>
-      <td><a href="https://font.subf.dev/en/">Maple Mono</a></td>
+      <td><a href="https://font.subf.dev/en/">Alegreya</a></td>
     </tr>
     <tr>
       <td>Hardware used:</td>

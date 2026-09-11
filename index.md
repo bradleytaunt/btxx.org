@@ -1,19 +1,9 @@
 # Bradley Taunt
 
-Greetings, internet traveler. Welcome to my website!
+![Artwork of mountains with a dithered effect](/public/images/mountains-dithered-by.png)
 
-I'm a developer &amp; designer hybrid who spends his time writing about software, design, and life.
+Greetings, internet traveler. Come sit by the fire.
 
-E-mail
-: [bt@btxx.org](mailto:bt@btxx.org)
+I'm Brad, a developer &amp; designer hybrid. I spend most of my time here writing about software, hardware, design, and life.
 
-Sourcehut
-: [git.sr.ht/~bt](https://git.sr.ht/~bt)
-
-Codeberg
-: [codeberg.org/btxx](https://codeberg.org/btxx)
-
-Mastodon
-: [mastodon.bsd.cafe/@bt](https://mastodon.bsd.cafe/@bt)
-
-## Latest Posts ([All](/posts))
+[Email](mailto:bt@btxx.org) &#124; [Sourcehut](https://git.sr.ht/~bt) &#124; [Codeberg](https://codeberg.org/btxx) &#124; [GitHub](https://github.com/bradleytaunt) &#124; [Mastodon](https://mastodon.bsd.cafe/@bt)

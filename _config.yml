@@ -22,5 +22,5 @@ files:
 
 # Extras
 misc:
-  post_count:    5
+  post_count:    0
   compress_site: true

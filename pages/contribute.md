@@ -2,7 +2,7 @@
 
 If you feel the burning desire to support this small blog of mine or any number of my [projects](/projects), you’re more than welcome to help **fund my NearlyFreeSpeech (NFS) account!**
 
-<a class="button" href="https://www.nearlyfreespeech.net/contribute/btxx.org">❤️ Add funds to NFS account</a>
+❤️ <a class="button" href="https://www.nearlyfreespeech.net/contribute/btxx.org">Add funds to my NFS account</a>
 
 <p><strong>Current balance:</strong> <!-- BALANCE GOES HERE -->$35.66<!-- /BALANCE GOES HERE (updated 2026-09-01 10:00:07 UTC) --></p>
 
@@ -24,7 +24,7 @@ If donating isn't your thing, you can always **buy some stickers**!
 
 I've designed a few stickers based on things I love: OpenBSD, FreeBSD, Raspberry Pis, etc. No AI or generated materials used at all!
 
-<a href="https://www.stickermule.com/bt" class="button">💚 Buy some stickers</a>
+💚 <a href="https://www.stickermule.com/bt" class="button">Buy some stickers</a>
 
 ## Cost Breakdown
 
