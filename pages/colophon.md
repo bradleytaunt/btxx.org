@@ -38,7 +38,7 @@ For those interested I try to keep the details of the blog up-to-date with the i
     </tr>
     <tr>
       <td>Typeface used:</td>
-      <td><a href="https://font.subf.dev/en/">Alegreya</a></td>
+      <td>Recursive</td>
     </tr>
     <tr>
       <td>Hardware used:</td>
