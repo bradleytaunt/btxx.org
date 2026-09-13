@@ -22,11 +22,11 @@ body {
   background: #202a33;
   color: white;
   font-family: "Recursive", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 350;
   line-height: 1.57;
   margin: 0 auto;
-  max-width: 45rem;
+  max-width: 60ch;
   padding: 1rem;
   position: relative;
 }
@@ -55,7 +55,7 @@ body {
   padding: 0;
 }
 #nav ul li a {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #content {
@@ -113,7 +113,6 @@ h2, h3 {
 img { display: block; height: auto; max-width: 100%; }
 p code, li code, blockquote code, dd code {
   color: greenyellow;
-  font-size: 19px;
   white-space: nowrap;
   word-break: keep-all;
 }
