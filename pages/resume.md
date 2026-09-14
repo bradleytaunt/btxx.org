@@ -3,7 +3,7 @@
  **Fullstack Engineer & UX Designer**<br>
 bt@btxx.org
 
-As a designer/developer hybrid with over 12 years of real-world experience, I'm able to help software companies improve their user experience and ship more performant products.
+As a designer/developer hybrid with over 15 years of real-world experience, I'm able to help software companies improve their user experience and ship more performant products.
 
 <div class="table-container">
 <table border="1">
