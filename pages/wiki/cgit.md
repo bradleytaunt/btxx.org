@@ -63,7 +63,7 @@ cd cgit-src
 Create a cgit.conf file with desired locations:
 
 ~~~sh
-CGIT_SCRIPT_PATH = /home/public
+CGIT_SCRIPT_PATH = /home/public/git.btxx.org
 CGIT_DATA_PATH = $(CGIT_SCRIPT_PATH)
 CGIT_CONFIG = $(CGIT_SCRIPT_PATH)/cgitrc
 CACHE_ROOT = $(CGIT_SCRIPT_PATH)/cgitcache
@@ -93,6 +93,7 @@ root-title=main root title
 root-desc=description for your git server
 root-readme=/home/public/about.md
 virtual-root=/
+clone-url=https://git.btxx.org/$CGIT_REPO_URL
 
 about-filter=/home/public/cgit-src/filters/about-formatting.sh
 readme=:README.md
@@ -107,6 +108,23 @@ Then in the specified file (`cgitrepos`), place your repos, ex:
 repo.url=MyRepo
 repo.path=/home/public/MyRepo.git
 repo.desc=This is my git repository
+repo.owner=Bradley Taunt
+~~~
+
+## Configure .htaccess
+
+Inside the root directory containing all of your git repos, add the following `.htacess`:
+
+~~~sh
+SetEnv GIT_PROJECT_ROOT /home/public/git.btxx.org
+SetEnv GIT_HTTP_EXPORT_ALL
+
+DirectoryIndex cgit.cgi
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /cgit.cgi/$1 [L,QSA]
 ~~~
 
 **And you should be good to go!**
