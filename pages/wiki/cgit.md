@@ -139,7 +139,6 @@ The following tweaks to both your `.htaccess`, `robots.txt`, and `cgitrc` files 
 # ===============================================================
 #  NearlyFreeSpeech (Apache 2.4, .htaccess only)
 # ===============================================================
-
 SetEnv GIT_PROJECT_ROOT /home/public/git.btxx.org
 SetEnv GIT_HTTP_EXPORT_ALL
 
@@ -147,63 +146,62 @@ DirectoryIndex cgit.cgi
 
 RewriteEngine On
 
-# 0. Guards
-RewriteCond %{REQUEST_URI} ^/cgit\.cgi(/|$)                              [OR]
-RewriteCond %{ENV:REDIRECT_STATUS} !^$
-RewriteRule ^ - [L]
+# 0. Never rewrite cgit itself
+RewriteRule ^cgit\.cgi(?:/|$) - [L]
 
+# 1. Block unwanted crawlers/bots
 RewriteCond %{HTTP_USER_AGENT} (GPTBot|OAI-SearchBot|ChatGPT-User|ClaudeBot|Claude-Web|anthropic-ai|CCBot|Amazonbot|Bytespider|ImagesiftBot|Omgilibot|Diffbot|PerplexityBot|YouBot|meta-externalagent|FacebookBot|Applebot-Extended|DataForSeoBot|AhrefsBot|SemrushBot|MJ12bot|DotBot|PetalBot|SeekportBot) [NC]
 RewriteRule ^ - [F,L]
 
-# 1. Whitelist
-RewriteCond %{REQUEST_URI} (^|/)(tree|plain|blob|log|commit|diff|rawdiff|patch|blame|snapshot|refs|tag|atom|about|summary|stats)(/|$)   [OR]
-RewriteCond %{REQUEST_URI} (^|/)(info|objects|HEAD|git-upload-pack|git-receive-pack)(/|$)
+# 2. Mark cgit paths as allowed
+RewriteCond %{REQUEST_URI} (^|/)(tree|plain|blob|log|commit|diff|rawdiff|patch|blame|snapshot|refs|tag|atom|about|summary|stats)(/|$) [OR]
+RewriteCond %{REQUEST_URI} (^|/)(info|objects|HEAD|git-upload-pack)(/|$)
 RewriteRule ^ - [E=CGIT:1]
 
-# 2. Everything PHP-related
+# 3. Block PHP
 RewriteCond %{ENV:CGIT} !=1
-RewriteCond %{REQUEST_URI} \.php(/|$)                                    [NC]
+RewriteCond %{REQUEST_URI} \.php(?:/|$) [NC]
 RewriteRule ^ - [F,L]
 
-# 3. WordPress and CMS probes
+# 4. Block WordPress/CMS probes
 RewriteCond %{ENV:CGIT} !=1
-RewriteCond %{REQUEST_URI} ^/wp-                                         [NC,OR]
-RewriteCond %{REQUEST_URI} ^/(administrator|admin)(/|$)                  [NC,OR]
-RewriteCond %{REQUEST_URI} ^/(joomla|drupal|typo3)(/|$)                  [NC,OR]
-RewriteCond %{REQUEST_URI} ^/(user/login|login)/?$                       [NC]
+RewriteCond %{REQUEST_URI} ^/wp- [NC,OR]
+RewriteCond %{REQUEST_URI} ^/(administrator|admin)(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/(joomla|drupal|typo3)(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/(user/login|login)/?$ [NC]
 RewriteRule ^ - [F,L]
 
-# 4. Config / dotfiles / sensitive  (top level only)
+# 5. Block sensitive files
 RewriteCond %{ENV:CGIT} !=1
-RewriteCond %{REQUEST_URI} ^/\.(env|config|git|svn|hg)(/|$)              [NC,OR]
-RewriteCond %{REQUEST_URI} ^/composer\.(json|lock)$                      [NC,OR]
-RewriteCond %{REQUEST_URI} ^/config(/|$)                                 [NC,OR]
-RewriteCond %{REQUEST_URI} ^/settings\.php$                              [NC,OR]
-RewriteCond %{REQUEST_URI} ^/server-(status|info)(/|$)                   [NC]
+RewriteCond %{REQUEST_URI} ^/\.(env|config|git|svn|hg)(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/composer\.(json|lock)$ [NC,OR]
+RewriteCond %{REQUEST_URI} ^/config(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/settings\.php$ [NC,OR]
+RewriteCond %{REQUEST_URI} ^/server-(status|info)(?:/|$) [NC]
 RewriteRule ^ - [F,L]
 
-# 4.5. Any other top-level dotfile, minus ACME challenges?
+# 6. Block other top-level dotfiles except ACME
 RewriteCond %{ENV:CGIT} !=1
-RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
 RewriteCond %{REQUEST_URI} ^/\.
 RewriteRule ^ - [F,L]
 
-# 5. Known exploit scanners
+# 7. Block common exploit/scanner paths
 RewriteCond %{ENV:CGIT} !=1
-RewriteCond %{REQUEST_URI} ^/(vendor|templates|storage|cgi-bin|owa)(/|$) [NC,OR]
-RewriteCond %{REQUEST_URI} ^/(boaform|hudson|phpunit)(/|$)               [NC,OR]
-RewriteCond %{REQUEST_URI} ^/(_ignition|_profiler)(/|$)                  [NC,OR]
-RewriteCond %{REQUEST_URI} ^/TP(/|$)                                     [OR]
-RewriteCond %{REQUEST_URI} ^/(HNAP1|shell)                               [NC,OR]
-RewriteCond %{REQUEST_URI} ^/adminer\.php$                               [NC]
+RewriteCond %{REQUEST_URI} ^/(vendor|templates|storage|cgi-bin|owa)(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/(boaform|hudson|phpunit)(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/(_ignition|_profiler)(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/TP(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/(HNAP1|shell)(?:/|$) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/adminer\.php$ [NC]
 RewriteRule ^ - [F,L]
 
-# 6. Backup / dump files  (top level only)
+# 8. Block top-level backup/dump files
 RewriteCond %{ENV:CGIT} !=1
-RewriteCond %{REQUEST_URI} ^/[^/]+\.(sql|bak|zip|tar|gz|tgz)$            [NC]
+RewriteCond %{REQUEST_URI} ^/[^/]+\.(sql|bak|zip|tar|gz|tgz)$ [NC]
 RewriteRule ^ - [F,L]
 
-# 7. cgit catch-all
+# 9. Send everything else to cgit
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /cgit.cgi/$1 [L,QSA]
@@ -288,7 +286,9 @@ Disallow: /*/refs/
 
 # Raw file content and per-file trees. (Delete these if you want your source indexed)
 Disallow: /*/plain/
+Disallow: /*/plain
 Disallow: /*/tree/
+Disallow: /*/tree
 
 Disallow: /*/stats/
 
@@ -304,7 +304,7 @@ Crawl-delay: 30
 
 ### cgitrc
 
-Just this to your existing `cgitrc` you created above, making sure to create the proper `/home/private/cgit-cache` directory.
+Just add this to your existing `cgitrc` you created above, making sure to create the proper `/home/private/cgit-cache` directory.
 
 ~~~sh
 cache-size=2000
@@ -318,4 +318,4 @@ cache-snapshot-ttl=1440
 snapshots=
 ~~~
 
-*Now* everything should be a little more protected. Well, as much as it can on the modern internet...
+*Now* everything should be a little more protected. Well, as much as it can be on the modern internet...
