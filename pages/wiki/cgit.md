@@ -318,4 +318,13 @@ cache-snapshot-ttl=1440
 snapshots=
 ~~~
 
+## Resource Usage
+
+You can see the resource usage instantly plummet once these protections were put in place:
+
+<figure>
+  <img src="/public/images/nfs-resource-usage.webp" alt="NFSN resource usage graph">
+  <figcaption>NFSN resource usage graph. You can see right when I implemented these guards / blocks at the end of September 18th.</figcaption>
+</figure>
+
 *Now* everything should be a little more protected. Well, as much as it can be on the modern internet...
