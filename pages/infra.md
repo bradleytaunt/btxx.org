@@ -4,7 +4,7 @@ I used to self host as much as I possibly could at one point. Unfortunately, I d
 
 I still self host some things, but most of my projects are hosted on my NearlyFreeSpeech.NET account, TierHive VPS, or RamHost.
 
-**Last updated**: August 2026
+**Last updated**: September 2026
 
 ## NearlyFreeSpeech.NET
 
@@ -19,6 +19,7 @@ This is my main server. Used for my main blog and top-level side projects.
   - [audit.btxx.org](https://audit.btxx.org)
   - [barf.btxx.org](https://barf.btxx.org)
   - [cv.btxx.org](https://cv.btxx.org)
+  - [git.btxx.org](https://git.btxx.org)
   - [hermes.btxx.org](https://hermes.btxx.org)
   - [jsfree.btxx.org](https://jsfree.btxx.org)
   - [minwm.btxx.org](https://minwm.btxx.org)

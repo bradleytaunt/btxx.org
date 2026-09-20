@@ -29,8 +29,8 @@ For those interested I try to keep the details of the blog up-to-date with the i
       <td><a href="/infra">NearlyFreeSpeech.NET</a></td>
     </tr>
     <tr>
-      <td>Source code available:</td>
-      <td><a href="https://git.sr.ht/~bt/btxx.org">SourceHut</a></td>
+      <td>Source:</td>
+      <td><a href="https://git.btxx.org/btxx.org/">Available here</a></td>
     </tr>
     <tr>
       <td>Licensed under:</td>

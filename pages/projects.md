@@ -2,7 +2,9 @@
 
 This page a growing collection of active (and not-so-active) projects I am working on.
 
-All git repos can be found: [SourceHut](https://git.sr.ht/~bt)
+All git repos can be found at: [git.btxx.org](https://git.btxx.org)
+
+<small>I'm in the middle of transitioning to my own forge instance. Not all projects have been ported over yet.</small>
 
 ## Active Projects
 

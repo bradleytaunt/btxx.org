@@ -104,32 +104,6 @@ For full transparency, below you can find the cost of all domains and services I
 </table>
 </div>
 
-<div class="table-container">
-<table border="1">
-  <caption>Additional Costs</caption>
-  <thead>
-    <tr>
-      <th>Service</th>
-      <th>Yearly</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="https://obsd.btxx.org">Server 1</a> (OpenBSD)</td>
-      <td>$15</td>
-    </tr>
-    <tr>
-      <td><a href="https://stats.bozo.httpd.rocks">Server 2</a> (NetBSD)</td>
-      <td>$15</td>
-    </tr>
-    <tr>
-      <td><a href="https://sourcehut.org">SourceHut</a> (Git Forge)</td>
-      <td>$20</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
 The average billing for all of the above works out to **~$25/month**.
 
 ## Other Ways to Support
